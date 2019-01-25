@@ -1,5 +1,6 @@
 language: node_js
-node_js: stable
+node_js: 
+ - 8.11.3
 
 sudo: false
 
@@ -13,7 +14,7 @@ notifications:
     recipients:
       - vensing@foxmail.com
     on_success: never
-    on_failure: always
+    on_failure: never
 
 # S: Build Lifecycle
 install:
