@@ -79,7 +79,7 @@ theme: hexo-theme-snippet
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: git@github.com:vensing/vensing.github.io.git
+  repo: https://github.com/vensing/vensing.github.io.git
   #git@gitee.com:vensing/vensing.git
   #git@git.coding.net:vensing/vensing.git
   branch: master
