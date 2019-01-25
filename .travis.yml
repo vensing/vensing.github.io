@@ -45,6 +45,6 @@ branches:
     - source
 env:
  global:
-   - GH_REF: git@github.com:vensing/vensing.github.io.git
+   - GH_REF: github.com/vensing/vensing.github.io.git
  #  - GITEE_REF: gitee.com/shenliyang/shenliyang.git
 
