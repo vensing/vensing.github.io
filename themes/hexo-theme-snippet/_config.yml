@@ -1,0 +1,241 @@
+# ---------------------------------------------------------------
+#   Site Information And Theme Configuration Settings
+#   language: zh-CN
+# ---------------------------------------------------------------
+
+## menu
+menu:
+- page: 首页
+  url: /
+  icon: fa-home
+# - page: 前端
+#   url: /categories/前端/
+#   icon:
+# - page: 后端
+#   url: /categories/后端/
+#   icon:
+- page: 日常
+  url: /tags/日常
+  icon: fa-coffee
+- page: 时间轴
+  url: /archives/
+  icon: fa-calendar-check-o
+
+## favicon
+favicon: /favicon.ico
+
+## Feed
+rss: /atom.xml
+
+## Carousel
+carousel:
+  img: /img/Shiina_Mashiro.png
+  url: 'javascript:'
+# 各个小工具的设置
+
+## widgets
+widgets:
+  - search
+  - notification
+  - social
+  - category
+  - archive
+  - tagcloud
+  - friends
+
+## 搜索
+jsonContent:
+  searchLocal: true
+  searchGoogle: false
+  posts:
+    title: true
+    text: true
+    content: true
+    categories: true
+    tags: false
+
+## 网站公告设置
+notification: |-
+            <p>本站主题：Snippet v1.2.1版本 <br/>
+            主题下载：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a> <br/>
+            主题使用：<a href="https://github.com/shenliyang/hexo-theme-snippet/blob/master/README.md#常见问题" title="" target="_blank">常见使用问题</a> <br/>
+            <hr/>感谢作者：<a href="https://github.com/shenliyang/hexo-theme-snippet" title="fork me" target="_blank">Snippet主题</a><br/>支持主题：<a href="https://github.com/shenliyang/hexo-theme-snippet/stargazers">Star一下</a>
+            </p>
+
+## 社交设置
+social:
+ - name: Github
+   icon: github
+   href: //github.com/vensing
+ - name: 微博
+   icon: weibo
+   href: //weibo.com/vensing1020
+ - name: 邮箱
+   icon: envelope-o
+   href: mailto:vensing@foxmail.com
+
+ # - name: 联系QQ
+ #   icon: qq
+ #   href: 782176881
+ # - name: 微信
+ #   icon: weixin
+ #   href: wangxin-weixin
+ # - name: QQ群
+ #   icon: users
+ #   href: /
+ # - name: RSS
+ #   icon: feed
+ #   href: /atom.xml
+
+## 文章分类设置
+cate_config:
+   show_count: true
+   show_current: true
+
+## 文章归档设置
+arch_config:
+   type: 'monthly'
+   show_count: true
+   order: -1
+
+## 标签云设置
+tagcloud:
+  tag3d: false
+  textColour: '#444'
+  outlineMethod: 'block'
+  outlineColour: '#FFDAB9'
+  interval: 30
+  freezeActive: true
+  frontSelect: true
+  reverse: true
+  wheelZoom: false
+
+## 友链设置
+links:
+  - Hexo官网: https://hexo.io/zh-cn/
+
+
+# 主题自定义个性化配置
+
+## 网站宣传语
+branding:
+  - 
+## 设置banner背景图片
+banner:
+    # img: http://7xpw2b.com1.z0.glb.clouddn.com/hexo-sinppet/img/banner.jpg
+  img: /img/topbanner.png
+
+## 首页列表底部面板
+homePanel: true
+
+## 缩略图自定义随机图片
+defaultImgs:
+  - 
+
+## 截取文章首页描述字数
+excerptLength: 160
+
+## 是否开启文章目录
+toc: false
+
+## 代码高亮配置
+highlightTheme:
+
+## bootstrap配置
+bootstrap:
+
+## ICON配置
+fontAwesome:
+
+## 文章过期提醒功能
+warning:
+  days: 300
+  text: '本文于%d天之前发表，文中内容可能已经过时。'
+
+## 文章内声明
+declaration:
+  enable: true
+  title: '转载声明'
+  tip: |-
+      商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Vexsy</a>
+
+reward:
+  alipay: ''
+  wepay: '/img/wereward.JPG'
+  tip: 赞赏鼓励一下
+
+
+## 主题评论
+
+### gitment
+gitment:
+  enable: false
+  owner:
+  repo:
+  client_id:
+  client_secret:
+  perPage: 10
+
+### 来必力
+livere:
+  enable: true
+  livere_uid: MTAyMC8zOTY3OC8xNjIwNQ==
+
+### 友言评论(服务不稳定)
+uyan:
+  enable: false
+  uyan_id: 1966422
+
+### Disqus评论
+disqus:
+  enable: false
+  shortname: snippet
+  count: false
+
+### 畅言评论(需要ICP备案)
+changyan:
+  enable: false
+  appid:
+  conf:
+
+## Valine评论
+valine:
+   enable: false
+   appId: xOKV9J4UeQAtVkvnJC7Kq2Jn-gzGzoHsz
+   appKey: erIpQac4azoCmgfBB7Dl9maa
+   placeholder: 说点什么吧
+   notify: false
+   verify: false
+   avatar: mm
+   meta: nick,mail
+   pageSize: 10
+
+## 网站访客统计
+visit_counter:
+   site: true
+   page: true
+
+## 网站访问统计分析
+
+### 网盟CNZZ统计
+##cnzz_analytics: 1263868967
+
+### 百度统计
+baidu_analytics:
+
+### 谷歌统计
+google_analytics:
+
+### 腾讯分析
+tencent_analytics:
+
+### 百度站点认证
+baidu_site_verification:
+
+### 百度自动推送
+baidu_push: false
+
+#网站主题配置
+since: 2018
+robot: 'all' ### 控制搜索引擎的抓取和索引编制行为，默认为all
+version: 1.2.1
