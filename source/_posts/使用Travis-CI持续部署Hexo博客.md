@@ -1,13 +1,14 @@
 ---
 title: 使用Travis CI持续部署Hexo博客
-date: 2019-01-25 22:37:06
 categories:
   - 自动部署
   - Travis CI
 tags:
   - 自动部署
   - Travis CI
-img: /img/springboot.jpeg
+img: /img/travislogo.PNG
+abbrlink: 2331
+date: 2019-01-25 22:37:06
 ---
 
 # 使用Travis CI持续部署Hexo博客
@@ -36,7 +37,7 @@ $ hexo s
 
 6.调试好之后，执行部署命令部署到 Github Pages 上：
 ```
-$ hexo g
+$ hexo d
 ```
 
 ## 二 、 使用 Travis CI 持续部署后
@@ -279,3 +280,5 @@ $ git push -u origin master:source
 
 然后 ，在登录的 Travis 官网上就能看到自动部署时生成的日志信息了。
 
+## 参考
+本文部分内容参考自：[karlzhou](https://www.karlzhou.com)的博文 -- [用Travis CI自动部署Hexo博客](https://www.karlzhou.com/2016/05/28/travis-ci-deploy-blog/)，感谢作者提供的教程和参考。
