@@ -1,9 +1,13 @@
 ---
 title: 使用Travis CI持续部署Hexo博客
 date: 2019-01-25 22:37:06
+categories:
+  - 自动部署
+  - Travis CI
 tags:
   - 自动部署
   - Travis CI
+img: /img/springboot.jpeg
 ---
 
 # 使用Travis CI持续部署Hexo博客
@@ -181,7 +185,7 @@ env:
 3. branches 是你Github Pages 项目中存放博客源码的分支，这里是 source 分支，对应上即可。
 4. env 下设置 GH_REF ，即设置 Github Pages 的仓库地址，记得是以 .git 结尾的地址。
 
-```s
+```sh
 #travis.sh
 
 #--------------------------------------------
