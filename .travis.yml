@@ -19,7 +19,7 @@ notifications:
 # S: Build Lifecycle
 install:
   - npm install
-  - npm install less@3.3.2 --save-dev
+  - npm install less@2.7.3 --save-dev
 #  - gem install travis
 #  - travis login --pro --github-token ${GH_TOKEN}
 
