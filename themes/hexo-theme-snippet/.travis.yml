@@ -1,23 +1,25 @@
 language: node_js
-node_js: stable
+node_js: stable 
 
 sudo: false
 
 #cache
 cache:
+  apt: true
   directories:
     - "node_modules"
 
 notifications:
   email:
     recipients:
-      - snippet@91h5.cc
+      - vensing@foxmail.com
     on_success: never
-    on_failure: always
+    on_failure: never
 
 # S: Build Lifecycle
 install:
   - npm install
+  - npm install less@2.7.3 --save-dev
 #  - gem install travis
 #  - travis login --pro --github-token ${GH_TOKEN}
 
@@ -41,9 +43,9 @@ after_script:
 
 branches:
   only:
-    - dev
+    - source
 env:
  global:
-   - GH_REF: github.com/shenliyang/shenliyang.github.io.git
-   - GITEE_REF: gitee.com/shenliyang/shenliyang.git
+   - GH_REF: github.com/vensing/vensing.github.io.git
+ #  - GITEE_REF: gitee.com/shenliyang/shenliyang.git
 

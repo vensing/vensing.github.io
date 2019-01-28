@@ -14,7 +14,7 @@ date: 2018-10-21 21:07:29
 ## 在你的博客中加入真白看板娘💎
 ![](/img/Shiina_Mashiro.png)
 
-&emsp;&emsp;本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。
+&emsp;&emsp;本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。<br/>
 
 &emsp;&emsp;更多信息参阅[伊斯特瓦尔点这里](https://www.wikimoe.com/?post=76)地址，和[《给博客添加能动的看板娘(Live2D)-将其添加到网页上吧》](https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02)。文字部分参考自[在 Web 上展示 Live2D 吧！](https://github.com/galnetwen/Live2D)
 
