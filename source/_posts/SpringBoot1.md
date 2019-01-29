@@ -23,7 +23,7 @@ date: 2018-09-24 22:28:43
 ![](/img/maven.png)
 
 然后next，填写Artifact里的GroupId、ArtifactId等，最后finish即可。
-
+<!--more-->
 (2) maven项目有了，然后是编写pom.xml。
 ```xml
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"

@@ -14,6 +14,8 @@ date: 2019-01-25 22:37:06
 
 # 使用Travis CI持续部署Hexo博客
 
+#####  
+
 ![Travis CI 自动部署流程](https://www.karlzhou.com/images/travis-ci-deploy-blog/build-flow.png)
 
 ## 一 、没有 Travis CI 之前
@@ -57,7 +59,7 @@ $ git push -u origin master:source
 
 
 而后 Travis CI 监听到 push 操作即会根据 travis.yml 执行自动部署，原理简单说来就是先 git clone 线上 GitHub Pages 项目的源码分支 (source分支) ，再执行自动部署后将 Hexo 博客的静态页面推送到 GitHub Pages 项目的 master 分支。
-
+<!-- more -->
 ## 三 、 Why we need Travis CI?
 
 ### 使用Travis CI 自动部署的好处
@@ -86,9 +88,8 @@ $ git push -u origin master:source
 
 有了CI，你可以只提交post文件里单独的md文件即可，很快很爽，谁用谁知道。
 
-#### *优点4：bigger than bigger .*
-
-你的项目Readme里面可以显示CI build图标 [![build icon](https://www.karlzhou.com/images/travis-ci-deploy-blog/passing.svg)](https://www.karlzhou.com/images/travis-ci-deploy-blog/passing.svg)，很酷有没有？
+#### *优点4：bigger than bigger.*
+你的项目Readme里面可以显示CI build图标 ，很酷有没有？
 
 另外通过设置，可以在当build失败时自动发邮件提醒你。
 

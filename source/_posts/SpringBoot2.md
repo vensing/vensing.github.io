@@ -36,7 +36,6 @@ date: 2018-09-24 23:22:51
 	<artifactId>tomcat-embed-jasper</artifactId>
 </dependency>
 ```
-
 2. 在**application.properties**中加入如下配置：
 ```
 spring.mvc.view.prefix=/WEB-INF/jsp/
@@ -54,6 +53,8 @@ public class HelloController {
     } 
 }
 ```
+<!--more-->
+
 4. 编写jsp文件：
 在webapp目录下新建`WEB-INF\jsp`目录，jsp文件必须放WEB-INF目录下，因为Controller会根据`application.properties`中的视图重定向，到/WEB-INF/jsp目录下去寻找hello.jsp文件。
 ```
