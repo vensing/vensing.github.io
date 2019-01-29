@@ -10,10 +10,12 @@
   {% include '_partials/head.swig' %}
   <title>{% block title %}{% endblock %}</title>
   {% include '_third-party/analytics/index.swig' %}
+  
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
+<body  itemscope itemtype="http://schema.org/WebPage" lang="{{ page.lang || page.language || config.language }}">
 
+  
   {% set container_class = "container " %}
   {% if theme.sidebar.position %}
     {% set container_class = container_class + 'sidebar-position-' + theme.sidebar.position %}
@@ -30,14 +32,131 @@
       <div class="main-inner">
         <div class="content-wrap">
           <div id="content" class="content">
+		  
             {% block content %}{% endblock %}
           </div>
           {% include '_third-party/duoshuo-hot-articles.swig' %}
           {% include '_partials/comments.swig' %}
+		  
+		  
+		  <div class="sidebar-inner affix-top" id="ismobile" style=" position:relative; opacity: 1;display: block;transform: initial; border: dashed 1px lightgray; width: auto;">
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview" style="max-height: 593px;">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person" style="opacity: 1;">
+            
+			{% if theme.avatar %}
+              <img class="site-author-image" itemprop="image"
+                src="{{ url_for( theme.avatar | default(theme.images + '/avatar.gif') ) }}"
+                alt="{{ theme.author }}" />
+            {% endif %}
+			           
+              <p class="site-author-name" itemprop="name">{{ theme.author }}</p>
+              <p class="site-description motion-element" style="opacity:1;" itemprop="description">{#
+            #}{% if theme.seo %}{#
+              #}{{ theme.signature }}{#
+            #}{% else %}{#
+              #}{{ theme.description }}{#
+            #}{% endif %}{#
+            #}</p>
+          </div>
+
+          <nav class="site-state motion-element" style="opacity:1;">
+
+            
+              {% if config.archive_dir != '/' and site.posts.length > 0 %}
+              <div class="site-state-item site-state-posts">
+              {% if theme.menu.archives %}
+                <a href="{{ url_for(theme.menu.archives).split('||')[0] | trim }}">
+              {% else %}
+                <a href="{{ url_for(config.archive_dir) }}">
+              {% endif %}
+                  <span class="site-state-item-count">{{ site.posts.length }}</span>
+                  <span class="site-state-item-name">{{ __('state.posts') }}</span>
+                </a>
+              </div>
+            {% endif %}
+
+            {% if site.categories.length > 0 %}
+              {% set categoriesPageQuery = site.pages.find({type: 'categories'}, {lean: true}) %}
+              {% set hasCategoriesPage = categoriesPageQuery.length > 0 %}
+              <div class="site-state-item site-state-categories">
+                {% if hasCategoriesPage %}<a href="{{ url_for(categoriesPageQuery[0].path) }}">{% endif %}
+                  <span class="site-state-item-count">{{ site.categories.length }}</span>
+                  <span class="site-state-item-name">{{ __('state.categories') }}</span>
+                {% if hasCategoriesPage %}</a>{% endif %}
+              </div>
+            {% endif %}
+
+            {% if site.tags.length > 0 %}
+              {% set tagsPageQuery = site.pages.find({type: 'tags'}, {lean: true}) %}
+              {% set hasTagsPage = tagsPageQuery.length > 0 %}
+              <div class="site-state-item site-state-tags">
+                {% if hasTagsPage %}<a href="{{ url_for(tagsPageQuery[0].path) }}">{% endif %}
+                  <span class="site-state-item-count">{{ site.tags.length }}</span>
+                  <span class="site-state-item-name">{{ __('state.tags') }}</span>
+                {% if hasTagsPage %}</a>{% endif %}
+              </div>
+            {% endif %}
+            
+
+          </nav>
+
+          
+
+			{% if theme.social %}
+            <div class="links-of-author motion-element" style="opacity:1;text-align: center;">
+                {% for name, link in theme.social %}
+                  <span class="links-of-author-item">
+                    <a href="{{ link.split('||')[0] | trim }}" target="_blank" title="{{ name }}">
+                      {% if theme.social_icons.enable %}
+                        <i class="fa fa-fw fa-{{ link.split('||')[1] | trim | default('globe') }}"></i>{#
+                    #}{% endif %}{#
+                      #}{% if not theme.social_icons.icons_only %}{#
+                        #}{{ name }}{#
+                      #}{% endif %}{#
+                  #}</a>
+                  </span>
+                {% endfor %}
+            </div>
+          {% endif %}
+          
+            
+          
+
+          {# Blogroll #}
+          {% if theme.links %}
+            <div class="links-of-blogroll motion-element {{ "links-of-blogroll-" + theme.links_layout | default('inline') }}" style="opacity:1;">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-{{ theme.links_icon | default('globe') | lower }}"></i>
+                {{ theme.links_title }}
+              </div>
+              <ul class="links-of-blogroll-list">
+                {% for name, link in theme.links %}
+                  <li class="links-of-blogroll-item">
+                    <a href="{{ link }}" title="{{ name }}" target="_blank">{{ name }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}
+          
+            
+
         </div>
+      </section>
+    </div>
+	
+		  
+	
+	
+	
+        </div>
+		
         {% if theme.sidebar.display !== 'remove' %}
           {% block sidebar %}{% endblock %}
         {% endif %}
+		
       </div>
     </main>
 
@@ -89,4 +208,26 @@
   {% include '_third-party/scroll-cookie.swig' %}
   {% include '_third-party/exturl.swig' %}
 </body>
+<script>
+  function IsMobile() {
+          var userAgentInfo = navigator.userAgent;
+          var Agents = ["Android", "iPhone",
+                      "SymbianOS", "Windows Phone",
+                      "iPad", "iPod"];
+          var flag = false;
+          for (var v = 0; v < Agents.length; v++) {
+              if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                  flag = true;
+                 break;
+             }
+        }
+         if(!flag){
+			var sidebardom = document.getElementById("ismobile");
+				if(sidebardom!=null){
+					sidebardom.parentNode.removeChild(sidebardom);
+				}
+			}
+     }
+	IsMobile();
+  </script>
 </html>

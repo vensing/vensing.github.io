@@ -48,7 +48,7 @@ footer:
   since: 2018
 
   # Icon between year and copyright info.
-  icon: user
+  icon: heart
 
   # If not defined, will be used `author` from Hexo main config.
   copyright: Vexsy 
@@ -197,7 +197,7 @@ sidebar:
   scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
-  onmobile: false
+  onmobile: true
 
 
 # ---------------------------------------------------------------
