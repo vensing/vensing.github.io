@@ -16,7 +16,7 @@ date: 2019-01-25 22:37:06
 
 #####  
 
-![Travis CI 自动部署流程](https://www.karlzhou.com/images/travis-ci-deploy-blog/build-flow.png)
+![Travis CI 自动部署流程](/img/build-flow.png)
 
 ## 一 、没有 Travis CI 之前
 
