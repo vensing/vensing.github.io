@@ -26,7 +26,7 @@ install:
 
 before_script:
   - export TZ='Asia/Shanghai'
-  - npm install -g gulp
+  - npm install gulp
   - chmod +x _travis.sh
 
 script:
