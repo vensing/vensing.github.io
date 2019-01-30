@@ -29,7 +29,7 @@
       <div class="post-body{% if theme.han %} han-init-context{% endif %}{% if page.direction && page.direction.toLowerCase() === 'rtl' %} rtl{% endif %}">
         {# tagcloud page support #}
         {% if page.type === "tags" %}
-          <div class="tag-cloud">
+          <div class="tag-cloud" style="margin-bottom: 100px;">
             <div class="tag-cloud-title">
                 {{ _p('counter.tag_cloud', site.tags.length) }}
             </div>
@@ -38,7 +38,7 @@
             </div>
           </div>
         {% elif page.type === 'categories' %}
-          <div class="category-all-page">
+          <div class="category-all-page" style="margin-bottom: 100px;">
             <div class="category-all-title">
                 {{ _p('counter.categories', site.categories.length) }}
             </div>

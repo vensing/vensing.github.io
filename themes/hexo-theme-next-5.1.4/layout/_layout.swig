@@ -39,7 +39,7 @@
           {% include '_partials/comments.swig' %}
 		  
 		  
-		  <div class="sidebar-inner affix-top" id="ismobile" style=" position:relative; opacity: 1;display: block;transform: initial; border: dashed 1px lightgray; width: auto;">
+		  <div class="sidebar-inner affix-top" id="ismobile" style=" position:relative; opacity: 1;display: none;transform: initial; border: dashed 1px lightgray; width: auto;">
 
       <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview" style="max-height: 593px;">
@@ -226,6 +226,8 @@
 				if(sidebardom!=null){
 					sidebardom.parentNode.removeChild(sidebardom);
 				}
+			}else{
+				sidebardom.style.display = "block";
 			}
      }
 	IsMobile();

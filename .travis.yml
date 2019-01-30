@@ -20,7 +20,7 @@ notifications:
 install:
   - npm install
   - npm install less@2.7.3 --save-dev
-  - npm install -g gulp
+  - npm install gulp
 #  - gem install travis
 #  - travis login --pro --github-token ${GH_TOKEN}
 
