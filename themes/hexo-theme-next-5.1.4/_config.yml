@@ -96,11 +96,12 @@ menu:
   archives: /archives/ || archive
   tags: /tags/ || tags
   categories: /categories/ || th
+  友链 : /friends || link
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
-
+  
 # Enable/Disable menu icons.
 menu_icons:
   enable: true
@@ -145,11 +146,11 @@ social_icons:
 
 # Blog rolls
 links_icon: link
-links_title: Links
+links_title: 我的朋友们
 links_layout: block
 #links_layout: inline
 links:
-  一起加友链 📌: https://vensing.site/
+  加友链 📌: /friends
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
