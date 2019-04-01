@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 无关风月的小站
-subtitle: 发光发亮吧 ✨
-description: 发光发亮吧 ✨
-keywords: 无关风月的小站
+title: 未来日记本
+subtitle: 努力型选手，大部分时间却在不务正业
+description: 努力型选手，大部分时间却在不务正业
+keywords: "未来日记本,Vexsy,vensing"
 author: Vexsy
-language: zh-Hans
+language: zh-CN
 timezone: Asia/Shanghai 
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: https://vensing.site
+url: https://vensing.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -73,7 +73,8 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: hexo-theme-next-5.1.4
+#theme: hexo-theme-next-5.1.4
+theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html

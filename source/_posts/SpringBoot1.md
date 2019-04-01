@@ -9,12 +9,14 @@ tags:
 img: /img/springboot1.jpg
 abbrlink: 11763
 date: 2018-09-24 22:28:43
+toc: true
 ---
 
 ## 基于eclipse手动构建SpringBoot项目
 
-### 1.  创建一个Maven项目
-为什么不用sts插件,或是STS编辑器创建SpringBoot项目呢？
+> ### 创建一个Maven项目
+
+为什么不用sts插件,或是STS编辑器创建SpringBoot项目呢？因为要瞎折腾啊。
 
 首先SpringBoot本质是基于maven风格的项目，再者不使用插件手动构建有利于理解项目的本质加深自己的印象。
 
@@ -78,8 +80,10 @@ date: 2018-09-24 22:28:43
 参照上面写即可，最重要的是`spring-boot-starter-parent`和`spring-boot-starter-web`，其中`spring-boot-starter-parent`声明这是一个springboot的子项目,作用就是统一依赖管理，依赖的版本管理，插件管理，编译jdk版本管理等。
 可以去`repository/org/springframework/boot/spring-boot-starter-parent/版本号/spring-boot-starter-parent.pom`下打开文件查看其依赖内容。
 `spring-boot-starter-web`是构建Web的基础，包含了RESTful风格框架SpringMVC和默认的嵌入式容器Tomcat。
-> 编写完pom.xml后记得maven-->update project。
-### 2. 编写配置文件和代码
+
+*编写完pom.xml后记得maven-->update project。*
+
+> ### 编写配置文件和代码
 
 (3) 在`src/main/java `新建一个springboot的包，新建一个Application类，这是项目启动的入口：
 ```java
@@ -115,8 +119,11 @@ public class HelloWorldController {
 
 
 ## SpringBoot的打包和部署
+
 Springboot 部署通常会采用两种方式：全部打包成一个jar，或者打包成一个war。
-### 1. jar 包
+
+> ### jar 包
+
 命令行下进入项目的根路径，运行打包命令:
 ```
 mvn install
@@ -130,7 +137,7 @@ java -jar target/springboot-0.0.1-SNAPSHOT.jar
 ![](/img/java_jar.png)
 出现spring的banner就说明成功了。
 
-### 2. war包
+> ###  war包
 
 - 修改application类
 加入@ServletComponentScan注解，并且继承SpringBootServletInitializer 。

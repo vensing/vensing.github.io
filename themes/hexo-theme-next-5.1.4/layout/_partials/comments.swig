@@ -29,6 +29,9 @@
           Please enable JavaScript to view the
           <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
         </noscript>
+		<p style="text-align: center;">
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> 如果 Disqus 评论框加载不出来，你知道该怎么办吧 (○´･д･)ﾉ
+        </p>
       </div>
     </div>
 

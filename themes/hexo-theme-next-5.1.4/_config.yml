@@ -96,7 +96,7 @@ menu:
   archives: /archives/ || archive
   tags: /tags/ || tags
   categories: /categories/ || th
-  友链 : /friends || link
+  友链 : /friends/ || link
   about: /about/ || user
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
@@ -150,7 +150,7 @@ links_title: 我的朋友们
 links_layout: block
 #links_layout: inline
 links:
-  加友链 📌: /friends
+  加友链 📌: /friends/
 
 # Sidebar Avatar
 # in theme directory(source/images): /images/avatar.gif
@@ -198,7 +198,7 @@ sidebar:
   scrollpercent: true
 
   # Enable sidebar on narrow view (only for Muse | Mist).
-  onmobile: true
+  onmobile: false
 
 
 # ---------------------------------------------------------------
@@ -361,9 +361,9 @@ han: true
 
 # Disqus
 disqus:
-  enable: false
-  shortname: vexsy
-  count: true
+  enable: true
+  shortname: vensing-com
+  count: false
 
 # Hypercomments
 #hypercomments_id:
@@ -396,7 +396,7 @@ valine:
 
 # Support for LiveRe comments system.
 # You can get your uid from https://livere.com/insight/myCode (General web site)
-livere_uid: MTAyMC8zOTY3OC8xNjIwNQ==
+#livere_uid: MTAyMC8zOTY3OC8xNjIwNQ==
 
 # Gitment
 # Introduction: https://imsun.net/posts/gitment-introduction/
@@ -575,7 +575,7 @@ busuanzi_count:
 
 
 # Enable baidu push so that the blog will push the url to baidu automatically which is very helpful for SEO
-baidu_push: true
+baidu_push: false
 
 # Google Calendar
 # Share your recent schedule to others via calendar page

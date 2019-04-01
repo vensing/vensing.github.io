@@ -1,0 +1,52 @@
+language: node_js
+node_js: stable 
+
+sudo: false
+
+#cache
+cache:
+  apt: true
+  directories:
+    - "node_modules"
+
+notifications:
+  email:
+    recipients:
+      - vensing@foxmail.com
+    on_success: never
+    on_failure: never
+
+# S: Build Lifecycle
+install:
+  - npm install
+  - npm install less@2.7.3 --save-dev
+#  - npm install gulp
+#  - gem install travis
+#  - travis login --pro --github-token ${GH_TOKEN}
+
+before_script:
+  - export TZ='Asia/Shanghai'
+  - npm install gulp
+  - chmod +x _travis.sh
+
+script:
+  - hexo clean && hexo g
+  - gulp
+
+after_success:
+ # - LAST_BUILD_NUMBER=68
+ # - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done
+
+after_script:
+  - ./_travis.sh
+
+# E: Build LifeCycle
+
+branches:
+  only:
+    - source
+env:
+ global:
+   - GH_REF: github.com/vensing/vensing.github.io.git
+ #  - GITEE_REF: gitee.com/shenliyang/shenliyang.git
+
