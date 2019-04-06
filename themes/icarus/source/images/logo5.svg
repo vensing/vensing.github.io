@@ -1,0 +1,52 @@
+<svg width="1149" height="259" xmlns="http://www.w3.org/2000/svg" class="icon">
+ <defs>
+  <style type="text/css">@font-face {
+  font-family: "weel-translate";
+  font-style: normal;
+  font-weight: normal;
+  src: url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.ttf") format("truetype"), url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.woff") format("woff");
+}
+@font-face {
+  font-family: "weel-translate";
+  font-style: normal;
+  font-weight: normal;
+  src: url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.ttf") format("truetype"), url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.woff") format("woff");
+}
+@font-face {
+  font-family: "weel-translate";
+  font-style: normal;
+  font-weight: normal;
+  src: url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.ttf") format("truetype"), url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.woff") format("woff");
+}
+@font-face {
+  font-family: "weel-translate";
+  font-style: normal;
+  font-weight: normal;
+  src: url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.ttf") format("truetype"), url("moz-extension://6df79949-f4b5-4469-9d15-fba558fbc8ad/fonts/weel-translate.woff") format("woff");
+}</style>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="1151" height="261" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_12">
+   <g stroke="null" id="svg_13">
+    <path stroke="null" d="m617.799183,148.953585s83.90044,-0.83373 96.55047,61.27877l-23.86411,6.94771l4.03434,26.67919a66.80581,67.8791 0 0 1 -30.22331,-1.52849a70.15636,71.28347 0 0 1 -46.49738,-91.77921l0,-1.59797l-0.00001,0z" fill="#54b301" id="svg_1"/>
+    <path stroke="null" d="m626.278123,129.638955s41.02711,-74.13203 100.37966,-54.19211l-6.29082,24.45593l24.75302,9.79627a67.28446,68.36544 0 0 1 -16.41085,25.84546a70.08798,71.21399 0 0 1 -101.54209,-4.65496l-0.88892,-1.25059z" fill="#e66b89" id="svg_2"/>
+    <path stroke="null" d="m612.465663,123.802885s-59.76282,-59.47237 -25.50519,-112.48337l21.67599,12.29744l16.00058,-21.8158a66.80581,67.8791 0 0 1 20.51355,22.78848a70.22473,71.35295 0 0 1 -30.70195,98.51848l-1.98298,0.69477z" fill="#e66b89" id="svg_3"/>
+    <path stroke="null" d="m601.456723,133.807585s-72.07095,43.14526 -113.57671,-4.16863l17.29976,-18.13351l-16.68436,-20.84312a66.66905,67.74014 0 0 1 26.94114,-13.89541a70.15636,71.28347 0 0 1 85.67828,55.58165l0.34189,1.45902z" fill="#e66b89" id="svg_4"/>
+    <path stroke="null" d="m604.123483,146.799795s22.49653,81.91346 -33.23195,110.39906l-12.58165,-21.60737l-24.41113,10.83843a66.25878,67.32328 0 0 1 -6.29083,-30.0141a70.08798,71.21399 0 0 1 75.21637,-69.47707l1.29919,-0.13895z" fill="#e66b89" id="svg_5"/>
+    <path stroke="null" d="m617.799183,148.953585s83.90044,-0.83373 96.55047,61.27877l-23.86411,6.94771l4.03434,26.67919a66.80581,67.8791 0 0 1 -30.22331,-1.52849a70.15636,71.28347 0 0 1 -46.49738,-91.77921l0,-1.59797l-0.00001,0z" fill="#00bf00" id="svg_7"/>
+    <path stroke="null" d="m626.278123,129.638955s41.02711,-74.13203 100.37966,-54.19211l-6.29082,24.45593l24.75302,9.79627a67.28446,68.36544 0 0 1 -16.41085,25.84546a70.08798,71.21399 0 0 1 -101.54209,-4.65496l-0.88892,-1.25059z" fill="#e66b89" id="svg_8"/>
+    <path stroke="null" d="m612.465663,123.802885s-59.76282,-59.47237 -25.50519,-112.48337l21.67599,12.29744l16.00058,-21.8158a66.80581,67.8791 0 0 1 20.51355,22.78848a70.22473,71.35295 0 0 1 -30.70195,98.51848l-1.98298,0.69477z" fill="#e66b89" id="svg_9"/>
+    <path stroke="null" d="m601.456723,133.807585s-72.07095,43.14526 -113.57671,-4.16863l17.29976,-18.13351l-16.68436,-20.84312a66.66905,67.74014 0 0 1 26.94114,-13.89541a70.15636,71.28347 0 0 1 85.67828,55.58165l0.34189,1.45902z" fill="#e66b89" id="svg_10"/>
+    <path stroke="null" d="m604.123483,146.799795s22.49653,81.91346 -33.23195,110.39906l-12.58165,-21.60737l-24.41113,10.83843a66.25878,67.32328 0 0 1 -6.29083,-30.0141a70.08798,71.21399 0 0 1 75.21637,-69.47707l1.29919,-0.13895z" fill="#e66b89" id="svg_11"/>
+   </g>
+   <text stroke="null" transform="matrix(2.3702051639556885,0,0,1.1278295516967773,-469.98037123680115,-5.618508264422417) " xml:space="preserve" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="63" id="svg_15" y="100.9375" x="345.953331" fill-opacity="null" stroke-opacity="null" stroke-width="0" fill="#56aaff"/>
+   <text transform="matrix(1,0,0,1,0,0) " xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="147" id="svg_19" y="180.5" x="0.007813" stroke-width="0" stroke="#000" fill="#56aaff">Feture</text>
+   <text xml:space="preserve" text-anchor="start" font-family="Arvo, sans-serif" font-size="147" id="svg_20" y="180.5" x="759.96875" stroke-width="0" stroke="#000" fill="#56aaff">Diary</text>
+  </g>
+ </g>
+</svg>
