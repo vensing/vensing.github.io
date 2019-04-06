@@ -21,7 +21,7 @@ function failure(){
 #默认执行
 function default(){
 
-  git clone https://git@github.com:vensing/vensing.github.io.git .deploy_git
+  git clone git@github.com:vensing/vensing.github.io.git .deploy_git
   cd .deploy_git
 
   git checkout master
