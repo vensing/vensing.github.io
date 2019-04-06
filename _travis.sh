@@ -49,21 +49,14 @@ EOF
   git config user.email "782176881@qq.com"
   git add .
   git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER"
-  
-  git remote add vps git@vensing.com:hexo.git
-  
+   
   # Github Pages
   git push --force --quiet origin master:master
-
-  git push --force --quiet vps master:master
 
   # Create Tag
   git tag v1.2.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
   # Github Pages
-  git push --quiet origin master:master --tags
-  # Gitee Pages
-  #git push --quiet "https://vensing:${GITEE_TOKEN}@${GITEE_REF}" master:master --tags
-  
+  git push --force --quiet origin master:master --tags 
   
 }
 

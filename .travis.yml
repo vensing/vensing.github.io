@@ -31,7 +31,8 @@ install:
 
 before_script:
   # 解密 RSA 私钥并设置为本机 ssh 私钥
-  - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv 
+    -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - export TZ='Asia/Shanghai'
   - npm install gulp
@@ -44,6 +45,7 @@ script:
 after_success:
  # - LAST_BUILD_NUMBER=68
  # - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done
+  - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@www.vensing.com:/hexo
 
 after_script:
   - ./_travis.sh
