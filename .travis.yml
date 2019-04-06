@@ -8,6 +8,11 @@ cache:
   apt: true
   directories:
     - "node_modules"
+ 
+addons:
+  ssh_known_hosts:
+  - github.com
+  - vensing.com
 
 notifications:
   email:
@@ -25,6 +30,9 @@ install:
 #  - travis login --pro --github-token ${GH_TOKEN}
 
 before_script:
+  # 解密 RSA 私钥并设置为本机 ssh 私钥
+  - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
+  - chmod 600 ~/.ssh/id_rsa
   - export TZ='Asia/Shanghai'
   - npm install gulp
   - chmod +x _travis.sh
@@ -45,8 +53,8 @@ after_script:
 branches:
   only:
     - source
-env:
- global:
-   - GH_REF: github.com/vensing/vensing.github.io.git
- #  - GITEE_REF: gitee.com/shenliyang/shenliyang.git
+#env:
+# global:
+#   - GH_REF: github.com/vensing/vensing.github.io.git
+
 

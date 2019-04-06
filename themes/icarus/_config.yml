@@ -119,7 +119,7 @@ widgets:
         # Where should the widget be placed, left or right
         position: left
         # Author name to be shown in the profile widget
-        author: 爱吃糯米的团子
+        author: Vexsy
         # Title of the author to be shown in the profile widget
         author_title: 努力型选手，大部分时间却在不务正业
         # Author's current location to be shown in the profile widget
@@ -162,16 +162,19 @@ widgets:
         # Links to be shown in the links widget
         links:
             Mintimate: 'https://www.mintimate.cn'
-    -
+            寒穹の小屋: 'https://www.hqsblog.cn'
+            雨雾のBlog: 'https://blog.seerainfog.ooo/'
+            废猫博客: 'https://www.maobk.cn/'
+    #-
         # Widget name
-        type: category
+        #type: category
         # Where should the widget be placed, left or right
-        position: left
-    -
+        #position: left
+    #-
         # Widget name
-        type: tagcloud
+        #type: tagcloud
         # Where should the widget be placed, left or right
-        position: left
+        #position: left
     -
         # Widget name
         type: recent_posts
@@ -206,7 +209,7 @@ plugins:
     outdated-browser: true
     # Enable the MathJax plugin
     # http://ppoffice.github.io/hexo-theme-icarus/Plugins/General/mathjax-plugin/
-    mathjax: true
+    mathjax: false
     # Show the back to top button on mobile devices
     back-to-top: true
     # Google Analytics plugin settings

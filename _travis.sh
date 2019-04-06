@@ -21,7 +21,7 @@ function failure(){
 #默认执行
 function default(){
 
-  git clone https://${GH_REF} .deploy_git
+  git clone https://git@github.com:vensing/vensing.github.io.git .deploy_git
   cd .deploy_git
 
   git checkout master
@@ -49,17 +49,22 @@ EOF
   git config user.email "782176881@qq.com"
   git add .
   git commit -m "Update Blog By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  
+  git remote add vps git@vensing.com:hexo.git
+  
   # Github Pages
-  git push --force --quiet "https://${GH_Token}@${GH_REF}" master:master
-  # Gitee Pages
-  #git push --force --quiet "https://vensing:${GITEE_TOKEN}@${GITEE_REF}" master:master
+  git push --force --quiet origin master:master
+
+  git push --force --quiet vps master:master
 
   # Create Tag
   git tag v1.2.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
   # Github Pages
-  git push --quiet "https://${GH_Token}@${GH_REF}" master:master --tags
+  git push --quiet origin master:master --tags
   # Gitee Pages
   #git push --quiet "https://vensing:${GITEE_TOKEN}@${GITEE_REF}" master:master --tags
+  
+  
 }
 
 case $1 in
