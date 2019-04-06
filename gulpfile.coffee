@@ -1,1 +1,0 @@
-require './themes/hexo-theme-next-5.1.4/gulpfile';

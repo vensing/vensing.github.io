@@ -40,7 +40,6 @@ before_script:
 
 script:
   - hexo clean && hexo g
-  - gulp
 
 after_success:
  # - LAST_BUILD_NUMBER=68
