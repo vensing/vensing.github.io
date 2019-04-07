@@ -129,7 +129,7 @@ widgets:
         # Email address for the Gravatar to be shown in the profile widget
         gravatar: #vensing@foxmail.com
         # Whether to show avatar image rounded or square
-        avatar_rounded: true
+        avatar_rounded: false
         # Path or URL for the follow button
         follow_link: '/friends'
         # Links to be shown on the bottom of the profile widget
@@ -154,17 +154,17 @@ widgets:
         type: toc
         # Where should the widget be placed, left or right
         position: left
-    -
+    #-
         # Widget name
-        type: links
+        #type: links
         # Where should the widget be placed, left or right
-        position: left
+        #position: left
         # Links to be shown in the links widget
-        links:
-            Mintimate: 'https://www.mintimate.cn'
-            寒穹の小屋: 'https://www.hqsblog.cn'
-            雨雾のBlog: 'https://blog.seerainfog.ooo/'
-            废猫博客: 'https://www.maobk.cn/'
+        #links:
+            #Mintimate: 'https://www.mintimate.cn'
+            #寒穹の小屋: 'https://www.hqsblog.cn'
+            #雨雾のBlog: 'https://blog.seerainfog.ooo/'
+            #废猫博客: 'https://www.maobk.cn/'
     #-
         # Widget name
         #type: category
@@ -175,21 +175,21 @@ widgets:
         #type: tagcloud
         # Where should the widget be placed, left or right
         #position: left
-    -
+    #-
         # Widget name
-        type: recent_posts
+        #type: recent_posts
         # Where should the widget be placed, left or right
-        position: right
+        #position: left
     -
         # Widget name
         type: archive
         # Where should the widget be placed, left or right
-        position: right
+        position: left
     -
         # Widget name
         type: tag
         # Where should the widget be placed, left or right
-        position: right
+        position: left
         
 
 # warning days

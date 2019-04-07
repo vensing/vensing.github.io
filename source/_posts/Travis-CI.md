@@ -1,5 +1,5 @@
 ---
-title: 使用Travis CI持续部署Hexo博客
+title: 使用 Travis CI 自动部署 Hexo 博客
 categories:
   - 自动部署
   - Travis CI

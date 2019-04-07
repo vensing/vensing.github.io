@@ -19,7 +19,7 @@
                             <img class="is-rounded" src="<%= avatar() %>" alt="<%= get_config_from_obj(widget, 'author') %>">
                         </figure>
                     <% } else { %>
-                        <img class="image is-128x128 has-mb-6" src="<%= avatar() %>" alt="<%= get_config_from_obj(widget, 'author') %>">
+                        <img class="image is-128x128 has-mb-6" src="<%= avatar() %>" alt="<%= get_config_from_obj(widget, 'author') %>" style="border: 1px dashed #d3d3d3;padding: 2px;border-radius: 50%;">
                     <% } %>
                     <% if (get_config_from_obj(widget, 'author')) { %>
                     <p class="is-size-4 is-block">
