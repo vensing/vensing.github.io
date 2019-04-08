@@ -14,11 +14,11 @@ toc: true
 
 基于之前的文章 [使用Travis CI持续部署Hexo博客](https://vensing.com/2019/01/25/Travis-CI/) 做一个补充。本次除了自动部署到 Github  Pages 上还部署到 VPS 服务器上。
 
-原因说简单点就是我不想每次本地写完点东西后先生成静态页面，然后再利用 SSH 这样的工具把静态页面上传到我的 VPS 服务器上。这简直不要太麻烦，我想写完东西之后通过 Git push 到仓库之后自动去部署到 Github Pages 也好还是 VPS 也好。总之不用我瞎操作一顿了，我的原则是博客越轻量越简洁好。
+原因说简单点就是：我不想每次本地写完点东西后，还得手动生成静态页面，然后再利用 xshell 这样的工具把静态页面上传到我的 VPS 服务器上。这简直不要太麻烦，我想写完东西之后通过 Git push 到仓库之后，自动去部署到 Github Pages 也好还是 VPS 也好。总之不用我瞎操作一顿了，我的原则是博客越轻量越简洁好。
 
 基于这样的原则，花了点时间搞了下自动部署到 VPS 上。
 
-之前用 Travis CI  自动部署用的是 GitHub 的 Personal access tokens，配合 Travis 的环境变量配置就可以 push 操作了。这个 token 是可以拿到你 github 上所有仓库的操作权限的，所以这次我打算不用这个 token 了，直接搞个部署密钥更加安全。
+之前用 Travis CI  自动部署用的是 GitHub 的 Personal access tokens，配合 Travis 的环境变量配置就可以 push 操作了。这个 token 是可以拿到你 github 上所有仓库操作权限的，所以这次我打算不用这个 token 了，直接搞个部署密钥更加安全。
 
 > ### 生成部署私钥
 
