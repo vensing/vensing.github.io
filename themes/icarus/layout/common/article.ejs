@@ -57,9 +57,11 @@
 		<% if (post.layout != 'page') { %>
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
+				<i class="far fa-clock"></i>
                 <time class="level-item has-text-grey" datetime="<%= date_xml(post.date) %>"><%= date(post.date) %></time>
                 <% if (post.categories && post.categories.length) { %>
                 <div class="level-item">
+				<i class="fa fa-tag"></i>
                 <%- list_categories(post.categories, {
                     class: 'has-link-grey ',
                     show_count: false,
@@ -84,8 +86,7 @@
 				
                 <span class="level-item has-text-grey leancloud_visitors" id="<%- url_for(post.path) %>" data-flag-title="<%= post.title %>">
                     <i class="far fa-eye"></i>
-                    <span>&nbsp;阅读次数：</span>
-					<span class="leancloud-visitors-count"></span>
+					<span class="leancloud-visitors-count"></span> hits
                 </span>
                 
             </div>
