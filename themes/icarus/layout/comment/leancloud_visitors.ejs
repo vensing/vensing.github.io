@@ -1,7 +1,7 @@
 
 <% if (has_config('leancloud_visitors.app_id') && has_config('leancloud_visitors.app_key')) { %>
   <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
-  <script>AV.initialize("get_config('leancloud_visitors.app_id')", "get_config('leancloud_visitors.app_key')");</script>
+  <script>AV.initialize("<%- get_config('leancloud_visitors.app_id') %>", "<%- get_config('leancloud_visitors.app_key') %>");</script>
   <script>
     function showTime(Counter) {
       var query = new AV.Query(Counter);
@@ -95,7 +95,7 @@
     }
 
     $(function() {
-	  console.log('leancloud_visitors');
+
       var Counter = AV.Object.extend("Counter");
       if ($('.leancloud_visitors').length == 1) {
         addCount(Counter);
