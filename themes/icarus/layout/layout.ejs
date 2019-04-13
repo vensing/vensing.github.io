@@ -31,5 +31,6 @@
     <% if (has_config('search.type')) { %>
     <%- partial('search/' + get_config('search.type')) %>
     <% } %>
+	<%- partial('comment/leancloud_visitors') %>
 </body>
 </html>

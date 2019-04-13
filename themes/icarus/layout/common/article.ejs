@@ -81,6 +81,13 @@
                     <%- _p('plugin.visit', '<span id="busuanzi_value_page_pv">0</span>') %>
                 </span>
                 <% } %>
+				
+                <span class="level-item has-text-grey leancloud_visitors" id="<%- url_for(post.path) %>" data-flag-title="<%= post.title %>">
+                    <i class="far fa-eye"></i>
+                    <span>&nbsp;阅读次数：</span>
+					<span class="leancloud-visitors-count"></span>
+                </span>
+                
             </div>
         </div>
         <% } %>

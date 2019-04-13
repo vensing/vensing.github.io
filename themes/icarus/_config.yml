@@ -197,6 +197,16 @@ warning:
     days: 90
     text: '本文最后更新于 %d 天前（%d），其中的信息可能已经有所发展或者不再适用于现阶段。'
 
+
+# Show number of visitors to each article.
+# You can visit https://leancloud.cn get AppID and AppKey.
+leancloud_visitors:
+    app_id: NP0STJ6LGAR2xXISdzVO247j-gzGzoHsz
+    #<app_id>
+    app_key: uK2dvHuQEPbwPghQJVPJwjVv
+    #<app_key>
+    
+
 # Other plugin settings
 plugins:
     # Enable page animations
