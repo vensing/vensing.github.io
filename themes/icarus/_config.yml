@@ -69,7 +69,7 @@ comment:
     # (required) LeanCloud application id
     app_key: uK2dvHuQEPbwPghQJVPJwjVv       
     # (required) LeanCloud application key
-    notify: false           
+    notify: true           
     # (optional) receive email notification
     verify: false           
     # (optional) show verification code
@@ -150,18 +150,16 @@ widgets:
             Github:
                 icon: fab fa-github
                 url: 'http://github.com/vensing'
-            Facebook:
-                icon: fab fa-facebook
-                url: 'http://facebook.com'
             Twitter:
                 icon: fab fa-twitter
                 url: 'http://twitter.com/vensing1020'
-            Dribbble:
-                icon: fab fa-dribbble
-                url: 'http://dribbble.com'
-            RSS:
-                icon: fas fa-rss
-                url: /
+            QQ:
+                icon: fab fa-qq
+                url: 'http://wpa.qq.com/msgrd?v=3&uin=782176881&site=qq&menu=yes'
+            Email:
+                icon: fas fa-envelope
+                url: 'mailto:vensing@foxmail.com'
+
     -
         # Widget name
         type: toc
