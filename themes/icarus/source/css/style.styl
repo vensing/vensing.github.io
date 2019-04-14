@@ -10,12 +10,11 @@ screen-fullhd = 1472px
  *       Override CSS Framework
  * --------------------------------- */
 
-*
-    -webkit-appearance: none
 
 html
     font-size: 14px
-    display: block
+
+    /*display: block
     &:before
         content: ''
         position: fixed
@@ -25,7 +24,7 @@ html
         bottom: 0
         left: 0
         width: 100%
-        background-image: url(/images/c.jpg)
+        background-image: url(/images/sidebar-bg.png)
         background-repeat: no-repeat
         background-size: cover
         -webkit-background-size: cover
@@ -35,12 +34,13 @@ html
         content: ''
         width: 100%
         height: 100%
-        z-index: -2
+        z-index: -2*/
+		
 
 body
     padding: 0px
     margin: 0
-
+    background: #ececec
 	
 body, button, input, select, textarea
     font-family: family-sans
@@ -82,7 +82,7 @@ body, button, input, select, textarea
         background: #e7e7e7
 
 .card
-    background-color: rgba(255, 255, 255, 0.82)
+    background-color: white
     border-radius: 4px
     box-shadow: 0 4px 10px rgba(0,0,0,0.05), 0 0 1px rgba(0,0,0,0.1)
     & + .card,
@@ -100,9 +100,6 @@ img.thumbnail
     object-fit: cover
     width: 100%
     height: 100%
-
-.navbar
-	background-color: rgba(255, 255, 255, 0.15)
 
 .navbar-logo,
 .footer-logo
@@ -122,7 +119,6 @@ img.thumbnail
         flex-grow: 1
         flex-shrink: 0
         overflow-x: auto
-		background: transparent
     .navbar-start
         justify-content: flex-start
         margin-right: auto
@@ -145,7 +141,7 @@ img.thumbnail
             margin-left: 0
 
 .footer
-    background: transparent
+    background: white
     .field
         .button
             background: transparent
@@ -203,7 +199,7 @@ img.thumbnail
 .article
     .article-meta
         margin-bottom: 0.5rem !important
-        border-top: 1px dashed white
+        border-top: 1px dashed #a7a7a7
         padding-top: 20px
     .content
         font-size: 1rem
@@ -492,29 +488,10 @@ figure.highlight
 /* -----------------------------------------
  * 
  * -------------------------------------------*/
+
 .level-left
 	i 
         padding: 0px 5px 0px 5px
         color: gray
 		
-.level
-	.is-white
-		background-color: #ffffff00
 
-.navbar-menu
-    background-color: transparent
-	.navbar-start
-		.is-active
-		    background-color: #fafafa00 !important
-
-.navbar-start
-	.is-active
-		color: #3273dc !important
-		
-.navbar-item
-	&:hover
-		background-color: transparent !important
-	color: #fff
-
-.is-size-7
-    color: #fff
