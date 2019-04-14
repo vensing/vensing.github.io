@@ -64,20 +64,20 @@ search:
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Configuration/Comment-Plugins
 comment:
     # Name of the comment plugin
-    type: valine
-    app_id: NP0STJ6LGAR2xXISdzVO247j-gzGzoHsz      
+    #type: valine
+    #app_id: NP0STJ6LGAR2xXISdzVO247j-gzGzoHsz      
     # (required) LeanCloud application id
-    app_key: uK2dvHuQEPbwPghQJVPJwjVv       
+    #app_key: uK2dvHuQEPbwPghQJVPJwjVv       
     # (required) LeanCloud application key
-    notify: false          
+    #notify: false          
     # (optional) receive email notification
-    verify: false          
+    #verify: false          
     # (optional) show verification code
-    placeholder: 来一发评论  ฅʕ•̫͡•ʔฅ   
+    #placeholder: 来一发评论  ฅʕ•̫͡•ʔฅ   
     # (optional) comment box placeholder text
     
-    #type: disqus
-    #shortname: vensing-com
+    type: disqus
+    shortname: vensing-com
 
 # Donation entries
 # http://ppoffice.github.io/hexo-theme-icarus/categories/Donation/
