@@ -51,9 +51,9 @@ EOF
   git push --force --quiet origin master:master
 
   # Create Tag
-  git tag v1.2.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
+  #git tag v1.2.$TRAVIS_BUILD_NUMBER -a -m "Auto Taged By TravisCI With Build $TRAVIS_BUILD_NUMBER"
   # Github Pages
-  git push --force --quiet origin master:master --tags 
+  #git push --force --quiet origin master:master --tags 
   
 }
 
