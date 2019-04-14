@@ -69,9 +69,9 @@ comment:
     # (required) LeanCloud application id
     app_key: uK2dvHuQEPbwPghQJVPJwjVv       
     # (required) LeanCloud application key
-    notify: true          
+    notify: false          
     # (optional) receive email notification
-    verify: true           
+    verify: false          
     # (optional) show verification code
     placeholder: 来一发评论  ฅʕ•̫͡•ʔฅ   
     # (optional) comment box placeholder text
