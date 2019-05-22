@@ -43,4 +43,5 @@
         $mask.on('click', toggleToc);
         $('.navbar-main .catalogue').on('click', toggleToc);
     }
+	$('.gallery-item').parent().css('text-align','center');
 })(jQuery);

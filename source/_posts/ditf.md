@@ -9,7 +9,13 @@ comments: true
 toc: true
 ---
 
-## **魔物与王子**
+魔物与王子（まものと王子様）是由TRIGGER和A-1 Pictures共同制作的原创动画《DARLING in the FRANXX》的作中绘本。
+
+最初于动画《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》第13话中发表的绘本。
+
+实体书收录于2018年8月29日发售的《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》Blu-ray&DVD第5卷 完全生产限定版特典。
+
+![まものと王子様](/img/The_Beast_and_the_Prince_.png)
 
 ### Ⅰ
 
@@ -24,7 +30,7 @@ toc: true
 
 他们一旦到了16岁，就能用那对翅膀飞到森林的外面
 
-![](/img/The_Beast_and_the_Prince01.jpg)
+![其一](/img/The_Beast_and_the_Prince01.jpg)
 
 
 ### Ⅱ
@@ -44,7 +50,7 @@ toc: true
 但是他们和自己很明显是不同的种族
 魔物是不可能和人类结合的
 
-![](/img/The_Beast_and_the_Prince02.jpg)
+![其二](/img/The_Beast_and_the_Prince02.jpg)
 
 ### Ⅲ
 
@@ -62,7 +68,7 @@ toc: true
 即便如此公主还是高兴着、流着眼泪笑了
 「人类！人类！我和那个人变得一样了！」
 
-![](/img/The_Beast_and_the_Prince03.jpg)
+![其三](/img/The_Beast_and_the_Prince03.jpg)
 
 <!--more-->
 
@@ -80,7 +86,7 @@ toc: true
 
 「你是我的救命恩人，请和我结婚吧！」
 
-![](/img/The_Beast_and_the_Prince04.jpg)
+![其四](/img/The_Beast_and_the_Prince04.jpg)
 
 ### Ⅴ
 
@@ -96,7 +102,7 @@ toc: true
 「为救了王子性命的勇敢少女献上祝福！」
 伴随着响亮的欢呼声，整个国家都洋溢着喜悦
 
-![](/img/The_Beast_and_the_Prince05.jpg)
+![其五](/img/The_Beast_and_the_Prince05.jpg)
 
 ### Ⅵ
 
@@ -112,7 +118,7 @@ toc: true
 公主握着王子的手，微笑着
 「不要离开我唷，DARLING」
 
-![](/img/The_Beast_and_the_Prince06.jpg)
+![其六](/img/The_Beast_and_the_Prince06.jpg)
 
 ### Ⅶ
 
@@ -134,7 +140,7 @@ toc: true
 「不过，如果你能亲手杀死你最爱的人，你的诅咒就能解除，
 你也能变回原本魔物的样子。 」
 
-![](/img/The_Beast_and_the_Prince07.jpg)
+![其七](/img/The_Beast_and_the_Prince07.jpg)
 
 ### Ⅷ
 
@@ -145,16 +151,22 @@ toc: true
 死命地抑制着的双手渗出了血
 
 「只要杀了王子，诅咒就会解除……」
-公主流着泪，吻了王子的脸颊。
+公主流着泪，吻了王子的脸颊
 
-![](/img/The_Beast_and_the_Prince08.jpg)
+![其八](/img/The_Beast_and_the_Prince08.jpg)
 
 ### Ⅸ
 
 王子醒来之后，已经找不到身边的公主了
-取而代之的是，散落在床上的大量的漆黑羽毛。
+取而代之的是，散落在床上的大量的漆黑羽毛
 
-王子悲伤的生活着，在整个国家里寻找公主，
-却再也没有人见过公主了。
+王子悲伤的生活着，在整个国家里寻找公主
+却再也没有人见过公主了
 
-![](/img/The_Beast_and_the_Prince09.jpg)
+![其九](/img/The_Beast_and_the_Prince09.jpg)
+
+绘本内容是来自动画《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX)》13话，有兴趣的小伙伴可以去看下这部番，虽然后面有些烂尾，但总体来说还是不错的。
+
+**注：以上内容选自 [萌娘百科-魔物与王子](https://zh.moegirl.org/%E9%AD%94%E7%89%A9%E4%B8%8E%E7%8E%8B%E5%AD%90)**
+
+![Zerotwo](/img/Zerotwo_002.jpg)
