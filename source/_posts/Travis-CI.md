@@ -40,6 +40,8 @@ $ hexo s
 $ hexo d
 ```
 
+<!-- more -->
+
 > ## 使用 Travis CI 持续部署后
 
 Travis CI 一款很好用的持续集成测试工具。它可以自动关联Github上的项目并且clone下来编译测试，就是利用它这一特性来实现hexo博客自动编译、部署。
@@ -56,7 +58,7 @@ $ git push -u origin master:source
 
 
 而后 Travis CI 监听到 push 操作即会根据 travis.yml 执行自动部署，原理简单说来就是先 git clone 线上 GitHub Pages 项目的源码分支 (source分支) ，再执行自动部署后将 Hexo 博客的静态页面推送到 GitHub Pages 项目的 master 分支。
-<!-- more -->
+
 > ## Why we need Travis CI?
 
 ### 使用Travis CI 自动部署的好处

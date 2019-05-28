@@ -153,9 +153,9 @@ widgets:
             Twitter:
                 icon: fab fa-twitter
                 url: 'http://twitter.com/vensing1020'
-            QQ:
-                icon: fab fa-qq
-                url: 'http://wpa.qq.com/msgrd?v=3&uin=782176881&site=qq&menu=yes'
+            Telegram:
+                icon: fab fa-telegram
+                url: 'https://t.me/vexsy'
             Email:
                 icon: fas fa-envelope
                 url: 'mailto:vensing@foxmail.com'

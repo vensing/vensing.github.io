@@ -20,6 +20,8 @@ toc: true
 
 之前用 Travis CI  自动部署用的是 GitHub 的 Personal access tokens，配合 Travis 的环境变量配置就可以 push 操作了。这个 token 是可以拿到你 github 上所有仓库操作权限的，所以这次我打算不用这个 token 了，直接搞个部署密钥更加安全。
 
+<!-- more -->
+
 > ### 生成部署私钥
 
 首先是先生成 ssh 密钥，在你电脑上随便哪个文件夹都行：
@@ -56,7 +58,7 @@ $ travis encrypt-file -r XXX/XXX.github.io travis.key -add
 ```
 
 
-<!-- more -->
+
 
 > ### .travis.yml 配置
 
