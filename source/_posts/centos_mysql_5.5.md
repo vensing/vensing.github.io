@@ -39,8 +39,7 @@ mariadb-libs-5.5.56-2.el7.x86_64
 
 ### 下载 Mysql 安装包和解压文件
 
-[Mysql 5.5 下载地址](https://dev.mysql.com/downloads/mysql/5.5.html#downloads)：https://dev.mysql.com/downloads/mysql/5.5.html#downloads
-下载 Linux- Generic 64 位 tar.gz 安装包，上传到/usr/services 目录下：
+[Mysql 5.5 下载地址](https://dev.mysql.com/downloads/mysql/5.5.html#downloads)，下载 Linux- Generic 64 位 tar.gz 安装包，上传到/usr/services 目录下：
 ```sh
 # 解压
 [root@localhost services]# tar  -zxvf  mysql-5.5.61-linux-glibc2.12-x86_64.tar.gz

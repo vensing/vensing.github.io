@@ -16,7 +16,7 @@ toc: true
 
 ###  下载 Tomcat 离线安装压缩文件
 
-[tomcat 8 下载地址](https://tomcat.apache.org/download-80.cgi)：https://tomcat.apache.org/download-80.cgi 下载 Core 下的 zip 或者 tar.gz 包都行。
+[tomcat 8 下载地址](https://tomcat.apache.org/download-80.cgi)，下载 Core 下的 zip 或者 tar.gz 包都行。
 
 
 将压缩包上传至 /usr/tmp (其他目录亦可)目录下，提取解压。

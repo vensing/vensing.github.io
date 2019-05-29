@@ -20,8 +20,7 @@ toc: true
 
 ### 下载 Redis 3.2.10 tar.gz 安装包
 
-[Redis 安装包下载地址](http://download.redis.io/releases/)：http://download.redis.io/releases/ 
-或者你也可以去 Github 上 [Redis](https://github.com/antirez/redis/releases) 的官方仓库下的 Releases 页面下载，这个随你开心就好啦。
+[Redis 安装包下载地址](http://download.redis.io/releases/) 或者你也可以去 Github 上 [Redis](https://github.com/antirez/redis) 的官方仓库下的 [Releases](https://github.com/antirez/redis/releases) 页面下载，这个随你开心就好啦。
 <!--more-->
 ### 解压和编译安装
 
