@@ -17,11 +17,13 @@ toc: true
 
 ![OpenCV](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/OpenCV_Logo_with_text.png/225px-OpenCV_Logo_with_text.png)
 
-因为最近做的一些事情是有关于图像识别的（在 Java 开发环境下实现），说具体点就是识别图形的某些颜色的阈值区域。既然 OpenCV 这么厉害，还免费，而且跨平台，那么就它了。
+因为最近做的一些事情是有关于图像识别的（在 Java 开发环境下实现），说具体点就是识别图形的某些颜色的阈值区域。既然 OpenCV 这么厉害，还免费，而且跨平台，那么还有什么理由不选它呢。
 
 一般这种图像识别的东西，都有开源的库，能白嫖就白嫖嘛，本着能做伸手党就不做动手党的原则，能不自己写就拿别人造的轮子（实际上也造不来轮子，况且 OpenCV 最开始的目标就是为了让后来者不重复造轮子）。
 
 <!--more-->
+
+本文试图简单介绍下 OpenCV 的环境搭建，具体的使用场景我可能在后几篇博客文章中体现。
 
 ### **Windows 下 OpenCV 环境的搭建**
 
@@ -37,11 +39,11 @@ jar 的位置是在 `opencv/build/java` 目录下，dll 在 `opencv/build/java/x
 
 具体的操作步骤参考官网：[OpenCV Java 开发环境搭建教程](https://docs.opencv.org/2.4.4-beta/doc/tutorials/introduction/desktop_java/java_dev_intro.html) 。
 
-当然，你也可以在项目中只引入 jar 包，把 dll 路径加到而把 dll 放到 Java 安装目录下 jdkxx_xx 的 bin 目录中也是可以的。
+当然，你也可以在项目中只引入 jar 包，再把 dll 放到 Java 安装目录下 jdkxx_xx 的 bin 目录中也是可以的。
 
 **为什么要配置 dll 动态链接库呢？**
 
-这是因为 OpenCV 用 C++ 语言编写，它的主要接口也是 C++ 语言，但是依然保留了大量的C语言接口。该库也有大量的Python、Java 、MATLAB 等的接口。所以呢，得添加一个 dll 动态链接库来链接到 Windows 下 OpenCV 提供的 C/C++ 库。同理，Linux 下是 `.so` lib库。
+这是因为 OpenCV 用 C++ 语言编写，它的主要接口也是 C++ 语言，但是依然保留了大量的C语言接口。该库也有大量的Python、Java 、MATLAB 等的接口。所以呢，使用 Java 接口得添加一个 dll 动态链接库，而这个 dll 动态链接库是由 Windows 下 OpenCV 提供的 C/C++ 库编译转制过来的。同理，Linux 下是 `.so` lib库。
 
 ### **Linux 下 OpenCV 环境的搭建**
 
