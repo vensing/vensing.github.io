@@ -21,11 +21,13 @@ sage: true
 
 - [寒穹の小屋](https://www.hqsblog.cn/)     <br>喜欢追番、打游戏、听音乐的 “好学生”，是个大佬没错了。
 
-- [雨雾のBlog](https://blog.seerainfog.ooo/)     <br>一个精通 Nginx、Linux、Python、MongoDB、Vue 等技术的选手。
+- [雨雾のBlog](https://acyalmw.xyz/)     <br>一个精通 Nginx、Linux、Python、MongoDB、Vue 等技术的选手。
 
 - [废猫博客](https://www.maobk.cn/)    <br>猫六君的博客，一个很樱的博客。
 
 - [Bwoywan](https://hexo.bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
+
+- [椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日。
 
 > ### 友链申请
 

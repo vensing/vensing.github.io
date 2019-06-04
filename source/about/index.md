@@ -25,7 +25,7 @@ toc: true
 >### 如何联系我？
 
 - 电子邮箱：[vensing@foxmail.com](mailto:vensing@foxmail.com)
-- 社交网络：[782176881](http://wpa.qq.com/msgrd?v=3&uin=782176881&site=qq&menu=yes)
+- 社交网络：[Telegram](https://t.me/vexsy)
 
 >### 博客时光机
 
