@@ -26,7 +26,7 @@ navbar:
         🏠 首页: /
         🎯 归档: /archives
         📚 分类: /categories
-        📌 标签: /tags
+        📌 友链: /friends
         📝 关于: /about
     # Navigation bar links to be shown on the right
     #links:
@@ -144,7 +144,7 @@ widgets:
         # Whether to show avatar image rounded or square
         avatar_rounded: false
         # Path or URL for the follow button
-        follow_link: '/friends'
+        follow_link: '/about'
         # Links to be shown on the bottom of the profile widget
         social_links:
             Github:

@@ -47,7 +47,7 @@
                         <%= _p('common.post', post_count()) %>
                     </p>
                     <p class="title has-text-weight-normal">
-                        <%= post_count() %>
+                        <a class="title-link" href="/archives"><%= post_count() %></a>
                     </p>
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <%= _p('common.category', category_count()) %>
                     </p>
                     <p class="title has-text-weight-normal">
-                        <%= category_count() %>
+                        <a class="title-link" href="/categories"><%= category_count() %></a>
                     </p>
                 </div>
             </div>
@@ -67,7 +67,7 @@
                         <%= _p('common.tag', tag_count()) %>
                     </p>
                     <p class="title has-text-weight-normal">
-                        <%= tag_count() %>
+                        <a class="title-link" href="/tags"><%= tag_count() %></a>
                     </p>
                 </div>
             </div>
@@ -81,7 +81,7 @@
         <div class="level is-mobile">
             <% for (let name in socialLinks) {
                     let link = socialLinks[name]; %>
-            <a class="level-item button is-white is-marginless" target="_blank"
+            <a class="level-item button is-white is-marginless i-link" target="_blank"
                 title="<%= name %>" href="<%= url_for(typeof(link) === 'string' ? link : link.url) %>">
                 <% if (typeof(link) === 'string') { %>
                 <%= name %>
