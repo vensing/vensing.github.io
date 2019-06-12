@@ -17,17 +17,22 @@ sage: true
 
 > ### 我的小伙伴们
 
-- [Mintimate](https://www.mintimate.cn/)     <br>我的第一个友链 (●ˇ∀ˇ●)，酷安老哥 ~，奥利给。
+- [@Mintimate](https://www.mintimate.cn/)     <br>我的第一个友链 (●ˇ∀ˇ●)，酷安老哥 ~，奥利给。
 
-- [寒穹の小屋](https://www.hqsblog.cn/)     <br>喜欢追番、打游戏、听音乐的 “好学生”，是个大佬没错了。
+- [@寒穹の小屋](https://www.hqsblog.cn/)     <br>喜欢追番、打游戏、听音乐的 “好学生”，是个大佬没错了。
 
-- [雨雾のBlog](https://acyalmw.xyz/)     <br>一个精通 Nginx、Linux、Python、MongoDB、Vue 等技术的选手。
+- [@雨雾のBlog](https://blog.acyalmw.xyz/)     <br>一个精通 Nginx、Linux、Python、MongoDB、Vue 等技术的选手。
 
-- [废猫博客](https://www.maobk.cn/)    <br>猫六君的博客，一个很樱的博客。
+- [@废猫博客](https://www.maobk.cn/)    <br>猫六君的博客，一个很樱的博客。
 
-- [Bwoywan](https://hexo.bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
+- [@Bwoywan](https://hexo.bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
 
-- [椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日。
+- [@椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日。
+
+- [@墨兰の博客](https://blog.yfblog.xyz)    <br>是一个喜欢二次元的蓝孩纸哦。
+
+- [@一摩尔·毫升](https://1mol.ml/)     <br>来自一位化学课代表的高度自觉。
+
 
 > ### 友链申请
 
