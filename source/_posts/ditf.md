@@ -13,10 +13,12 @@ toc: true
 
 最初于动画《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》第13话中发表的绘本。
 
+![まものと王子様](/img/The_Beast_and_the_Prince_.png)
+
 实体书收录于2018年8月29日发售的《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》Blu-ray&DVD第5卷 完全生产限定版特典。
 
-![まものと王子様](/img/The_Beast_and_the_Prince_.png)
 <!--more-->
+
 ### Ⅰ
 
 在某个国家的漆黑森林的深处
