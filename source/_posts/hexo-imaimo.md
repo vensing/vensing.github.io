@@ -12,6 +12,8 @@ toc: true
 
 **hexo-theme-imaimo **👇 是某天心血来潮的产物，目前还很简陋。
 
+📁 项目地址：[https://github.com/vensing/hexo-theme-imaimo](https://github.com/vensing/hexo-theme-imaimo)
+
 🎨 一个移植的主题，样式有些传统，但很简洁和实用。
 
 🚀 仅为个人兴趣驱使，理论上只有我或者觉得它好看的人使用。
@@ -93,4 +95,4 @@ menu:
 - 🔀 其他
 
 
-因博主要上班摸鱼划水，所以更新比较随意甚至可能十天半个月没有更新，总之有时间再弄
+因博主要上班摸鱼划水，所以更新比较随意甚至可能十天半个月没有更新，总之有时间再弄🧑
