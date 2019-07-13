@@ -2,9 +2,9 @@
 title: 一些受益匪浅的总结
 comments: true
 categories:
-  - 开发
-tags:
   - 总结
+tags:
+  - 日常
 abbrlink: 48249
 date: 2018-09-19 22:01:06
 ---

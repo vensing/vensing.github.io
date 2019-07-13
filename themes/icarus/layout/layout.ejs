@@ -25,8 +25,11 @@
             </div>
         </div>
     </section>
+	
+	
     <%- partial('common/footer') %>
     <%- partial('common/scripts') %>
+	<%- partial('common/mashiro') %>
 
     <% if (has_config('search.type')) { %>
     <%- partial('search/' + get_config('search.type')) %>

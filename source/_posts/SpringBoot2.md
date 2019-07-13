@@ -2,8 +2,7 @@
 title: SpringBoot项目的一些基本配置
 comments: true
 categories:
-  - 开发
-  - springboot
+  - 技术
 tags:
   - springboot
 img: /img/springboot2.jpg

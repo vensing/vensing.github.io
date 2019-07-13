@@ -3,7 +3,7 @@ title: 未来日记本
 comments: true
 date: 2019-01-31 21:31:35
 tags:
-  - 更新
+  - hexo主题
 categories:
   - 日常
 toc: true

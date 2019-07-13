@@ -4,8 +4,7 @@ comments: true
 categories:
   - 插件
 tags:
-  - 插件
-  - 更新
+  - 看板娘
 img: '/img/Shiina_Mashiro.png'
 abbrlink: 14781
 date: 2018-10-21 21:07:29

@@ -2,10 +2,10 @@
 title: Centos7 下安装 Tomcat 8.5
 date: 2019-05-28 14:40:30
 categories:
- - Linux
+ - 技术
 tags:
  - 开发环境
- - Tomcat安装
+ - Tomcat
 comments: true
 toc: true
 ---

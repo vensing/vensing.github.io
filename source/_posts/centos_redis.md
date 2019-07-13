@@ -2,10 +2,10 @@
 title: Centos7 下安装 Redis 3.2.10 
 date: 2019-05-28 15:18:39
 categories:
- - Linux
+ - 技术
 tags:
  - 开发环境
- - Redis 安装
+ - Redis
 comments: true
 toc: true
 ---

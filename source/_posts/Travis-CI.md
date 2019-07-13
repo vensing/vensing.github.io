@@ -1,8 +1,7 @@
 ---
 title: 使用 Travis CI 自动部署 Hexo 博客
 categories:
-  - 自动部署
-  - Travis CI
+  - 技术
 tags:
   - 自动部署
   - Travis CI

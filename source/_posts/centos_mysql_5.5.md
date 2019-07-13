@@ -2,10 +2,10 @@
 title: Centos7 下安装 Mysql 5.5
 date: 2019-05-28 16:38:33
 categories:
- - Linux
+ - 技术
 tags:
  - 开发环境
- - Mysql 安装
+ - Mysql
 comments: true
 toc: true
 ---

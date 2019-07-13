@@ -2,8 +2,7 @@
 title: 构建你的第一个SpringBoot项目
 comments: true
 categories:
-  - 开发
-  - springboot
+  - 技术
 tags:
   - springboot
 img: /img/springboot1.jpg

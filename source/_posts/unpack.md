@@ -2,9 +2,9 @@
 title: 一些电子产品的开箱
 date: 2019-05-04 09:10:19
 tags:
- - unpack
-categories:
  - 电子产品
+categories:
+ - 日常
 toc: true
 ---
 

@@ -3,9 +3,9 @@ title: icarus 主题踩坑记
 date: 2019-03-31 22:07:56
 comments: true
 tags:
-  - 主题
+  - hexo主题
 categories:
-  - 日常
+  - 技术
 toc: true
 ---
 
