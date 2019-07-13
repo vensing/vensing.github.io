@@ -13,7 +13,7 @@ date: 2019-01-25 22:37:06
 toc: true
 ---
 
-![Travis CI 自动部署流程](/img/build-flow.png)
+![Travis CI 自动部署流程](https://i.loli.net/2019/07/13/5d29679d61e4094268.png)
 
 > ## 没有 Travis CI 之前
 
@@ -61,19 +61,19 @@ $ git push -u origin master:source
 
 > ## Why we need Travis CI?
 
-### 使用Travis CI 自动部署的好处
+**使用Travis CI 自动部署的好处**
 
 有人可能会有疑问: 在本地写完博客，直接一个命令`hexo d`，不就搞定了么， 为啥要费力搞 CI ？
 
 的确，想用 TravisCI 来自动部署Hexo博客程序，需要不少设置（瞎折腾），但其还是有很多实用之处，列举一些优点：
 
-#### *优点1：直接在线编辑文件，立即生效*
+**优点1：直接在线编辑文件，立即生效**
 
 假设你已经发表了一篇文章，过了几天你在朋友机器上浏览发现有几个明显的错别字，对于有强迫症的，这是不能容忍的。 但你手头又没有完整的hexo+nodejs+git的开发环境，重新下载git，node，hexo配置会花费不少时间，特别不划算。
 
 如果按照这篇完整折腾完，你可以直接用浏览器访问github个人项目仓库，直接编辑那篇post的原md文件，前后2分钟改完。 稍等片刻，你的博客就自动更新了。
 
-#### *优点2：自动部署，同时部署到多个地方*
+**优点2：自动部署，同时部署到多个地方**
 
 在gitcafe是被收购之前，很多同学（包括我）都是托管在上面的，国内访问速度比Github快很多。
 
@@ -81,14 +81,15 @@ $ git push -u origin master:source
 
 利用Travis CI可同时更新多个仓库。
 
-#### *优点3：部署快捷方便*
+**优点3：部署快捷方便**
 
 手动deploy需要推送public整个folder到github上，当后期网站文章、图片较多时候，对于天朝的网络，有时候连接github 就是不顺畅，经常要傻等不少上传时间。
 
 有了CI，你可以只提交post文件里单独的md文件即可，很快很爽，谁用谁知道。
 
-#### *优点4：bigger than bigger.*
-你的项目Readme里面可以显示CI build图标 ，很酷有没有？
+**优点4：bigger than bigger.**
+
+你的项目Readme里面可以显示 CI build 图标 [![Build Status](https://www.travis-ci.org/vensing/vensing.github.io.svg?branch=source)](https://www.travis-ci.org/vensing/vensing.github.io) ，很酷有没有？
 
 另外通过设置，可以在当build失败时自动发邮件提醒你。
 
@@ -112,14 +113,14 @@ $ git push -u origin master:source
 
 4.Travis
 在官网使用github账号授权登录，hexo添加配置文件就可以了。
-- 获取 Personal access tokens，Github Pages setting -->Developern settings --> Personal access tokens ，点击 Generate new  token 选择仓库权限就可以，新生成一个Token，Travis 环境配置里会用到这个Token。生成之后一定要保存好，因为只会出现一次，丢失了就只能再重新生成了。
-![](/img/githubtoken.png)
+- 获取 Personal access tokens，Github Pages setting --> Developern settings --> Personal access tokens ，点击 Generate new  token 选择仓库权限就可以，新生成一个Token，Travis 环境配置里会用到这个Token。生成之后一定要保存好，因为只会出现一次，丢失了就只能再重新生成了。
+![](https://i.loli.net/2019/07/13/5d29685bb712822904.png)
 - 登录[官网](https://www.travis-ci.org/)，使用github账号登录。
 - 添加 Github Pages 博客仓库。
 - 设置选项，这里我只设置 push 代码到 GitHub Pages 时自动部署。右上角 More options 调出Setting页面。
-![](/img/travis1.png)
+![](https://i.loli.net/2019/07/13/5d296880361a431439.png)
 - 在 Travis 的 Settoiing 页面设置环境变量，Name 为“GH_Token”，value 为刚才复制的Token ，然后点击右边的 Add 按钮添加即可。
-![](/img/travistoken.png)
+![](https://i.loli.net/2019/07/13/5d2968974a36f41842.png)
 - 在hexo博客源码中添加配置文件`.travis.yml`
 需要修改的是git的配置信息。
 *要使用https协议的仓库地址，使用ssh仓库地址会失败。*

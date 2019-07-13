@@ -12,9 +12,8 @@ date: 2018-10-21 21:07:29
 toc: true
 ---
 
-## 在你的博客中加入真白看板娘
 
-![椎名真白](/img/Shiina_Mashiro.png)
+![椎名真白](https://i.loli.net/2019/07/13/5d296676c01d396847.png)
 
 &emsp;&emsp;本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。
 
@@ -28,7 +27,8 @@ toc: true
 1. 首先，准备好Live2dMashiro.zip文件。
 
 2. 将解压出来的live2d文件夹拷到你的网页目录中。
-![live2dmashiro](/img/live2dmashiro.png)
+
+![live2dmashiro](https://i.loli.net/2019/07/13/5d2967261c2b549354.png)
 
 > ### 加入代码
 
@@ -94,7 +94,8 @@ var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口�
 &emsp;&emsp;代码引入没什么好讲的，细心做好上述两处引入代码的步骤，让文件正确引入和URL地址设置准确就基本完成了，测试下效果即可。
 
 &emsp;&emsp;将真白加入本站的效果图如下：
-![椎名真白看板娘](/img/mashiropng.png)
+
+![椎名真白看板娘](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
 
 &emsp;&emsp;目前加载文件的速度有待提高，点击给真白换装时要等2~3s，也不是不能接受的嘛。
 

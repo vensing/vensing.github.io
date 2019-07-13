@@ -22,7 +22,7 @@ toc: true
 
 (1) 那就开始创建一个maven项目，首先是勾上Create a sample project，如下图：
 
-![](/img/maven.png)
+![](https://i.loli.net/2019/07/13/5d296573bd41823468.png)
 
 然后next，填写Artifact里的GroupId、ArtifactId等，最后finish即可。
 <!--more-->
@@ -111,11 +111,14 @@ public class HelloWorldController {
 
 最后，选中Application类，Run as JavaApplication,查看控制台是否启动成功，最后在浏览器输入:`localhost:8080/hello`，看到`Hello World, Welcome to SpringBoot!`就说明成功了。
 如果想改启动端口，在`src/main/resources `下新建application.properties：
+
  ```
  server.port=9090
  ```
+ 
 之后运行其主方法可在控制台看到输出端口已变为9090:
-![](/img/9090.png)
+
+![](https://i.loli.net/2019/07/13/5d29648516d6e69801.png)
 
 
 ## SpringBoot的打包和部署
@@ -134,7 +137,7 @@ mvn install
 java -jar target/springboot-0.0.1-SNAPSHOT.jar
 ```
 
-![](/img/java_jar.png)
+![](https://i.loli.net/2019/07/13/5d29655c191b534555.png)
 出现spring的banner就说明成功了。
 
 > ###  war包
@@ -181,7 +184,7 @@ mvn clean package
 ```
 
 在target下会清除之前的jar包，生成war包。复制war到一个指定目录，然后解压war包。Eclispe下new server，选择Add External Web Module再配置下server的信息：
-![](/img/modules.png)
+![](https://i.loli.net/2019/07/13/5d2966317d4b680449.png)
 指定为刚才解压war的目录，指定path为boot。最后启动server项目，浏览器下访问localhost:8080/boot/hello
 
 若在项目中的application.properties配置了端口号，在此处也不会生效。因为实际上是部署到另外的tomcat了而没使用到内嵌的tomcat，这里部署的tomcat是默认8080端口。

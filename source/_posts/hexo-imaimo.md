@@ -1,5 +1,5 @@
 ---
-title:  hexo-theme-imaimo
+title:  🎨 hexo-theme-imaimo
 date: 2019-07-09 23:00:30
 categories:
  - theme
@@ -95,4 +95,6 @@ menu:
 - 🔀 其他
 
 
-因博主要上班摸鱼划水，所以更新比较随意甚至可能十天半个月没有更新，总之有时间再弄🧑
+因博主要上班摸鱼划水，所以更新比较随意甚至可能十天半个月没有更新，总之有时间再弄🧑。
+
+Enjoy it !  Build with <span style="color:red;font-family:Arial;font-size:14px">❤</span> by Vexsy.
