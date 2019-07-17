@@ -6,7 +6,7 @@ toc: true
 sage: true
 ---
 
-![](https://i.loli.net/2019/07/13/5d2979490360822444.jpg)
+<img src="https://i.loli.net/2019/07/13/5d2979490360822444.jpg" style="border: none; "></img>
 
 > ###  友情链接 
 
