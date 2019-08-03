@@ -23,11 +23,11 @@ open_graph:
 navbar:
     # Navigation bar menu links
     menu:
-        🏠 首页: /
-        🎯 归档: /archives
-        📚 分类: /categories
-        📌 友链: /friends
-        📝 关于: /about
+        Home: /
+        Archives: /archives
+        Categories: /categories
+        Friends: /friends
+        About: /about
     # Navigation bar links to be shown on the right
     #links:
         #Download on GitHub:
