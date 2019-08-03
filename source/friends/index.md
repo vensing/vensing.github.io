@@ -6,7 +6,11 @@ toc: true
 sage: true
 ---
 
-<img src="https://i.loli.net/2019/07/13/5d2979490360822444.jpg" style="border: none; "></img>
+<img src="https://img3.doubanio.com/view/photo/raw/public/p1560277414.jpg" style="border: none; "></img>
+
+<div style="text-align:center;">
+<p>「 さいごまでみんなと</p><p>なかよくしたいです</p><p>  よろしくおねがいします 」</p>
+</div>
 
 > ###  友情链接 
 

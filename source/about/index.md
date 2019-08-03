@@ -6,8 +6,10 @@ comments: false
 toc: true
 ---
 
-<img src="https://i.loli.net/2019/07/17/5d2e727778dfc64280.jpg" style=" width: 50%; border: none; "></img>
-  
+<img src="https://img3.doubanio.com/view/photo/raw/public/p1152902076.jpg" style="border: none; "></img>
+
+ありがとうございます。
+
 **欢迎你的来访，请往下查看吧 : ）**
 
 
@@ -21,7 +23,7 @@ toc: true
 - 爱好：摸鱼、划水、动漫、游戏 [玩的游戏种类很少还玩的很菜的不多了吧 : ) ]
 - 概述：obsessive、coder、chromer、Giser(勉强算)
 
- 
+
 >### 如何联系我？
 
 - 电子邮箱：[vensing@foxmail.com](mailto:vensing@foxmail.com)
