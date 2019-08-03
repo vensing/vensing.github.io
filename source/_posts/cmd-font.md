@@ -1,5 +1,5 @@
 ---
-title: 一种实用的 Windows PowerShell 和 cmd 字体 
+title: 一种实用的 cmd 字体 
 comments: true
 toc: true
 date: 2019-07-28 10:26:23
@@ -12,7 +12,7 @@ tags: cmd
 
 一般来说，是有三种解决办法的：
 
->- 重启解决90%的问题
+- 重启解决90%的问题
 - 重装解决99%的问题
 - 重买解决100%的问题
 
@@ -33,9 +33,9 @@ tags: cmd
 
 <!--more-->
 
->###  字体要求
-
 所以在 cmd 下有没有一种好看的字体呢？有没有，咱去巨硬官网看看就知道了。
+
+>###  字体要求
 
 微软说，cmd 和 PowerShell 对字体的要求非常苛刻，在 [Necessary criteria for fonts to be available in a command window](https://support.microsoft.com/zh-cn/help/247815/necessary-criteria-for-fonts-to-be-available-in-a-command-window) (现在已经404) 一文种就有说到：
 
@@ -81,6 +81,7 @@ tags: cmd
 
 ![使用后，Microsoft YaHei Mono 字体](https://i.loli.net/2019/07/28/5d3d0ddc9df5a93731.png)
 
+总之，换完字体之后整个人都好了。
 
 >### 参考
 

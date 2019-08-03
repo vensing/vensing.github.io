@@ -12,9 +12,9 @@ toc: true
 
 **hexo-theme-imaimo **👇 是某天心血来潮的产物，目前还很简陋。
 
-> 📁 项目地址：[https://github.com/vensing/hexo-theme-imaimo](https://github.com/vensing/hexo-theme-imaimo)
-> 🎨 一个移植的主题，样式有些传统，但很简洁和实用。
-> 🚀 仅为个人兴趣驱使，理论上只有我或者觉得它好看的人使用。
+- 📁 项目地址：[hexo-theme-imaimo](https://github.com/vensing/hexo-theme-imaimo)
+- 🎨 一个移植的主题，样式有些传统，但很简洁和实用。
+- 🚀 仅为个人兴趣驱使，理论上只有我或者觉得它好看的人使用。
 
 ![hexo-imaimo.png](https://i.loli.net/2019/06/24/5d10a59f842d945783.png)
 
