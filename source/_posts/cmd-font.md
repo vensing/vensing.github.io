@@ -8,11 +8,11 @@ tags: cmd
 
 ---
 
-
-电脑有问题怎么办呢？
+**电脑有问题怎么办呢?**
 
 一般来说，是有三种解决办法的：
-- 重启解决90%的问题
+
+>- 重启解决90%的问题
 - 重装解决99%的问题
 - 重买解决100%的问题
 
@@ -20,6 +20,8 @@ tags: cmd
 ![](https://i.loli.net/2019/07/28/5d3d09de99cc583408.png)
 
 最近由于某些原因 (戴尔全家桶和家庭版) 和我实在贫穷不能重买解决100%的问题，所以我选择了重装系统。
+
+>### 难看的cmd
 
 重装完系统之后第一件事当然就是下各种软件啦，然后配置各种环境变量。在配置环境变量的过程中难免会用到 cmd 控制台。可能有些人就要发表不同意见了，装个 Git 不就好了？当然，安装了 git 后，会自动帮我们安装 mintty，bash 风格，自定义方便，着色也很棒。但在某些情况下，Git 却很容易吃瘪：
 
@@ -31,7 +33,7 @@ tags: cmd
 
 <!--more-->
 
-###  字体要求
+>###  字体要求
 
 所以在 cmd 下有没有一种好看的字体呢？有没有，咱去巨硬官网看看就知道了。
 
@@ -60,7 +62,7 @@ tags: cmd
 
 好吧，你是巨硬，你家的平台你说了算；这特么的不是一般字体能满足的啊。
 
-### 可用的字体
+>### 可用的字体
 
 这里只推荐一款出自巨硬之手的字体：
 [Microsoft YaHei Mono](https://github.com/Microsoft/BashOnWindows/files/1362006/Microsoft.YaHei.Mono.zip) ，微软为 WSL/Bash on Ubuntu on Windows 设计的字体，PowerShell 和 cmd 也能用，效果相当于微软雅黑和 Consolas 的混搭。
@@ -80,6 +82,6 @@ tags: cmd
 ![使用后，Microsoft YaHei Mono 字体](https://i.loli.net/2019/07/28/5d3d0ddc9df5a93731.png)
 
 
-### 参考
+>### 参考
 
 绝大部分内容参考自 [# 自定义 Windows PowerShell 和 cmd 的字体](https://blog.walterlv.com/post/customize-fonts-of-command-window.html)  _(:з)∠)_ 。

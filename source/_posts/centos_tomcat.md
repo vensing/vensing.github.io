@@ -14,7 +14,7 @@ toc: true
 
 如果你觉得这篇文字像流水账一样无聊又没有看下去的欲望，可以跳过，翻阅我的其他博客文章。
 
-###  下载 Tomcat 离线安装压缩文件
+>###  下载 Tomcat 离线安装压缩文件
 
 [tomcat 8 下载地址](https://tomcat.apache.org/download-80.cgi)，下载 Core 下的 zip 或者 tar.gz 包都行。
 
@@ -31,7 +31,8 @@ toc: true
 
 <!--more-->
 
-### 移动文件和测试启动
+>### 移动文件和测试启动
+
 将 /usr/tmp 目录下解压出来的目录 apache-tomcat.8.5.41 文件夹移动到 /usr/services (没有则创建此目录)目录下：
 
 ```sh
@@ -54,7 +55,7 @@ Tomcat started.
 可在当前 Centos 系统下的火狐浏览器输入: `localhost:8080`
 能访问到 tomcat 的介绍页面即说明启动成功。
 
-### 端口配置
+>### 端口配置
 
 默认安装后的端口是 8080 ，如果需要修改端口号，编辑 apache-tomcat.8.5.41/conf/server.xml :
 ```sh
@@ -99,7 +100,7 @@ Tomcat started.
 [root@localhost conf]# systemctl enable firewalld
 ```
 
-### 注册服务和开机自启动
+>### 注册服务和开机自启动
 
  **进入 apache-tomcat.8.5.41 安装目录下的 bin 目录：**
 ```sh
@@ -173,7 +174,7 @@ WantedBy=multi-user.target
 
 - systemctl enable tomcat  开机启动
 
-### Reference
+>### Reference
 
 - [CentOS7安装Tomcat](https://www.cnblogs.com/yangxiansen/p/7860003.html)
 

@@ -11,7 +11,7 @@ date: 2018-09-24 22:28:43
 toc: true
 ---
 
-## 基于eclipse手动构建SpringBoot项目
+基于eclipse手动构建SpringBoot项目
 
 > ### 创建一个Maven项目
 
@@ -94,7 +94,7 @@ public class Application {
 }
 ```
  `@SpringBootApplication `表示这是一个SpringBoot应用，运行其主方法就会启动tomcat,默认端口是8080。
- 
+
 (4) 在`src/main/java `新建一个springboot/web的包，新建一个HelloWorldController类：
 ```java
 @Controller
@@ -114,7 +114,7 @@ public class HelloWorldController {
  ```
  server.port=9090
  ```
- 
+
 之后运行其主方法可在控制台看到输出端口已变为9090:
 
 ![](https://i.loli.net/2019/07/13/5d29648516d6e69801.png)
