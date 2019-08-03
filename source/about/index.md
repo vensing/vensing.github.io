@@ -6,7 +6,7 @@ comments: false
 toc: true
 ---
 
-<img src="https://img3.doubanio.com/view/photo/raw/public/p1152902076.jpg" style="border: none; "></img>
+<img src="/img/about_img.jpg" style="border: none; "></img>
 
 ありがとうございます。
 
