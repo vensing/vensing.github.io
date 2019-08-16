@@ -41,9 +41,9 @@ sage: true
 
 - [@一摩尔·毫升](https://1mol.ml/)     <br>来自一位化学课代表的高度自觉。
 
-- [@东方幻梦](https://blog.mxlbs.cn/)      <br>只是当时已惘然，沉溺梦中不愿醒来。
+- [@东方幻梦](https://blog.badapple.pro/)      <br>只是当时已惘然，沉溺梦中不愿醒来。
 
-- [@CWorld's Blog](https://changingworld.gitee.io/blog/)      <br>万物皆虚。万事皆允。
+- [@CWorld's Blog](https://changingworld.gitee.io)      <br>万物皆虚。万事皆允。
 
 - [@一么酱](https://imgradeone.wordpress.com/)      <br>（妹妹酱？猜测）萌站 一 丧病至极的一么酱的官网。
 
