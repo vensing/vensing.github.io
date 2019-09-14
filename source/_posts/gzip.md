@@ -22,7 +22,7 @@ tags: gzip
 
 明确了带宽的问题，那就好办了。花钱提高带宽呗，嗯领导貌似不会同意。那能不能服务器传输静态资源给客户端时压缩下呢？
 
-<img style="width: 50%;" src="https://i.loli.net/2019/08/24/me6j5wStcOUpzb1.jpg" />
+<img style="width: 50%;" src="/img/wfsdsdf.jpg" />
 
 答案是有的，比如 gzip。
 

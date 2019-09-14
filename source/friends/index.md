@@ -47,6 +47,7 @@ sage: true
 
 - [@一么酱](https://imgradeone.wordpress.com/)      <br>（妹妹酱？猜测）萌站 一 丧病至极的一么酱的官网。
 
+- [@辣椒の酱](https://removeif.github.io)     <br>尚未执佩剑，转眼即江湖。后端开发，技术分享。 
 
 > ### 友链申请
 
