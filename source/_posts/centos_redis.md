@@ -13,17 +13,17 @@ toc: true
 
 如果你觉得这篇文字像流水账一样无聊又没有看下去的欲望，可以跳过，翻阅我的其他博客文章。
 
->### 依赖环境
+### 依赖环境
 
 - gcc-c++
 
 这个需先安装好，这里就不展开如何安装了。
 
->### 下载 Redis 3.2.10 tar.gz 安装包
+### 下载 Redis 3.2.10 tar.gz 安装包
 
 [Redis 安装包下载地址](http://download.redis.io/releases/) 或者你也可以去 Github 上 [Redis](https://github.com/antirez/redis) 的官方仓库下的 [Releases](https://github.com/antirez/redis/releases) 页面下载，这个随你开心就好啦。
 <!--more-->
->### 解压和编译安装
+### 解压和编译安装
 
 **准备Redis安装文件：**
 
@@ -45,7 +45,7 @@ toc: true
 [root@localhost redis-3.2.10]# make install 
 ```
 
->### 测试启动
+### 测试启动
 
 **进入 install/bin 目录下：**
 
@@ -69,7 +69,7 @@ PONG
 ```
 如果能ping通这说明安装并且启动成功啦。
 
->### 配置文件
+### 配置文件
 
 **复制配置文件：**
 ```sh
@@ -101,7 +101,7 @@ redis-cli -h ip -p port -a password
 PONG
 ```
 
->### 注册服务
+### 注册服务
 
 **编辑文件：**
 ```sh
@@ -162,6 +162,6 @@ WantedBy=multi-user.target
 
 
 
->### Reference
+### Reference
 
 - [CentOS7.6离线安装Redis5.0.4](https://www.cnblogs.com/xu-qian-gang/p/10671764.html)

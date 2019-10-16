@@ -11,11 +11,11 @@ toc: true
 
 博客有了一些新变化 
 
-> ### 🎈 更好看的主题
+### 🎈 更好看的主题
 
 &emsp;&emsp;主题使用的是[Snippet主题](https://github.com/shenliyang/hexo-theme-snippet "fork theme")，感谢作者，支持主题[Star一下](https://github.com/shenliyang/hexo-theme-snippet/stargazers)。主题下载地址：[Snippet主题](https://github.com/shenliyang/hexo-theme-snippet "fork me")。换上了好看的头部横幅banner🎐，后面考虑使用[Simple-Desktop-API](https://github.com/spencerwoo98/spencer-simple-desktop-api)每次刷新页面随机抽取图片显示。加入了一些社交链接，不过貌似也不会有人关注我🙈。
 
-> ### 🎄 接入评论服务
+### 🎄 接入评论服务
 
 &emsp;&emsp;国内免费的评论服务好像都凉了，这个主题默认推荐的是[来必力](https://livere.com/)评论服务📥。注册了下账号，然后填了下URL，到安装界面可以拿嵌入代码和服务ID，拿到ID之后去当前主题下的配置文件中配置一下即可。更换URL要先冻结服务，填好新URL后再激活服务，耐心等待服务开启。
 
@@ -29,7 +29,7 @@ livere:
 &emsp;&emsp;不过，来必力的服务好像不稳定😕，加上是高丽出品网速也不行🤣。如果找到好的评论插件并且主题支持，马上更换。
 <!--more-->
 
-> ### 🌎 更换了域名
+### 🌎 更换了域名
 
 &emsp;&emsp;去阿里云淘了一个.site的域名🛒，然后去github.io项目下加入了custom domain。现在你可以通过<https://vensing.site>来访问本博客了🚀。
   

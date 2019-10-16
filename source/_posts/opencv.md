@@ -16,7 +16,7 @@ toc: true
 
 ![OpenCV](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/OpenCV_Logo_with_text.png/225px-OpenCV_Logo_with_text.png)
 
->### ** OpenCV 开始折腾**
+### ** OpenCV 开始折腾**
 
 因为最近做的一些事情是有关于图像识别的（在 Java 开发环境下实现），说具体点就是识别图形的某些颜色的阈值区域。既然 OpenCV 这么厉害，还免费，而且跨平台，那么还有什么理由不选它呢。
 
@@ -26,7 +26,7 @@ toc: true
 
 本文试图简单介绍下 OpenCV 的环境搭建，具体的使用场景我可能在后几篇博客文章中体现。
 
->### **Windows 下 OpenCV 环境的搭建**
+### **Windows 下 OpenCV 环境的搭建**
 
 转到 [OpenCV 下载地址](https://opencv.org/releases/)，下载 Windows 下的 .exe 安装包。官方提供了Windows下的 Java 封装库，你只需点击安装即可，安装好之后会创建一个`opencv`文件夹，里面包含了开源协议、ReadMe、build 文件夹 (编译好的环境)、src (源代码)。
 
@@ -46,7 +46,7 @@ jar 的位置是在 `opencv/build/java` 目录下，dll 在 `opencv/build/java/x
 
 这是因为 OpenCV 用 C++ 语言编写，它的主要接口也是 C++ 语言，但是依然保留了大量的C语言接口。该库也有大量的Python、Java 、MATLAB 等的接口。所以呢，使用 Java 接口得添加一个 dll 动态链接库，而这个 dll 动态链接库是由 Windows 下 OpenCV 提供的 C/C++ 库编译转制过来的。同理，Linux 下是 `.so` lib库。
 
->### **Linux 下 OpenCV 环境的搭建**
+### **Linux 下 OpenCV 环境的搭建**
 
 Windows 下的开发环境能白嫖，但是 Linux 和 Mac 下却要手动编译，只能说是非常的真实了(普通开发者用 windows 开发，大佬都是直接用 Linux 或者 Mac 开发)。
 

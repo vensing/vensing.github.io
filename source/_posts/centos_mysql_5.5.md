@@ -13,7 +13,7 @@ toc: true
 
 如果你觉得这篇文字像流水账一样无聊又没有看下去的欲望，可以跳过，翻阅我的其他博客文章。
 
->### 卸载 Mysql 相关程序
+### 卸载 Mysql 相关程序
 
 卸载Mysql:
 
@@ -37,7 +37,7 @@ mariadb-libs-5.5.56-2.el7.x86_64
 
 <!--more-->
 
->### 下载 Mysql 安装包和解压文件
+### 下载 Mysql 安装包和解压文件
 
 [Mysql 5.5 下载地址](https://dev.mysql.com/downloads/mysql/5.5.html#downloads)，下载 Linux- Generic 64 位 tar.gz 安装包，上传到/usr/services 目录下：
 ```sh
@@ -48,7 +48,7 @@ mariadb-libs-5.5.56-2.el7.x86_64
 ```
 
 
->### 配置和安装
+### 配置和安装
 
 创建mysql用户、用户组：
 
@@ -90,7 +90,7 @@ mariadb-libs-5.5.56-2.el7.x86_64
 [root@localhost mysql]# chown 755 /etc/my.cnf
 ```
 
->### 注册服务
+### 注册服务
 
 复制启动脚本到资源目录:
 ```sh
@@ -150,6 +150,6 @@ mysql> flush privileges;
 
 你也可以单独设置允许访问的 IP 。
 
->### Reference
+### Reference
 
 - [centos7.5离线安装mysql5.5.61](https://blog.csdn.net/qq_35197601/article/details/83542498)

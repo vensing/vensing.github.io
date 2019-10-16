@@ -14,7 +14,7 @@ toc: true
 
 ![Travis CI 自动部署流程](https://i.loli.net/2019/07/13/5d29679d61e4094268.png)
 
-> ## 没有 Travis CI 之前
+## 没有 Travis CI 之前
 
 在没有 Travis CI 之前，写一篇 Hexo 博客文章再推送到 GitHub Pages 上的流程是：
 
@@ -41,7 +41,7 @@ $ hexo d
 
 <!-- more -->
 
-> ## 使用 Travis CI 持续部署后
+## 使用 Travis CI 持续部署后
 
 Travis CI 一款很好用的持续集成测试工具。它可以自动关联Github上的项目并且clone下来编译测试，就是利用它这一特性来实现hexo博客自动编译、部署。
 
@@ -58,7 +58,7 @@ $ git push -u origin master:source
 
 而后 Travis CI 监听到 push 操作即会根据 travis.yml 执行自动部署，原理简单说来就是先 git clone 线上 GitHub Pages 项目的源码分支 (source分支) ，再执行自动部署后将 Hexo 博客的静态页面推送到 GitHub Pages 项目的 master 分支。
 
-> ## Why we need Travis CI?
+## Why we need Travis CI?
 
 **使用Travis CI 自动部署的好处**
 
@@ -96,7 +96,7 @@ $ git push -u origin master:source
 
 当然有了CI，你可以做很多事情，如自动运行单元测试，成功后再deploy等等。很多项目里的持续集成基本也是这个道理。
 
-> ## How to use Travis CI to deploy hexo blog?
+## How to use Travis CI to deploy hexo blog?
 
 1.一个仓库两个分支
 
@@ -281,6 +281,6 @@ $ git push -u origin master:source
 
 然后 ，在登录的 Travis 官网上就能看到自动部署时生成的日志信息了。
 
-> ## 参考
+## 参考
 
 本文部分内容参考自：[karlzhou](https://www.karlzhou.com)的博文 -- [用Travis CI自动部署Hexo博客](https://www.karlzhou.com/2016/05/28/travis-ci-deploy-blog/)，感谢作者提供的教程和参考。

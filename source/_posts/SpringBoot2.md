@@ -14,7 +14,7 @@ toc: true
 
 本文主要涉及到一些SpringBoot项目最基本的初始化配置。
 
-> ### JSP视图配置
+### JSP视图配置
 
 1. 在**pom.xml**中添加对jsp视图的支持：
 ```xml
@@ -67,7 +67,7 @@ ${msg}
 5. 测试
 在浏览器输入：++localhost:8080/hello++，会出现：Hello World,Welcome to SpringBoot!
 
-> ###  热部署
+###  热部署
 
 没有使用热部署时，我们对项目中的类或者配置文件等做修改之后，必须要重新启动Application类，是不是觉得很麻烦，热部署就是为了解决这个问题的。SpringBoot为我们提供了热部署的支持，当发现项目中任何类或者配置文件发生改变之后，马上通过JVM类加载的方式，加载最新的类或者配置文件到虚拟机中，这样就不用频繁重启项目了。
 1. 在pom.xml中加入依赖：
@@ -108,7 +108,7 @@ spring.devtools.restart.enabled: true
 spring.devtools.restart.exclude: WEB-INF/**
 ```
 
-> ### 异常处理
+### 异常处理
 
 很多时候我们都希望服务器出现的错误能统一跳转到一个指定的error页面，SpringBoot的@ControllerAdvice和@ExceptionHandler也为我们提供了支持。
 
@@ -148,7 +148,7 @@ _errorPage.jsp_
 </div>
 ```
 
-> ### 端口及上下文路径
+### 端口及上下文路径
 
 默认的端口是8080，上下文路径path是“/”，可通过如下配置更改：
 ```properties
@@ -157,7 +157,7 @@ server.port=9090
 server.context-path=/boot
 ```
 
-> ### 配置文件的切换
+### 配置文件的切换
 
 开发和测试往往使用的是不同的端口和配置情况， 这个时候通过多配置文件来实现灵活切换配置文件可以给我们带来很大的便利。
 1. 配置文件

@@ -19,7 +19,7 @@ tags: cmd
 
 最近由于某些原因 (戴尔全家桶和家庭版) 和我实在贫穷不能重买解决100%的问题，所以我选择了重装系统。
 
->### 难看的 cmd
+### 难看的 cmd
 
 重装完系统之后第一件事当然就是下各种软件啦，然后配置各种环境变量。在配置环境变量的过程中难免会用到 cmd 控制台。用过 cmd 的人都知道，cmd 是有多不与时俱进，不过巨硬的地盘巨硬说了算，咱也没办法不是。
 
@@ -35,7 +35,7 @@ tags: cmd
 
 所以在 cmd 下有没有一种好看的字体呢？有没有，咱去巨硬官网看看就知道了。
 
->###  字体要求
+###  字体要求
 
 微软说，cmd 和 PowerShell 对字体的要求非常苛刻，在 [Necessary criteria for fonts to be available in a command window](https://support.microsoft.com/zh-cn/help/247815/necessary-criteria-for-fonts-to-be-available-in-a-command-window) (现在已经404) 一文种就有说到：
 
@@ -62,7 +62,7 @@ tags: cmd
 
 好吧，你是巨硬，你家的平台你说了算；这特么的不是一般字体能满足的啊。
 
->### 可用的字体
+### 可用的字体
 
 这里只推荐一款出自巨硬之手的字体：
 [Microsoft YaHei Mono](https://github.com/Microsoft/BashOnWindows/files/1362006/Microsoft.YaHei.Mono.zip) ，微软为 WSL/Bash on Ubuntu on Windows 设计的字体，PowerShell 和 cmd 也能用，效果相当于微软雅黑和 Consolas 的混搭。
@@ -83,6 +83,6 @@ tags: cmd
 
 总之，换完字体之后整个人都好了。
 
->### 参考
+### 参考
 
 绝大部分内容参考自 [# 自定义 Windows PowerShell 和 cmd 的字体](https://blog.walterlv.com/post/customize-fonts-of-command-window.html)  _(:з)∠)_ 。

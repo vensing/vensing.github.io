@@ -13,7 +13,7 @@ toc: true
 
 基于eclipse手动构建SpringBoot项目
 
-> ### 创建一个Maven项目
+### 创建一个Maven项目
 
 为什么不用sts插件,或是STS编辑器创建SpringBoot项目呢？因为要瞎折腾啊。
 
@@ -82,7 +82,7 @@ toc: true
 
 *编写完pom.xml后记得maven-->update project。*
 
-> ### 编写配置文件和代码
+### 编写配置文件和代码
 
 (3) 在`src/main/java `新建一个springboot的包，新建一个Application类，这是项目启动的入口：
 ```java

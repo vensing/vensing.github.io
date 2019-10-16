@@ -19,13 +19,13 @@ toc: true
 ![hexo-imaimo.png](https://i.loli.net/2019/06/24/5d10a59f842d945783.png)
 
 
->### 📝 来源
+### 📝 来源
 
 本主题基于 [http://acgtofe.com/](http://acgtofe.com/) ACGTOFE 站点主题移植，主题的所有权归原作者所有，目前正在努力与原作者联系主题授权中。
 
 
 
->### 🎯 功能
+### 🎯 功能
 
 本主题基于 Hexo 默认主题 `landscape ` 框架构建，将 `ACGTOFE` 的主题移植到 Hexo 平台。实现的功能基本和 landscape 一致，基础的主题功能已大致成形。基本功能如下：
 
@@ -40,7 +40,7 @@ toc: true
 
 <!--more-->
 
->### 🔨 使用
+### 🔨 使用
 
 现在还是测试版，有很多功能缺少和未修复的 bug，因此不建议直接拿来做为线上博客使用。
 
@@ -48,7 +48,7 @@ toc: true
 
 执行 `hexo clean && hexo g` 和 `hexo s` 预览。
 
->### ⚠ 注意事项
+### ⚠ 注意事项
 
 **0x01** 
 
@@ -81,7 +81,7 @@ menu:
 
 2.需在博客根目录下的`source`文件夹下新建一个名为`about`的文件夹，再新建一个`index.md`即可 (最终路径：`/blogpath/source/about/index.md`)。index.md 和普通文章 md 文件一样编写即可；新增菜单项的 url 和 source 文件夹下新建目录名应一致。
 
->### 📌 后期计划
+### 📌 后期计划
 
 - 🔀 评论功能
 - 🔀 更多的 widget 小部件

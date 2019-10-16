@@ -21,7 +21,7 @@ toc: true
 
 <!-- more -->
 
-> ### 生成部署私钥
+### 生成部署私钥
 
 首先是先生成 ssh 密钥，在你电脑上随便哪个文件夹都行：
 
@@ -32,7 +32,7 @@ ssh-keygen -f travis.key
 把生成的 travis.key.pub 里的内容粘到你 Github 仓库的 Deploy Keys 以及 VPS 上的 `~/.ssh/authorized_keys` 里。这样 Travis CI 就能对 Github 和 VPS 进行访问了。
 
 
-> ### 加密私钥
+### 加密私钥
 
 Travis CI 自动部署时，我们必须从仓库拿到这个密钥（之前的 token 是 设置了环境变量）。直接把密钥放仓库下肯定是不安全的，Travis 提供了密钥加密解密的方法。
 
@@ -59,7 +59,7 @@ $ travis encrypt-file -r XXX/XXX.github.io travis.key -add
 
 
 
-> ### .travis.yml 配置
+### .travis.yml 配置
 
 解密密钥文件：
 将 travis.key.enc 放到仓库下，哪个位置随你喜欢，确保解密命令能访问到就成。`$encrypted_383bc2ea2d21_key`及`$encrypted_383bc2ea2d21_iv` 请去travis ci仓库设置环境变量里找(Travis 会自动生成这两个环境变量)。在 .travis.yml 下添加如下命令：
@@ -93,12 +93,12 @@ after_success:
 
 配置文件放 [Gist](https://gist.github.com/vensing/0296bf555c794d4392c05c75ce00d17c) 上，仅供参考。
 
-> ### Logo
+### Logo
 
 换了个 Logo，自己用 PS 做的，有点借鉴（~~抄袭~~ ）[PRIN](https://blessing.studio) 的灵感。
 ![](/images/logo.png)
 
-> ### 参考链接
+### 参考链接
 
 主要是参考第一篇文章 ([PRIN](https://blessing.studio) 原创) 折腾的 ┏ (゜ω゜)=☞。
 

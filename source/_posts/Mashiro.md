@@ -21,7 +21,7 @@ toc: true
 &emsp;&emsp;[椎名真白](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)请点击萌娘百科[椎名真白条目](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)，爱真白真是太好了，我永远喜欢椎名真白。
 
 <!--more-->
-> ### 获取文件
+### 获取文件
 
 1. 首先，准备好Live2dMashiro.zip文件。
 
@@ -29,7 +29,7 @@ toc: true
 
 ![live2dmashiro](https://i.loli.net/2019/07/13/5d2967261c2b549354.png)
 
-> ### 加入代码
+### 加入代码
 
 3. 在 <head\>标签内引入如下css样式代码，如果路径有变请按照自己的情况更改：
 ```css
@@ -88,7 +88,7 @@ var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口�
 &emsp;&emsp;此次的代码也需另做修改：
 &emsp;&emsp;在主题`themes\hexo-theme-snippet\layout`目录下找到layout.ejs，在<body\>标签中的<section\>标签后加入上述代码即可。此处ejs文件中博客目录的地址是`<%= config.url%>`，应该是从主题配置文件中拿到的root path url，所以将js中的blog`src="blog/live2d/js/live2d.js"`改为`src="<%= config.url%>/live2d/js/live2d.js"`。其他js引入做类似修改即可。
 
-> ### 效果展示
+### 效果展示
 
 &emsp;&emsp;代码引入没什么好讲的，细心做好上述两处引入代码的步骤，让文件正确引入和URL地址设置准确就基本完成了，测试下效果即可。
 
