@@ -33,7 +33,7 @@ sage: true
 
 - [~~@废猫博客~~](https://www.maobk.cn/)    <br>猫六君的博客，一个很樱的博客。
 
-- [@Bwoywan](https://hexo.bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
+- [@Bwoywan](https://bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
 
 - [@椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日。
 
