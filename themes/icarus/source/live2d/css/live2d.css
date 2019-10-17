@@ -47,9 +47,9 @@
     bottom: 280px;
     left: 0px;
     text-align: center;
-    border: 2px solid rgba(75,127,199,0.9);
+    border: 2px solid rgba(75,127,199,0);
     border-radius: 5px;
-    background-color: rgba(74, 59, 114,0.9);
+    background-color: rgb(143, 119, 181);
     font-size: 13px;
     font-weight: 400;
     text-overflow: ellipsis;
@@ -187,6 +187,7 @@
 	background-position:center center;
 	background-repeat:no-repeat;
 	background-size:15px;
+	opacity:0.7
 }
 .live_ico_item.type_talk{
 	background-image:url(../images/talk.png);
