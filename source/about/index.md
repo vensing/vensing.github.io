@@ -8,7 +8,9 @@ toc: true
 
 <img src="/img/about_img.jpg" style="border: none; "></img>
 
-ありがとうございます。
+<div style="text-align:center;">
+<p>「 ありがとうございます 」</p>
+</div>
 
 **欢迎你的来访，请往下查看吧 : ）**
 
@@ -32,18 +34,19 @@ toc: true
 ### 博客时光机
 
 - 2018.09.08 - 某个不知名的小站建立了。终于想起了要建立一个博客这件事？所以我之前都在干吗去了？当然是摸鱼和划水去了。
-- 2018.09.08 - 我的第一篇文章是 [Hello World](https://vensing.site/2018/09/08/hello-world/)。从此进入了独立博客的世界，然而好像没找到小伙伴啊。
+- 2018.09.08 - 我的第一篇文章是 [Hello World](https://vensing.com/2018/09/08/hello-world/)。从此进入了独立博客的世界，然而好像没找到小伙伴啊。
 - 2018.09.17 - 换上了一个橙色的名叫 [Snippet主题](https://github.com/shenliyang/hexo-theme-snippet) ，加入了评论服务(好吧，其实没人找到我根本没有评论)。既然是某个不知名的小站当然得搭配一个不知名的域名啊，于是就有了 ~~[vensing.site](https://vensing.site)~~ 这个`.site`的域名了，已于2019-03-04不适用。
 - 2018.10.21 - 有了博客当然得有个萌萌的看板娘啦，刚好那段时间在补番[樱花庄的宠物女孩](https://www.bilibili.com/bangumi/media/md687/?from=search&seid=5864954923037171538)，刚好又看到了真白看板娘就给加上了。爱真白真是太好了。
 - 2019.01.25 - 给博客加上了Travis CI自动部署服务，写好文章 push 到 Github 之后就不用管了。而且不用管运行环境，这样换了电脑 clone 一下博客源码就行了。真的是适合我这种懒人。
 - 2019.01.30 - 博客主题更换为[NexT](https://github.com/iissnan/hexo-theme-next)，同时对改主题进行一定的修改，比如移动设备上能够显示个人信息框(就是手机访问时底部的头像个人信息框那货)了。原主题 ~~[Snippet主题](https://github.com/shenliyang/hexo-theme-snippet)~~ 已不适用，同时~~真白看板娘~~也已不适用，其实是我懒没去改主题源代码。
-- 2019.02.28 - 购买了阿里云的ECS主机和域名，通过了ICP备案。阿里云的备案系统的服务很好，会有专门的客服指导你。
+- 2019.02.28 - 购买了阿里云的ECS主机和域名，通过了ICP备案。阿里云的备案系统服务很到位，会有专门的客服指导你。
 - 2019.03.04 - 现在你可以[vensing.com](https://www.vensing.com) 来访问本站，使用Nginx做为web服务器。
 - 2019.03.31 - 又双叒叕换博客主题了。
 - 2019.04.xx - 引入 disqus 评论，如果加载不出评论插件，你知道该怎么做吧?
 - 2019.05.xx - 添加了很多友链，结识了许多大佬。
 - 2019.06.xx - BWG ip 被 ban，转向 Bing 搜索。
 - 2019.07.13 - 将博客文章里的图片由本地转移到 SM.MS 图床，使用的图床管理工具是 PicGO。
+- 2019.10.16 - 主题整体色调换成 <span style="color:#8f77b5">「 紫苑 」</span>`#8f77b5` 色调。
 
 ### 博客快照
 
