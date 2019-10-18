@@ -28,8 +28,8 @@ toc: true
 
 ### 如何联系我？
 
-- 电子邮箱：[vensing@foxmail.com](mailto:vensing@foxmail.com)
-- 社交网络：[Telegram](https://t.me/vexsy)
+- 电子邮箱：dmVuc2luZ0Bmb3htYWlsLmNvbQ==
+- 社交网络：NzgyMTc2ODgx
 
 ### 博客时光机
 

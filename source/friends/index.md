@@ -59,7 +59,7 @@ sage: true
 - [站点名称]：example
 - [站点地址]：https://example.com
 
-发邮件添加友链：[点此写邮件](mailto:vensing@foxmail.com)。
+发邮件添加友链：dmVuc2luZ0Bmb3htYWlsLmNvbQ==
 
 
 
