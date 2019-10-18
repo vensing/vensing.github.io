@@ -35,9 +35,9 @@ sage: true
 
 - [@Bwoywan](https://bwoywan268.xyz)    <br>一个爱折腾的小伙伴。 
 
-- [@椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日。
+- [@椎咲良田](https://sanshiliuxiao.top/)    <br>昨日、今日、明日，前端大佬 ( =•ω＜= )✧。
 
-- [~~@墨兰の博客~~](https://blog.yfblog.xyz)    <br>是一个喜欢二次元的蓝孩纸哦。
+- [@墨兰の博客](https://mqaq.fun)    <br>是一个喜欢二次元的蓝孩纸喔 ~ 。
 
 - [~~@一摩尔·毫升~~](https://1mol.ml/)     <br>来自一位化学课代表的高度自觉。
 
