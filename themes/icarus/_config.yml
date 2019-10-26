@@ -3,7 +3,7 @@ version: 2.3.0
 # Path or URL to the website's icon
 favicon: /favicon.ico
 # Path or URL to RSS atom.xml
-rss: 
+rss: /atom.xml
 # Path or URL to the website's logo to be shown on the left of the navigation bar or footer
 logo: /images/logo.png
 # Open Graph metadata
@@ -149,16 +149,16 @@ widgets:
         social_links:
             Github:
                 icon: fab fa-github
-                url: 'http://github.com/vensing'
+                url: 'https://github.com/vensing'
             Twitter:
                 icon: fab fa-twitter
-                url: 'http://twitter.com/vensing1020'
+                url: 'https://twitter.com/vensing1020'
             Telegram:
                 icon: fab fa-telegram
                 url: 'https://t.me/vexsy'
             Email:
-                icon: fas fa-envelope
-                url: 'mailto:vensing@foxmail.com'
+                icon: fas fa-rss
+                url: 'https://vensing.com/atom.xml'
 
     -
         # Widget name
