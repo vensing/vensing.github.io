@@ -49,6 +49,8 @@ sage: true
 
 - [@辣椒の酱](https://removeif.github.io)     <br>尚未执佩剑，转眼即江湖。后端开发，技术分享。 
 
+- [@Senventise](https://www.senventise.com)    <br> Steam 游戏大佬，Galgame 爱好者。
+
 **注：带中划线的链接已失效或不可用。**
 
 ### 友链申请
@@ -59,7 +61,8 @@ sage: true
 - [站点名称]：example
 - [站点地址]：https://example.com
 
-发邮件添加友链：dmVuc2luZ0Bmb3htYWlsLmNvbQ==
+发邮件添加友链：
+dmVuc2luZ0Bmb3htYWlsLmNvbQ==
 
 
 
