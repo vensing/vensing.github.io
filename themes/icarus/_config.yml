@@ -156,7 +156,7 @@ widgets:
             Telegram:
                 icon: fab fa-telegram
                 url: 'https://t.me/vexsy'
-            Email:
+            RSS:
                 icon: fas fa-rss
                 url: 'https://vensing.com/atom.xml'
 
