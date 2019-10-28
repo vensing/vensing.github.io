@@ -10,16 +10,13 @@
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
 <% if (has_config('comment.shortname')) { %>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2/dist/disqusjs.css">
-<script src="https://cdn.jsdelivr.net/npm/disqusjs@1.1/dist/disqus.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqusjs.css">
+<script src="https://cdn.jsdelivr.net/npm/disqusjs@1.2.5/dist/disqus.js"></script>
 <script>
     function loadComments() {
         window.dsqjs = new DisqusJS({
             shortname: '<%= get_config('comment.shortname') %>',
             siteName: 'Vexsy BLOG',
-            identifier: '',
-            url: '',
-            title: '',
             api: 'https://disqus.skk.moe/disqus/',
             apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
             admin: 'Vexsy',
