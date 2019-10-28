@@ -1,3 +1,19 @@
+
+<% if (has_config('comment.shortname')) { %>
+<script>
+    var disqus_config = function () {
+        this.page.url = '<%= permalink %>';
+        this.page.identifier = '<%= disqusId || path %>';
+    };
+    (function() {
+        var d = document, s = d.createElement('script');  
+        s.src = '//' + '<%= get_config('comment.shortname') %>' + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<% } %>
+
 <div id="disqus_thread">
         <% if (!has_config('comment.shortname')) { %>
         <div class="notification is-danger">
@@ -9,42 +25,3 @@
         </p>
         <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-<% if (has_config('comment.shortname')) { %>
-<script>
-    function loadComments() {
-        window.dsqjs = new DisqusJS({
-            shortname: '<%= get_config('comment.shortname') %>',
-            siteName: 'Vexsy BLOG',
-            url: '<%= permalink %>',
-            identifier: '<%= disqusId || path %>',
-            api: 'https://disqus.skk.moe/disqus',
-            apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
-            admin: 'Vexsy',
-            adminLabel: '博主'
-        });
-    }
-    
-    // Lazy laod {# Credit: https://github.com/theme-next/hexo-theme-next/blob/master/layout/_third-party/comments/disqus.swig #}
-    (function() {
-        var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
-        if (offsetTop <= 0) {
-        // Load directly when there's no scrollbar
-        window.addEventListener('load', loadComments, false);
-        } else {
-        var disqusScroll = function () {
-            // offsetTop may changes because of manually resizing browser window or lazy loading images
-            var offsetTop = document.getElementById('disqus_thread').offsetTop - window.innerHeight;
-            var scrollTop = window.scrollY;
-
-            // Pre-load comments a bit? (margin or anything else)
-            if (offsetTop - scrollTop < 60) {
-            window.removeEventListener('scroll', disqusScroll);
-            loadComments();
-            }
-        };
-        window.addEventListener('scroll', disqusScroll);
-        }
-    })();
-    
-</script>
-<% } %>
