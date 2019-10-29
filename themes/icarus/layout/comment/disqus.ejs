@@ -2,8 +2,8 @@
 <% if (has_config('comment.shortname')) { %>
 <script>
     var disqus_config = function () {
-        this.page.url = '<%= permalink %>';
-        this.page.identifier = '<%= disqusId || path %>';
+        this.page.url = '<%= page.permalink %>';
+        this.page.identifier = '<%= page.disqusId || page.path %>';
     };
     (function() {
         var d = document, s = d.createElement('script');  
