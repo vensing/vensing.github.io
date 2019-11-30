@@ -40,7 +40,7 @@ html
 body
     padding: 0px
     margin: 0
-    background: #f7f7f7
+    background: #e8e8f2 url(/img/topbanner.png) no-repeat center 0
 	
 body, button, input, select, textarea
     font-family: family-sans
@@ -562,5 +562,59 @@ figure.highlight
         width: 139px
         height: 99px
         background: #fff url(/images/wrapper_1.png) no-repeat 100% 0/139px 99px
+        border-top-right-radius: 4px
     .button.is-white
         background-color: transparent
+
+.header-mask-sd 
+    height: 70px
+    box-shadow: rgba(0,0,0,0.1) 0 1px 2px
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    background: rgba(255, 255, 255, 0.3)
+	
+.header-mask-blur
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    overflow: hidden
+	
+.header-mask-blur 
+    .header-mask 
+        position: absolute
+        z-index: 0
+        height: 70px
+        width: 100%
+        -webkit-filter: blur(5px)
+        -ms-filter: blur(5px)
+        filter: blur(5px)
+        background-position: center 0!important
+        background-repeat: no-repeat
+	.header-mask-bg
+        position: absolute
+        z-index: 1
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background: rgba(255,255,255,0.4)
+
+.navbar
+    background: 0
+
+@media screen and (max-width: screen-desktop - 1)
+    .header-mask-sd
+        height: 105px
+    .header-mask-blur 
+        .header-mask
+            height: 105px
+    .navbar-menu
+        background: 0
+
+a.navbar-item
+    &:hover
+        background-color: #fafafa85
