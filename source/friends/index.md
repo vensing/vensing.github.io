@@ -6,11 +6,6 @@ toc: true
 sage: true
 ---
 
-<img src="/img/friends_img.jpg" style="border: none; "></img>
-
-<div style="text-align:center;">
-<p>「 さいごまでみんなと</p><p>なかよくしたいです</p><p>  よろしくおねがいします 」</p>
-</div>
 
 ###  友情链接 
 

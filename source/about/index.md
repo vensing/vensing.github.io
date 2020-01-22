@@ -6,11 +6,6 @@ comments: false
 toc: true
 ---
 
-<img src="/img/about_img.jpg" style="border: none; "></img>
-
-<div style="text-align:center;">
-<p>「 ありがとうございます 」</p>
-</div>
 
 **欢迎你的来访，请往下查看吧 : ）**
 
