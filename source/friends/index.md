@@ -46,6 +46,8 @@ sage: true
 
 - [@Senventise](https://www.senventise.com)    <br> Steam 游戏大佬，Galgame 爱好者。
 
+- [@无用挂件の日历](https://raspii.tech/)    <br> 酷安来的小伙伴 ο(=•ω＜=)ρ⌒☆。
+
 **注：带中划线的链接已失效或不可用。**
 
 ### 友链申请
