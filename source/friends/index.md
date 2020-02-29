@@ -38,7 +38,7 @@ sage: true
 
 - [@东方幻梦](https://blog.badapple.pro/)      <br>只是当时已惘然，沉溺梦中不愿醒来。
 
-- [@CWorld's Blog](https://changingworld.gitee.io)      <br>万物皆虚。万事皆允。
+- [@CWorld's Blog](https://blog.cworld.top/)      <br>万物皆虚。万事皆允。
 
 - [@一么酱](https://blog.imgradeone.xyz/)      <br>（妹妹酱？猜测）萌站 一 丧病至极的一么酱的官网。
 
