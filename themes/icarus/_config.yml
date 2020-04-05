@@ -132,9 +132,9 @@ widgets:
         # Where should the widget be placed, left or right
         position: left
         # Author name to be shown in the profile widget
-        author: Vexsy
+        author: 风月
         # Title of the author to be shown in the profile widget
-        author_title: 动漫、追番、电脑迷、上网成瘾；摸鱼型博主
+        author_title: 有思想，也有忧伤和理想，芝士就是力量
         # Author's current location to be shown in the profile widget
         location: China
         # Path or URL to the avatar to be shown in the profile widget
@@ -152,7 +152,7 @@ widgets:
                 url: 'https://github.com/vensing'
             Twitter:
                 icon: fab fa-twitter
-                url: 'https://twitter.com/vensing1020'
+                url: 'https://twitter.com/ShinHoshiko'
             Telegram:
                 icon: fab fa-telegram
                 url: 'https://t.me/vexsy'

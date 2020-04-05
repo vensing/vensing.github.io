@@ -50,6 +50,7 @@ sage: true
 
 - [@ZhangYiJia](http://zhangyijia.eu5.org)    <br> 酷安来的小伙伴 +1。
 
+- [@AngelNI](https://angelni.github.io/)    <br>  A HPU‘s student。
 
 **注：带中划线的链接已失效或不可用。**
 
