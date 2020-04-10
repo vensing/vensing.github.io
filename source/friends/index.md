@@ -52,6 +52,8 @@ sage: true
 
 - [@AngelNI](https://angelni.github.io/)    <br>  A HPU‘s student。
 
+- [@糖喵🍬](https://candinya.com)    <br> 要来根🍭嘛~
+
 **注：带中划线的链接已失效或不可用。**
 
 ### 友链申请
