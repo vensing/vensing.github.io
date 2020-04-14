@@ -82,14 +82,11 @@ type: atom
 path: atom.xml
 limit: 20
 ## Themes: https://hexo.io/themes/
-#theme: hexo-theme-next-5.1.4
-theme: Kratos-Rebirth
+theme: icarus
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
   repo: https://github.com/vensing/vensing.github.io.git
-  #git@gitee.com:vensing/vensing.git
-  #git@git.coding.net:vensing/vensing.git
   branch: master
