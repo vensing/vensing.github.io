@@ -11,7 +11,7 @@ tags:
 
 
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32288085&auto=0&height=66"></iframe>
-
+<!--more-->
 
 あなたと初めて会った日のことは
 与你初次邂逅的那天
@@ -62,7 +62,7 @@ tags:
 「再也不去创造回忆了」
 私は决めた
 我这样下定了决心
-<!-- more -->
+
 
 「これまでの記憶をなくしてしまいたい」って
 「能够失去至今为止所有的记忆」

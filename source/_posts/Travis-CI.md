@@ -12,7 +12,12 @@ date: 2019-01-25 22:37:06
 toc: true
 ---
 
+是时候使用 Travis CI 自动部署 Hexo 博客啦。
+
+<!--more-->
+
 ![Travis CI 自动部署流程](https://i.loli.net/2019/07/13/5d29679d61e4094268.png)
+
 
 ## 没有 Travis CI 之前
 
@@ -39,7 +44,6 @@ $ hexo s
 $ hexo d
 ```
 
-<!-- more -->
 
 ## 使用 Travis CI 持续部署后
 

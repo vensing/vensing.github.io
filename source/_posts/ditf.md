@@ -12,13 +12,14 @@ toc: true
 
 魔物与王子（まものと王子様）是由TRIGGER和A-1 Pictures共同制作的原创动画《DARLING in the FRANXX》的作中绘本。
 
+<!--more-->
+
 最初于动画《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》第13话中发表的绘本。
 
 ![まものと王子様](https://i.loli.net/2019/07/13/5d296e1f2d46999365.png)
 
 实体书收录于2018年8月29日发售的《[DARLING in the FRANXX](https://zh.moegirl.org/DARLING_in_the_FRANXX "DARLING in the FRANXX")》Blu-ray&DVD第5卷 完全生产限定版特典。
 
-<!--more-->
 
 ### Ⅰ
 

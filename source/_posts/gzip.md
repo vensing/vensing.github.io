@@ -11,7 +11,12 @@ tags: gzip
 
 ### 背景	
 
-最近公司让做了一个示例项目，部署到阿里云后，客户反馈第一次进入登录页面非常慢，有多慢呢？说出来你可能不信，2M 的 js、css、png 等静态资源加载出来竟然需要15多秒？然后我赶紧打开Chrome控制台看一看到底是不是真的那么慢，一看卧槽这慢的简直想让人砸电脑了。
+最近公司让做了一个示例项目，部署到阿里云后，客户反馈第一次进入登录页面非常慢，有多慢呢？说出来你可能不信，2M 的 js、css、png 等静态资源加载出来竟然需要15多秒？
+
+<!--more-->
+
+然后我赶紧打开Chrome控制台看一看到底是不是真的那么慢，一看卧槽这慢的简直想让人砸电脑了。
+
 
 砸电脑是不可能砸的，那还是乖乖想办法定位问题，排除优化下。但是我那些 js，css，等静态文件都已经压缩过一遍了，没理由两三百k的 js 加载八九秒的啊？嗯，不是客户端网速慢，也不可能是我首页登录代码有问题(首页我就跳转个界面)。
 
@@ -26,7 +31,6 @@ tags: gzip
 
 答案是有的，比如 gzip。
 
-<!--more-->
 
 但是不是每个浏览器都支持 gzip 的，如果知道客户端（即浏览器）是否支持gzip呢，请求头中有个 Accept-Encoding来标识对压缩的支持。客户端http请求头声明浏览器支持的压缩方式，服务端配置启用压缩，压缩的文件类型，压缩方式。
 
@@ -63,10 +67,12 @@ content-encoding 是 gzip 的话就说明返回的是 gzip。
 | 参数项 | 释义 |
 | ---- | :-----: |
 | compression="on" | 打开压缩功能  |
-| compressionMinSize="2048" | 启用压缩的输出内容大小，当被压缩对象的大小>=该值时才会被压缩,默认为2KB(即2048) |
+| compressionMinSize="2048" | 启用压缩的输出内容大小，<br/>当被压缩对象的大小>=该值时才会被压缩,<br/>默认为2KB(即2048) |
 | noCompression<br/>UserAgents="gozilla" | 对于以下的浏览器，不启用压缩 |
 | compressable<br/>MimeType=text/css... | 压缩类型 |
-|  **useSendfile="false"**  | 让大文件也能进行gzip压缩，否则gzip只会压缩 2k~50k左右的文件<br/>|
+|  **useSendfile="false"**  | 让大文件也能进行gzip压缩，<br/>否则gzip只会压缩 2k~50k左右的文件<br/> |
+
+
 (useSendfile="false" 请 参考：[tomcat gzip compression not working for large js files](https://www.cnblogs.com/leon032/p/3512915.html))
 
 **注意：** 

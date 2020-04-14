@@ -12,7 +12,11 @@ toc: true
 
 
 
->**OpenCV** 的全称是 Open Source Computer Vision Library ，是一个跨平台的计算机视觉库。OpenCV 是由英特尔公司发起并参与开发，以 BSD 许可证授权发行，可以在商业和研究领域中免费使用。OpenCV 可用于开发实时的图像处理、计算机视觉以及模式识别程序等，总之就是很厉害啦。
+**OpenCV** 的全称是 Open Source Computer Vision Library ，是一个跨平台的计算机视觉库。OpenCV 是由英特尔公司发起并参与开发，以 BSD 许可证授权发行，可以在商业和研究领域中免费使用。
+<!--more-->
+OpenCV 可用于开发实时的图像处理、计算机视觉以及模式识别程序等，总之就是很厉害啦。
+
+
 
 ![OpenCV](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/OpenCV_Logo_with_text.png/225px-OpenCV_Logo_with_text.png)
 
@@ -22,7 +26,7 @@ toc: true
 
 一般这种图像识别的东西，都有开源的库，能白嫖就白嫖嘛，本着能做伸手党就不做动手党的原则，能不自己写就拿别人造的轮子（实际上也造不来轮子，况且 OpenCV 最开始的目标就是为了让后来者不重复造轮子）。
 
-<!--more-->
+
 
 本文试图简单介绍下 OpenCV 的环境搭建，具体的使用场景我可能在后几篇博客文章中体现。
 

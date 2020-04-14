@@ -3,7 +3,11 @@ title: Hello World
 abbrlink: 16107
 date: 2018-09-08 20:33:16
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+Welcome to [Hexo](https://hexo.io/)! This is your very first post.
+<!--more-->
+Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+
+
 
 ## Quick Start
 
@@ -22,7 +26,7 @@ $ hexo server
 ```
 
 More info: [Server](https://hexo.io/docs/server.html)
-<!--more-->
+
 ### Generate static files
 
 ``` bash
