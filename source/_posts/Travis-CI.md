@@ -6,7 +6,6 @@ tags:
   - 自动部署
   - Travis CI
 type: tags
-img: /img/travislogo.PNG
 abbrlink: 2331
 date: 2019-01-25 22:37:06
 toc: true
