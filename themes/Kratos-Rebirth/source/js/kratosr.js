@@ -1,7 +1,7 @@
 var kr = new Object();
 //-------------------参数设置区 开始-------------------
     kr.thome = "/";
-    kr.ctime = "2018-09-08 20:33:16";
+    kr.ctime = "2018/09/08 20:33:16";
     kr.donate = "支持我~";
     kr.scan = "扫一扫，好不好？";
     kr.alipay = "/images/alipayqr.jpg";
@@ -208,7 +208,8 @@ function createtime(){
     if(String(snum).length==1){snum = "0"+snum;}
     document.getElementById("span_dt_dt").innerHTML = dnum+"天"+hnum+"小时"+mnum+"分"+snum+"秒";
 }
-setInterval("createtime()",1000);
+//setInterval("createtime()",1000);
+setInterval(createtime,1000);
 
 if (kr.copy_notify) {
     document.body.oncopy = function(){alert(kr.copy_notify_text);}
