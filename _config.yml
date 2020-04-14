@@ -82,7 +82,7 @@ type: atom
 path: atom.xml
 limit: 20
 ## Themes: https://hexo.io/themes/
-theme: icarus
+theme: Kratos-Rebirth
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
