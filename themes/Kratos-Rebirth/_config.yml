@@ -35,6 +35,7 @@ contact:
   facebook: 
   linkedin: 
   github: https://github.com/vensing
+  rss: /atom.xml
   
 # Post Page
 posts:
