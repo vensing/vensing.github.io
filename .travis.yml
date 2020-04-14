@@ -5,7 +5,7 @@ sudo: false
 
 #cache
 cache:
-  apt: true
+  apt: false
   directories:
     - "node_modules"
  
