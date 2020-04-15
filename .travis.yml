@@ -5,7 +5,7 @@ sudo: false
 
 #cache
 cache:
-  apt: false
+  apt: true
   directories:
     - "node_modules"
  
@@ -24,9 +24,7 @@ notifications:
 # S: Build Lifecycle
 install:
   - npm install
-#  - npm install less@2.7.3 --save-dev
-#  - npm install gulp
-#  - gem install travis
+  - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
 #  - travis login --pro --github-token ${GH_TOKEN}
 
 before_script:
@@ -35,7 +33,6 @@ before_script:
     -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - export TZ='Asia/Shanghai'
-  #- npm install gulp
   - chmod +x _travis.sh
 
 script:
