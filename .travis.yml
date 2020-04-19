@@ -12,7 +12,7 @@ cache:
 addons:
   ssh_known_hosts:
   - github.com
-  - vensing.com
+  - vensing.com:22
 
 notifications:
   email:
@@ -32,6 +32,7 @@ before_script:
   - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv 
     -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
+  - mv -fv .travis/ssh-config ~/.ssh/config
   - export TZ='Asia/Shanghai'
   - chmod +x _travis.sh
 
@@ -41,8 +42,8 @@ script:
 after_success:
  # - LAST_BUILD_NUMBER=68
  # - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done
-  - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@www.vensing.com:/hexo
-
+ # - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@39.96.203.11:/hexo
+   - rsync -az -vv --delete -e 'ssh -p 22' public/ root@vensing.com:/hexo
 after_script:
   - ./_travis.sh
 
