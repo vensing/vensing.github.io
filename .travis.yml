@@ -32,7 +32,6 @@ before_script:
   - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv 
     -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
-  - mv -fv .travis/ssh-config ~/.ssh/config
   - export TZ='Asia/Shanghai'
   - chmod +x _travis.sh
 
