@@ -13,7 +13,7 @@ tags:
 
 <!-- more--> 
 
-在挂着基于 `icarus` 魔改的主题一年之后，我终于下定决心换下一个主题 `Kratos-Rebirth`；静态博客的本质就是换主题 (雾 。在这里非常感谢 [糖喵🍭同学](https://candinya.com/) 在无数个月黑风高的晚上积极地维护和更新  [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth)，如果你也觉得这个主题很赞，你应该去  https://github.com/Candinya/Kratos-Rebirth 点一个⭐，不要嫌麻烦，这可能是最好的支持方式。
+在挂着基于 `icarus` 魔改的主题一年之后，我终于下定决心换下一个主题 `Kratos-Rebirth`；静态博客的本质就是换主题 (雾 。在这里非常感谢 [@糖喵🍭同学](https://candinya.com/) 在无数个月黑风高的晚上积极地维护和更新  [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth)，如果你也觉得这个主题很赞，你应该去  https://github.com/Candinya/Kratos-Rebirth 点一个⭐，不要嫌麻烦，这可能是最好的支持方式。
 
 那么，就来看看本次如何重新定义本站的吧 x 
 
@@ -35,9 +35,9 @@ tags:
 
 Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很纠结很头大，总结下有以下几种主流方式：
 
-- LeanCloud 结合 valine 
+- valine 结合 LeanCloud 
 - gitTalk 配合 github
-- disqus 和 disqusjs基础评论模式
+- disqus 和 disqusjs 基础评论模式
 
 以上三种方式都可以 (不做比较)，我比较偏爱 disqus 的评论服务，但难受的就是不开代理评论服务就嗝屁了。对于那些没有代理手段的用户是看不到已有的浏览评论的，这一点劝退了很多访客体验真的不好 ( 我完全没有访客 )  。好在上有政策，下有对策，[disqusjs](https://github.com/SukkaW/DisqusJS) 提出了反向代理的解决方案。
 
@@ -46,9 +46,9 @@ Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很
 
 ### CF Workers 反向代理
 
-首先，你需要登录到 CloudFlare， 然后找到 Workers ，选择 Free 计划 (土豪请随意选择)；然后你可能需要填一个  **xxxx.workers.dev** 的域名地址，填好之后点击 **创建 Worker**，worker 名字随意但这里建议填 **disqusjs-api**。进入编辑页面，把[官方示例CF Workers反代项目](https://github.com/idawnlight/disqusjs-proxy-cloudflare-workers/blob/master/worker.js ) 里的内容复制到左侧脚本框中，弄好之后再点击右侧发起 HTTP GET 请求测试，如果出现 200 OK，那就说明成功了。 
+首先，你需要登录到 CloudFlare， 然后找到 Workers ，选择 Free 计划 (土豪请随意选择)；然后你可能需要填一个  **xxxx.workers.dev** 的域名地址，填好之后点击 **创建 Worker**，worker 名字随意但这里建议填 **disqusjs-api**。进入编辑页面，把[官方示例 CF Workers 反代项目](https://github.com/idawnlight/disqusjs-proxy-cloudflare-workers/blob/master/worker.js ) 里的内容复制到左侧脚本框中，弄好之后再点击右侧发起 HTTP GET 请求测试，如果出现 200 OK，那就说明成功了。 
 
-![微信截图_20200418121431.png](https://i.loli.net/2020/04/18/U9fgABpsERmihkt.png)
+![CF Workers 反向代理](https://i.loli.net/2020/04/18/U9fgABpsERmihkt.png)
 
 ### disqusjs 配置
 
@@ -68,14 +68,14 @@ api 这里得注意下，不是填 https://disqusjs-api.xxxx.workers.dev  而是
 
 ## 0X03  更合理的托管方式
 
-由于 Kratos-Rebirth 主题在维护和更新，后续会有新的功能加入所以我们必须得同步更新；直接把主题 Clone 到 Blog 项目的 themes文件夹下，Github不会提交嵌套仓库的文件夹。别问我为啥不用submodule，我完全不会那东西也不想用 (理直气壮 。所以这次我打算把主题也托管在 github 得了，然后 Travis CI build 在 执行 **install** 时 clone下主题放到 **themes**  文件夹下即可。
+由于 Kratos-Rebirth 主题在维护和更新，后续会有新的功能加入所以我们必须得同步更新；直接把主题 Clone 到 Blog 项目的 themes 文件夹下，Github 并不会提交嵌套仓库的文件夹。别问我为啥不用 submodule，我完全不会那东西也不想用 (理直气壮 。所以这次我打算把主题也托管在 github 仓库得了，然后 Travis CI build 在执行 **install** 时 clone 下主题放到 **themes**  文件夹下即可。
 
 
 ### 主题托管
 
 主题我托管在 [vensing/Kratos-Rebirth](https://github.com/vensing/Kratos-Rebirth)仓库，有两个分支：
 
-- master 同步  Candinya/Kratos-Rebirth 的源码
+- master 同步 Candinya/Kratos-Rebirth 的源码
 - custom 放我博客用到的主题代码，包含一些自定义修改和私人配置等
 
 你需要将 Candinya/Kratos-Rebirth 添加为远程源以便同步其更新：
@@ -87,9 +87,9 @@ git fetch upstream
 # 融合
 git merge upstream/master
 ```
-这样，Candinya/Kratos-Rebirth 库更新了，master 分支同步下，最后在 merge 到 custom 分支即可。由于主题托管在Github，因此博客根目录下的 themes 文件夹便可以删除了，你需要在 .gitignore 添加配置，忽略该文件夹。最后的主题仓库的分支图大概长这样⬇：
+这样，Candinya/Kratos-Rebirth 库更新了，master 分支同步下，最后在 merge 到 custom 分支即可。由于主题托管在 Github，因此博客根目录下的 themes 文件夹便可以删除了，你需要在 .gitignore 添加配置，忽略该文件夹。最后的主题仓库的分支图大概长这样⬇：
 
-![微信截图_20200418095032.png](https://i.loli.net/2020/04/18/R97WFHiOhSCsyfU.png)
+![SourceTree 下的分支结构](https://i.loli.net/2020/04/18/R97WFHiOhSCsyfU.png)
 
 ### Travis CI 配置
 

@@ -10,7 +10,7 @@ toc: true
 ---
 
 
-**hexo-theme-imaimo **👇 是某天心血来潮的产物，目前还很简陋。
+**hexo-theme-imaimo** 👇 是某天心血来潮的产物，目前还很简陋。
 
 - 📁 项目地址：[hexo-theme-imaimo](https://github.com/vensing/hexo-theme-imaimo)
 <!--more-->
