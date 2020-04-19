@@ -47,16 +47,17 @@ toc: true
 - 2019.06.xx - BWG ip 被 ban，转向 Bing 搜索。
 - 2019.07.13 - 将博客文章里的图片由本地转移到 SM.MS 图床，使用的图床管理工具是 PicGO。
 - 2019.10.16 - 主题整体色调换成 <span style="color:#8f77b5">「 紫苑 」</span>`#8f77b5` 色调。
+- 2020.04.14 - 使用[Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth)主题，采用 disqus 和 disqusjs 评论服务。
 
 ### 博客快照
 
 ![最初博客主题](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
 
-![使用的第二个博客主题](https://i.loli.net/2019/07/13/5d2969600b95d66901.png)
+![使用的Next主题](https://i.loli.net/2019/07/13/5d2969600b95d66901.png)
 
-![正在使用的主题](https://i.loli.net/2019/07/17/5d2e74db631ba20017.png)
+![使用的icarus主题](https://i.loli.net/2019/07/17/5d2e74db631ba20017.png)
 
-![未来将使用的主题](https://i.loli.net/2019/06/24/5d10a59f842d945783.png)
+![正在使用的主题](https://i.loli.net/2020/04/18/agbkYHThGBAdnt4.png)
 
 
 ### 你能从这里收获什么？
