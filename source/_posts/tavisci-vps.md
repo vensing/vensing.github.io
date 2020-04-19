@@ -23,7 +23,7 @@ toc: true
 
 
 
-### 生成部署私钥
+### 生成部署密钥
 
 首先是先生成 ssh 密钥，在你电脑上随便哪个文件夹都行：
 
@@ -31,12 +31,12 @@ toc: true
 ssh-keygen -f travis.key 
 ```
 
-把生成的 travis.key.pub 里的内容粘到你 Github 仓库的 Deploy Keys 以及 VPS 上的 `~/.ssh/authorized_keys` 里。这样 Travis CI 就能对 Github 和 VPS 进行访问了。
+把生成的 travis.key.pub 公钥里的内容粘到你 Github 仓库的 Deploy Keys 以及 VPS 上的 `~/.ssh/authorized_keys` 里。这样 Travis CI 结合私钥就能对 Github 和 VPS 进行访问了。
 
 
 ### 加密私钥
 
-Travis CI 自动部署时，我们必须从仓库拿到这个密钥（之前的 token 是 设置了环境变量）。直接把密钥放仓库下肯定是不安全的，Travis 提供了密钥加密解密的方法。
+Travis CI 自动部署时，我们必须从仓库拿到上面生成的私钥。直接把私钥放仓库下肯定是不安全的，Travis 提供了私钥加密解密的方法。
 
 首先，在 Linux 环境下安装 Travis 命令行工具 ，需先[安装 ruby 环境](http://www.ruby-lang.org/zh_cn/documentation/installation/)：
 
@@ -47,7 +47,7 @@ $ sudo apt-get install ruby-full
 $ sudo gem install travis
 ```
 
-加密密钥文件：
+加密私钥文件：
 
 ```sh
 # 交互式操作，使用 GitHub 账号密码登录  
@@ -63,7 +63,7 @@ $ travis encrypt-file -r XXX/XXX.github.io travis.key -add
 
 ### .travis.yml 配置
 
-解密密钥文件：
+解密私钥文件：
 将 travis.key.enc 放到仓库下，哪个位置随你喜欢，确保解密命令能访问到就成。`$encrypted_383bc2ea2d21_key`及`$encrypted_383bc2ea2d21_iv` 请去travis ci仓库设置环境变量里找(Travis 会自动生成这两个环境变量)。在 .travis.yml 下添加如下命令：
 
 ```sh

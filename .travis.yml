@@ -1,18 +1,22 @@
 language: node_js
 node_js: stable 
 
-sudo: false
+# 只监听 source 分支的改动
+branches:
+  only:
+    - source
 
-#cache
+#cache 缓存依赖，节省持续集成时间
 cache:
   apt: true
   directories:
-    - "node_modules"
+    - node_modules
+    - themes
  
 addons:
   ssh_known_hosts:
   - github.com
-  - vensing.com:22
+  - vensing.com
 
 notifications:
   email:
@@ -24,13 +28,11 @@ notifications:
 # S: Build Lifecycle
 install:
   - npm install
-  - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
-#  - travis login --pro --github-token ${GH_TOKEN}
+  - if [ ! -d "themes/Kratos-Rebirth" ]; then git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth ; fi
 
 before_script:
   # 解密 RSA 私钥并设置为本机 ssh 私钥
-  - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv 
-    -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
+  - openssl aes-256-cbc -K $encrypted_383bc2ea2d21_key -iv $encrypted_383bc2ea2d21_iv -in travis/travis.key.enc -out ~/.ssh/id_rsa -d
   - chmod 600 ~/.ssh/id_rsa
   - export TZ='Asia/Shanghai'
   - chmod +x _travis.sh
@@ -39,20 +41,10 @@ script:
   - hexo clean && hexo g
 
 after_success:
- # - LAST_BUILD_NUMBER=68
- # - for i in $(seq 1 $LAST_BUILD_NUMBER ); do  travis logs $i --delete --force ; done
- # - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@39.96.203.11:/hexo
-   - rsync -az -vv --delete -e 'ssh -p 22' public/ root@vensing.com:/hexo
+  - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@vensing.com:/hexo
+
 after_script:
   - ./_travis.sh
 
-# E: Build LifeCycle
-
-branches:
-  only:
-    - source
-#env:
-# global:
-#   - GH_REF: github.com/vensing/vensing.github.io.git
 
 

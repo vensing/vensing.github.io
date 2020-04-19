@@ -55,7 +55,7 @@ $ git add .
 
 $ git commit -m "your message"
 
-$ git push -u origin master:source
+$ git push -u origin source:source
 ```
 
 
