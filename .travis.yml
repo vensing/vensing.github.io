@@ -1,5 +1,5 @@
 language: node_js
-node_js: stable 
+node_js: 12.14.1 
 
 # 只监听 source 分支的改动
 branches:
@@ -11,7 +11,6 @@ cache:
   apt: true
   directories:
     - node_modules
-    - themes
  
 addons:
   ssh_known_hosts:
@@ -28,7 +27,7 @@ notifications:
 # S: Build Lifecycle
 install:
   - npm install
-  - if [ ! -d "themes/Kratos-Rebirth" ]; then git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth ; fi
+  - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
 
 before_script:
   # 解密 RSA 私钥并设置为本机 ssh 私钥

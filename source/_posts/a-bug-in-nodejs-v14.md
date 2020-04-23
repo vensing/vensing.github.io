@@ -1,0 +1,55 @@
+---
+title: hexo在Node.js v14.0下构建空html的bug
+comments: true
+toc: true
+date: 2020-04-23 09:25:00
+categories:
+  - 博客
+tags:
+  - hexo
+  - nodejs
+---
+
+记录下 hexo 在 Node.js v14.0 下构建空 html 的 bug。
+
+<!-- more--> 
+
+
+## 0X01 Travis CI 构建出错 
+
+昨天推特上有推友在问 Travis CI 构建 hexo 博客静态网页时构建空html页面的问题，她说遇到了从未见到过的报错信息。于是我就 Bing 搜索了下报错部分的关键词：
+
+```js
+ Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
+```
+
+Bing 还是比较靠谱的，第二个搜索结果就给出了与报错内容问题类似的一个网页。https://jira.mongodb.org/browse/NODE-2536 然后我就点进去看了下，他使用的 Node.js  版本是 v14.0-rc，下面有人回复说也在  v14.0 下遇到了同样的问题。好像有点石锤是 Node.js v14.0 的锅，v14.0 是前几天(21号)发布的最新特性版本 ( LTS不香吗 。于是我就回复推油说可能是 Node.js v14.0 的锅，后面她指定了下版本就正常了。我就跑去看了下她的 Travis CI 构建历史，配置文件里写的环境是  nodejs ，版本配置的是 stable，也就是最新的稳定版本。然后 log 信息显示安装的 node 环境是 v14.0，看来问题石锤了 ( stable NO! 。所以别用什么最新版本，害，官网不是说得明明白白推荐大多数人使用 LTS 版本吗？
+
+##  0X02  重现 bug
+
+真理来源于实践，于是我决定亲自去重现下这个 bug 。由于我用的是 Nodejs v12.14.1，重现 bug 需要 v14.0 但是我后边又不需要这个版本。所以我需要一个可以切换 Nodejs 版本的工具，重现完bug就滚回 v12.14.1。python 下有 Anaconda 管理版本，Nodejs 也有 nvm(Node version manager) 做版本管理。怎么安装 nvm，你去搜呀。下图是我安装 v14.0.0 步骤的截图：
+
+![nvm 安装 v14.0.0](https://i.loli.net/2020/04/23/Ivlx1KRnF5ypm4A.png)
+
+```shell
+# 安装 v14.0
+nvm install v14.0
+# 列出安装的 nodejs 环境
+nvm list 
+  14.0.0
+* 12.14.1 (Currently using 64-bit executable)
+# 使用 v14.0.0
+nvm use v14.0.0
+```
+
+然后就是执行 hexo clean && hexo g 来测试下是否能正常构建了。果然，出现了那个诡异的 bug，石锤了。
+
+![v14.0.0 构建空 html 的 bug](https://i.loli.net/2020/04/23/26yGdqpsF5D8jSv.png)
+
+## 0X03 解决方式
+
+解决方式当然是别用 v14.0.0 最新版本了，hexo 还没做兼容呢，吓得我赶紧把 Travis CI 配置文件里的 Nodejs 版本指定下，别再用` stable`了它会自动使用最新的稳定版本！
+
+## 0X04 总结
+
+不要轻易切换到最新版本，请使用 LTS 长期支持版本，Travis CI 构建时指定具体的 Nodejs 版本，不要图省事填`stable`，它会自动安装最新的 Nodejs 版本。

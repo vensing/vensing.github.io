@@ -54,7 +54,7 @@ Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很
 
 我的 disqusjs 配置如下：
 
-```yml
+```yaml
 # DisqusJS
 disqusjs:
   shortname: your shorname
@@ -79,6 +79,7 @@ api 这里得注意下，不是填 https://disqusjs-api.xxxx.workers.dev  而是
 - custom 放我博客用到的主题代码，包含一些自定义修改和私人配置等
 
 你需要将 Candinya/Kratos-Rebirth 添加为远程源以便同步其更新：
+
 ```shell 
 # 添加远程源
 git remote add upstream https://github.com/Candinya/Kratos-Rebirth
@@ -87,6 +88,7 @@ git fetch upstream
 # 融合
 git merge upstream/master
 ```
+
 这样，Candinya/Kratos-Rebirth 库更新了，master 分支同步下，最后在 merge 到 custom 分支即可。由于主题托管在 Github，因此博客根目录下的 themes 文件夹便可以删除了，你需要在 .gitignore 添加配置，忽略该文件夹。最后的主题仓库的分支图大概长这样⬇：
 
 ![SourceTree 下的分支结构](https://i.loli.net/2020/04/18/R97WFHiOhSCsyfU.png)
@@ -97,9 +99,9 @@ git merge upstream/master
 
 以下是我的Travis CI 配置文件：
 
-```yml
+```yaml
 language: node_js
-node_js: stable 
+node_js: 12.14.1 
 
 sudo: false
 
