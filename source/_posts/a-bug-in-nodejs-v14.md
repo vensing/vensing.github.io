@@ -10,14 +10,14 @@ tags:
   - nodejs
 ---
 
-记录下 hexo 在 Node.js v14.0 下构建空 html 的 bug。
+记录下 hexo 在 Node.js v14.0 下构建空 html 的问题。
 
 <!-- more--> 
 
 
 ## 0X01 Travis CI 构建出错 
 
-昨天推特上有推友在问 Travis CI 构建 hexo 博客静态网页时构建空html页面的问题，她说遇到了从未见到过的报错信息。于是我就 Bing 搜索了下报错部分的关键词：
+昨天推特上有推友在问 Travis CI 构建 hexo 博客静态网页时构建空 html 页面的问题，她说遇到了从未见到过的报错信息。于是我就 Bing 搜索了下报错部分的关键词：
 
 ```js
  Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency
@@ -60,6 +60,6 @@ nvm use v14.0.0
 
 ![stylus warning 警告](https://i.loli.net/2020/04/24/lTWGwo59CidzSVM.png)
 
-而执行 hexo g 构建空 html 的问题则是因为 Nodejs v14 下使用了严格的参数类型检测，从而导致 `hexo-fs` 的 fs.promises.copyFile 方法在 Nodejs v14 以下版本正常构建，而在 v14 版本上则出现了问题。具体的解释请查看 [hexo-fs#pull-59](https://github.com/hexojs/hexo-fs/pull/59)，`hexo-fs` 涉及到 `hexo-cli` 及 hexo 构建静态网页从而导致构建出了空的 html，详情见评论 [issuecomment-618815265](https://github.com/hexojs/hexo/issues/4260#issuecomment-618815265)。 
+而执行 hexo g 构建空 html 的问题则是因为 Nodejs v14 下使用了严格的参数类型检测，从而导致 `hexo-fs` 的 fs.promises.copyFile 方法在 Nodejs v14 以下版本正常构建，而在 v14 版本上则出现了问题。具体的解释请查看 [hexo-fs#pull-59](https://github.com/hexojs/hexo-fs/pull/59)，`hexo-fs` 涉及到 `hexo-cli` 及 hexo 构建静态网页从而导致构建出了空的 html，详情见评论 [issuecomment-618815265](https://github.com/hexojs/hexo/issues/4260#issuecomment-618815265)。此问题已在 `hexo-fs` [hexo-fs#pull-60](https://github.com/hexojs/hexo-fs/pull/60) 修复。
 
 

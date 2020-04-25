@@ -103,3 +103,7 @@ Kratos-Rebirth 采用 jsDelivr CDN 引入各种 css、js 依赖，在选择 npm 
 - https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径
 
 最后发现，npm 源下搜 fancyapps 关键词才能找到最新版，有点搞 (雾 。你可以去[https://github.com/Candinya/Kratos-Rebirth/pull/5](https://github.com/Candinya/Kratos-Rebirth/pull/5) 查看我提交的 fancybox 插件 PullRequest。
+
+## 0X05 后续
+
+因为 fancybox 默认是采用 hash 模式，即在 url 后边加 # 号弹窗预览图片；这会导致该 url 被添加到地址栏及浏览器历史记录中去，当 popstate 事件监听时会出现图片弹窗在其他页面的错误以及重复的历史记录。因此，在[Kratos-Rebirth#commit-ddf0417](https://github.com/Candinya/Kratos-Rebirth/commit/ddf0417d418674e69c069528cccd0d1aceca66f0) 我们禁止了hash模式，fancybox 给图片包裹的 a 链接不再出现在地址栏和浏览器历史记录中，fancybox 应该是使用了 replaceState 方法实现这一特性。至此 fancybox 弹窗预览图片的功能已基本完善。
