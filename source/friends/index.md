@@ -29,13 +29,15 @@ var myFriends = [
     ["https://bwoywan268.xyz/", "https://vensing.com/images/avatar.png", "@博源", "人生如逆旅，我亦是行人"], 
     ["https://sanshiliuxiao.top/", "https://cdn.jsdelivr.net/gh/sanshiliuxiao/blog-static/avatar.jpg", "@椎咲良田", " 昨日、今日、明日，前端大佬 ( =•ω＜= )✧"], 
     ["https://mqaq.fun/", "https://vensing.com/images/avatar.png", "@一叶竹", "是一个喜欢二次元的蓝孩纸喔 ~"],
-    ["https://blog.badapple.pro/", "https://cn.gravatar.com/avatar/cc6a1849aa21339b96dd2a7c913dc435?s=80&d=https%3A%2F%2Fcn.gravatar.com%2Favatar%2Fb745710ae6b0ce9dfb13f5b7c0956be1&r=g", "@东方幻梦", "只是当时已惘然，沉溺梦中不愿醒来。"],
-    ["https://blog.imgradeone.xyz/", "https://blog.imgradeone.xyz/images/avatar.png?v=1585924114010", "@一么酱", "（妹妹酱？猜测）萌站 一 丧病至极的一么酱的官网。"], 
+    ["https://blog.badapple.pro/", "https://cn.gravatar.com/avatar/cc6a1849aa21339b96dd2a7c913dc435", "@东方幻梦", "只是当时已惘然，沉溺梦中不愿醒来。"],
+    ["https://blog.imgradeone.xyz/", "https://blog.imgradeone.xyz/images/avatar.png?v=1585924114010", "@一么酱", "(妹妹酱？猜测)萌站 一 丧病至极的一么酱的官网。"], 
     ["https://removeif.github.io/", "https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.png", "@辣椒の酱", " 尚未执佩剑，转眼即江湖。后端开发，技术分享。"], 
-    ["https://www.senventise.com/", "https://blog-1256129046.cos.ap-shanghai.myqcloud.com/avatar.png", "@Senventise", "Steam 游戏大佬，Galgame 爱好者。"],
-    ["https://raspii.tech/", "https://vensing.com/images/avatar.png", "@无用挂件の日历", "无用挂件の日历 ο(=•ω＜=)ρ⌒☆。"], 
+    ["https://www.senventise.com/", "https://public-res-1256129046.cos.ap-shanghai.myqcloud.com/avatar.png", "@Senventise", "Steam 游戏大佬，Galgame 爱好者。"],
+    ["https://raspii.tech/", "https://vensing.com/images/avatar.png", "@无用挂件の日历", "无用挂件の日历 ο(=•ω＜=)ρ。"], 
     ["https://zhangyijia.eu5.org/", "https://cdn.jsdelivr.net/gh/miku-o/imgData/5c3aedy7.jpg", "@ZhangYiJia", " 我们所过的每个平凡的日常，也许就是连续发生的奇迹"], 
     ["https://angelni.github.io/", "https://cdn.jsdelivr.net/gh/AngelNI/CDN@3.0/imgs/avatar.png", "@AngelNI", "A HPU‘s student。"],
+    ["https://eanraig.xyz/", "https://cdn.jsdelivr.net/gh/eanraig/ghost-assets/img/2020/04/avatar.jpg", "@eanraig", "他没有更多信息！"],
+    ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果

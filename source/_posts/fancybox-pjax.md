@@ -96,7 +96,7 @@ $(document).on("click", 'a[target!=_blank][rel!=gallery]', function() {
 
 ## 0X04 总结
 
-fancybox 会对 markdown 文件里的  \!\[\]\(imgurl\) 做超链接包裹，\<img\>  也同意会被处理。但是，如果你用 js 编程的方式添加的话，fancybox 是不会做处理的即不会被超链接包裹。
+fancybox 会对 markdown 文件里的  \!\[\]\(imgurl\) 做超链接包裹，\<img\>  也同意会被处理。但是，如果你用 js 编程的方式添加图片的话，fancybox 是不会对图片做处理的即不会被超链接包裹。
 
 Kratos-Rebirth 采用 jsDelivr CDN 引入各种 css、js 依赖，在选择 npm 源时，直接搜 fancybox 最新版本在 3.0.1；然后就打算用 github 的源，这里记录下如何用 jsDelivr 链接到 GitHub 的源：
 
@@ -106,4 +106,4 @@ Kratos-Rebirth 采用 jsDelivr CDN 引入各种 css、js 依赖，在选择 npm 
 
 ## 0X05 后续
 
-因为 fancybox 默认是采用 hash 模式，即在 url 后边加 # 号弹窗预览图片；这会导致该 url 被添加到地址栏及浏览器历史记录中去，当 popstate 事件监听时会出现图片弹窗在其他页面的错误以及重复的历史记录。因此，在[Kratos-Rebirth#commit-ddf0417](https://github.com/Candinya/Kratos-Rebirth/commit/ddf0417d418674e69c069528cccd0d1aceca66f0) 我们禁止了hash模式，fancybox 给图片包裹的 a 链接不再出现在地址栏和浏览器历史记录中，fancybox 应该是使用了 replaceState 方法实现这一特性。至此 fancybox 弹窗预览图片的功能已基本完善。
+因为 fancybox 默认是采用 hash 模式，即在 url 后边加 # 号弹窗预览图片；这会导致该 url 被添加到地址栏及浏览器历史记录中去，当 popstate 事件监听时会出现图片弹窗在其他页面的错误以及重复的历史记录。因此，在[Kratos-Rebirth#commit-ddf0417](https://github.com/Candinya/Kratos-Rebirth/commit/ddf0417d418674e69c069528cccd0d1aceca66f0) 我们禁止了hash模式 `$.fancybox.defaults.hash = false;`，fancybox 给图片包裹的 a 链接不再出现在地址栏和浏览器历史记录中，fancybox 应该是使用了 replaceState 方法实现这一特性。至此 fancybox 弹窗预览图片的功能已基本完善。
