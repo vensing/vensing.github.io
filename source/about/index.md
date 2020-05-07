@@ -6,6 +6,7 @@ comments: false
 toc: true
 ---
 
+![](/images/chi.gif)
 
 **欢迎你的来访，请往下查看吧 : ）**
 
