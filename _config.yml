@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 风月
+title: 芝士部落格
 subtitle: 有思想，也有忧伤和理想，芝士就是力量
 description: 有思想，也有忧伤和理想，芝士就是力量
-keywords: "风月的日记本,Vexsy,vensing,风月"
+keywords: "芝士的日记本, 芝士部落格"
 author: Vexsy
 language: zh-CN
 timezone: Asia/Shanghai 
@@ -15,7 +15,7 @@ timezone: Asia/Shanghai
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://vensing.com
 root: /
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 
 # Directory
