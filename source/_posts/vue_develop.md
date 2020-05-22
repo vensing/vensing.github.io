@@ -21,8 +21,8 @@ tags:
 
 结合前段时间写的一个 Vue + SpringBoot 项目，我在部署的时候尝试了以下几种方式：
 
-1. Vue + SpringBoot 打成  jar 包进行部署；
-2. Vue + SpringBoot 打成 war包进行部署；
+1. Vue + SpringBoot 打成 jar 包进行部署；
+2. Vue + SpringBoot 打成 war 包进行部署；
 3. Vue 项目和 SpringBoot 项目各自单独部署；
 4. 容器部署 ( 这就涉及到知识盲区了，逃 )
 
@@ -45,9 +45,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
         // 解决静态资源被拦截的问题
         web.ignoring().antMatchers("/fonts/**", "/images/**", "/css/**", "/js/**","/favicon.ico", "/index.html", "/window.config.js");
-		
 		...
-		
     }
 }
 ```
@@ -167,7 +165,7 @@ public class ErrorPageConfig {
 public class ErrorPageController {
 
     @ApiOperation(value = "跳转到index页面", notes = "跳转到index页面")
-    @RequestMapping("/page/**")
+    @RequestMapping("/vue/**")
     public ModelAndView getNeMoInTree() {
         return new ModelAndView("index");
     }
@@ -272,10 +270,10 @@ location / {
 
 Vue-Router 里配置的 base: /app 子路径，那么做如下配置：
 ```conf
-location /map {
+location /app {
     alias /dist; #注意alias,不能为root
     # index index.html index.htm;
-    try_files $uri $uri/ /map/index.html;
+    try_files $uri $uri/ /app/index.html;
 }
 ```
 
