@@ -37,7 +37,8 @@ var myFriends = [
     ["https://zhangyijia.eu5.org/", "https://cdn.jsdelivr.net/gh/miku-o/imgData/5c3aedy7.jpg", "@ZhangYiJia", " 我们所过的每个平凡的日常，也许就是连续发生的奇迹"], 
     ["https://angelni.github.io/", "https://cdn.jsdelivr.net/gh/AngelNI/CDN@3.0/imgs/avatar.png", "@AngelNI", "A HPU‘s student。"],
     ["https://eanraig.xyz/", "https://cdn.jsdelivr.net/gh/eanraig/ghost-assets/img/2020/04/avatar.jpg", "@eanraig", "他没有更多信息！"],
-    ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"]
+    ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
+    ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果

@@ -23,10 +23,10 @@ tags:
 
 1. Vue + SpringBoot 打成 jar 包进行部署；
 2. Vue + SpringBoot 打成 war 包进行部署；
-3. Vue 项目和 SpringBoot 项目各自单独部署；
+3. Vue 项目和 SpringBoot 项目都单独部署；
 4. 容器部署 ( 这就涉及到知识盲区了，逃 )
 
-下面将对以上的前三种部署方式进行简单地阐述。
+下面将对以上的前三种部署方式进行简单地阐述。PS：本文仅仅是实验性质的尝试，仅供参考，关于跨域问题已在后端项目配置好，这里不赘述。
 
 
 
@@ -34,7 +34,7 @@ tags:
 
 ### 一、Vue + SpringBoot  以 jar 包部署
 
-采用 Vue + SpringBoot 打成  jar 包进行部署，我们需要先将 Vue 项目进行编译打包成静态资源，再把这些静态资源复制到 SB 项目的 static 静态资源文件夹下，记住：你需要对这些静态文件的访问权限都放行。
+采用 Vue + SpringBoot 打成  jar 包进行部署，我们需要先将 Vue 项目进行编译打包成静态资源，再把这些静态资源复制到 SB 项目的 static 静态资源文件夹下，记住：你需要对这些静态文件的访问权限都放行(前后端分离会采用 token 校验权限)。
 
 
 ```java
@@ -54,7 +54,7 @@ public class SecurityConfigure extends WebSecurityConfigurerAdapter {
 
 
 
-你可能会对上面的 `window.config.js` 感到疑惑？实际上这个 js 是我们给单页应用注册的全局配置变量：
+你可能会对上面的放开的 `window.config.js` js 资源感到疑惑？实际上这个 js 是我们给单页应用注册的全局配置变量：
 
 
 
@@ -81,7 +81,7 @@ const userInfoUri = process.env.NODE_ENV === 'development' ? process.env.VUE_APP
 ```
 
 
-如果你把这些变量写入 `.env.production` ，那么一旦你更改了这些变量你又得重新去打个包，我可去他么的吧。实际上，也用不着重新打包 ，你可以去js里文件来查找所有这些变量然后改回来，但这也非常容易出错。
+如果你把这些变量写入 `.env.production` ，那么一旦你更改了这些变量你又得重新去打个包，我可去他么的吧。实际上，也用不着重新打包 ，你可以去 /dist/js 目录下的 js 文件里来查找所有这些变量然后改回来，但这也非常容易出错。
 
 当然一些重要的配置变量 ( 比如 secret )，你最好不要写在 window.config.js 里，你应该写到 .env.production 文件里然后使用 process.env.VUE_APP_client_secret 读取变量加密下。
 
