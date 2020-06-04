@@ -33,7 +33,10 @@ tags:
 一路走来，别的乐团有的因服兵役或者其他原因解散了，有的已不温不火，只有五月天从没有冷场；大概真正纯粹的音乐是永远不会失去魅力的——音乐带给人的影响。
 
 
-<video id="spkj" controls="" autoplay="" name="media" style="width:100%;"><source src="https://apd-ef265f33b9e5f1ae2a2b2f0a56e7b981.v.smtcdns.com/mv.music.tc.qq.com/AdWCVAoOd3f4mnyJVq0YGyr3tdmq-jRS5S7AdI1wZMNc/53B947B16E1C9B83883B93AAE9007EAF39075EE7925A76BCFCFF92214A5519582A0CBCBAB0C77479EBF9BBD19FF82E82ZZqqmusic_default/1049_M012430000429xzS0NjG8T1001732093.f9844.mp4?fname=1049_M012430000429xzS0NjG8T1001732093.f9844.mp4" type="video/mp4"></video>
+<iframe id="spkj" src="//player.bilibili.com/player.html?aid=370819192&bvid=BV1dZ4y1p7za&cid=195045170&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" width=100%> </iframe>
+<script type="text/javascript">  
+document.getElementById("spkj").style.height=document.getElementById("spkj").scrollWidth*0.76+"px";
+</script>
 
 
 
