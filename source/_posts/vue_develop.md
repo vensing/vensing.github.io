@@ -32,7 +32,7 @@ tags:
 
 ---
 
-### 一、Vue + SpringBoot  以 jar 包部署
+### Vue + SpringBoot  以 jar 包部署
 
 采用 Vue + SpringBoot 打成  jar 包进行部署，我们需要先将 Vue 项目进行编译打包成静态资源，再把这些静态资源复制到 SB 项目的 static 静态资源文件夹下，记住：你需要对这些静态文件的访问权限都放行(前后端分离会采用 token 校验权限)。
 
@@ -102,7 +102,7 @@ Vue-CLI 官网给我们提供了另外一种路由模式：history，使用histo
 
 那么 SB 项目想要配合 Vue 使用 history 模式在浏览器地址栏显示正常的 URL 应该怎么做呢？
 
-**0x01 Vue-Router 配置**
+##### **0x01 Vue-Router 配置**
 
 首先，Vue-Router 得开启 history 模式和配置 base 路由基路径：
 
@@ -123,7 +123,7 @@ const router = new Router({
 
 'Uncaught SyntaxError: Unexpected token < ' 错误是由于请求的 js、css 等静态资源路径不对，导致返回的内容是  html 页面，浏览器也就无法正确解析了。
 
-**0x02 后端配置**
+##### **0x02 后端配置**
 
 ```java
 @Configuration
@@ -183,9 +183,9 @@ maven 打好 jar 包运行后，浏览器访问：ip:port/vue/index 就大功告
 
 ---
 
-### 二、Vue + SpringBoot  以 war 包部署
+### Vue + SpringBoot  以 war 包部署
 
-**0x01后端配置**
+#### **0x01后端配置**
 
 首先将项目 pom.xml 中更改打包方式为 war 包，将内置 tomcat 配置为 provided 模式：
 
@@ -218,7 +218,7 @@ jar 和 war 启动的区别：
 > jar包: 执行 SpringBootApplication 的 run 方法，启动 IOC 容器，然后创建嵌入式 Servlet 容器
 war包:  先是启动 Servlet 服务器，服务器启动 Springboot 应用(SpringBootServletInitizer 实例执行 onStartup 方法的时候会通过 createRootApplicationContext 方法来执行 run 方法)，然后启动 IOC 容器
 
-**0x02 tomcat 配置**
+#### **0x02 tomcat 配置**
 
 进入 tomcat/conf 目录下 ，将 server.xml 中的端口号修改为前端配置的后台统一接口路径(相同则跳过)，因为我们部署的是一个项目。
 
@@ -226,11 +226,11 @@ war包:  先是启动 Servlet 服务器，服务器启动 Springboot 应用(Spri
 
 ---
 
-### 三、Vue 项目和 SpringBoot 项目各自单独部署
+### Vue 项目和 SpringBoot 项目各自单独部署
 
 Vue 项目单独部署，那必然是部署到 Nginx 上了，配合 WSL (Windows Sub Linux) 开发体验上升了一个档次 (WSL + VS Code 真香)。
 
-**0x01 Vue 项目部署到 Nginx**
+#### **0x01 Vue 项目部署到 Nginx**
 
 Vue-Router 采用 history 模式，在 nginx.conf 中加入：`include /etc/nginx/conf.d/*.conf;` 然后进入 conf.d 目录 vim  app.conf：
 
@@ -281,7 +281,7 @@ location /app {
 
 当然，如果你不打算用 history 模式你又能接受浏览器地址栏中丑陋的 # 号，那么你就用默认的 hash 模式，就没那么上面那么多屁事了。
 
-**0x02 SpringBoot 项目部署**
+#### **0x02 SpringBoot 项目部署**
 
 SpringBoot 项目部署，以什么方式部署你开心就好，不过记得放开资源哟 ~
 

@@ -1,7 +1,7 @@
 ---
 title: 永远的MAYDAY，永远的五月天
 comments: true
-toc: true
+toc: false
 date: 2020-06-01 21:35:00
 categories:
  - 音乐

@@ -2,8 +2,8 @@
 title: 关于本站
 date: 2019-01-28 23:13:10
 type: "about"
-comments: false
-toc: true
+comments: true
+toc: false
 ---
 
 ![](/images/chi.gif)
