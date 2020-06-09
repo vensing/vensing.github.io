@@ -1,7 +1,7 @@
 ---
 title: 你离真实的自己有多远
 comments: true
-toc: true
+toc: false
 date: 2020-04-05 22:16:00
 categories:
   - 碎碎念

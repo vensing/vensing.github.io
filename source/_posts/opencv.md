@@ -20,7 +20,7 @@ OpenCV 可用于开发实时的图像处理、计算机视觉以及模式识别�
 
 ![OpenCV](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/OpenCV_Logo_with_text.png/225px-OpenCV_Logo_with_text.png)
 
-### ** OpenCV 开始折腾**
+### **OpenCV 开始折腾**
 
 因为最近做的一些事情是有关于图像识别的（在 Java 开发环境下实现），说具体点就是识别图形的某些颜色的阈值区域。既然 OpenCV 这么厉害，还免费，而且跨平台，那么还有什么理由不选它呢。
 

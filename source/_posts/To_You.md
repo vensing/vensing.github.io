@@ -1,7 +1,7 @@
 ---
 title: To You
 comments: true
-toc: true
+toc: false
 date: 2020-02-17 10:58:53
 categories:
   - 动漫
@@ -9,7 +9,7 @@ tags:
   - 可塑性记忆
 ---
 
-
+To You —— 雨宫天
 <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=32288085&auto=0&height=66"></iframe>
 <!--more-->
 
@@ -62,6 +62,7 @@ tags:
 「再也不去创造回忆了」
 私は决めた
 我这样下定了决心
+<br/>
 
 
 「これまでの記憶をなくしてしまいたい」って
