@@ -39,7 +39,8 @@ var myFriends = [
     ["https://angelni.github.io/", "https://cdn.jsdelivr.net/gh/AngelNI/CDN@3.0/imgs/avatar.png", "@AngelNI", "A HPU‘s student。"],
     ["https://eanraig.xyz/", "https://cdn.jsdelivr.net/gh/eanraig/ghost-assets/img/2020/04/avatar.jpg", "@eanraig", "他没有更多信息！"],
     ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
-    ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"]
+    ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"],
+    ["https://raptazure.github.io/", "https://avatars2.githubusercontent.com/u/44319278?s=460&u=959052f76467f1d2ffe66f11300a42bb045a9f10&v=4", "@Raptazure", "推油，INFP-T  第四型人格  "]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
