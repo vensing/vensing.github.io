@@ -40,7 +40,8 @@ var myFriends = [
     ["https://eanraig.xyz/", "https://cdn.jsdelivr.net/gh/eanraig/ghost-assets/img/2020/04/avatar.jpg", "@eanraig", "他没有更多信息！"],
     ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
     ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"],
-    ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/raptazure/cdn/blog/avatar.jpg", "@Raptazure", "推油，心随自然"]
+    ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/raptazure/cdn/blog/avatar.jpg", "@Raptazure", "推油，心随自然"],
+    ["https://nek0ri.de/", "https://pic.imgdb.cn/item/5e43fc102fb38b8c3cdb23dc.png", "@猫梨の部屋", "我们能做得更好"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
@@ -73,10 +74,11 @@ while (myFriends.length > 0) {
 与我交互友链，你只需要有一定数量的文章和有趣的内容即可。
 
 通过以下格式给我留言或者给我发邮件即可：
-- [站点名称]：example
-- [个人形象]：image url
-- [站点地址]：your site
-- [站点描述]：your slogan
+
+- [站点名称]：芝士部落格
+- [个人形象]：https://www.gravatar.com/avatar/1269adc0efdb4529b560b4faca2b6d73?s=400
+- [站点地址]：https://www.vensing.com
+- [站点描述]：有梦想，也有忧伤和理想
 
 发邮件添加友链：
 dmVuc2luZ0Bmb3htYWlsLmNvbQ== (base64)
