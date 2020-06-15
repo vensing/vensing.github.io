@@ -41,7 +41,8 @@ var myFriends = [
     ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
     ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"],
     ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/raptazure/cdn/blog/avatar.jpg", "@Raptazure", "推油，心随自然"],
-    ["https://nek0ri.de/", "https://pic.imgdb.cn/item/5e43fc102fb38b8c3cdb23dc.png", "@猫梨の部屋", "我们能做得更好"]
+    ["https://nek0ri.de/", "https://pic.imgdb.cn/item/5e43fc102fb38b8c3cdb23dc.png", "@猫梨の部屋", "我们能做得更好"],
+    ["https://cwksc.github.io/", "https://cwksc.github.io/assets/image/author_photo/CWKSC_photo.jpg", "@CWKSC", "主要是写技术文章的，有时候是日常，吐槽"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
