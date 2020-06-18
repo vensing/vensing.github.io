@@ -43,7 +43,8 @@ var myFriends = [
     ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/raptazure/cdn/blog/avatar.jpg", "@Raptazure", "推油，心随自然"],
     ["https://nek0ri.de/", "https://pic.imgdb.cn/item/5e43fc102fb38b8c3cdb23dc.png", "@猫梨の部屋", "我们能做得更好"],
     ["https://cwksc.github.io/", "https://cwksc.github.io/assets/image/author_photo/CWKSC_photo.jpg", "@CWKSC", "主要是写技术文章的，有时候是日常，吐槽"],
-    ["http://www.lionad.art/", "http://image.lionad.art/mgear/image/avatar.gif", "@lionad", "前端工程师，有技术激情和生活态度|午夜吉他魔|兴趣泛滥的游戏玩家"]
+    ["http://www.lionad.art/", "http://image.lionad.art/mgear/image/avatar.gif", "@lionad", "前端工程师，有技术激情和生活态度|午夜吉他魔|兴趣泛滥的游戏玩家"],
+    ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
