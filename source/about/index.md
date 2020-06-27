@@ -13,7 +13,7 @@ toc: false
 
 ### 个人信息
 
-- 昵称：风月、山川湖海、爱吃糯米的团子 [隐藏真实姓名，又不是查户口#(滑稽)]
+- 昵称：芝士、风月、山川湖海、爱吃糯米的团子 [隐藏真实姓名，又不是查户口#(滑稽)]
 - 性别：男
 - 性取向：当然是可爱的小姐姐了 [~~女装大佬也许行呢~~]
 - 来自：三次元
@@ -49,6 +49,7 @@ toc: false
 - 2019.07.13 - 将博客文章里的图片由本地转移到 SM.MS 图床，使用的图床管理工具是 PicGO。
 - 2019.10.16 - 主题整体色调换成 <span style="color:#8f77b5">「 紫苑 」</span>`#8f77b5` 色调。
 - 2020.04.14 - 使用[Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth)主题，采用 disqus 和 disqusjs 评论服务。
+- 2020.06.27 - 同步[Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth)主题，开启浅色和暗黑模式。
 
 ### 博客快照
 

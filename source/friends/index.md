@@ -17,6 +17,8 @@ comments: true
 
 如果你来到了本页面，不妨点进下方[“我的小伙伴们”](/friends/#我的小伙伴们)中的友情链接去看看，尝试认识更多有趣的人。
 
+**注：**下方友链次序每次刷新页面随机排列。
+
 ### 我的小伙伴们
 
 <div class="linkpage"><ul id="friendsList"></ul></div>
@@ -37,13 +39,12 @@ var myFriends = [
     ["https://raspii.tech/", "https://vensing.com/images/avatar.png", "@无用挂件の日历", "无用挂件の日历 ο(=•ω＜=)ρ。"], 
     ["https://zhangyijia.eu5.org/", "https://cdn.jsdelivr.net/gh/miku-o/imgData/5c3aedy7.jpg", "@ZhangYiJia", " 我们所过的每个平凡的日常，也许就是连续发生的奇迹"], 
     ["https://angelni.github.io/", "https://cdn.jsdelivr.net/gh/AngelNI/CDN@3.0/imgs/avatar.png", "@AngelNI", "A HPU‘s student。"],
-    ["https://eanraig.xyz/", "https://cdn.jsdelivr.net/gh/eanraig/ghost-assets/img/2020/04/avatar.jpg", "@eanraig", "他没有更多信息！"],
     ["https://type.zhoublog.xyz/", "https://ae01.alicdn.com/kf/Ua037dc8b478d4c2ca8fc8ebcdfe589bcj.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
-    ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ←不是，绝对不是"],
+    ["https://skyblond.info/", "https://secure.gravatar.com/avatar/b8dd5801979dc700a9cc29ef793f3357", "@天空Blond", "推油，精神神楽坂 ← 不是，绝对不是"],
     ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/raptazure/cdn/blog/avatar.jpg", "@Raptazure", "推油，心随自然"],
     ["https://nek0ri.de/", "https://pic.imgdb.cn/item/5e43fc102fb38b8c3cdb23dc.png", "@猫梨の部屋", "我们能做得更好"],
-    ["https://cwksc.github.io/", "https://cwksc.github.io/assets/image/author_photo/CWKSC_photo.jpg", "@CWKSC", "主要是写技术文章的，有时候是日常，吐槽"],
-    ["http://www.lionad.art/", "https://cdn.jsdelivr.net/gh/Lionad-Morotar/blog-cdn/image/avatar.gif", "@lionad", "前端工程师，有技术激情和生活态度|午夜吉他魔|兴趣泛滥的游戏玩家"],
+    ["https://cwksc.github.io/", "https://cwksc.github.io/assets/image/author_photo/CWKSC_photo.jpg", "@CWKSC", "大佬，主要是写技术文章的，有时候是日常，吐槽"],
+    ["http://www.lionad.art/", "https://cdn.jsdelivr.net/gh/Lionad-Morotar/blog-cdn/image/avatar.gif", "@lionad", "前端工程师|午夜吉他魔|兴趣泛滥的游戏玩家"],
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"]
 ];
 
