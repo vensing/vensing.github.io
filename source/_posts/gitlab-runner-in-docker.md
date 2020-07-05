@@ -18,7 +18,27 @@ tags:
 
 <!-- more -->
 
-### 最简单的 Gitlab CI Runner
+### Gitlab CI/CD 简介
+
+![Gitlab CI/CD](https://about.gitlab.com/images/blogimages/cicd_pipeline_infograph.png)
+
+如上图所示，当我们提交代码到 GitLab 仓库后，满足指定条件后就会触发 Pipeline 进行自动化构建、测试、发布等。
+
+Pipeline 可以包含一个或多个 Jobs 任务，一个 Job 里面可以包含多个流程，如下载依赖、运行测试、编译、部署。Pipeline 什么时候触发，分为几个流程，每个流程做什么，是在项目的 .gitlab-ci.yml 文件中定义。
+
+#### GitLab CI/CD 整体流程
+
+GitLab CI/CD 的 Pipeline 具体流程和操作在 .gitlab-ci.yml 文件中申明，触发 pipeline 后，由 GitLab Runner 根据 .gitlab-ci.yml 文件运行，运行结束后将返回至 GitLab 系统。
+
+#### .gitlab-ci.yml 文件
+
+.gitlab-ci.yml 文件是一个申明式配置文件，放在项目的根目录下，用 stages 定义 GitLab CI/CD 流程有哪些阶段，每个阶段分别干什么。如果有更复杂的逻辑，还可以编写脚本文件，并在 .gitlab-ci.yml 文件执行它。
+
+####  GitLab Runner
+
+GitLab Runner 是 CI 的执行环境，负责执行 gitlab-ci.yml 文件，并将结果返回给 GitLab 系统。Runner 具体可以有多种形式，windows、linux、docker 或 shell等等，在注册 Runner 时需要选定一个具体的   Executor。
+
+### 🎯最简单的 Gitlab CI Runner
 
 经过几天的摸鱼，已经大概摸清了 Gitlab CI Runner 的用法，期间也遇到了很多的坑，所以这篇文章就用来记录踩的坑吧。
 
@@ -29,8 +49,9 @@ tags:
 - Install Gitlab Runner
 - Register Runner 
 - Config gitlab-ci.yml
+- Start the Runner
 
-#### Install
+#### Install Gitlab Runner
 
 首先，需要安装 Gitlab Runner，可以选择的平台也有很多：Windows、Linux、macOS、Doker 等等；看了下 Windows 下的安装步骤，我果断选择了 WSL 安装。 WSL 我安装的子系统是 Ubuntu 18.04 LTS，下载 gitlib-runner_amd64.deb 安装包。
 
@@ -73,7 +94,7 @@ sudo yum install gitlab-runner
 See Install GitLab Runner using the official GitLab repositories: https://docs.gitlab.com/runner/install/linux-repository.html
 
 
-#### Register
+#### Register Runner
 
 安装好 Gitlab Runner 之后我们就可以注册 Runner 绑定到我们的仓库，到 Gitlab 项目的 Settings => CI/CD => Runners，展开可以看到下图所示的内容：
 
@@ -126,7 +147,11 @@ See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl
 
 ![Runner 注册成功](https://i.loli.net/2020/07/04/T9mOKzlVeBLDIkS.png)
 
+#### Start the Runner
 
+⚠ 注册完之后，记得运行 Gitlab-runner ，如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。
+
+**注意：**如果在注册 Runner 的时候没有输入 Tag，运行注册的 gitlab-runner 后，此时触发 Pipline， CI 会一直处于 Pending 状态，则需要去 Runners 编辑页面将「Run untagged jobs」选项勾选，即指示此 Runner 运行程序可以选择没有标记 (Tags) 的作业。
 
 #### Config gitlab-ci.yml
 
@@ -152,7 +177,7 @@ test:
 
 
 
-### Runner 拉取自定义 Docker 镜像
+### 🚀Runner 拉取自定义 Docker 镜像
 
 上面的例子过于简单了些，接下来我们来新建一个更复杂的 python opencv 项目，并且在 Docker 里安装 Gitlab Runner，Gitlab Runner 使用 Docker executor 拉取我们自定义的包含 python 运行环境和 opencv 库 的 Ubuntu 自制镜像。
 
@@ -229,9 +254,9 @@ test:
 
 ```sh
 
-    # 使用最新版本的 ubuntu 镜像运行容器，
+    # 使用最新版本的 ubuntu 镜像运行容器
     # 并进入交互式终端，这里加了 -d 后台运行，不会进入终端
-    # --name 指定容器名称，
+    # --name 指定容器名称
     docker run -itd --name ubuntu_v1 ubuntu:latest /bin/bash
 
     # 查看正在运行的容器
@@ -258,7 +283,7 @@ test:
     cat /etc/issue
     Ubuntu 20.04 LTS
 
-    # 错误的姿势(这样查到的是宿主机的系统，在我这是 WSL2的):
+    # 错误的姿势(这样查到的是宿主机的系统，在我这是 WSL2的 linux 版本):
     cat /proc/version  
     uname -a 
 
@@ -295,7 +320,6 @@ test:
 
 
 ```python
-
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
@@ -347,7 +371,17 @@ test:
 
 ![Job 错误](https://i.loli.net/2020/07/04/UykKjPw5MON68B3.png)
 
-因为 Docker 里的 gitlab-runner 默认会去拉取公网上的镜像，公网上没有我们自制的这个 ubuntu-opencv 镜像就出错了；因此需要配置下 gitlab-runner 的配置文件，Docker 安装的 gitlab-runner 配置文件在 /srv/gitlab-runner/config/config.toml。在这个文件中加入：`pull_policy = "never"`，拉取本地镜像。如果 Docker 里的 gitlib-runner 未运行也会导致这个错误，因为拉不到镜像。
+> ERROR: Job failed: Error response from daemon: pull access denied for ubuntu-ci, repository does not exist or may require 'docker login' (docker.go:119:0s)
+
+这是因为我们在 Docker 里的 gitlab-runner 未运行，项目会默认去找 Gitlab.com 提供的 Shared Runners，默认会去拉取公网上的镜像，公网上没有我们自制的这个 ubuntu-opencv 镜像就出错了。所以这里我们还是把 Gitlab.com 提供的 Shared Runners 禁用 (要想测试自己指定的 Runner 关掉 Shared Runners 吧)；禁用之后，如果我们的 gitlab-runner 未在运行，则 CI 会一直处于 pending 的状态。
+
+所以我们需要在 Docker 里运行我们的 gitlab-runner 容器，由于 gitlab-runenr 默认去拉取公网上的镜像，所以还需要配置下 gitlab-runner 的配置文件，Docker 安装的 gitlab-runner 配置文件在 /srv/gitlab-runner/config/config.toml。设置 pull_policy 指定 Runner 拉取镜像的策略，有三种选项：
+
+- pull_policy = "never"
+- pull_policy = "if-not-present"
+- pull_policy = "always"
+
+never 策略完全禁用镜像拉取。如果您将 Runner 的 pull_policy 参数设置为 never，那么用户将只能使用 Runner 所在的 Docker 主机上提取过的本地镜像。当使用 if-not-present 拉取策略时，Runner 将首先检查映像是否在本地存在。如果是，则使用图像的本地版本。否则，Runner 将尝试拉取镜像。always 是默认拉取策略 (未设置 pull_policy 执行默认拉取策略)，将确保始终拉取镜像。当使用 always 时，即使本地副本可用，Runner 也会尝试提取镜像。如果你希望拉取镜像时可以使用缓存就用 always 吧，它的拉取速度很快，因为所有的镜像层都被缓存了。
 
 See Using the if-not-present pull policy: https://docs.gitlab.com/runner/executors/docker.html#using-the-if-not-present-pull-policy
 
@@ -393,6 +427,8 @@ check_interval = 0
 
 ![CI 任务图](https://i.loli.net/2020/07/05/Ar5aydRb2Zl1kNC.png)
 
+注册完 Gitlab-runner 之后，记得运行 Gitlab-runner 。如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。如果需要拉取本地自定义镜像，则还需要配置 config.toml 文件中的 `pull_policy` 规则。
+
 
 ###  参考
 
@@ -402,5 +438,8 @@ check_interval = 0
 - [local system volume mounts to start the Runner container](https://docs.gitlab.com/runner/install/docker.html#option-1-use-local-system-volume-mounts-to-start-the-runner-container)
 - [To register a Runner using a Docker containe](https://docs.gitlab.com/runner/register/index.html#docker)
 - [Using the if-not-present pull policy](https://docs.gitlab.com/runner/executors/docker.html#using-the-if-not-present-pull-policy)
-- 项目地址：https://gitlab.com/vensing/TestPyCI ，https://gitlab.com/vensing/TestCI 
+- [花椒前端基于 GitLab CI/CD 的自动化构建、发布实践](https://zhuanlan.zhihu.com/p/69513606)
+- 项目地址：
+    - https://gitlab.com/vensing/TestPyCI
+    - https://gitlab.com/vensing/TestCI 
 
