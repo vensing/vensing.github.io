@@ -151,7 +151,7 @@ See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl
 
 ⚠ 注册完之后，记得运行 Gitlab-runner ，如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。
 
-**注意：**如果在注册 Runner 的时候没有输入 Tag，运行注册的 gitlab-runner 后，此时触发 Pipline， CI 会一直处于 Pending 状态，则需要去 Runners 编辑页面将「Run untagged jobs」选项勾选，即指示此 Runner 运行程序可以选择没有标记 (Tags) 的作业。
+**注意：**运行注册的 gitlab-runner 后，默认情况下不会运行没有 tag 的 job，也就是没有标记 tag 的代码提交，此时触发 Pipline， CI 会一直处于 Pending 状态，则需要去 Runners 编辑页面将「Run untagged jobs」选项勾选。
 
 #### Config gitlab-ci.yml
 
