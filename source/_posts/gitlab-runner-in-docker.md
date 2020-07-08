@@ -53,7 +53,7 @@ GitLab Runner 是 CI 的执行环境，负责执行 gitlab-ci.yml 文件，并�
 
 #### Install Gitlab Runner
 
-首先，需要安装 Gitlab Runner，可以选择的平台也有很多：Windows、Linux、macOS、Doker 等等；看了下 Windows 下的安装步骤，我果断选择了 WSL 安装。 WSL 我安装的子系统是 Ubuntu 18.04 LTS，下载 gitlib-runner_amd64.deb 安装包。
+首先，需要安装 Gitlab Runner，可以选择的平台也有很多：Windows、Linux、macOS、Docker 等等；看了下 Windows 下的安装步骤，我果断选择了 WSL 安装。 WSL 我安装的子系统是 Ubuntu 18.04 LTS，下载 gitlib-runner_amd64.deb 安装包。
 
 ```sh
 # For example, for Debian or Ubuntu:
@@ -135,9 +135,11 @@ See Install GitLab Runner using the official GitLab repositories: https://docs.g
 
 ```
 
-相信上面的这些都难不倒你，关于 WSL 上的 Docker ，这里我们需要着重提一下。你只需要下载好 Docker Desktop 并安装好，安装好之后我们进入 settings 设置界面，进入到 Resources => WSL INTEGRATION ，允许 Docker 访问 WSL2 ，并启用安装的发行版。也就是说，我们不用在 WSL 上再安装 Docker 了，只需要安装 Windows Docker 桌面版程序并让其在后台运行着即可。值得注意的是，如果你退出了 Docker 桌面版，WSL2 里也访问不到 Docker 服务了。
+相信上面的这些都难不倒你，关于 WSL 上的 Docker ，这里我们需要着重提一下。你只需要下载好 Docker Desktop 并安装好，安装好之后我们进入 settings 设置界面，进入到 General => Use the WSL2 based engine 开启；然后进入到 Resources => WSL INTEGRATION ，允许 Docker 访问 WSL2 ，并启用安装的发行版。也就是说，我们不用在 WSL 上再安装 Docker 了，只需要安装 Windows Docker 桌面版程序并让其在后台运行着即可。值得注意的是，如果你退出了 Docker 桌面版，WSL2 里也访问不到 Docker 服务了。
 
-![Docker 桌面版配置 WSL2](https://i.loli.net/2020/07/04/4TG9A1OWxfrsXQ3.png)
+![use_the_wsl2_based_engine.png](https://i.loli.net/2020/07/08/PByJ72iWXeqnvIx.png)
+
+![use_resources_wsl_integration.png](https://i.loli.net/2020/07/08/FvIZhOPlXTLoQRu.png)
 
 See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl/
 
@@ -146,6 +148,8 @@ See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl
 注册好了 Runner 之后，我们刷新 Settings 下的 CI/CD 页面，展开 Runners，可以看到我们的 Runner 注册成功了，并且 runner 描述 和 tag 标签也显示出来了：
 
 ![Runner 注册成功](https://i.loli.net/2020/07/04/T9mOKzlVeBLDIkS.png)
+
+你可以用 `gitlab-runner verify` 命令测试注册的 Gitlab-runner 和 gitlab 仓库是否能连通，出现图片上的小绿点就说明连通了。
 
 #### Start the Runner
 
@@ -429,6 +433,7 @@ check_interval = 0
 
 注册完 Gitlab-runner 之后，记得运行 Gitlab-runner 。如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。如果需要拉取本地自定义镜像，则还需要配置 config.toml 文件中的 `pull_policy` 规则。
 
+**注意：** Gitlab Runner 默认有效期是 90 天；保证你注册 Runner 的机器的 IP 为一个静态 IP，否则 IP 变了触发 Pipeline 后就找不到 Runner 了。
 
 ###  参考
 
