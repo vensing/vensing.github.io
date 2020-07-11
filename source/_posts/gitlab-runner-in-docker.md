@@ -55,40 +55,40 @@ GitLab Runner 是 CI 的执行环境，负责执行 gitlab-ci.yml 文件，并�
 
 首先，需要安装 Gitlab Runner，可以选择的平台也有很多：Windows、Linux、macOS、Docker 等等；看了下 Windows 下的安装步骤，我果断选择了 WSL 安装。 WSL 我安装的子系统是 Ubuntu 18.04 LTS，下载 gitlib-runner_amd64.deb 安装包。
 
-```sh
+```shell
 # For example, for Debian or Ubuntu:
-curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_<arch>.deb
+> ~ $ curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_<arch>.deb
 
 # For example, for CentOS or Red Hat Enterprise Linux:
-curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_<arch>.rpm
+> ~ $ curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_<arch>.rpm
 ```
 
 下载好之后即可执行安装命令：
 
-```sh
+```shell
 # For example, for Debian or Ubuntu:
-dpkg -i gitlab-runner_<arch>.deb
+> ~ $ dpkg -i gitlab-runner_<arch>.deb
 
 # For example, for CentOS or Red Hat Enterprise Linux:
-rpm -i gitlab-runner_<arch>.rpm
+> ~ $ rpm -i gitlab-runner_<arch>.rpm
 ```
 
 See Install GitLab Runner manually on GNU/Linux: https://docs.gitlab.com/runner/install/linux-manually.html
 
 你也可以添加 Gitlab 官方仓库源，再通过包管理来安装：
 
-```sh
+```shell
 # For Debian/Ubuntu/Mint
-curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
+> ~ $ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash
 
 # For RHEL/CentOS/Fedora
-curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
+> ~ $ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash
 
 # For Debian/Ubuntu/Mint
-sudo apt-get install gitlab-runner
+> ~ $ sudo apt-get install gitlab-runner
 
 # For RHEL/CentOS/Fedora
-sudo yum install gitlab-runner
+> ~ $ sudo yum install gitlab-runner
 
 ```
 See Install GitLab Runner using the official GitLab repositories: https://docs.gitlab.com/runner/install/linux-repository.html
@@ -105,9 +105,9 @@ See Install GitLab Runner using the official GitLab repositories: https://docs.g
 
 其中，第二三步的 URL 和 token，是在执行 Runner 注册命令中会用到的。执行如下注册命令：
 
-```sh
+```shell
     # 执行注册命令
-    sudo gitlab-runner register
+    > ~ $ sudo gitlab-runner register
 
     # 输入上图第二步的 URL 
     Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
@@ -191,16 +191,16 @@ test:
 
 #### Docker 安装 Runner 
 
-```sh
-   docker run -d --name gitlab-runner --restart always \
+```shell
+   > ~ $ docker run -d --name gitlab-runner --restart always \
      -v /srv/gitlab-runner/config:/etc/gitlab-runner \
      -v /var/run/docker.sock:/var/run/docker.sock \
      gitlab/gitlab-runner:latest
 ```
 #### Docker 注册 Runner
 
-```sh
-    docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+```shell
+    > ~ $ docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
 
     # 输入 URL 
     Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )
@@ -233,13 +233,13 @@ test:
 
 从 Docker Hub 拉取 Ubuntu 镜像：
 
-```sh
+```shell
     # 搜寻镜像
-    docker search ubuntu
+    > ~ $ docker search ubuntu
     # 拉取镜像
-    docker pull ubuntu
+    > ~ $ docker pull ubuntu
     # 查看镜像
-    docker images
+    > ~ $ docker images
 
     REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
     ubuntu-opencv                 latest              aba324b29fe7        3 hours ago         677MB
@@ -256,15 +256,15 @@ test:
 
 拉取的 ubuntu 是最新的版本，大概 73M ，接着我们使用这个镜像来运行一个容器：
 
-```sh
+```shell
 
     # 使用最新版本的 ubuntu 镜像运行容器
     # 并进入交互式终端，这里加了 -d 后台运行，不会进入终端
     # --name 指定容器名称
-    docker run -itd --name ubuntu_v1 ubuntu:latest /bin/bash
+    > ~ $ docker run -itd --name ubuntu_v1 ubuntu:latest /bin/bash
 
     # 查看正在运行的容器
-    docker ps 
+    > ~ $ docker ps 
     CONTAINER ID        IMAGE                  COMMAND               CREATED             STATUS                    PORTS               NAMES
     c3715c64c0f3        ubuntu-opencv          "bin/bash"            3 hours ago         Exited (0) 3 hours ago                        ubuntu_v1
 
@@ -277,44 +277,44 @@ test:
 
 由于拉取的 ubuntu 镜像都是最简单的 BASE 镜像，空空如也 73M ，连 vim 都没有我可去你他么的吧，更别提自带些什么环境了。所以，我们需要先安装下 vim (没有 vim 怎么配置源...)，再去配置下 ubuntu 的源为国内的源，最后安装 python 和 python opencv 库。
 
-```sh
+```shell
 
     # 安装 vim 
-    apt-get install -y vim
+    > ~ $ apt-get install -y vim
 
     # 查看容器的 linux 版本
     # 正确的姿势：
-    cat /etc/issue
+    > ~ $ cat /etc/issue
     Ubuntu 20.04 LTS
 
     # 错误的姿势(这样查到的是宿主机的系统，在我这是 WSL2的 linux 版本):
-    cat /proc/version  
+    > ~ $ cat /proc/version  
     uname -a 
 
     # 配置 ubuntu 源为清华源
-    mv /etc/apt/sources.list /etc/apt/sources.list.bak
+    > ~ $ mv /etc/apt/sources.list /etc/apt/sources.list.bak
 
     # 配置清华源 see: https://mirrors.tuna.tsinghua.edu.cn/help/ubuntu/
     vim /etc/apt/sources.list
-    apt-get update
+    > ~ $ apt-get update
 
     # 安装 python3
-    apt-get install -y python3
+    > ~ $ apt-get install -y python3
     # 安装 pip3
-    apt-get install python3-pip
+    > ~ $ apt-get install python3-pip
     # 配置 pip3 源 see: https://mirrors.tuna.tsinghua.edu.cn/help/pypi/
-    pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+    > ~ $ pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 
     # 安装 opencv 依赖
-    pip3 install wheel
-    pip3 install opencv-contrib-python
+    > ~ $ pip3 install wheel
+    > ~ $ pip3 install opencv-contrib-python
 
     # 解决 opencv import cv2 ImportError: libgthread-2.0.so.0: cannot open shared object file: No such file or directory
-    apt-get install -y libglib2.0-0
+    > ~ $ apt-get install -y libglib2.0-0
     # 解决 ImportError: libSM.so.6: cannot open shared object file: No such file or directory
-    apt-get install -y libsm6 libxext6
+    > ~ $ apt-get install -y libsm6 libxext6
     # 解决 ImportError: libXrender.so.1: cannot open shared object file: No such file or directory
-    apt-get install -y libxrender-dev
+    > ~ $ apt-get install -y libxrender-dev
 
 ```
 
@@ -337,14 +337,14 @@ print(cv2.__version__)
 
 耐心点安装完这些，一个包含 python 运行环境和 opencv 库 的 Ubuntu 容器环境就完成了。接着我们需要停掉容器，导出容器为 ubuntu_v1.tar 文件，再导入 ubuntu_v1.tar 文件为镜像：
 
-```
-    docker stop ubuntu_v1
+```shell
+    > ~ $ docker stop ubuntu_v1
 
-    docker export ubuntu_v1 > ubuntu_v1.tar
+    > ~ $ docker export ubuntu_v1 > ubuntu_v1.tar
 
-    docker import ubuntu_v1.tar ubuntu-opencv
+    > ~ $ docker import ubuntu_v1.tar ubuntu-opencv
 
-    docker images
+    > ~ $ docker images
 
 ```
 
@@ -419,8 +419,8 @@ check_interval = 0
 
 如果我们对 config.toml 这个配置文件做了修改，则需要重启 Docker 中的 gitlab-runner 来应用修改。
 
-```
-    docker restart gitlab-runner
+```shell
+    > ~ $ docker restart gitlab-runner
 ```
 
 做完了这些并确保 Docker 中的 gitlab-runner 容器在运行，提交下代码或者手动去触发 Piplines，就可以执行 CI，拉取我们在 Docker 中自制的 python 和 opencv 环境的镜像运行 gitlab-ci.yml 中的脚本任务了。

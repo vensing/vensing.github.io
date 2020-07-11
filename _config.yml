@@ -84,6 +84,13 @@ limit: 20
 ## Themes: https://hexo.io/themes/
 theme: Kratos-Rebirth
 
+kratos_rebirth:
+  search:
+    enable: true
+    path: search.json
+    field: post # page | post | all. Default post
+    content: true # Include post | page content
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
