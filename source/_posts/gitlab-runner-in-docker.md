@@ -105,6 +105,8 @@ See Install GitLab Runner using the official GitLab repositories: https://docs.g
 
 其中，第二三步的 URL 和 token，是在执行 Runner 注册命令中会用到的。执行如下注册命令：
 
+{% xchead Linux注册Runner命令 %}
+
 ```shell
     # 执行注册命令
     > ~ $ sudo gitlab-runner register
@@ -134,6 +136,8 @@ See Install GitLab Runner using the official GitLab repositories: https://docs.g
     python:alpine
 
 ```
+
+{% xcfoot %}
 
 相信上面的这些都难不倒你，关于 WSL 上的 Docker ，这里我们需要着重提一下。你只需要下载好 Docker Desktop 并安装好，安装好之后我们进入 settings 设置界面，进入到 General => Use the WSL2 based engine 开启；然后进入到 Resources => WSL INTEGRATION ，允许 Docker 访问 WSL2 ，并启用安装的发行版。也就是说，我们不用在 WSL 上再安装 Docker 了，只需要安装 Windows Docker 桌面版程序并让其在后台运行着即可。值得注意的是，如果你退出了 Docker 桌面版，WSL2 里也访问不到 Docker 服务了。
 
@@ -199,6 +203,8 @@ test:
 ```
 #### Docker 注册 Runner
 
+{% xchead Docker注册Runner命令 %}
+
 ```shell
     > ~ $ docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
 
@@ -228,6 +234,7 @@ test:
 
 ```
 
+{% xcfoot %}
 
 #### 自定义 Ubuntu 镜像
 
@@ -277,6 +284,8 @@ test:
 
 由于拉取的 ubuntu 镜像都是最简单的 BASE 镜像，空空如也 73M ，连 vim 都没有我可去你他么的吧，更别提自带些什么环境了。所以，我们需要先安装下 vim (没有 vim 怎么配置源...)，再去配置下 ubuntu 的源为国内的源，最后安装 python 和 python opencv 库。
 
+{% xchead 容器环境安装 %}
+
 ```shell
 
     # 安装 vim 
@@ -317,6 +326,7 @@ test:
     > ~ $ apt-get install -y libxrender-dev
 
 ```
+{% xcfoot %}
 
 配置完这些东西你肯定想骂人了，但还是请忍住，要骂看完了文章再骂吧。
 
@@ -375,15 +385,23 @@ test:
 
 ![Job 错误](https://i.loli.net/2020/07/04/UykKjPw5MON68B3.png)
 
-> ERROR: Job failed: Error response from daemon: pull access denied for ubuntu-ci, repository does not exist or may require 'docker login' (docker.go:119:0s)
+{% alertbox danger "
+
+ERROR: Job failed: Error response from daemon: pull access denied for ubuntu-ci, repository does not exist or may require 'docker login' (docker.go:119:0s)
+
+" %}
 
 这是因为我们在 Docker 里的 gitlab-runner 未运行，项目会默认去找 Gitlab.com 提供的 Shared Runners，默认会去拉取公网上的镜像，公网上没有我们自制的这个 ubuntu-opencv 镜像就出错了。所以这里我们还是把 Gitlab.com 提供的 Shared Runners 禁用 (要想测试自己指定的 Runner 关掉 Shared Runners 吧)；禁用之后，如果我们的 gitlab-runner 未在运行，则 CI 会一直处于 pending 的状态。
 
 所以我们需要在 Docker 里运行我们的 gitlab-runner 容器，由于 gitlab-runenr 默认去拉取公网上的镜像，所以还需要配置下 gitlab-runner 的配置文件，Docker 安装的 gitlab-runner 配置文件在 /srv/gitlab-runner/config/config.toml。设置 pull_policy 指定 Runner 拉取镜像的策略，有三种选项：
 
+{% panelhead info pull_policy策略 %}
+
 - pull_policy = "never"
 - pull_policy = "if-not-present"
 - pull_policy = "always"
+
+{% panelfoot %}
 
 never 策略完全禁用镜像拉取。如果您将 Runner 的 pull_policy 参数设置为 never，那么用户将只能使用 Runner 所在的 Docker 主机上提取过的本地镜像。当使用 if-not-present 拉取策略时，Runner 将首先检查映像是否在本地存在。如果是，则使用图像的本地版本。否则，Runner 将尝试拉取镜像。always 是默认拉取策略 (未设置 pull_policy 执行默认拉取策略)，将确保始终拉取镜像。当使用 always 时，即使本地副本可用，Runner 也会尝试提取镜像。如果你希望拉取镜像时可以使用缓存就用 always 吧，它的拉取速度很快，因为所有的镜像层都被缓存了。
 

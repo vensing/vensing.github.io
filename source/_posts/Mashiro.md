@@ -16,12 +16,12 @@ toc: true
 
 ![椎名真白](https://i.loli.net/2019/07/13/5d296676c01d396847.png)
 
-&emsp;&emsp;本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。
+本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。
 
 
-&emsp;&emsp;更多信息参阅[伊斯特瓦尔点这里](https://www.wikimoe.com/?post=76)地址，和[《给博客添加能动的看板娘(Live2D)-将其添加到网页上吧》](https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02)。文字部分参考自[在 Web 上展示 Live2D 吧！](https://github.com/galnetwen/Live2D)
+更多信息参阅[伊斯特瓦尔点这里](https://www.wikimoe.com/?post=76)地址，和[《给博客添加能动的看板娘(Live2D)-将其添加到网页上吧》](https://imjad.cn/archives/lab/add-dynamic-poster-girl-with-live2d-to-your-blog-02)。文字部分参考自[在 Web 上展示 Live2D 吧！](https://github.com/galnetwen/Live2D)
 
-&emsp;&emsp;[椎名真白](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)请点击萌娘百科[椎名真白条目](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)，爱真白真是太好了，我永远喜欢椎名真白。
+[椎名真白](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)请点击萌娘百科[椎名真白条目](https://zh.moegirl.org/%E6%A4%8E%E5%90%8D%E7%9C%9F%E7%99%BD)，爱真白真是太好了，我永远喜欢椎名真白。
 
 
 ### 获取文件
@@ -35,13 +35,17 @@ toc: true
 ### 加入代码
 
 3. 在 <head\>标签内引入如下css样式代码，如果路径有变请按照自己的情况更改：
-```css
-<link  rel="stylesheet" href="blog/live2d/css/live2d.css"  />
-```
-&emsp;&emsp;因为本站由 [Hexo](https://hexo.io/)强力驱动，主题基于[Snippet](https://github.com/shenliyang/hexo-theme-snippet.git)，所以在这需做如下配置：
-&emsp;&emsp;在主题` themes\hexo-theme-snippet\layout\_partial `目录下，修改head.ejs，也就是在<head\>标签中引入上述css。
+
+`<link  rel="stylesheet" href="blog/live2d/css/live2d.css"  />`
+
+
+因为本站由 [Hexo](https://hexo.io/)强力驱动，主题基于[Snippet](https://github.com/shenliyang/hexo-theme-snippet.git)，所以在这需做如下配置：在主题` themes\hexo-theme-snippet\layout\_partial `目录下，修改head.ejs，也就是在<head\>标签中引入上述css。
+
 
 4. 在<body\>标签中加入如下代码：
+
+{% xchead 点击查看 %}
+
 ```html
 <div id="landlord" style="left:5px;bottom:0px;">
     <div class="message" style="opacity:0"></div>
@@ -87,18 +91,19 @@ var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口�
 <script type="text/javascript" src="blog/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="blog/live2d/js/message.js"></script>
 ```
+{% xcfoot %}
 
-&emsp;&emsp;此次的代码也需另做修改：
-&emsp;&emsp;在主题`themes\hexo-theme-snippet\layout`目录下找到layout.ejs，在<body\>标签中的<section\>标签后加入上述代码即可。此处ejs文件中博客目录的地址是`<%= config.url%>`，应该是从主题配置文件中拿到的root path url，所以将js中的blog`src="blog/live2d/js/live2d.js"`改为`src="<%= config.url%>/live2d/js/live2d.js"`。其他js引入做类似修改即可。
+此次的代码也需另做修改：
+在主题`themes\hexo-theme-snippet\layout`目录下找到layout.ejs，在<body\>标签中的<section\>标签后加入上述代码即可。此处ejs文件中博客目录的地址是`<%= config.url%>`，应该是从主题配置文件中拿到的root path url，所以将js中的blog`src="blog/live2d/js/live2d.js"`改为`src="<%= config.url%>/live2d/js/live2d.js"`。其他js引入做类似修改即可。
 
 ### 效果展示
 
-&emsp;&emsp;代码引入没什么好讲的，细心做好上述两处引入代码的步骤，让文件正确引入和URL地址设置准确就基本完成了，测试下效果即可。
+代码引入没什么好讲的，细心做好上述两处引入代码的步骤，让文件正确引入和URL地址设置准确就基本完成了，测试下效果即可。
 
-&emsp;&emsp;将真白加入本站的效果图如下：
+将真白加入本站的效果图如下：
 
 ![椎名真白看板娘](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
 
-&emsp;&emsp;目前加载文件的速度有待提高，点击给真白换装时要等2~3s，也不是不能接受的嘛。
+目前加载文件的速度有待提高，点击给真白换装时要等2~3s，也不是不能接受的嘛。
 
 

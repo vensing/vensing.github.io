@@ -17,7 +17,7 @@ tags:
 
 那么，就来看看本次如何重新定义本站的吧 x 
 
-## 0X01 全新的面貌
+### 全新的面貌
 
 ![首页](https://i.loli.net/2020/04/18/agbkYHThGBAdnt4.png)
 
@@ -29,7 +29,7 @@ tags:
 移动端的颜值和体验也是非常棒 (๑•̀ㅂ•́)و✧，阅读体验也很赞。是不是感觉跃跃欲试了 (搓手.jpg
 
 
-##  0X02  disqusjs 基础评论模式
+### disqusjs 基础评论模式
 
 ![disqusjs](https://i.loli.net/2020/04/18/NVJDU6rwI5kSGCi.png)
 
@@ -44,13 +44,13 @@ Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很
 
 现在，没有开代理的访客也能看到留言评论了，如果第一次加载评论基础模式失败，您需要点击重载才能加载出来；如果您想留下一个评论，您还是需要开代理，因为 disqusjs 仅仅只是拿到评论列表进行展示 (没错，如果你真的想留下评论，开代理吧，我的朋友。这里，着重讲一下，如何利用 CloudFlare 提供的免费 Worker 来代理 disqus 的 API 地址 (白嫖真爽啊。 
 
-### CF Workers 反向代理
+#### CF Workers 反向代理
 
 首先，你需要登录到 CloudFlare， 然后找到 Workers ，选择 Free 计划 (土豪请随意选择)；然后你可能需要填一个  **xxxx.workers.dev** 的域名地址，填好之后点击 **创建 Worker**，worker 名字随意但这里建议填 **disqusjs-api**。进入编辑页面，把[官方示例 CF Workers 反代项目](https://github.com/idawnlight/disqusjs-proxy-cloudflare-workers/blob/master/worker.js ) 里的内容复制到左侧脚本框中，弄好之后再点击右侧发起 HTTP GET 请求测试，如果出现 200 OK，那就说明成功了。 
 
 ![CF Workers 反向代理](https://i.loli.net/2020/04/18/U9fgABpsERmihkt.png)
 
-### disqusjs 配置
+#### disqusjs 配置
 
 我的 disqusjs 配置如下：
 
@@ -66,12 +66,12 @@ disqusjs:
 ```
 api 这里得注意下，不是填 https://disqusjs-api.xxxx.workers.dev  而是 https://disqusjs-api.xxxx.workers.dev/api/ ，请在后边加上 /api/ ，因为我们需要代理的是 disqus.com/api/ 。apikey 在https://disqus.com/api/applications/ 页面中可以找到 ，请使用 Public Key !!!
 
-## 0X03  更合理的托管方式
+### 更合理的托管方式
 
 由于 Kratos-Rebirth 主题在维护和更新，后续会有新的功能加入所以我们必须得同步更新；直接把主题 Clone 到 Blog 项目的 themes 文件夹下，Github 并不会提交嵌套仓库的文件夹。别问我为啥不用 submodule，我完全不会那东西也不想用 (理直气壮 。所以这次我打算把主题也托管在 github 仓库得了，然后 Travis CI build 在执行 **install** 时 clone 下主题放到 **themes**  文件夹下即可。
 
 
-### 主题托管
+#### 主题托管
 
 主题我托管在 [vensing/Kratos-Rebirth](https://github.com/vensing/Kratos-Rebirth)仓库，有两个分支：
 
@@ -93,7 +93,7 @@ git merge upstream/master
 
 ![SourceTree 下的分支结构](https://i.loli.net/2020/04/18/R97WFHiOhSCsyfU.png)
 
-### Travis CI 配置
+#### Travis CI 配置
 
 由于主题放到了 github 仓库，所以 Travis CI 的配置还得修改下，具体就是在执行 **install** 时 clone 下 vensing/Kratos-Rebirth 库的 custom 分支(这个分支才包含了主题的私人配置项)。只要能保证在执行 *hexo clean && hexo g*  之前把主题 clone 下来即可。
 
@@ -151,7 +151,7 @@ branches:
 
 详细的配置文件在 Gist 上：https://gist.github.com/vensing/0296bf555c794d4392c05c75ce00d17c.js
 
-## 0X04 一些其他事情
+### 一些其他事情
 
 在更换主题时，也遇到了很多问题，比如说：[Kratos-Rebirth #issues-4](https://github.com/Candinya/Kratos-Rebirth/issues/4)；糖喵🍭同学很有耐心的都修复了。当然，咱也不能完全白嫖，于是提了一个简单的 Pull Request：[Kratos-Rebirth #PR-3](https://github.com/Candinya/Kratos-Rebirth/pull/3)，新增 RSS Feed 和修复了表格无样式的问题。
 
