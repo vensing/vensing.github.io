@@ -80,9 +80,9 @@ while (myFriends.length > 0) {
 通过以下格式给我留言或者给我发邮件即可：
 
 - [站点名称]：芝士部落格
-- [个人形象]：https://www.gravatar.com/avatar/1269adc0efdb4529b560b4faca2b6d73?s=400
+- [个人形象]：网站 LOGO 或者头像
 - [站点地址]：https://www.vensing.com
-- [站点描述]：有梦想，也有忧伤和理想
+- [站点描述]：有思想，也有忧伤和理想
 
 发邮件添加友链：
 dmVuc2luZ0Bmb3htYWlsLmNvbQ== (base64)
