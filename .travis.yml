@@ -39,6 +39,7 @@ before_script:
 
 script:
   - hexo clean && hexo g
+  - mv cesium-wind ./public/cesium-wind
 
 after_success:
   - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@vensing.com:/hexo

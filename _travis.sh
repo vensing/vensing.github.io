@@ -25,7 +25,6 @@ function default(){
   cd ../
 
   mv .deploy_git/.git/ ./public/
-  mv cesium-wind ./public/cesium-wind
   cd ./public
 
 cat <<EOF >> README.md
