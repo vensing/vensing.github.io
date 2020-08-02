@@ -29,6 +29,7 @@ install:
   - npm install
   - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
   - git clone https://github.com/vensing/cesium-wind.git cesium-wind
+  - git clone https://github.com/vensing/olMeteo.git ol-meteo
 
 before_script:
   # 解密 RSA 私钥并设置为本机 ssh 私钥
@@ -40,6 +41,7 @@ before_script:
 script:
   - hexo clean && hexo g
   - mv cesium-wind ./public/cesium-wind
+  - mv ol-meteo/dist ./public/ol-meteo
 
 after_success:
   - rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/ root@vensing.com:/hexo
