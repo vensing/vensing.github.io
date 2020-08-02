@@ -132,7 +132,7 @@ $ git push -u origin source:source
 
 下面是我的 travis.yml 和 travis.sh 脚本：
 
-{% xchead 点击查看 %}
+{% collapse 点击查看 %}
 
 ```yml
 #travis.yml
@@ -186,7 +186,7 @@ env:
  global:
    - GH_REF: github.com/vensing/vensing.github.io.git
 ```
-{% xcfoot %}
+{% endcollapse %}
 
 注：
 1. notifications 可以设置部署成功和失败时自动给你发送邮件，这个功能真的很 nice 。
@@ -194,7 +194,7 @@ env:
 3. branches 是你Github Pages 项目中存放博客源码的分支，这里是 source 分支，对应上即可。
 4. env 下设置 GH_REF ，即设置 Github Pages 的仓库地址，记得是以 .git 结尾的地址。
 
-{% xchead 点击查看 %}
+{% collapse 点击查看 %}
 
 ```sh
 #travis.sh
@@ -271,7 +271,7 @@ esac
 
 
 ```
-{% xcfoot %}
+{% endcollapse %}
 
 注：
 1. travis.sh 中的 “GH_Token” 也是 travis 环境变量中设置的 Name 。

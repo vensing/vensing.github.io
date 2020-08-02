@@ -28,6 +28,7 @@ notifications:
 install:
   - npm install
   - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
+  - git clone https://github.com/vensing/cesium-wind.git cesium-wind
 
 before_script:
   # 解密 RSA 私钥并设置为本机 ssh 私钥

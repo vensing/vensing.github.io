@@ -29,7 +29,7 @@ toc: false
 
 ### 博客时光机
 
-{% xchead 点击查看 %}
+{% collapse 点击查看 %}
 
 - 2018.09.08 - 某个不知名的小站建立了。终于想起了要建立一个博客这件事？所以我之前都在干吗去了？当然是摸鱼和划水去了。
 - 2018.09.08 - 我的第一篇文章是 [Hello World](https://vensing.com/2018/09/08/hello-world/)。从此进入了独立博客的世界，然而好像没找到小伙伴啊。
@@ -48,11 +48,11 @@ toc: false
 - 2020.04.14 - 使用 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，采用 disqus 和 disqusjs 评论服务。
 - 2020.06.27 - 同步 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，开启浅色和暗黑模式。
 
-{% xcfoot %}
+{% endcollapse %}
 
 ### 博客快照
 
-{% xchead 点击查看 %}
+{% collapse 点击查看 %}
 
 ![最初博客主题](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
 
@@ -62,7 +62,7 @@ toc: false
 
 ![正在使用的主题](https://i.loli.net/2020/04/18/agbkYHThGBAdnt4.png)
 
-{% xcfoot %}
+{% endcollapse %}
 
 ### 你能从这里收获什么？
 

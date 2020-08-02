@@ -44,7 +44,7 @@ toc: true
 
 4. 在<body\>标签中加入如下代码：
 
-{% xchead 点击查看 %}
+{% collapse 点击查看 %}
 
 ```html
 <div id="landlord" style="left:5px;bottom:0px;">
@@ -91,7 +91,7 @@ var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口�
 <script type="text/javascript" src="blog/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="blog/live2d/js/message.js"></script>
 ```
-{% xcfoot %}
+{% endcollapse %}
 
 此次的代码也需另做修改：
 在主题`themes\hexo-theme-snippet\layout`目录下找到layout.ejs，在<body\>标签中的<section\>标签后加入上述代码即可。此处ejs文件中博客目录的地址是`<%= config.url%>`，应该是从主题配置文件中拿到的root path url，所以将js中的blog`src="blog/live2d/js/live2d.js"`改为`src="<%= config.url%>/live2d/js/live2d.js"`。其他js引入做类似修改即可。
