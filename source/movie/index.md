@@ -9,6 +9,8 @@ comments: false
 
 <script>
 ;(function(){
+
+  $('.kratos-post-content > h2').next().remove();
   var url = 'https://today-douban.vensing.workers.dev/api/v2/calendar/today';
   var now = new Date();
   var year = now.getFullYear();
@@ -27,23 +29,24 @@ comments: false
       },
       success: result => {
         if(result.today && result.comment){
-          $('.kratos-post-content').append(
-          '<div style="text-align:center;"><div><p style="font-size:28px;margin: 0.5em;">'+ result.today.date + '</p>'+
-          '<p style="margin-top: 0em;">'+ result.today.title +'</p></div>'+
-          '<img src="https://images.weserv.nl/?url='+ result.comment.poster +'"></img>'+
-          '<div><p style="font-size:24px;">《'+ result.subject.title +'》</p></div>'+
-          '<div><p style="font-size:24px;">'+ result.comment.content +'</p></div>' + 
-          '<div><p>'+ result.subject.card_subtitle +'</p></div>'+
-          '<div style="font-size:14px;"><p>豆瓣评分：'+ result.subject.rating.value +
-          '</p><a target="_blank" href="'+ result.subject.url +'">去豆瓣查看详情</a></div>'+
-          '</div>'
-          );
+          let html = `
+            <div style="text-align:center;"><div><p style="font-size:28px;margin: 0.5em;">${result.today.date}</p>
+            <p style="margin-top: 0em;">${result.today.title}</p></div>
+            <img src="https://images.weserv.nl/?url=${result.comment.poster}"></img>
+            <div><p style="font-size:24px;">《${result.subject.title}》</p></div>
+            <div><p style="font-size:24px;">${result.comment.content}</p></div>
+            <div><p>${result.subject.card_subtitle}</p></div>
+            <div style="font-size:14px;"><p>豆瓣评分：${result.subject.rating.value}
+            </p><a target="_blank" href="${result.subject.url}">去豆瓣查看详情</a></div>
+            </div>
+          `;
+          $('.kratos-post-content').append(html);
         }else{
-          $('.kratos-post-content').append("<p>哎呀，豆瓣电影日历崩溃了o(≧口≦)o</p>");
+          $('.kratos-post-content').append(`<p>哎呀，豆瓣电影日历崩溃了o(≧口≦)o</p>`);
         }
       },
       error: err => {
-        $('.kratos-post-content').append("<p>哎呀，豆瓣电影日历崩溃了o(≧口≦)o，重新刷新下吧~</p>");
+        $('.kratos-post-content').append(`<p>哎呀，豆瓣电影日历崩溃了o(≧口≦)o，重新刷新下吧~</p>`);
       }
     })
 
