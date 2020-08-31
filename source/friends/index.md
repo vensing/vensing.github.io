@@ -29,7 +29,7 @@ var myFriends = [
     ["https://candinya.com/", "https://cn.gravatar.com/avatar/a7f9e15fef26e0a540edc977e21cb3eb", "@糖喵🍬", "要来根🍭嘛~"], 
     ["https://www.mintimate.cn/", "https://puui.qpic.cn/fans_admin/0/3_1680187318_1573736162839/0", "@Mintimate", " ο(=•ω＜=)ρ，酷安机油 ~，奥利给"], 
     ["https://www.hqsblog.cn/", "https://secure.gravatar.com/avatar/bf26ba39de8953a3629b16a30c5f1dbe?s=40&r=G&d=", "@寒穹の小屋", "喜欢追番、打游戏、听音乐的好学生"],
-    ["https://bwoywan268.xyz/", "https://vensing.com/images/avatar.png", "@博源", "人生如逆旅，我亦是行人"], 
+    ["https://blog.thris.me/", "https://vensing.com/images/avatar.png", "@博源", "理工大学生 懒癌晚期"], 
     ["https://sanshiliuxiao.top/", "https://cdn.jsdelivr.net/gh/sanshiliuxiao/blog-static/avatar.jpg", "@椎咲良田", " 昨日、今日、明日，前端大佬 ( =•ω＜= )✧"], 
     ["https://mqaq.fun/", "https://vensing.com/images/avatar.png", "@一叶竹", "是一个喜欢二次元的蓝孩纸喔 ~"],
     ["https://blog.badapple.pro/", "https://cn.gravatar.com/avatar/cc6a1849aa21339b96dd2a7c913dc435", "@东方幻梦", "只是当时已惘然，沉溺梦中不愿醒来。"],
