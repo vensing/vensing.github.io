@@ -27,7 +27,7 @@ notifications:
 # S: Build Lifecycle
 install:
   - npm install
-  - git clone -b custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
+  - git clone -b hexo5-custom https://github.com/vensing/Kratos-Rebirth.git themes/Kratos-Rebirth
   - git clone https://github.com/vensing/cesium-wind.git cesium-wind
   - git clone https://github.com/vensing/olMeteo.git ol-meteo
 

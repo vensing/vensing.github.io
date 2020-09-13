@@ -1,11 +1,8 @@
 ---
-comments: true
-toc: true
 date: 2020-09-10 09:17:46
 categories:
 tags:
  - 一言
-type: status
 ---
 
 - 一个人讨厌你，会找无数理由来讨厌你
