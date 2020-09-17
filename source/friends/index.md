@@ -31,7 +31,7 @@ var myFriends = [
     ["https://www.hqsblog.cn/", "https://secure.gravatar.com/avatar/bf26ba39de8953a3629b16a30c5f1dbe?s=40&r=G&d=", "@寒穹の小屋", "喜欢追番、打游戏、听音乐的好学生"],
     ["https://blog.thris.me/", "https://blog.thris.me/usr/uploads/2019/10/4136684673.jpeg", "@博源", "理工大学生 懒癌晚期"], 
     ["https://sanshiliuxiao.top/", "https://cdn.jsdelivr.net/gh/sanshiliuxiao/blog-static/avatar.jpg", "@椎咲良田", " 昨日、今日、明日，前端大佬 ( =•ω＜= )✧"], 
-    ["https://mqaq.fun/", "https://vensing.com/images/avatar.webp", "@一叶竹", "是一个喜欢二次元的蓝孩纸喔 ~"],
+    ["https://meyyz.cn/", "https://vensing.com/images/avatar.webp", "@一叶竹", "是一个喜欢二次元的蓝孩纸喔 ~"],
     ["https://blog.badapple.pro/", "https://cn.gravatar.com/avatar/cc6a1849aa21339b96dd2a7c913dc435", "@东方幻梦", "只是当时已惘然，沉溺梦中不愿醒来。"],
     ["https://blog.imgradeone.xyz/", "https://blog.imgradeone.xyz/images/avatar.png?v=1585924114010", "@一么酱", "(妹妹酱？猜测)萌站 一 丧病至极的一么酱的官网。"], 
     ["https://removeif.github.io/", "https://cdn.jsdelivr.net/gh/removeif/removeif.github.io@latest/img/avatar.png", "@辣椒の酱", " 尚未执佩剑，转眼即江湖。后端开发，技术分享。"], 
