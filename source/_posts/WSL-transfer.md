@@ -15,7 +15,7 @@ tags:
 
 ### 背景
 
-C 盘塞满和手机电量不足这事很相似，看着手机电量不足就没安全感，所以捣鼓了下 WSL 发行版从 C 盘迁移到其他盘上。 我用 WSL 发行版是 Ubuntu 18.04，另外 Docker Desktop For Windows 的 backend 后端守护进程也是跑在 WSL 上，光这两个就占用十几个 G 的空间了(C 盘危。使用 ` wsl --list ` 查看已安装的 WSL 发行版：
+C 盘塞满和手机电量不足这事很相似，就像看着手机电量不足就想充满电不然没安全感，所以捣鼓了下 WSL 发行版从 C 盘迁移到其他盘上。 我用 WSL 发行版是 Ubuntu 18.04，另外 Docker Desktop For Windows 的 backend 后端守护进程也是跑在 WSL 上，光这两个就占用十几个 G 的空间了(C 盘危。使用 ` wsl --list ` 查看已安装的 WSL 发行版：
 
 ```sh
 C:\Users\vensi>wsl --list
@@ -25,7 +25,7 @@ docker-desktop-data
 docker-desktop
 ```
 
-可以看到机器上安装的 Ubuntu 发行版和 Docker 的 backend 后端守护进程，目标就是就将它们迁移到其他盘。查看 ` wsl --help ` 可以看到 wsl 提供了 --export 和 --import 发行版的导入导出功能，更为方便的是 Github 上有一个项目管理 WSL 的全功能实用程序 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) ，我选择使用这个更为强大的工具来管理 WSL。
+可以看到机器上安装的 Ubuntu 发行版和 Docker 的 backend 后端守护进程，目标就是将它们迁移到其他盘。查看 ` wsl --help ` 可以看到 wsl 提供了 ` --export ` 和 ` --import ` 发行版的导入导出功能，更为方便的是 Github 上有一个项目管理 WSL 的全功能实用程序 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) ，我选择使用这个更为强大的工具来管理 WSL。
 
 ### 安装 LxRunOffline
 
