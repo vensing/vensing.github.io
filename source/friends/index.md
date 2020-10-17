@@ -6,7 +6,6 @@ toc: false
 comments: true
 ---
 
-![](/images/friends_about.webp)
 
 ###  友情链接 
 
