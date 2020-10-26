@@ -47,7 +47,7 @@ var myFriends = [
     ["https://mgear-blogs.obs-website.cn-east-3.myhuaweicloud.com/", "https://cdn.jsdelivr.net/gh/Lionad-Morotar/blog-cdn/image/avatar.gif", "@lionad", "前端工程师|午夜吉他魔|兴趣泛滥的游戏玩家"],
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/chanshiyucx/yoi/blog/avatar.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"],
     ["https://yked.gitee.io", "https://gravatar.loli.net/avatar/5247364b04565d40f759ce8ee7bd60e6", "@聆听·彼岸", "彼岸少年"],
-    ["https://blog.kawashiros.club", "https://i.loli.net/2020/08/14/iV2Ex7yQdXfro8U.jpg", "@非科学のかっぱ", "冻符「Minus-K」"]
+    ["http://www.kawashiros.club", "https://i.loli.net/2020/08/14/iV2Ex7yQdXfro8U.jpg", "@非科学のカッパ", "Coffee-Code Transformer"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
