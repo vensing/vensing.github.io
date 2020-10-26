@@ -3,7 +3,7 @@ title: Win10 Hyper-V 端口保留问题
 comments: true
 toc: true
 date: 2020-07-25 10:28:35
-categories: 编程
+categories: 瞎折腾
 tags: Win10
 ---
 

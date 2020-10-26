@@ -1,7 +1,7 @@
 ---
 title: 某个不知名的小站
 categories:
- - 博客
+ - 博客记录
 tags:
  - 日常
 abbrlink: 4417

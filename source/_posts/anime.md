@@ -2,7 +2,7 @@
 title: 一篇很走心的科普文
 date: 2019-03-24 15:51:39
 categories:
- - 动漫
+ - 动漫迷
 tags:
  - ACG
 ---

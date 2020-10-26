@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-10-09 16:58:47
 categories:
- - 插件
+ - 瞎折腾
 tags:
  - WSL
 ---

@@ -3,7 +3,7 @@ title: Tomcat 开启 gzip 压缩
 comments: true
 toc: true
 date: 2019-08-24 10:26:23
-categories: 开发
+categories: 瞎折腾
 tags: gzip 
 ---
 

@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-04-19 16:31:00
 categories:
-  - 插件
+  - 博客开发
 tags:
   - fancybox
   - pjax

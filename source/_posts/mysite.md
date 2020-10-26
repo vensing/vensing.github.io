@@ -5,7 +5,7 @@ date: 2019-01-31 21:31:35
 tags:
   - hexo主题
 categories:
-  - 日常
+  - 博客记录
 toc: true
 ---
 

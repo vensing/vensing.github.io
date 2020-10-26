@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-08-10 22:09:17
 categories:
- - 动漫
+ - 动漫迷
 tags:
  - 黑之契约者
 ---

@@ -2,7 +2,7 @@
 title:  OpenCV Java 开发环境搭建
 date: 2019-05-30 14:40:30
 categories:
- - 技术
+ - 瞎折腾
 tags:
  - 开发环境
  - OpenCV

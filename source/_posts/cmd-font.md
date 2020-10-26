@@ -3,7 +3,7 @@ title: 一种实用的 cmd 字体
 comments: true
 toc: true
 date: 2019-07-28 10:26:23
-categories: 插件
+categories: 瞎折腾
 tags: cmd 
 
 ---

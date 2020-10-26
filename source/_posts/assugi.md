@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-08-15 11:28:49
 categories:
- - 动漫
+ - 动漫迷
 tags:
  - saint seiya
 ---

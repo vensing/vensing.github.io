@@ -4,7 +4,7 @@ comments: true
 toc: true
 date: 2020-07-04 19:53:00
 categories:
- - 编程
+ - 瞎折腾
 tags:
  - docker
  - CI

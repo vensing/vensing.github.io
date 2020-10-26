@@ -4,7 +4,7 @@ comments: true
 toc: false
 date: 2020-02-17 10:58:53
 categories:
-  - 动漫
+  - 动漫迷
 tags:
   - 可塑性记忆
 ---

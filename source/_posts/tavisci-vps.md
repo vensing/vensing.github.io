@@ -2,7 +2,7 @@
 title: 使用 Travis CI 自动部署到 Github Pages 和 VPS
 date: 2019-04-07 13:30:00
 categories:
-  - 技术
+  - 博客开发
 tags:
   - 自动部署
   - Travis CI

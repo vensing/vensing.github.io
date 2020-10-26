@@ -5,7 +5,7 @@ comments: true
 tags:
   - hexo主题
 categories:
-  - 技术
+  - 瞎折腾
 toc: true
 ---
 

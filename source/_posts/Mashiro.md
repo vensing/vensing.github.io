@@ -2,7 +2,7 @@
 title: 给你的博客中加入真白看板娘
 comments: true
 categories:
-  - 插件
+  - 博客开发
 tags:
   - 看板娘
 abbrlink: 14781

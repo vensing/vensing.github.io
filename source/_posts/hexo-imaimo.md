@@ -2,7 +2,7 @@
 title:  🎨 hexo-theme-imaimo
 date: 2019-07-09 23:00:30
 categories:
- - 技术
+ - 瞎折腾
 tags:
  - hexo主题
 comments: true

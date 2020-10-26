@@ -1,7 +1,7 @@
 ---
 title: 网站更新啦
 categories:
-  - 博客
+  - 博客记录
 tags:
   - 更新
 abbrlink: 53383
