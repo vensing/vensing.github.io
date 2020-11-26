@@ -22,7 +22,7 @@ comments: false
 			        <p style="margin-top: 0em;">${datas[0].title}</p></div>
 			        <img src="https://images.weserv.nl/?url=${datas[0].img_url}"></img>
 			        <div><p style="font-size:12px;">${datas[0].picture_author}</p></div>
-			        <div><p>${datas[0].content}</p></div>
+			        <div><p style="font-size:24px;">${datas[0].content}</p></div>
 			        <div><p>${datas[0].text_authors}</p></div>
 			        <div><a href="http://wufazhuce.com/">ONE | 一个</a></div></div>`;
         $('.kratos-post-content').append(html);
