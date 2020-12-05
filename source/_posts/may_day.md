@@ -22,7 +22,7 @@ tags:
 
 而在今年 2020年的5月31号，在每年5月给大家唱歌的日子里，五月天带来了线上演唱会——**MAYDAY 2020 LIVE IN THE SKY 线上演唱会**。
 
-![MAYDAY 2020 LIVE IN THE SKY 线上演唱会](https://i.loli.net/2020/06/01/74qPhZ1jdeQBTI6.jpg)
+![MAYDAY 2020 LIVE IN THE SKY 线上演唱会](https://cdn.jsdelivr.net/gh/vensing/static@master/image/74qPhZ1jdeQBTI6.jpg)
 
 其实，我也是昨晚八点多听到朋友提到这件事，才后知后觉地打开浏览器。然后，听到阿信在唱「突然好想你」，我第一次正儿八经地听五月天的歌是在 DVD 上放 「突然好想你」的 MV ，真是奇妙的感觉。 
 
@@ -42,7 +42,7 @@ document.getElementById("spkj").style.height=document.getElementById("spkj").scr
 
 > 无数场演唱会以后，站在鸟巢体育场的舞台中央的五个40多岁的大叔，和当年北京无名高地为30个观众唱歌的青年，和当年在炸鸡店为了免费炸鸡唱歌的少年，和如今从公司拿出500万捐给武汉的五月天，都是一样。我们每个人，也都逃不过岁月与光阴。可有些人始终有少年般纯真的心。他们叫五月天。
 
-![最美的愿望，一定最疯狂](https://i.loli.net/2020/06/01/AM6e9N8onaEdSTB.png)
+![最美的愿望，一定最疯狂](https://cdn.jsdelivr.net/gh/vensing/static@master/image/AM6e9N8onaEdSTB.png)
 
 关于五月天的音乐我只想说这些，了解更多关于五月天的内容，请访问下面的两个参考链接。
 

@@ -48,7 +48,7 @@ tags:
 
 作为程序员，当然得学会面向搜索引擎编程了，也很快就找到了ONE 网页端暴露的 API 接口。在 ONE 官网移动端就暴露了这么一个每日图文的接口：
 
-![每日图文的接口](https://i.loli.net/2020/06/21/M9pUbR2zVx4q63I.png)
+![每日图文的接口](https://cdn.jsdelivr.net/gh/vensing/static@master/image/M9pUbR2zVx4q63I.png)
 
 调试当然得打开控制台啦，Chrome 也为我们提供了模拟移动设备的环境，点击控制台左上角的【device toolbar】图标就可以切换模拟移动设备访问网页了。很幸运，我们很快就找到了每日图文的网址 API，这是一个 XHR ajax 请求，带了一个`_token` 参数。在控制台中，找到该请求的 `Initiator` 栏查看 Request call stack。最后我们会找到该请求的发起位置：
 
@@ -64,7 +64,7 @@ tags:
 
 我们可以在 `postman` 上测试下设置 `_token` 和 `Cookie` 后是否能正确访问到 API：
 
-![one_postman.png](https://i.loli.net/2020/06/21/2ZWTwJmerUnBkYp.png)
+![one_postman.png](https://cdn.jsdelivr.net/gh/vensing/static@master/image/2ZWTwJmerUnBkYp.png)
 
 可以看到我们已经能通过接口拿到一组数据了，当天的数据 (最新一条数据) 位于数组索引 0 的位置。
 
@@ -80,7 +80,7 @@ tags:
 
 说起来，豆瓣也经历过 14 个年头的站点了，而豆瓣也好像一直没有令人印象深刻的 slogan ，倒是豆瓣电影和书影音档案成为了相关内容的百科全书。豆瓣大约在 2017 年推出了 [『豆瓣电影日历』](https://book.douban.com/subject/34775984/) 纸质日历，每天推荐一部高分电影，并且在 IOS 的 Today Widget 上有电子版『豆瓣电影日历』和纸质日历同步，这个功能很多人并不知道。
 
-![豆瓣电影日历](https://i.loli.net/2020/06/21/GtdAbWJIpnmBlYQ.jpg)
+![豆瓣电影日历](https://cdn.jsdelivr.net/gh/vensing/static@master/image/GtdAbWJIpnmBlYQ.jpg)
 
 豆瓣电影日历和 ONE 每日图文的展示形式类似，以一张图一段文字每天推荐一部高分电影。那么能不能像 ONE 每日图文那样抓取接口地址呢？
 
@@ -114,11 +114,11 @@ Thor 实现的 HTTPS 解析方式是 MiTM （中间人欺骗）：需要用 Thor
 
 抓包这个操作，其实很简单，先把其他软件从后台切出防止不必要的网络请求。然后，进入软件首页点击按钮开启抓包，iPhone 切到 Today Widget 小组件页面(需先开启豆瓣每日电影 Widget )即可，返回抓包软件，即可看到抓到的请求。
 
-![抓包结果——请求头](https://i.loli.net/2020/06/21/Qfmv3nykSt6xVHs.jpg)
+![抓包结果——请求头](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Qfmv3nykSt6xVHs.jpg)
 
 最重要的是请求头和请求行，我们可以在 `Postman` 上，输入上述请求头及请求地址和查询参数：
 
-![Postman测试接口成功](https://i.loli.net/2020/06/21/dgLZTvyn47QzGCe.png)
+![Postman测试接口成功](https://cdn.jsdelivr.net/gh/vensing/static@master/image/dgLZTvyn47QzGCe.png)
 
 请求头，按抓取的请求头设置即可，查询参数中我们只需要替换 `date` 参数即可；`_ts` 是时间戳和 `_sig` 签名应该是对应关系所以可以不用管。返回头中 Cookie 的过期时间貌似设置的是不过期，最理想的情况是我们使用抓取到的请求头和查询参数配置我们自己的请求即可，需要替换的只是 `date` 日期。而 Cookie 和 签名这些是否会随着时间改变这些也无从验证(按道理是不会变的)，没办法别人的接口又没公开，只能这么干啦。
 
@@ -136,9 +136,9 @@ Thor 实现的 HTTPS 解析方式是 MiTM （中间人欺骗）：需要用 Thor
 
 可以在本站导航栏上的 `One 图文` 和 `电影日历` 菜单项查看，放下效果图：
 
-![ONE 每日图文](https://i.loli.net/2020/06/21/AE1HZaONsXVyrf6.png)
+![ONE 每日图文](https://cdn.jsdelivr.net/gh/vensing/static@master/image/AE1HZaONsXVyrf6.png)
 
-![豆瓣电影日历](https://i.loli.net/2020/06/21/3PXlrJeR7j9oZnd.png)
+![豆瓣电影日历](https://cdn.jsdelivr.net/gh/vensing/static@master/image/3PXlrJeR7j9oZnd.png)
 
 这两个接口都只在个人博客使用，方便查阅每日更新，不用于商业或者其他用途。如有侵权，请联系我删除。
 

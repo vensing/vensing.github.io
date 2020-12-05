@@ -19,19 +19,19 @@ tags:
 
 ### 全新的面貌
 
-![首页](https://i.loli.net/2020/04/18/agbkYHThGBAdnt4.png)
+![首页](https://cdn.jsdelivr.net/gh/vensing/static@master/image/agbkYHThGBAdnt4.png)
 
 
 必须得吹一下，`Kratos-Rebirth` 主题渲染后的页面真的很好看，而且全站采用 pjax 技术做到了类似 vue 单页应用的页面渲染效果，提高了用户访问页面时的体验。
 
-<img src="https://i.loli.net/2020/04/18/5ZeynDRVbHWl6Iv.png" alt="移动端" style="zoom:25%;" />
+<img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/5ZeynDRVbHWl6Iv.png" alt="移动端" style="zoom:25%;" />
 
 移动端的颜值和体验也是非常棒 (๑•̀ㅂ•́)و✧，阅读体验也很赞。是不是感觉跃跃欲试了 (搓手.jpg
 
 
 ### disqusjs 基础评论模式
 
-![disqusjs](https://i.loli.net/2020/04/18/NVJDU6rwI5kSGCi.png)
+![disqusjs](https://cdn.jsdelivr.net/gh/vensing/static@master/image/NVJDU6rwI5kSGCi.png)
 
 Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很纠结很头大，总结下有以下几种主流方式：
 
@@ -48,7 +48,7 @@ Hexo 等静态博客由于没有后端程序，其留言评论是真的让人很
 
 首先，你需要登录到 CloudFlare， 然后找到 Workers ，选择 Free 计划 (土豪请随意选择)；然后你可能需要填一个  **xxxx.workers.dev** 的域名地址，填好之后点击 **创建 Worker**，worker 名字随意但这里建议填 **disqusjs-api**。进入编辑页面，把[官方示例 CF Workers 反代项目](https://github.com/idawnlight/disqusjs-proxy-cloudflare-workers/blob/master/worker.js ) 里的内容复制到左侧脚本框中，弄好之后再点击右侧发起 HTTP GET 请求测试，如果出现 200 OK，那就说明成功了。 
 
-![CF Workers 反向代理](https://i.loli.net/2020/04/18/U9fgABpsERmihkt.png)
+![CF Workers 反向代理](https://cdn.jsdelivr.net/gh/vensing/static@master/image/U9fgABpsERmihkt.png)
 
 #### disqusjs 配置
 
@@ -91,7 +91,7 @@ git merge upstream/master
 
 这样，Candinya/Kratos-Rebirth 库更新了，master 分支同步下，最后在 merge 到 custom 分支即可。由于主题托管在 Github，因此博客根目录下的 themes 文件夹便可以删除了，你需要在 .gitignore 添加配置，忽略该文件夹。最后的主题仓库的分支图大概长这样⬇：
 
-![SourceTree 下的分支结构](https://i.loli.net/2020/04/18/R97WFHiOhSCsyfU.png)
+![SourceTree 下的分支结构](https://cdn.jsdelivr.net/gh/vensing/static@master/image/R97WFHiOhSCsyfU.png)
 
 #### Travis CI 配置
 

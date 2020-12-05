@@ -71,7 +71,7 @@ var fancyboxInit = ()=>{
 
 到这应该就差不多能食用 fancybox 预览图片了，好耶。如果你这么想，就大错特错了我的朋友。当你正准备打开浏览器页面测试下 fancybox 图片时，你不知道摆在你前面的是一个大坑。
 
-![咋回事？](https://i.loli.net/2020/04/19/umqwPHbjrU1Qysv.jpg)
+![咋回事？](https://cdn.jsdelivr.net/gh/vensing/static@master/image/umqwPHbjrU1Qysv.jpg)
 
 嗯？咋没有模态框弹出来？咋跳到图片原始链接的页面了？你是否有很多问号？？？控制台说 pjax 不能解析 PNG，然后下面是一堆乱码 (其实就是图片)。你可能会想 fancybox 服务没用，关 pjax 毛事，但确实是 pjax 的锅。
 

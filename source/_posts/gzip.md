@@ -34,11 +34,11 @@ tags: gzip
 
 但是不是每个浏览器都支持 gzip 的，如果知道客户端（即浏览器）是否支持gzip呢，请求头中有个 Accept-Encoding来标识对压缩的支持。客户端http请求头声明浏览器支持的压缩方式，服务端配置启用压缩，压缩的文件类型，压缩方式。
 
-![](https://i.loli.net/2019/08/24/ldo4Lqr3cta6jTW.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/ldo4Lqr3cta6jTW.png)
 
 当客户端请求到服务端的时候，服务器解析请求头，如果客户端支持gzip压缩，服务器响应时对请求的资源进行压缩并返回给客户端，浏览器按照自己的方式解析，在http响应头，我们可以看到 content-encoding:gzip，这是指服务端使用了gzip 的压缩方式。
 
-![](https://i.loli.net/2019/08/24/hTxzrJA6FN4l58q.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/hTxzrJA6FN4l58q.png)
 
 那么怎么看有没有用 gzip 压缩的文件呢，打开 f12，查看 network，按照下面的方式过滤：
 

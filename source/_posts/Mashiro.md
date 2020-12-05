@@ -14,7 +14,7 @@ toc: true
 
 <!--more-->
 
-![椎名真白](https://i.loli.net/2019/07/13/5d296676c01d396847.png)
+![椎名真白](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296676c01d396847.png)
 
 本文基于[教程 | 将椎名真白放到你的博客做看板娘](https://mp.weixin.qq.com/s/lVIC7WPXrs6y2ol6O1A0SA)搬运，具体用法也是基于此。作者博客地址：[https://zflytree.tk](https://zflytree.tk)。
 
@@ -30,7 +30,7 @@ toc: true
 
 2. 将解压出来的live2d文件夹拷到你的网页目录中。
 
-![live2dmashiro](https://i.loli.net/2019/07/13/5d2967261c2b549354.png)
+![live2dmashiro](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d2967261c2b549354.png)
 
 ### 加入代码
 
@@ -102,7 +102,7 @@ var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口�
 
 将真白加入本站的效果图如下：
 
-![椎名真白看板娘](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
+![椎名真白看板娘](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d29669c36e0f61903.png)
 
 目前加载文件的速度有待提高，点击给真白换装时要等2~3s，也不是不能接受的嘛。
 

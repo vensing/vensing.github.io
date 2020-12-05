@@ -29,7 +29,7 @@ Bing 还是比较靠谱的，第二个搜索结果就给出了与报错内容问
 
 真理来源于实践，于是我决定亲自去重现下这个 bug 。由于我用的是 Nodejs v12.14.1，重现 bug 需要 v14.0 但是我后边又不需要这个版本。所以我需要一个可以切换 Nodejs 版本的工具，重现完bug就滚回 v12.14.1。python 下有 Anaconda 管理版本，Nodejs 也有 nvm(Node version manager) 做版本管理。怎么安装 nvm，你去搜呀。下图是我安装 v14.0.0 步骤的截图：
 
-![nvm 安装 v14.0.0](https://i.loli.net/2020/04/23/Ivlx1KRnF5ypm4A.png)
+![nvm 安装 v14.0.0](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Ivlx1KRnF5ypm4A.png)
 
 ```shell
 # 安装 v14.0
@@ -44,7 +44,7 @@ nvm use v14.0.0
 
 然后就是执行 hexo clean && hexo g 来测试下是否能正常构建了。果然，出现了那个诡异的 bug，石锤了是 Nodejs v14.0 的锅。
 
-![v14.0.0 构建空 html 的 bug](https://i.loli.net/2020/04/24/sEXuSvawA5rLFJl.png)
+![v14.0.0 构建空 html 的 bug](https://cdn.jsdelivr.net/gh/vensing/static@master/image/sEXuSvawA5rLFJl.png)
 
 ### 解决方式
 
@@ -58,7 +58,7 @@ nvm use v14.0.0
 
 后面将此 Bug 提交到了 [hexo#issue-4257](https://github.com/hexojs/hexo/issues/4257)，后边也有人重现了同样的错误，见[hexo#issue-4260](https://github.com/hexojs/hexo/issues/4260)；以及有人反应在 Nodejs v14 出了同样的问题 [hexo#issue-4263](https://github.com/hexojs/hexo/issues/4263)，官方维护团队的建议是用低版本的 Nodejs 以避免此类错误的发生。而上面报的警告(Warning: Accessing non-existent property 'lineno' of module exports inside circular dependency)是因为在 Nodejs v14 下引用 `stylus` 时出了问题。警告的复现在 [issuecomment-618857837](https://github.com/hexojs/hexo/issues/4257#issuecomment-618857837) 提出，具体复现情况见下图：
 
-![stylus warning 警告](https://i.loli.net/2020/04/24/lTWGwo59CidzSVM.png)
+![stylus warning 警告](https://cdn.jsdelivr.net/gh/vensing/static@master/image/lTWGwo59CidzSVM.png)
 
 而执行 hexo g 构建空 html 的问题则是因为 Nodejs v14 下使用了严格的参数类型检测，从而导致 `hexo-fs` 的 fs.promises.copyFile 方法在 Nodejs v14 以下版本正常构建，而在 v14 版本上则出现了问题。具体的解释请查看 [hexo-fs#pull-59](https://github.com/hexojs/hexo-fs/pull/59)，`hexo-fs` 涉及到 `hexo-cli` 及 hexo 构建静态网页从而导致构建出了空的 html，详情见评论 [issuecomment-618815265](https://github.com/hexojs/hexo/issues/4260#issuecomment-618815265)。此问题已在 `hexo-fs` [hexo-fs#pull-60](https://github.com/hexojs/hexo-fs/pull/60) 修复。
 

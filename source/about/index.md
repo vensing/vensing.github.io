@@ -53,13 +53,13 @@ toc: false
 
 {% collapse 点击查看 %}
 
-![最初博客主题](https://i.loli.net/2019/07/13/5d29669c36e0f61903.png)
+![最初博客主题](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d29669c36e0f61903.png)
 
-![使用的Next主题](https://i.loli.net/2019/07/13/5d2969600b95d66901.png)
+![使用的Next主题](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d2969600b95d66901.png)
 
-![使用的icarus主题](https://i.loli.net/2019/07/17/5d2e74db631ba20017.png)
+![使用的icarus主题](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d2e74db631ba20017.png)
 
-![正在使用的主题](https://i.loli.net/2020/04/18/agbkYHThGBAdnt4.png)
+![正在使用的主题](https://cdn.jsdelivr.net/gh/vensing/static@master/image/agbkYHThGBAdnt4.png)
 
 {% endcollapse %}
 

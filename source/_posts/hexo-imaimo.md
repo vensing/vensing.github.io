@@ -19,7 +19,7 @@ toc: true
 
 
 
-![hexo-imaimo.png](https://i.loli.net/2019/06/24/5d10a59f842d945783.png)
+![hexo-imaimo.png](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d10a59f842d945783.png)
 
 
 ### 📝 来源

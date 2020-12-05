@@ -32,7 +32,7 @@ comments: false
           let html = `
             <div style="text-align:center;"><div><p style="font-size:28px;margin: 0.5em;">${result.today.date}</p>
             <p style="margin-top: 0em;">${result.today.title}</p></div>
-            <img src="https://images.weserv.nl/?url=${result.comment.poster}"></img>
+            <img src="${result.comment.poster}" referrerpolicy="no-referrer"></img>
             <div><p style="font-size:24px;">《${result.subject.title}》</p></div>
             <div><p style="font-size:24px;">${result.comment.content}</p></div>
             <div><p>${result.subject.card_subtitle}</p></div>

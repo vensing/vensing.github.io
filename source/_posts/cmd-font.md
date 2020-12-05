@@ -27,7 +27,7 @@ tags: cmd
 
 那就去用其他类 cmd 软件或者装个 Git 不就好了？当然你要是觉得会经常用cmd执行命令，你可以装一个类cmd软件这并不是本文的侧重点。当然安装了 git 后，会自动帮我们安装 mintty，bash 风格，自定义方便，着色也很棒。但在某些情况下，Git 却很容易吃瘪：
 
-![](https://i.loli.net/2019/07/28/5d3d0d32f3c9760716.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d0d32f3c9760716.png)
 
 因此，总有免不了要用 cmd 的时候，或者虽然强大但很丑的 PowerShell。
 
@@ -70,17 +70,17 @@ tags: cmd
 
 在cmd 或者 powershell 窗口的标题栏右键，进入属性窗口，选择字体为 Microsoft YaHei Mono 后确定即可。
 
-![](https://i.loli.net/2019/07/28/5d3d15c25841b46636.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d15c25841b46636.png)
 
 使用的前后效果如下：
 
-![使用前，默认的 cmd 字体](https://i.loli.net/2019/07/28/5d3d1798bf8fb84177.png)
+![使用前，默认的 cmd 字体](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d1798bf8fb84177.png)
 
-![使用后，Microsoft YaHei Mono 字体](https://i.loli.net/2019/07/28/5d3d133f7bae978945.png)
+![使用后，Microsoft YaHei Mono 字体](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d133f7bae978945.png)
 
-![使用前，默认的 powershell字体](https://i.loli.net/2019/07/28/5d3d0ddc3d5c827279.png)
+![使用前，默认的 powershell字体](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d0ddc3d5c827279.png)
 
-![使用后，Microsoft YaHei Mono 字体](https://i.loli.net/2019/07/28/5d3d0ddc9df5a93731.png)
+![使用后，Microsoft YaHei Mono 字体](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d3d0ddc9df5a93731.png)
 
 总之，换完字体之后整个人都好了。
 

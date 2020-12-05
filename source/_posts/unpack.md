@@ -28,7 +28,7 @@ toc: true
 **价格：949 元**
 **链接：[惠普（HP）24F 23.8英寸 IPS 纤薄微边框 75Hz FreeSync技术 低蓝光 电脑显示器](https://item.jd.com/6974176.html)**
 
-![HP 24F 显示器](https://i.loli.net/2019/07/13/5d296bc96f57c63821.jpg)
+![HP 24F 显示器](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc96f57c63821.jpg)
 
 这其实是去年11月入的，这款显示器中规中规，使用下来基本是无坏点，无亮点，无漏光，不闪屏。分辨率是1080P，自带一个 VGA 和 HDMI 接口。没有 USB 接口和音频输出接口，更别说 DP接口了。
 
@@ -43,7 +43,7 @@ toc: true
 **价格：169 元**
 **链接：[雷柏（Rapoo） V500L 104键升级版混光机械键盘 游戏键盘 黑色 黑轴](https://item.jd.com/3204859.html)**
 
-![主卧书桌](https://i.loli.net/2019/07/13/5d296bc6602c721036.jpg)
+![主卧书桌](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc6602c721036.jpg)
 
 键盘手感只能说一般，一分钱一分货。黑轴的适合用来打游戏，需要较强的指力才能按动，长时间码字会很累。声音不算很大，有背景光然而并没有什么实际用处。缺点很明显了，没有驱动还很重（貌似机械键盘都很重），不适合携带。
 
@@ -62,7 +62,7 @@ toc: true
 
 如果你想体验FaceID 又想双卡双待还不想多花几千块上 XS Max ，那么不妨考虑下 XR 。当然你舍得花钱或者完全不差钱那另说了。
 
-![](https://i.loli.net/2019/07/13/5d296bc51a6d893052.jpg)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc51a6d893052.jpg)
 
 当初入手也是因为双卡双待，一张办公用，一张私人用。一直舍不得扔掉我那张移动卡，到现在也 6 个年头了。
 
@@ -73,7 +73,7 @@ toc: true
 **价格：5999 元**
 **链接：[戴尔DELL G7 15.6英寸游戏笔记本电脑(i5-8300H 8G 128G PCleSSD 1T GTX1050Ti 4G 背光键盘 IPS)黑](https://item.jd.com/100000016920.html)**
 
-![戴尔 G7](https://i.loli.net/2019/07/13/5d296bc5aabc561863.jpg)
+![戴尔 G7](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc5aabc561863.jpg)
 
 戴尔 G 系列游戏币，G7 也基本上是和 G3 一个模具出来的外观。我这款是配置最低的入门款，1050Ti这块显卡都卖两年了。由于我不玩 3A 游戏，平时也不怎么玩游戏，只是用来办公、码码字所以头一热就入了这款电脑。
 
@@ -88,7 +88,7 @@ toc: true
 **价格：389 元**
 **链接：[金士顿(Kingston) DDR4 2666 8GB 笔记本内存 骇客神条 Impact系列](https://item.jd.com/8391337.html)**
 
-![金士顿 DDR4 2666 8GB 笔记本内存](https://i.loli.net/2019/07/13/5d296bc4058dd84219.jpg)
+![金士顿 DDR4 2666 8GB 笔记本内存](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc4058dd84219.jpg)
 
 入了一条金士顿 DDR4 2666 8G 的内存条和 G7 上自带的海力士 8G 组成双通道，大概因为金士顿内存条的颗粒也是海力士的，所以 16G 双通道并没有降频一次点亮。戴尔的后盖是出了名的好拆，基本上把后盖上的一颗固定的螺丝拧开，再用类似银行卡这样的东西划一圈就把后盖拆开了。
 
@@ -102,7 +102,7 @@ toc: true
 **价格：439 元**
 **链接：[七彩虹(Colorful) CN600S系列 480GB M.2接口(NVMe协议) SSD固态硬盘](https://item.jd.com/7815363.html)**
 
-![七彩虹固态包装盒与拆下来的 G7 自带 128G 东芝固态](https://i.loli.net/2019/07/13/5d296bd35852887348.jpg)
+![七彩虹固态包装盒与拆下来的 G7 自带 128G 东芝固态](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bd35852887348.jpg)
 
 因为戴尔 G7 自带的东芝 128G Nvme 协议的固态（PCI-e 2通道）实在是太辣鸡了而且容量只有128G ，让我把软件装机械盘？有没有搞错，这读写得多慢。所以，我自己挑了一块七彩虹的 480G 基于 Nvme 协议 PCI-e 4 通道的固态硬盘。机械盘拆下把之前的  SATA3 固态硬盘加上去了，全固态硬盘随我怎么玩。
 
@@ -116,7 +116,7 @@ toc: true
 **价格：129 元**
 **链接：[罗技（Logitech）Pebble 鹅卵石轻薄型静音鼠标 蓝牙无线双模 静音 便携 时尚鼠标 石墨黑](https://item.jd.com/100002304438.html)**
 
-![罗技 Pebble 无线鼠标](https://i.loli.net/2019/07/13/5d296bc85fea289082.jpg)
+![罗技 Pebble 无线鼠标](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc85fea289082.jpg)
 
 罗技的这款无线鼠标非常精致，前盖可以很方便的拆下来和安装回去，螺丝不是固定的而是磁吸的，更换电池很方便。支持接收器和蓝牙模式，蓝牙模式太鸡肋了操作起来延迟高有点卡顿的感觉，接收器就没这毛病操作起来很顺畅。声音基本上很小，远一点你就基本上听不到鼠标点击的声音了。同时重量也比较轻，整体尺寸较小，非常适合携带。
 
@@ -128,7 +128,7 @@ toc: true
 **价格：88 元**
 **链接：[绿联苹果PD快充线type-c转lighting数据线 + PD 充电头](https://detail.tmall.com/item.htm?id=589366549086&spm=a1z09.2.0.0.5da12e8d1fT3SA)**
 
-![绿联苹果PD快充线type-c转lighting数据线 + PD 充电头](https://i.loli.net/2019/07/13/5d296bc7581c234778.jpg)
+![绿联苹果PD快充线type-c转lighting数据线 + PD 充电头](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296bc7581c234778.jpg)
 
 从 iPhone 8 开始，其实就已经支持 USB Power Delivery 功率传输协议，现在 type-c 已慢慢成为主流接口， USB-PD 代表未来的充电新标准已经是大势所需。绿联这款充电头价格比较实惠适合我这样的穷屌，苹果官网的 PD 充电头和 type-c 转 lighting 数据线得四百多，让我这样的穷屌望而却步。充电基本半小时充到 50%，一小时能快速充满 ，发热只有一点点。
 

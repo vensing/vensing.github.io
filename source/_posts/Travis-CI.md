@@ -15,7 +15,7 @@ toc: true
 
 <!--more-->
 
-![Travis CI 自动部署流程](https://i.loli.net/2019/07/13/5d29679d61e4094268.png)
+![Travis CI 自动部署流程](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d29679d61e4094268.png)
 
 
 ### 没有 Travis CI 之前
@@ -118,13 +118,13 @@ $ git push -u origin source:source
 #### Travis
 在官网使用github账号授权登录，hexo添加配置文件就可以了。
 - 获取 Personal access tokens，Github Pages setting --> Developern settings --> Personal access tokens ，点击 Generate new  token 选择仓库权限就可以，新生成一个Token，Travis 环境配置里会用到这个Token。生成之后一定要保存好，因为只会出现一次，丢失了就只能再重新生成了。
-![](https://i.loli.net/2019/07/13/5d29685bb712822904.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d29685bb712822904.png)
 - 登录[官网](https://www.travis-ci.org/)，使用github账号登录。
 - 添加 Github Pages 博客仓库。
 - 设置选项，这里我只设置 push 代码到 GitHub Pages 时自动部署。右上角 More options 调出Setting页面。
-![](https://i.loli.net/2019/07/13/5d296880361a431439.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d296880361a431439.png)
 - 在 Travis 的 Settoiing 页面设置环境变量，Name 为“GH_Token”，value 为刚才复制的Token ，然后点击右边的 Add 按钮添加即可。
-![](https://i.loli.net/2019/07/13/5d2968974a36f41842.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/5d2968974a36f41842.png)
 - 在hexo博客源码中添加配置文件`.travis.yml`
 需要修改的是git的配置信息。
 *要使用https协议的仓库地址，使用ssh仓库地址会失败。*

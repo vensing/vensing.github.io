@@ -20,7 +20,7 @@ tags:
 
 ### Gitlab CI/CD 简介
 
-![Gitlab CI/CD](https://about.gitlab.com/images/blogimages/cicd_pipeline_infograph.png)
+![Gitlab CI/CD](https://cdn.jsdelivr.net/gh/vensing/static@master/image/cicd_pipeline_infograph.png)
 
 如上图所示，当我们提交代码到 GitLab 仓库后，满足指定条件后就会触发 Pipeline 进行自动化构建、测试、发布等。
 
@@ -141,9 +141,9 @@ See Install GitLab Runner using the official GitLab repositories: https://docs.g
 
 相信上面的这些都难不倒你，关于 WSL 上的 Docker ，这里我们需要着重提一下。你只需要下载好 Docker Desktop 并安装好，安装好之后我们进入 settings 设置界面，进入到 General => Use the WSL2 based engine 开启；然后进入到 Resources => WSL INTEGRATION ，允许 Docker 访问 WSL2 ，并启用安装的发行版。也就是说，我们不用在 WSL 上再安装 Docker 了，只需要安装 Windows Docker 桌面版程序并让其在后台运行着即可。值得注意的是，如果你退出了 Docker 桌面版，WSL2 里也访问不到 Docker 服务了。
 
-![use_the_wsl2_based_engine.png](https://i.loli.net/2020/07/08/PByJ72iWXeqnvIx.png)
+![use_the_wsl2_based_engine.png](https://cdn.jsdelivr.net/gh/vensing/static@master/image/PByJ72iWXeqnvIx.png)
 
-![use_resources_wsl_integration.png](https://i.loli.net/2020/07/08/FvIZhOPlXTLoQRu.png)
+![use_resources_wsl_integration.png](https://cdn.jsdelivr.net/gh/vensing/static@master/image/FvIZhOPlXTLoQRu.png)
 
 See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl/
 
@@ -151,7 +151,7 @@ See Docker Desktop WSL 2 backend: https://docs.docker.com/docker-for-windows/wsl
 
 注册好了 Runner 之后，我们刷新 Settings 下的 CI/CD 页面，展开 Runners，可以看到我们的 Runner 注册成功了，并且 runner 描述 和 tag 标签也显示出来了：
 
-![Runner 注册成功](https://i.loli.net/2020/07/04/T9mOKzlVeBLDIkS.png)
+![Runner 注册成功](https://cdn.jsdelivr.net/gh/vensing/static@master/image/T9mOKzlVeBLDIkS.png)
 
 你可以用 `gitlab-runner verify` 命令测试注册的 Gitlab-runner 和 gitlab 仓库是否能连通，出现图片上的小绿点就说明连通了。
 
@@ -181,7 +181,7 @@ test:
 
 在 WEB-IED 页面提交更改，这个时候就会自动触发 CI Pipelines， 并执行相应的 Job，Gitlab Runner 监听到之后就会使用 Docker executor，并拉取指定的镜像 (gitlab-ci.yml 中未配置 images时，会拉取注册Runner 时输入的默认镜像) ，接着从 Gitlab 拉取项目的仓库源码代码检出 master 分支，执行 gitlab-ci.yml 中的 “step_script” 作业脚本。
 
-![CI 执行日志信息](https://i.loli.net/2020/07/04/dNkmlphFgMREiew.png)
+![CI 执行日志信息](https://cdn.jsdelivr.net/gh/vensing/static@master/image/dNkmlphFgMREiew.png)
 
 
 
@@ -191,7 +191,7 @@ test:
 
 [python opencv 项目](https://gitlab.com/vensing/TestCI)的结构如下图所示：
 
-![python opencv 项目结构](https://i.loli.net/2020/07/04/U6SZRnAQhiFHj2e.png)
+![python opencv 项目结构](https://cdn.jsdelivr.net/gh/vensing/static@master/image/U6SZRnAQhiFHj2e.png)
 
 #### Docker 安装 Runner 
 
@@ -342,7 +342,7 @@ print(cv2.__version__)
 
 ```
 
-![ubuntu_v1_opencv.png](https://i.loli.net/2020/07/04/iIXRz3bEymlOMD7.png)
+![ubuntu_v1_opencv.png](https://cdn.jsdelivr.net/gh/vensing/static@master/image/iIXRz3bEymlOMD7.png)
 
 
 耐心点安装完这些，一个包含 python 运行环境和 opencv 库 的 Ubuntu 容器环境就完成了。接着我们需要停掉容器，导出容器为 ubuntu_v1.tar 文件，再导入 ubuntu_v1.tar 文件为镜像：
@@ -360,7 +360,7 @@ print(cv2.__version__)
 
 最后，我们可以看到 ubuntu-opencv 的镜像了(未指定版本会默认设置为 latest)，这里因为需要测试容器中 opencv 环境是否安装成功，所以干脆把这个测试容器的快照文件中导入为镜像了，这样就能保证不会出现问题。自制镜像推荐使用 Dockerfile 来制作。
 
-![ubuntu-opencv 镜像](https://i.loli.net/2020/07/04/naipXYe9lE2TWt7.png)
+![ubuntu-opencv 镜像](https://cdn.jsdelivr.net/gh/vensing/static@master/image/naipXYe9lE2TWt7.png)
 
 
 #### gitlab-ci.yml 配置
@@ -383,7 +383,7 @@ test:
 
 如果这个时候，我们去跑 CI，会出现如下错误：
 
-![Job 错误](https://i.loli.net/2020/07/04/UykKjPw5MON68B3.png)
+![Job 错误](https://cdn.jsdelivr.net/gh/vensing/static@master/image/UykKjPw5MON68B3.png)
 
 {% alertbox danger "
 
@@ -447,7 +447,7 @@ check_interval = 0
 
 最后请享受成功的乐趣吧，看下成功的 CI 任务图：
 
-![CI 任务图](https://i.loli.net/2020/07/05/Ar5aydRb2Zl1kNC.png)
+![CI 任务图](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Ar5aydRb2Zl1kNC.png)
 
 注册完 Gitlab-runner 之后，记得运行 Gitlab-runner 。如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。如果需要拉取本地自定义镜像，则还需要配置 config.toml 文件中的 `pull_policy` 规则。
 

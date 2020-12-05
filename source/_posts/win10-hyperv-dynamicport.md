@@ -14,11 +14,11 @@ WSL2 真香，但是由于 WSL2 需要开启 Hyper-V 功能，最近遇到了运
 
 ### 端口无法使用
 
-![端口拒绝访问](https://i.loli.net/2020/07/25/2EIgscP6wJiz1Ya.png)
+![端口拒绝访问](https://cdn.jsdelivr.net/gh/vensing/static@master/image/2EIgscP6wJiz1Ya.png)
 
 如上图所述，使用 hexo 预览博客网页时指定了 8080 端口，但是被拒绝访问端口了。不止 8080 端口，8005、8009 也都直接挂了，导致 tomcat 默认端口配置启动时，提示这些端口早已被使用，无法启动服务。于是，就去查看 8080 端口占用情况：
 
-![8080 端口占用情况](https://i.loli.net/2020/07/25/Irenj9CcJoR6D2s.png)
+![8080 端口占用情况](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Irenj9CcJoR6D2s.png)
 
 可以看到内部地址没有查到 8080 端口的进程，图中显示的 8080 端口是外部地址的端口，并不是本地进程使用的端口。所以情况就是：某些程序提示端口拒绝访问或者端口早已被占用，但是使用命令查询端口占用情况时，却发现端口根本没有程序占用过。
 

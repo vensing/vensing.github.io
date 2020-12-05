@@ -18,7 +18,7 @@ OpenCV 可用于开发实时的图像处理、计算机视觉以及模式识别�
 
 
 
-![OpenCV](https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/OpenCV_Logo_with_text.png/225px-OpenCV_Logo_with_text.png)
+![OpenCV](https://cdn.jsdelivr.net/gh/vensing/static@master/image/225px-OpenCV_Logo_with_text.png)
 
 ### **OpenCV 开始折腾**
 
@@ -38,7 +38,7 @@ OpenCV 可用于开发实时的图像处理、计算机视觉以及模式识别�
 
 选中项目右键 “_Project Properties_”，在对话框中打开“_Java Build Path_”选项卡，并新配置一个 User Library库（OpenCV）和它的引用（ jar 和 dll 库位置）：
 
-![配置 jar 和 dll](https://docs.opencv.org/2.4.4-beta/_images/eclipse_user_lib7.png)
+![配置 jar 和 dll](https://cdn.jsdelivr.net/gh/vensing/static@master/image/eclipse_user_lib7.png)
 
 jar 的位置是在 `opencv/build/java` 目录下，dll 在 `opencv/build/java/x64` 下(针对64位系统)，32位系统则是`opencv/build/java/x86` 下。
 
@@ -84,7 +84,7 @@ Windows 下的开发环境能白嫖，但是 Linux 和 Mac 下却要手动编译
 
 这个编译其实要挺久的，耐心等等就好了。看到如下图的`To be built:` 和 `java`就基本说明编译成功了。
 
-![编译成功的标志](https://docs.opencv.org/3.4.1/cmake_output.png)
+![编译成功的标志](https://cdn.jsdelivr.net/gh/vensing/static@master/image/cmake_output.png)
 
 编译后的 opencv-341.jar 位于 `opencv-3.4.1/build/bin`下，libopencv_java341.so 位于 `opencv-3.4.1/build/lib`下。
 
