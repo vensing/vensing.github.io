@@ -20,7 +20,7 @@ comments: false
         let datas = result.data;
         let html = `<div style="text-align:center;"><div><p style="font-size:28px;margin: 0.5em;">${datas[0].date}</p>
 			        <p style="margin-top: 0em;">${datas[0].title}</p></div>
-			        <img src="${datas[0].img_url.replace('http:','')}" referrerpolicy="no-referrer"></img>
+			        <img src="https://ip.webmasterapi.com/api/imageproxy/${datas[0].img_url}" referrerpolicy="no-referrer"></img>
 			        <div><p style="font-size:12px;">${datas[0].picture_author}</p></div>
 			        <div><p style="font-size:24px;">${datas[0].content}</p></div>
 			        <div><p>${datas[0].text_authors}</p></div>
