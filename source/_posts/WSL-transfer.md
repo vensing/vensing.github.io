@@ -40,7 +40,7 @@ docker-desktop
 这里我使用 scoop 安装，使用 ` scoop list ` 查看已安装的包：
 
 
-![](https://i.loli.net/2020/10/09/qZNLIMQdRPc4TBt.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/qZNLIMQdRPc4TBt.png)
 
 ### 迁移 WSL 发行版
 
@@ -74,7 +74,7 @@ D:\WSL\Ubuntu
 
 打开 Windows Terminal 进入 WSL Ubuntu-18.04，成功进入终端。打开 Docker Desktop，执行 Docker 相关的命令查看是否能正常运行：
 
-![](https://i.loli.net/2020/10/09/KEosPLMJRIiYglc.png)
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/KEosPLMJRIiYglc.png)
 
 浏览器访问 localhost 即可看到 Nginx 默认页面，迁移完毕，功能正常！
 
