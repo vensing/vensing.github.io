@@ -65,6 +65,7 @@ jobs:
       - name: Deploy hexo
         run: |
           npm run deploy
+          npm run build
 
       - name: SSH VPS
         uses: webfactory/ssh-agent@v0.4.1
@@ -73,4 +74,4 @@ jobs:
       
       - name: Deploy VPS
         run: |
-          rsync -av --delete .deploy_git root@vensing.com:/hexo
+          rsync -av --delete public/ root@vensing.com:/hexo
