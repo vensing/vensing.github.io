@@ -106,5 +106,5 @@ hide_posts:
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/vensing/vensing.github.io.git
+  repo: git@github.com:vensing/vensing.github.io.git
   branch: master
