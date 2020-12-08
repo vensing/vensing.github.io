@@ -1,8 +1,8 @@
 # Blog
 
-[![](https://github.com/vensing/vensing.github.io/workflows/CI/badge.svg)]()
+[![CI](https://github.com/vensing/vensing.github.io/workflows/CI/badge.svg)](https://github.com/vensing/vensing.github.io/actions)
 [![Home](https://img.shields.io/badge/Home-vensing-orange.svg)](https://vensing.com)
-[![Genertor](https://img.shields.io/badge/Generte-Hexo-blue.svg)](https://hexo.io)
+[![Generator](https://img.shields.io/badge/Generate-Hexo-blue.svg)](https://hexo.io)
 [![Theme](https://img.shields.io/badge/Theme-KratosRebirth-blueviolet.svg)](https://github.com/Candinya/Kratos-Rebirth)
 
 ## 博客相关
