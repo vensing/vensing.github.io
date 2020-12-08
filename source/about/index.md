@@ -6,7 +6,8 @@ comments: true
 toc: false
 ---
 
-![](/images/chi.gif)
+![| 📟 半吊子开发者 | ⛩ 东方妖梦厨 | 🍅 番茄小豆汤 | 🧚‍♀️ 普通人类 |](/images/chi.gif)
+
 
 **欢迎你的来访，请往下查看吧 : ）**
 
@@ -24,7 +25,7 @@ toc: false
 ### 如何联系我？
 
 - 电子邮箱：dmVuc2luZ0Bmb3htYWlsLmNvbQ==
-
+- 电报：dC5tZS9jaGVlNWU=
 
 ### 博客时光机
 
@@ -40,12 +41,14 @@ toc: false
 - 2019.03.04 - 现在你可以 [vensing.com](https://www.vensing.com) 来访问本站，使用 Nginx 做为 web 服务器。
 - 2019.03.31 - 又双叒叕换博客主题了。
 - 2019.04.xx - 引入 disqus 评论，如果加载不出评论插件，你知道该怎么做吧?
-- 2019.05.xx - 添加了很多友链，结识了许多大佬。
+- 2019.05.xx - 添加了很多友链，结识了许多盆友(大佬)。
 - 2019.06.xx - BWG ip 被 ban，转向 Bing 搜索。
 - 2019.07.13 - 将博客文章里的图片由本地转移到 SM.MS 图床，使用的图床管理工具是 PicGO。
 - 2019.10.16 - 主题整体色调换成 <span style="color:#8f77b5">「 紫苑 」</span>`#8f77b5` 色调。
 - 2020.04.14 - 使用 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，采用 disqus 和 disqusjs 评论服务。
 - 2020.06.27 - 同步 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，开启浅色和暗黑模式。
+- 2020.12.05 - 使用 jsDelivr CDN 加载 GitHub 图床仓库的图片，替换不可用的 SM.MS 图床服务。 
+- 2020.12.07 - 使用 Github Actions 替换 Travis CI 构建博客，Travis CI 任务队列排队时间过长。
 
 {% endcollapse %}
 
