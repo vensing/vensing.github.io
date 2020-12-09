@@ -9,19 +9,21 @@ tags:
   - 黑苹果
 ---
 
-话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。以上都是废话，本文将写写戴尔 G7 如何黑苹果，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。
+话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。本文将写写戴尔 G7 如何黑苹果尝鲜 ~~Big Sur~~ Catalina，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到任何不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。
 
 <!--more-->
 
-至于心血来潮突然折腾装黑苹果的契机，大概是因为前几天调试 iOS 浏览器网页时，在 Windows 下实在是无能为力? 然后就突发奇想地折腾安装黑苹果，反正这个世界上最好找的就是借口了。
+心血来潮突然折腾装黑苹果的契机，大概是因为前几天调试 iOS 浏览器网页时，在 Windows 下实在是无能为力? 然后就突发奇想地折腾安装黑苹果，反正这个世界上最好找的就是借口了。
 
-说回黑苹果，其实早在一两年前看过一些黑苹果教程网页，但看到无线网卡不能驱动无法上网、死机、卡屏以及其他各种问题时，把我这个小白给吓到劝退了。但谁又能阻挡住一颗脱缰的好奇心呢，说干就干。在拜读了「黑果小兵」博客的安装教程后，我就开始准备备份硬盘、格盘，做 U 盘安装镜像了。
+说回黑苹果，其实早在一两年前看过一些黑苹果教程网页，但在看到无线网卡不能驱动无法上网、死机、卡屏以及其他各种问题时，把我这个小白给吓到劝退了。但谁又能阻挡住一颗脱缰的好奇心呢，说干就干。在拜读了「黑果小兵」博客的安装教程后，我就开始准备备份硬盘、格盘，做 U 盘安装镜像了。
+
+<span style="color:red;"> Note: 本文仅供参考，因操作不当造成的后果概不负责。</span>
 
 ### 前期准备
 
 - 电脑型号 DELL-G7-7588
 - 操作系统 macOS Catalina 10.15.7
-- 处理器 Intel Core i5-8300H @ 2.6GHz 四核
+- 处理器 Intel Core i5-8300H @ 2.30GHz 四核
 - 内存 16GB 2667 MHz DDR4
 - 硬盘 HP SSD 1TGB PCIE NVME + HP SSD 500G SATA
 - 显卡 Intel UHD Graphics 630 
@@ -37,7 +39,7 @@ tags:
 
 #### 准备 U 盘安装镜像
 
-在备份完 SATA SSD 之后，就可以把它格式化了，如果你安装盘的格式是 MBR，请将其改成 GPT 格式，MBR 在最近的 macOS 上并不被支持。接着从黑客小兵那下载了 macOS 10.15.7 Catalina 的 dmg 镜像，这个镜像包含 macOS、Clover EFI、OC EFI、WEPE EFI 全家桶，总之用它就对了。接下来呢，还得做一个 U 盘安装镜像，我用的是 balenaEtcher 这个工具。具体的操作步骤：
+在备份完 SATA SSD 之后，就可以把它格式化了，如果你安装盘的格式是 MBR，请将其改成 GPT 格式，MBR 在最近的 macOS 上并不被支持(后面抹盘的时候也会选择 GUID 分区)。接着从黑果小兵那下载了 macOS 10.15.7 Catalina 的 dmg 镜像，这个镜像包含 macOS、Clover EFI、OC EFI、WEPE EFI 全家桶，总之用它就对了。接下来呢，还得做一个 U 盘安装镜像，我用的是 balenaEtcher 这个工具。具体的操作步骤：
 
 - 选择 dmg 镜像
 - 选择要烧制的 U 盘
@@ -49,7 +51,7 @@ tags:
 
 #### 准备机器机型 EFI
 
-由于不同的机器硬件差别太大，所以必须要符合机型的 EFI 才能顺利的引导黑苹果，所以还需要去下载对应机型的 EFI。我选择的是最近比较流行的 OpenCore（OC）引导工具，那么去哪里找对应机型的 OC EFI 呢? 答案当然是万能的 Github 了，你也可以去「黑客小兵」博客查找符合你机器机型的 EFI 信息，最后基本都是要去 Github 下载的。
+由于不同的机器硬件差别太大，所以必须要符合机型的 EFI 才能顺利的引导黑苹果，所以还需要去下载对应机型的 EFI。我选择的是最近比较流行的 OpenCore（OC）引导工具，那么去哪里找对应机型的 OC EFI 呢? 答案当然是万能的 Github 了，你也可以去「黑果小兵」博客查找符合你机器机型的 EFI 信息，最后基本都是要去 Github 下载的。
 
 Dell G7 7588 的 EFI 有三个项目在维护，我使用的是 [FYQ-Hackintosh](https://github.com/flyfeng2002/FYQ-Hackintosh) 提供的 OC EFI。直接 Clone 仓库或者下载 zip 包，不要下载 Release 页面下的旧包。此仓库包含了 OC EFI 以及声卡修复脚本、雷电3补丁。使用分区工具删除 U 盘中 OC 分区里的文件，将下载的对应机器 OC EFI 复制到 U 盘 OC 分区下。 
 
@@ -69,7 +71,7 @@ Dell G7 7588 的 EFI 有三个项目在维护，我使用的是 [FYQ-Hackintosh]
 
 ### 安装 macOS
 
-以下安装步骤参考自 黑果小兵，图片引用的是 Big Sur 的安装过程，但和 Catalina 的安装步骤基本一致。
+以下安装步骤参考自 [黑果小兵][1]，图片引用的是 Big Sur 的安装过程，但和 Catalina 的安装步骤基本一致。
 
 开机，按 F12 选择 U盘 引导，光标移动到 EFI USB Device Parttion2 选择 OpenCore 分区启动：
 
@@ -193,13 +195,15 @@ AirportItlwm.kext download from https://github.com/1hbb/OpenIntelWireless-Factor
 - AirportItlwm-HighSierra
 - AirportItlwm-Mojave
 
-替换掉 `EFI/OC/ACPI` 中的 `AirportItlwm.kext`：
+替换掉 `EFI/OC/Kexts` 中的 `AirportItlwm.kext`：
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225336.jpg)
 
-重启电脑，即可看到 wifi 功能已可以使用，接力功能可使用；隔空投送和随航等其它功能无法使用。 
+重启电脑，即可看到 wifi 功能已可以使用，接力功能可使用；隔空投送和随航等其它功能无法使用；实际测试下来网速和在 Windows 下的速度基本一致。
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/2020-12-06.5.57.56.png)
+
+如果想要体验隔空投送和随航等功能，那么你可能需要更换博通网卡，但是已经被无良商家炒到两三百的价格...
 
 
 #### 雷电3补丁
@@ -215,7 +219,16 @@ AirportItlwm.kext download from https://github.com/1hbb/OpenIntelWireless-Factor
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225850.jpg)
 
-可以看到 wi-fi 功能已开启，并且雷电3外接 Type-C 扩展坞可以连接 USB LAN 千兆以太网。
+可以看到 wi-fi 功能已开启，并且雷电3外接 Type-C 扩展坞可以连接 USB LAN 千兆以太网，USB LAN 的网速测试和在机器自带 RJ45 网络速度基本一致。
+
+
+### 问题
+
+- 休眠功能可能无法使用
+- 自带 HDMI 接口不能输出视频至外接显示器
+- Intel 网卡驱动下的 2.4G WiFi 若有蓝牙设备(小米小爱音箱)连接，会严重干扰网速
+- Intel WiFi 隔空投送和随航等功能无效(需更换博通网卡)
+- 关机不断电(具体原因还在找，可能是刷了内核补丁引起的)
 
 ### macOS 软件
 
@@ -225,6 +238,8 @@ AirportItlwm.kext download from https://github.com/1hbb/OpenIntelWireless-Factor
 - https://lemon.qq.com/lab/
 
 ### 参考
+
+[1]: https://mp.weixin.qq.com/s/9AfyueVyOX_SVHEUwihoaA
 
 - [黑果小兵 - Big Sur 安装教程](https://mp.weixin.qq.com/s/9AfyueVyOX_SVHEUwihoaA)
 - [Dell G7 7588 OC EFI](https://github.com/flyfeng2002/FYQ-Hackintosh)
