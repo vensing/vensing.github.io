@@ -49,6 +49,7 @@ toc: false
 - 2020.06.27 - 同步 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，开启浅色和暗黑模式。
 - 2020.12.05 - 使用 jsDelivr CDN 加载 GitHub 图床仓库的图片，替换不可用的 SM.MS 图床服务。 
 - 2020.12.07 - 使用 Github Actions 替换 Travis CI 构建博客，Travis CI 任务队列排队时间过长。
+- 2020.12.12 - 使用 [chee5e.space](https://chee5e.space) 做为新的域名，.com 域名将于明年 2 月底到期，阿里云相关服务将注销，转用 dynadot 。
 
 {% endcollapse %}
 
