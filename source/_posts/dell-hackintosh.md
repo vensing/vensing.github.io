@@ -111,9 +111,9 @@ Dell G7 7588 的 EFI 有三个项目在维护，我使用的是 [FYQ-Hackintosh]
 ### 杂项
 
 
-#### HackTool 和 OCC
+#### Hackintool 和 OCC
 
-下载 HackTool 和 OpenCore Configuration 软件
+下载 Hackintool 和 OpenCore Configuration 软件
 
 #### 挂载 EFI
 
@@ -135,7 +135,7 @@ sudo diskutil mount disk1s1
 
 #### 休眠
 
-在 HackTool 电源项里点击刷新按钮左侧图标，将红色的项修改，之后变成绿色即可。休眠我这里是休眠即醒，貌似要设置 CFG 这些东西，嫌太复杂就直接设置桌面屏幕保护程序，开启后再进入系统需要解锁，感觉和休眠功能差不多。
+在 Hackintool 电源项里点击刷新按钮左侧图标，将红色的项修改，之后变成绿色即可。休眠我这里是休眠即醒，貌似要设置 CFG 这些东西，嫌太复杂就直接设置桌面屏幕保护程序，开启后再进入系统需要解锁，感觉和休眠功能差不多。
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224024.jpg)
 
@@ -156,7 +156,7 @@ sudo diskutil mount disk1s1
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224749.jpg)
 
-最好在 OCC 菜单栏上选择 `文件`-> `保持`，重启系统，三码生成就完成啦，可以在 HackTool 系统菜单项中查看三码。对 Config.plist 修改之后要保存文件，建议对 EFI 分区进行备份。
+最好在 OCC 菜单栏上选择 `文件`-> `保持`，重启系统，三码生成就完成啦，可以在 Hackintool 系统菜单项中查看三码。对 Config.plist 修改之后要保存文件，建议对 EFI 分区进行备份。
 
 
 #### 黑苹果开启原生HiDPI
@@ -168,7 +168,7 @@ sudo diskutil mount disk1s1
 Bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/xzhih/one-key-hidpi/master/hidpi.sh)"
 ```
-如果访问Github出现网络超时的情况，可以使用下面我放在国内的脚本命令：
+如果访问Github出现网络超时的情况，可以使用下面国内的脚本命令：
 ```
 Bash
 sh -c "$(curl -fsSL https://html.sqlsec.com/hidpi.sh)"
@@ -230,12 +230,32 @@ AirportItlwm.kext download from https://github.com/1hbb/OpenIntelWireless-Factor
 - Intel WiFi 隔空投送和随航等功能无效(需更换博通网卡)
 - 关机不断电(具体原因还在找，可能是刷了内核补丁引起的)
 
+关于 1080P 下的 HiDPI ，如果设置成 1920\*1080 分辨率，字体和应用就会有点小和糊，启用更低分辨率的 HiDPI 之后，字体和应用 UI 变得硕大但是比较清晰，截图的分辨率会扩大一倍非常清晰。所以，我一般是 1920\*1080 这样能看到的东西更多，截图可以调低分辨率这样出来的图分辨率扩大一倍非常清晰。
+
+从最近这些天的体验来说，macOS 已经能够胜任很多日常任务了，无论是浏览网页、看视频还是开发编程体验都比 Windows 要来得更好，且从未有过系统崩溃。如果你能忽略屏幕质量和黑苹果不完美下的各种小问题，且能有足够的时间去折腾，那么黑苹果体验可能会比 Windows 好很多。想要完美体验 macOS 还是得上 MacBook 和 4K 屏，更多关于 HiDPI 的内容请查看：[有关 retina 和 HiDPI 那点事](https://zhuanlan.zhihu.com/p/20684620)。
+
+### OTA Big Sur
+
+最近试了下从 Catalina 10.15.7 OTA 在线系统更新升级到 Big Sur 11.0.1，用移动固态硬盘和时间机器软件备份了一下 Catalina 系统，方便出问题回滚。
+
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/IMG_3736.JPG)
+
+第一次下载完系统升级安装包之后安装时提示软件包缺失损坏，重启再下载就可以直接更新到 Big Sur。使用下来，基本没有任何问题，安装的软件也没有兼容性问题；Safari 14 终于可以加载 webp 格式的图片了。
+
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/IMG_3738.JPG)
+
+换成圆角矩形应用图标风格后：
+
+![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/jietu2020-12-14.5.57.26.png)
+
+
 ### macOS 软件
 
 ![](https://cdn.jsdelivr.net/gh/vensing/static@master/image/2020-12-05.8.09.56.png)
 
 - https://www.macwk.com
 - https://lemon.qq.com/lab/
+
 
 ### 参考
 
@@ -244,6 +264,7 @@ AirportItlwm.kext download from https://github.com/1hbb/OpenIntelWireless-Factor
 - [黑果小兵 - Big Sur 安装教程](https://mp.weixin.qq.com/s/9AfyueVyOX_SVHEUwihoaA)
 - [Dell G7 7588 OC EFI](https://github.com/flyfeng2002/FYQ-Hackintosh)
 - [OpenIntelWireless-Factory](https://github.com/1hbb/OpenIntelWireless-Factory)
+- [有关 retina 和 HiDPI 那点事](https://zhuanlan.zhihu.com/p/20684620)
 
 
 
