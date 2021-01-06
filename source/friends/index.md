@@ -17,6 +17,12 @@ comments: true
 
 如果你来到了本页面，不妨点进下方「我的小伙伴们」中的友情链接去看看，尝试认识更多有趣的人。
 
+{% alertbox info "
+
+本站已开启友链审核，通过后方可添加友链，请知悉。
+
+" %}
+
 **注：** <span style="color:red;">下方友链次序每次刷新页面随机排列。<span>
 
 ### 我的小伙伴们
@@ -49,8 +55,7 @@ var myFriends = [
     ["https://yked.gitee.io", "https://gravatar.loli.net/avatar/5247364b04565d40f759ce8ee7bd60e6", "@聆听·彼岸", "彼岸少年"],
     ["http://www.kawashiros.club", "https://i.loli.net/2020/08/14/iV2Ex7yQdXfro8U.jpg", "@非科学のカッパ", "Coffee-Code Transformer"],
     ["https://www.cnblogs.com/kirito-c/", "https://en.gravatar.com/userimage/105055435/62023ec86df80c63db7560b0da224a2c.jpg", "@於清樂的碎碎念", "忽而盛夏"],
-    ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/Zhi-Tu/My-Album/photos/20200422121222.JPG", "@知荼","冥然兀坐，万籁有声"],
-    ["https://www.llscme.top/", "https://gitee.com/Personal-Zoom/my-album/raw/master/photos/avatar.jpg", "@君山(知荼)","人间自是有情痴"]
+    ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/Zhi-Tu/My-Album/photos/20200422121222.JPG", "@知荼","冥然兀坐，万籁有声"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
