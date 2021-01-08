@@ -5,6 +5,7 @@ categories:
  - 动漫迷
 tags:
  - ACG
+hidden: true
 ---
 
 ### 可能是一篇很走心的ACG科普文

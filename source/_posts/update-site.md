@@ -8,6 +8,7 @@ categories:
 tags:
 - 日常
 - 更新 
+hidden: true
 ---
 
 简单来说，就是摸鱼划水太舒服了，导致鸽了几个月。

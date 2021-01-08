@@ -8,6 +8,7 @@ tags:
  - OpenCV
 comments: true
 toc: true
+hidden: true
 ---
 
 

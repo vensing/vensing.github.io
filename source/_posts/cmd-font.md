@@ -5,7 +5,7 @@ toc: true
 date: 2019-07-28 10:26:23
 categories: 瞎折腾
 tags: cmd 
-
+hidden: true
 ---
 
 **电脑有问题怎么办呢?**

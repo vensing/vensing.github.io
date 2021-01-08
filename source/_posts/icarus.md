@@ -7,6 +7,7 @@ tags:
 categories:
   - 瞎折腾
 toc: true
+hidden: true
 ---
 
 emmm，我又双叒叕换博客主题了。
