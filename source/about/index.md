@@ -11,7 +11,7 @@ toc: false
 
 {% alertbox danger "
 
-本站即将更换域名为 https://chee5e.space
+本站已更换域名为 https://chee5e.space
 
 " %}
 
