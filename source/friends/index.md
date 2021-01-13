@@ -45,7 +45,7 @@ var myFriends = [
     ["https://raspii.tech/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/avatar.webp", "@无用挂件の日历", "无用挂件の日历 ο(=•ω＜=)ρ。"], 
     ["https://zhangyijia.eu5.org/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhanyijia.jpg", "@ZhangYiJia", " 我们所过的每个平凡的日常，也许就是连续发生的奇迹"], 
     ["https://angelni.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/angelni.png", "@AngelNI", "A HPU‘s student。"],
-    ["https://type.zhoublog.xyz/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhou.png", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
+    ["https://type.zhoublog.xyz/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhou.gif", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
     ["https://skyblond.info/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/skyblond.png", "@天空Blond", "推油，精神神楽坂 ← 不是，绝对不是"],
     ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/raptazure.jpg", "@Raptazure", "推油，心随自然"],
     ["https://nek0ri.de/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/nekori.png", "@猫梨の部屋", "我们能做得更好"],
