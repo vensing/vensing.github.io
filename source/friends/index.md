@@ -91,8 +91,8 @@ while (myFriends.length > 0) {
 通过以下格式给我留言或者给我发邮件即可：
 
 - [站点名称]：芝士部落格
-- [个人形象]：https://vensing.com/images/avatar.jpg
-- [站点地址]：https://www.vensing.com
+- [个人形象]：https://chee5e.space/images/avatar.jpg
+- [站点地址]：https://www.chee5e.space
 - [站点描述]：有思想，也有忧伤和理想
 
 发邮件添加友链：
