@@ -54,7 +54,7 @@ var myFriends = [
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/chanshiyu.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"],
     ["https://yked.gitee.io", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/yked.jpeg", "@聆听·彼岸", "彼岸少年"],
     ["http://www.kawashiros.club", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kawashiros.jpg", "@非科学のカッパ", "Coffee-Code Transformer"],
-    ["https://www.cnblogs.com/kirito-c/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kirito-c.jpeg", "@於清樂的碎碎念", "忽而盛夏"],
+    ["https://ryan4yin.space", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kirito-c.jpeg", "@於清樂的碎碎念", "忽而盛夏"],
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
     ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"]
 ];
@@ -92,7 +92,7 @@ while (myFriends.length > 0) {
 
 - [站点名称]：芝士部落格
 - [个人形象]：https://chee5e.space/images/avatar.jpg
-- [站点地址]：https://www.chee5e.space
+- [站点地址]：https://chee5e.space
 - [站点描述]：有思想，也有忧伤和理想
 
 发邮件添加友链：
