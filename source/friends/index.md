@@ -39,7 +39,7 @@ var myFriends = [
     ["https://sanshiliuxiao.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/sanshiliuxiao.jpg", "@椎咲良田", " 昨日、今日、明日，前端大佬 ( =•ω＜= )✧"], 
     ["https://meyyz.cn/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/yiyezhu.jpeg", "@一叶竹", "是一个喜欢二次元的蓝孩纸喔 ~"],
     ["https://blog.badapple.pro/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/flandre.png", "@东方幻梦", "只是当时已惘然，沉溺梦中不愿醒来。"],
-    ["https://blog.imgradeone.xyz/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/imo.png", "@一么酱", "(妹妹酱？猜测)萌站 一 丧病至极的一么酱的官网。"], 
+    ["https://blog.imgradeone.com", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/imo.png", "@一么酱", "(妹妹酱？猜测)萌站 一 丧病至极的一么酱的官网。"], 
     ["https://removeif.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/removeif.png", "@辣椒の酱", " 尚未执佩剑，转眼即江湖。后端开发，技术分享。"], 
     ["https://www.senventise.com/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/senventise.png", "@Senventise", "Steam 游戏大佬，Galgame 爱好者。"],
     ["https://raspii.tech/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/avatar.webp", "@无用挂件の日历", "无用挂件の日历 ο(=•ω＜=)ρ。"], 
