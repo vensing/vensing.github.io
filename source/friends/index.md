@@ -56,7 +56,8 @@ var myFriends = [
     ["http://www.kawashiros.club", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kawashiros.jpg", "@非科学のカッパ", "Coffee-Code Transformer"],
     ["https://ryan4yin.space", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kirito-c.jpeg", "@於清樂的碎碎念", "忽而盛夏"],
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
-    ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"]
+    ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"],
+    ["https://lovemen.cc/", "https://sdn.geekzu.org/avatar/e8fd1786a945ff18d8cf08da42eb38da?s=400", "@橘子柚", "只是一只橘子而已"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
