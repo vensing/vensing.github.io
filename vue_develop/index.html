@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>Vue + SpringBoot 的几种部署方式 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="Vue" />
+  
+  <meta name="description" content="前端工程化及 React、Angular、Vue 等框架逐渐成为新的前台页面展示的解决方案后，前端页面逐渐摆脱了「套模板」的开发方式，真正的成为了一个工程项目，也引入了构建和编译、打包这些项目步骤。本文将简单阐述 Vue + SpringBoot 项目的几种部署方案。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue + SpringBoot 的几种部署方式">
+<meta property="og:url" content="https://chee5e.space/vue_develop/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="前端工程化及 React、Angular、Vue 等框架逐渐成为新的前台页面展示的解决方案后，前端页面逐渐摆脱了「套模板」的开发方式，真正的成为了一个工程项目，也引入了构建和编译、打包这些项目步骤。本文将简单阐述 Vue + SpringBoot 项目的几种部署方案。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2020-05-22T07:41:00.000Z">
+<meta property="article:modified_time" content="2020-10-26T06:46:59.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="Vue">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">Vue + SpringBoot 的几种部署方式</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-05-22
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~8.82K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1603694819000"></time>前 (2020-10-26)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88-%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">有哪些部署方案 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-SpringBoot-%E4%BB%A5-jar-%E5%8C%85%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text">Vue + SpringBoot  以 jar 包部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B2%E6%8E%89-hash"><span class="toc-number">2.1.</span> <span class="toc-text">干掉 # hash</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#0x01-Vue-Router-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.1.</span> <span class="toc-text">0x01 Vue-Router 配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#0x02-%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.2.</span> <span class="toc-text">0x02 后端配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-SpringBoot-%E4%BB%A5-war-%E5%8C%85%E9%83%A8%E7%BD%B2"><span class="toc-number">3.</span> <span class="toc-text">Vue + SpringBoot  以 war 包部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">0x01后端配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-tomcat-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">0x02 tomcat 配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E9%A1%B9%E7%9B%AE%E5%92%8C-SpringBoot-%E9%A1%B9%E7%9B%AE%E5%90%84%E8%87%AA%E5%8D%95%E7%8B%AC%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">Vue 项目和 SpringBoot 项目各自单独部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01-Vue-%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0-Nginx"><span class="toc-number">4.1.</span> <span class="toc-text">0x01 Vue 项目部署到 Nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-SpringBoot-%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">4.2.</span> <span class="toc-text">0x02 SpringBoot 项目部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>前端工程化及 React、Angular、Vue 等框架逐渐成为新的前台页面展示的解决方案后，前端页面逐渐摆脱了「套模板」的开发方式，真正的成为了一个工程项目，也引入了构建和编译、打包这些项目步骤。本文将简单阐述 Vue + SpringBoot 项目的几种部署方案。</p>
+<a id="more"></a>
+
+
+<h3 id="有哪些部署方案-？"><a href="#有哪些部署方案-？" class="headerlink" title="有哪些部署方案 ？"></a>有哪些部署方案 ？</h3><p>前端项目在经过 webpack 编译 (babel转译) 打包转为浏览器可以识别的  js  代码和  html 、css 等静态资源之后，就可以等待部署发布了。</p>
+<p>结合前段时间写的一个 Vue + SpringBoot 项目，我在部署的时候尝试了以下几种方式：</p>
+<ol>
+<li>Vue + SpringBoot 打成 jar 包进行部署；</li>
+<li>Vue + SpringBoot 打成 war 包进行部署；</li>
+<li>Vue 项目和 SpringBoot 项目都单独部署；</li>
+<li>容器部署 ( 这就涉及到知识盲区了，逃 )</li>
+</ol>
+<p>下面将对以上的前三种部署方式进行简单地阐述。PS：本文仅仅是实验性质的尝试，仅供参考，关于跨域问题已在后端项目配置好，这里不赘述。</p>
+<hr>
+<h3 id="Vue-SpringBoot-以-jar-包部署"><a href="#Vue-SpringBoot-以-jar-包部署" class="headerlink" title="Vue + SpringBoot  以 jar 包部署"></a>Vue + SpringBoot  以 jar 包部署</h3><p>采用 Vue + SpringBoot 打成  jar 包进行部署，我们需要先将 Vue 项目进行编译打包成静态资源，再把这些静态资源复制到 SB 项目的 static 静态资源文件夹下，记住：你需要对这些静态文件的访问权限都放行(前后端分离会采用 token 校验权限)。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@EnableWebSecurity(debug = false)</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SecurityConfigure</span> <span class="keyword">extends</span> <span class="title">WebSecurityConfigurerAdapter</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">configure</span><span class="params">(WebSecurity web)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 解决静态资源被拦截的问题</span></span><br><span class="line">        web.ignoring().antMatchers(<span class="string">&quot;/fonts/**&quot;</span>, <span class="string">&quot;/images/**&quot;</span>, <span class="string">&quot;/css/**&quot;</span>, <span class="string">&quot;/js/**&quot;</span>,<span class="string">&quot;/favicon.ico&quot;</span>, <span class="string">&quot;/index.html&quot;</span>, <span class="string">&quot;/window.config.js&quot;</span>);</span><br><span class="line">		...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后再执行 <code>mvn package -Dmaven.test.skip = true</code> 把 SB 项目打成  jar  包。因为打成 jar 包后会内嵌 tomcat，所以我们只需再执行 <code>java -jar xxx.jar</code> 即可运行我们的项目，最后输入访问地址：ip:port/index.hmtl 即可访问我们的 Vue 单页应用啦。</p>
+<p>你可能会对上面的放开的 <code>window.config.js</code> js 资源感到疑惑？实际上这个 js 是我们给单页应用注册的全局配置变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.__config = &#123;&#125;</span><br><span class="line"><span class="built_in">window</span>.__config.VUE_APP_BASE_API = <span class="string">&#x27;http://localhost:7777/&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.__config.VUE_APP_OAUTH_userAuthorizationUri = <span class="string">&#x27;http://xxxxx/oauth/authorize&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.__config.VUE_APP_OAUTH_redirect_uri = <span class="string">&#x27;http://xxxxx/ssologin&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.__config.VUE_APP_OAUTH_accessTokenUri = <span class="string">&#x27;http://xxxxx/oauth/token&#x27;</span></span><br><span class="line"><span class="built_in">window</span>.__config.VUE_APP_OAUTH_userInfoUri = <span class="string">&#x27;http://xxxxx/me&#x27;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>以下代码是判断是否是开发环境，开发环境直接读取 <code>.env.development</code> 文件中的配置变量，生产环境下我们不把配置变量写到<code>env.production</code>，而是单独写到一个外部 window.config.js 里，记住你需要在 index.html 中手动引入或者自动注入这个 js，以根路径地址的方式。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断一下在开发环境使用vue配置的环境，生产环境要后面可以改的，所以生产环境从外部js取值</span></span><br><span class="line"><span class="keyword">const</span> userAuthorizationUri = process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span> ? process.env.VUE_APP_OAUTH_userAuthorizationUri : <span class="built_in">window</span>.__config.VUE_APP_OAUTH_userAuthorizationUri</span><br><span class="line"><span class="keyword">const</span> redirect_uri = process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span> ? process.env.VUE_APP_OAUTH_redirect_uri : <span class="built_in">window</span>.__config.VUE_APP_OAUTH_redirect_uri</span><br><span class="line"><span class="keyword">const</span> accessTokenUri = process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span> ? process.env.VUE_APP_OAUTH_accessTokenUri : <span class="built_in">window</span>.__config.VUE_APP_OAUTH_accessTokenUri</span><br><span class="line"><span class="keyword">const</span> userInfoUri = process.env.NODE_ENV === <span class="string">&#x27;development&#x27;</span> ? process.env.VUE_APP_OAUTH_userInfoUri : <span class="built_in">window</span>.__config.VUE_APP_OAUTH_userInfoUri</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>如果你把这些变量写入 <code>.env.production</code> ，那么一旦你更改了这些变量你又得重新去打个包，我可去他么的吧。实际上，也用不着重新打包 ，你可以去 /dist/js 目录下的 js 文件里来查找所有这些变量然后改回来，但这也非常容易出错。</p>
+<p>当然一些重要的配置变量 ( 比如 secret )，你最好不要写在 window.config.js 里，你应该写到 .env.production 文件里然后使用 process.env.VUE_APP_client_secret 读取变量加密下。</p>
+<p>关于「运行时环境变量 —— window.config.js」请参考：<a target="_blank" rel="noopener" href="https://aisensiy.github.io/2017/07/07/runtime-env-for-spa/">为 Single Page App 提供运行时环境变量</a></p>
+<p>关于「.env.production、.env.development  环境变量和模式」请参考：<a target="_blank" rel="noopener" href="https://cli.vuejs.org/zh/guide/mode-and-env.html">Vue-CLI 环境变量和模式</a></p>
+<hr>
+<h4 id="干掉-hash"><a href="#干掉-hash" class="headerlink" title="干掉 # hash"></a>干掉 # hash</h4><blockquote>
+<p><code>vue-router</code> 默认 hash 模式 —— 使用 URL 的 hash ( /#/path 模式 ) 来模拟一个完整的 URL，于是当 URL 改变时，页面不会重新加载。<br>如果不想要很丑的 hash，我们可以用路由的 history 模式，这种模式充分利用 history.pushState API 来完成 URL 跳转而无须重新加载页面。</p>
+</blockquote>
+<p>Vue-CLI 官网给我们提供了另外一种路由模式：history，使用history模式时，浏览器地址栏就不会有很丑的 # 号了。当然官网也说了：玩好这种模式 ，你需要在服务端增加一个覆盖所有情况的 URL 候选资源，匹配不到静态资源就返回我们的 <code>index.html</code>，这个页面就是我们的单页应用页面。</p>
+<p>那么 SB 项目想要配合 Vue 使用 history 模式在浏览器地址栏显示正常的 URL 应该怎么做呢？</p>
+<h5 id="0x01-Vue-Router-配置"><a href="#0x01-Vue-Router-配置" class="headerlink" title="0x01 Vue-Router 配置"></a><strong>0x01 Vue-Router 配置</strong></h5><p>首先，Vue-Router 得开启 history 模式和配置 base 路由基路径：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> router = <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes,</span><br><span class="line">  mode: <span class="string">&#x27;history&#x27;</span>,</span><br><span class="line">  base: <span class="string">&#x27;/vue&#x27;</span>,</span><br><span class="line">  routes: [</span><br><span class="line">    &#123; <span class="attr">path</span>: <span class="string">&#x27;*&#x27;</span>, <span class="attr">component</span>: NotFoundComponent &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>这么做以后，你的服务器就不再返回 404 错误页面，因为对于所有路径都会返回 index.html 文件。为了避免这种情况，你应该在 Vue 应用里面覆盖所有的路由情况，然后在给出一个 404 页面。</p>
+<p><strong>注：</strong>  vue.config.js 里的 <code>publicPath</code> 决定 js、css 等静态资源打包之后的引入路径，如果打包后 dist 目录的 js、css 路径放在后台项目的 <code>static</code> 目录下，则 publicPath 直接写 ‘/’ 根路径即可，不要和 Vue-Router 配置的 base 路径搞混淆了。如果你想和 base 路径  ‘/vue’ 保持一致，你需要将 js、css 等静态资源放到 static/vue/ 目录下。</p>
+<p>‘Uncaught SyntaxError: Unexpected token &lt; ‘ 错误是由于请求的 js、css 等静态资源路径不对，导致返回的内容是  html 页面，浏览器也就无法正确解析了。</p>
+<h5 id="0x02-后端配置"><a href="#0x02-后端配置" class="headerlink" title="0x02 后端配置"></a><strong>0x02 后端配置</strong></h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ErrorPageConfig</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * SpringBoot2.0以上版本WebServerFactoryCustomizer代替之前的EmbeddedWebServerFactoryCustomizerAutoConfiguration</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> WebServerFactoryCustomizer&lt;ConfigurableWebServerFactory&gt; <span class="title">webServerFactoryCustomizer</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//java7 常规写法</span></span><br><span class="line">        <span class="comment">//return new WebServerFactoryCustomizer&lt;ConfigurableWebServerFactory&gt;() &#123;</span></span><br><span class="line">        <span class="comment">//    @Override</span></span><br><span class="line">        <span class="comment">//    public void customize(ConfigurableWebServerFactory factory) &#123;</span></span><br><span class="line">        <span class="comment">//        ErrorPage errorPage404 = new ErrorPage(HttpStatus.NOT_FOUND, &quot;/404.html&quot;);</span></span><br><span class="line">        <span class="comment">//        factory.addErrorPages(errorPage404);</span></span><br><span class="line">        <span class="comment">//    &#125;</span></span><br><span class="line">        <span class="comment">//&#125;;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//java8 lambda写法</span></span><br><span class="line">        <span class="keyword">return</span> (factory -&gt; &#123;</span><br><span class="line">            ErrorPage errorPage404 = <span class="keyword">new</span> ErrorPage(HttpStatus.NOT_FOUND, <span class="string">&quot;/index.html&quot;</span>);</span><br><span class="line">            factory.addErrorPages(errorPage404);</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你后端使用了带 token 的请求验证 url 的方式，上面的配置可能就无效了，会返回没有权限访问的信息。</p>
+<p>新建一个Controller 匹配 ‘/vue/**&#39; 并都返回 index.html：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ErrorPageController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@ApiOperation(value = &quot;跳转到index页面&quot;, notes = &quot;跳转到index页面&quot;)</span></span><br><span class="line">    <span class="meta">@RequestMapping(&quot;/vue/**&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ModelAndView <span class="title">getNeMoInTree</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ModelAndView(<span class="string">&quot;index&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最后记得放开：’/vue/**&#39; 的访问限制：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">web.ignoring().antMatchers(<span class="string">&quot;/vue/**&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>maven 打好 jar 包运行后，浏览器访问：ip:port/vue/index 就大功告成啦。</p>
+<hr>
+<h3 id="Vue-SpringBoot-以-war-包部署"><a href="#Vue-SpringBoot-以-war-包部署" class="headerlink" title="Vue + SpringBoot  以 war 包部署"></a>Vue + SpringBoot  以 war 包部署</h3><h4 id="0x01后端配置"><a href="#0x01后端配置" class="headerlink" title="0x01后端配置"></a><strong>0x01后端配置</strong></h4><p>首先将项目 pom.xml 中更改打包方式为 war 包，将内置 tomcat 配置为 provided 模式：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0&quot;</span> <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">		 <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">packaging</span>&gt;</span>war<span class="tag">&lt;/<span class="name">packaging</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-tomcat<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">scope</span>&gt;</span>provided<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>启动类继承 SpringBootServletInitializer 并重写其 configure方法，做如下配置：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyApplication</span> <span class="keyword">extends</span> <span class="title">SpringBootServletInitializer</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> SpringApplicationBuilder <span class="title">configure</span><span class="params">(SpringApplicationBuilder application)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> application.sources(MyApplication.class);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>jar 和 war 启动的区别：</p>
+<blockquote>
+<p>jar包: 执行 SpringBootApplication 的 run 方法，启动 IOC 容器，然后创建嵌入式 Servlet 容器<br>war包:  先是启动 Servlet 服务器，服务器启动 Springboot 应用(SpringBootServletInitizer 实例执行 onStartup 方法的时候会通过 createRootApplicationContext 方法来执行 run 方法)，然后启动 IOC 容器</p>
+</blockquote>
+<h4 id="0x02-tomcat-配置"><a href="#0x02-tomcat-配置" class="headerlink" title="0x02 tomcat 配置"></a><strong>0x02 tomcat 配置</strong></h4><p>进入 tomcat/conf 目录下 ，将 server.xml 中的端口号修改为前端配置的后台统一接口路径(相同则跳过)，因为我们部署的是一个项目。</p>
+<p>将 war 解压到 tomcat/webapps/ROOT 目录下 (图省事2333)，然后去tomcat/bin 目录下执行启动脚本启动项目。当然你也可以解压到 webapps 任意目录下，假如是 <code>app</code> 目录，你得将 Vue 项目的 publicPath 配置为 /app，最后的访问地址将是<code>ip:port/app/vue/index</code>，其中 js、css 等静态资源的地址为 ip:port/app/js/xxx.js、ip:port/app/css/xxx.css，而 Vue 管理的路由是 ip:port/app/vue/** 。</p>
+<hr>
+<h3 id="Vue-项目和-SpringBoot-项目各自单独部署"><a href="#Vue-项目和-SpringBoot-项目各自单独部署" class="headerlink" title="Vue 项目和 SpringBoot 项目各自单独部署"></a>Vue 项目和 SpringBoot 项目各自单独部署</h3><p>Vue 项目单独部署，那必然是部署到 Nginx 上了，配合 WSL (Windows Sub Linux) 开发体验上升了一个档次 (WSL + VS Code 真香)。</p>
+<h4 id="0x01-Vue-项目部署到-Nginx"><a href="#0x01-Vue-项目部署到-Nginx" class="headerlink" title="0x01 Vue 项目部署到 Nginx"></a><strong>0x01 Vue 项目部署到 Nginx</strong></h4><p>Vue-Router 采用 history 模式，在 nginx.conf 中加入：<code>include /etc/nginx/conf.d/*.conf;</code> 然后进入 conf.d 目录 vim  app.conf：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">     listen 9999;</span><br><span class="line">     server_name  localhost;</span><br><span class="line">     error_page 500 502 503 504 &#x2F;50x.html;</span><br><span class="line"></span><br><span class="line">     location &#x3D; &#x2F;50x.html &#123;</span><br><span class="line">      root html;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     location &#x2F; &#123;</span><br><span class="line">        root &#x2F;dist;</span><br><span class="line">        try_files $uri $uri&#x2F; &#x2F;index.html;</span><br><span class="line">        # index index.html index.htm;</span><br><span class="line">     &#125;</span><br><span class="line"></span><br><span class="line">     #location &#x2F;app &#123;</span><br><span class="line">     #   alias &#x2F;dist; #注意alias,不能为root</span><br><span class="line">     #   index index.html index.htm;</span><br><span class="line">     #   try_files $uri $uri&#x2F; &#x2F;app&#x2F;index.html;</span><br><span class="line">     #&#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果，Vue-Router 里配置的 base: /，那么做如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F; &#123;</span><br><span class="line">    root &#x2F;dist;</span><br><span class="line">    try_files $uri $uri&#x2F; &#x2F;index.html;</span><br><span class="line">    # index index.html index.htm;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Vue-Router 里配置的 base: /app 子路径，那么做如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">location &#x2F;app &#123;</span><br><span class="line">    alias &#x2F;dist; #注意alias,不能为root</span><br><span class="line">    # index index.html index.htm;</span><br><span class="line">    try_files $uri $uri&#x2F; &#x2F;app&#x2F;index.html;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上是 Vue-Router 采用 HTML5  histroy 模式部署，具体请参考 Vue-CLI 官网：<a target="_blank" rel="noopener" href="https://router.vuejs.org/zh/guide/essentials/history-mode.html#html5-history-%E6%A8%A1%E5%BC%8F">html5-history-模式</a> </p>
+<p>当然，如果你不打算用 history 模式你又能接受浏览器地址栏中丑陋的 # 号，那么你就用默认的 hash 模式，就没那么上面那么多屁事了。</p>
+<h4 id="0x02-SpringBoot-项目部署"><a href="#0x02-SpringBoot-项目部署" class="headerlink" title="0x02 SpringBoot 项目部署"></a><strong>0x02 SpringBoot 项目部署</strong></h4><p>SpringBoot 项目部署，以什么方式部署你开心就好，不过记得放开资源哟 ~</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>不管以什么方式部署，请记住后端放开静态资源的访问，以及注意  Vue 中的静态资源地址和路由地址的配置。至于哪种方式好，那肯定是分开部署好，Nginx 配置简单多了，而且分开部署的好处也很多(最大的好处当然是方便甩锅了，雾)。</p>
+<p>Vue 路由默认的使用带 # 的 hash 模式来模拟一个完整的 url，如果你想省事那么就采用默认的hash模式；如果你在意浏览器地址栏 url 的美观，就采用 history 模式，不过你需要在后端加一个覆盖所有情况的候选资源然后都返回 index.html ，及前台 Vue 应用里面配置一个路由以覆盖所有的路由情况，然后在给出一个 404 页面。</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/vue_develop/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/vue_develop/";
+            const title         = "「Vue + SpringBoot 的几种部署方式」";
+            const excerpt       = `前端工程化及 React、Angular、Vue 等框架逐渐成为新的前台页面展示的解决方案后，前端页面逐渐摆脱了「套模板」的开发方式，真正的成为了一个工程项目，也引入了构建和编译、打包这些项目步骤。本文将简单阐述 Vue + SpringBoot 项目的几种部署方案。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/Vue/" rel="tag">Vue</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-10-26</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 执着于理想，纯粹于当下" href="/three_year/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 永远的MAYDAY，永远的五月天" href="/may_day/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'vue_develop/',
+                url: 'https://chee5e.space/vue_develop/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E5%93%AA%E4%BA%9B%E9%83%A8%E7%BD%B2%E6%96%B9%E6%A1%88-%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">有哪些部署方案 ？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-SpringBoot-%E4%BB%A5-jar-%E5%8C%85%E9%83%A8%E7%BD%B2"><span class="toc-number">2.</span> <span class="toc-text">Vue + SpringBoot  以 jar 包部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B2%E6%8E%89-hash"><span class="toc-number">2.1.</span> <span class="toc-text">干掉 # hash</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#0x01-Vue-Router-%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.1.</span> <span class="toc-text">0x01 Vue-Router 配置</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#0x02-%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">2.1.2.</span> <span class="toc-text">0x02 后端配置</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-SpringBoot-%E4%BB%A5-war-%E5%8C%85%E9%83%A8%E7%BD%B2"><span class="toc-number">3.</span> <span class="toc-text">Vue + SpringBoot  以 war 包部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01%E5%90%8E%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">3.1.</span> <span class="toc-text">0x01后端配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-tomcat-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.2.</span> <span class="toc-text">0x02 tomcat 配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue-%E9%A1%B9%E7%9B%AE%E5%92%8C-SpringBoot-%E9%A1%B9%E7%9B%AE%E5%90%84%E8%87%AA%E5%8D%95%E7%8B%AC%E9%83%A8%E7%BD%B2"><span class="toc-number">4.</span> <span class="toc-text">Vue 项目和 SpringBoot 项目各自单独部署</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#0x01-Vue-%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2%E5%88%B0-Nginx"><span class="toc-number">4.1.</span> <span class="toc-text">0x01 Vue 项目部署到 Nginx</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#0x02-SpringBoot-%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-number">4.2.</span> <span class="toc-text">0x02 SpringBoot 项目部署</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a> <a href="/tags/%E4%B8%80%E8%A8%80/" style="font-size: 0.6em;">一言</a> <a href="/tags/%E4%B8%A4%E5%91%A8%E5%B9%B4/" style="font-size: 0.6em;">两周年</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/hexo-deploy-github-actions/"><i class="fa  fa-book"></i> 使用 Github Actions 部署 HEXO 博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/dell-hackintosh/"><i class="fa  fa-book"></i> Hackintosh 尝鲜</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

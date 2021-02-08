@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>Hackintosh 尝鲜 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="黑苹果" />
+  
+  <meta name="description" content="话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。本文将写写戴尔 G7 如何黑苹果尝鲜 Big Sur Catalina，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到任何不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackintosh 尝鲜">
+<meta property="og:url" content="https://chee5e.space/dell-hackintosh/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。本文将写写戴尔 G7 如何黑苹果尝鲜 Big Sur Catalina，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到任何不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2020-12-08T12:14:10.000Z">
+<meta property="article:modified_time" content="2020-12-14T14:07:58.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="黑苹果">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">Hackintosh 尝鲜</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-12-08
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~5.92K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1607954878000"></time>前 (2020-12-14)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%AE%89%E8%A3%85%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text">准备安装盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87-U-%E7%9B%98%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F"><span class="toc-number">1.2.</span> <span class="toc-text">准备 U 盘安装镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%9C%BA%E5%99%A8%E6%9C%BA%E5%9E%8B-EFI"><span class="toc-number">1.3.</span> <span class="toc-text">准备机器机型 EFI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BIOS%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">BIOS设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-macOS"><span class="toc-number">2.</span> <span class="toc-text">安装 macOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">杂项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hackintool-%E5%92%8C-OCC"><span class="toc-number">3.1.</span> <span class="toc-text">Hackintool 和 OCC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD-EFI"><span class="toc-number">3.2.</span> <span class="toc-text">挂载 EFI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%91%E7%9C%A0"><span class="toc-number">3.3.</span> <span class="toc-text">休眠</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82"><span class="toc-number">3.4.</span> <span class="toc-text">亮度调节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">三码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%BC%80%E5%90%AF%E5%8E%9F%E7%94%9FHiDPI"><span class="toc-number">3.6.</span> <span class="toc-text">黑苹果开启原生HiDPI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF"><span class="toc-number">3.7.</span> <span class="toc-text">无线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%B7%E7%94%B53%E8%A1%A5%E4%B8%81"><span class="toc-number">3.8.</span> <span class="toc-text">雷电3补丁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OTA-Big-Sur"><span class="toc-number">5.</span> <span class="toc-text">OTA Big Sur</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS-%E8%BD%AF%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">macOS 软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。本文将写写戴尔 G7 如何黑苹果尝鲜 <del>Big Sur</del> Catalina，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到任何不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。</p>
+<a id="more"></a>
+
+<p>心血来潮突然折腾装黑苹果的契机，大概是因为前几天调试 iOS 浏览器网页时，在 Windows 下实在是无能为力? 然后就突发奇想地折腾安装黑苹果，反正这个世界上最好找的就是借口了。</p>
+<p>说回黑苹果，其实早在一两年前看过一些黑苹果教程网页，但在看到无线网卡不能驱动无法上网、死机、卡屏以及其他各种问题时，把我这个小白给吓到劝退了。但谁又能阻挡住一颗脱缰的好奇心呢，说干就干。在拜读了「黑果小兵」博客的安装教程后，我就开始准备备份硬盘、格盘，做 U 盘安装镜像了。</p>
+<p><span style="color:red;"> Note: 本文仅供参考，因操作不当造成的后果概不负责。</span></p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><ul>
+<li>电脑型号 DELL-G7-7588</li>
+<li>操作系统 macOS Catalina 10.15.7</li>
+<li>处理器 Intel Core i5-8300H @ 2.30GHz 四核</li>
+<li>内存 16GB 2667 MHz DDR4</li>
+<li>硬盘 HP SSD 1TGB PCIE NVME + HP SSD 500G SATA</li>
+<li>显卡 Intel UHD Graphics 630 </li>
+<li>网卡 Intel AC9560</li>
+<li>声卡 ALC256 </li>
+<li>SMBIOS MacBookPro15,2 (13-inch, 2019</li>
+</ul>
+<h4 id="准备安装盘"><a href="#准备安装盘" class="headerlink" title="准备安装盘"></a>准备安装盘</h4><p>首先，我的机器是戴尔 G7 7588，戴尔的机器很多都可以黑苹果，人傻钱多戴的好处瞬间体现出来了。硬盘我有两块，一块是 m.2 接口 NVME 的 HP 1T SSD，另一块是 SATA 接口的 HP 500G SSD。至于为什么选惠普的盘，因为性价比高啊(虽然它好像是贴牌的)，800 多 1T 的 NVME SSD 已经挺实惠了，隔壁三星能卖到 1000+ (听说三星的盘对黑苹果不友好，但好像修复了)。我的想法是，Windows 就让它待在原来的 NVME SSD 上，500 G 的 SATA SSD 就用来装 macOS，这样总不至于把 Windows 搞崩吧？什么？都上黑苹果了还要 Windows 干啥？小孩子才做选择，大人还要打游戏呢。</p>
+<p>由于我压根没考虑在一块硬盘上分出一个区来安装 macOS，所以本文就此略过。</p>
+<h4 id="准备-U-盘安装镜像"><a href="#准备-U-盘安装镜像" class="headerlink" title="准备 U 盘安装镜像"></a>准备 U 盘安装镜像</h4><p>在备份完 SATA SSD 之后，就可以把它格式化了，如果你安装盘的格式是 MBR，请将其改成 GPT 格式，MBR 在最近的 macOS 上并不被支持(后面抹盘的时候也会选择 GUID 分区)。接着从黑果小兵那下载了 macOS 10.15.7 Catalina 的 dmg 镜像，这个镜像包含 macOS、Clover EFI、OC EFI、WEPE EFI 全家桶，总之用它就对了。接下来呢，还得做一个 U 盘安装镜像，我用的是 balenaEtcher 这个工具。具体的操作步骤：</p>
+<ul>
+<li>选择 dmg 镜像</li>
+<li>选择要烧制的 U 盘</li>
+<li>开始制作</li>
+</ul>
+<p>当 balenaEtcher 出现绿色的 Complete 字样之后就说明烧制成功了，然后 Windows 会弹窗提示格式化 U 盘，无须理会它直接右上角关闭。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/27CD5841-A62B-4CB1-8BAD-BBBE8D852301.png" alt="准备 U 盘安装镜像"></p>
+<h4 id="准备机器机型-EFI"><a href="#准备机器机型-EFI" class="headerlink" title="准备机器机型 EFI"></a>准备机器机型 EFI</h4><p>由于不同的机器硬件差别太大，所以必须要符合机型的 EFI 才能顺利的引导黑苹果，所以还需要去下载对应机型的 EFI。我选择的是最近比较流行的 OpenCore（OC）引导工具，那么去哪里找对应机型的 OC EFI 呢? 答案当然是万能的 Github 了，你也可以去「黑果小兵」博客查找符合你机器机型的 EFI 信息，最后基本都是要去 Github 下载的。</p>
+<p>Dell G7 7588 的 EFI 有三个项目在维护，我使用的是 <a target="_blank" rel="noopener" href="https://github.com/flyfeng2002/FYQ-Hackintosh">FYQ-Hackintosh</a> 提供的 OC EFI。直接 Clone 仓库或者下载 zip 包，不要下载 Release 页面下的旧包。此仓库包含了 OC EFI 以及声卡修复脚本、雷电3补丁。使用分区工具删除 U 盘中 OC 分区里的文件，将下载的对应机器 OC EFI 复制到 U 盘 OC 分区下。 </p>
+<h4 id="BIOS设置"><a href="#BIOS设置" class="headerlink" title="BIOS设置"></a>BIOS设置</h4><ul>
+<li>UEFI Boot Path Security: Never</li>
+<li>SATA Operation: AHCI</li>
+<li>Enabled USB Boot Support: Enabled</li>
+<li>Enable External USB Port: Enabled</li>
+<li>Thunderbolt Security: No Security</li>
+<li>PTT Security: Disabled</li>
+<li>Secure Boot Enable: Disabled</li>
+<li>Intel SGX: Disabled</li>
+<li>VT for Direct I/O: Disabled</li>
+<li>Auto OS Recovery Threshold: Disabled</li>
+<li>SupportAssist OS Recovery: Disabled</li>
+</ul>
+<h3 id="安装-macOS"><a href="#安装-macOS" class="headerlink" title="安装 macOS"></a>安装 macOS</h3><p>以下安装步骤参考自 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9AfyueVyOX_SVHEUwihoaA">黑果小兵</a>，图片引用的是 Big Sur 的安装过程，但和 Catalina 的安装步骤基本一致。</p>
+<p>开机，按 F12 选择 U盘 引导，光标移动到 EFI USB Device Parttion2 选择 OpenCore 分区启动：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/C0CF33FA-AC4D-4301-90EB-C214349420DA.png" alt="OpenCore 引导界面安装 Catalina"></p>
+<p>进入 OpenCore 主引导界面，选择 Install macOS Catalina，直接回车进入 OpenCore 引导。</p>
+<p>出现安装界面，选择磁盘工具，点击继续：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/4F95D2BE-0D13-4ABE-8EE2-1DF1691D31B0.png" alt="安装界面-磁盘工具"></p>
+<p>进入磁盘工具，点击下图所示，选择显示所有设备：<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/DC50DF98-FF96-4452-ACC8-00783B6B0022.png" alt="显示磁盘"></p>
+<p>选择 HP 500G SSD SATA 这块需要安装 macOS 的磁盘，点击抹掉，在弹出的窗口中输入：名称：Macintosh HD；格式：APFS；方案：GUID分区图。<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/889A7BAF-85B6-4E53-AE9C-315D361A0C9A.png" alt="抹掉磁盘"></p>
+<p>点击抹除，然后等待操作结束，点击完成，通过菜单选择退出磁盘工具或者按窗口左上角红色按钮离开磁盘工具，返回到安装界面，选择安装 macOS，点击继续：<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/8DCEE97F-3AD4-4243-9E53-A1007772FB34.png" alt="安装 macOS"></p>
+<p>然后点击同意安装协议，选择将要安装的磁盘卷标 Macintosh HD，点击继续：<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/3C17C17C-F285-4B07-81B9-EA48F5A4CCC3.png" alt="选择安装盘 Macintosh HD"></p>
+<p>它会把USB安装盘上的安装文件预复制到要安装的系统分区里，这个过程通常会持续1-2分钟，之后系统会自动重启，进入第二阶段的安装：<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/1DB683B1-F640-40A4-8F26-A8D49F3E6C91.png" alt="安装 macOS 中"></p>
+<p>重启后继续安装，在安装期间，通常会自动重启 2-3 遍。最好是把 OC EFI 启动项设置为第一项最先启动，否则重启时可能进入其他引导项，或者重启后手动选择 OC EFI。</p>
+<p>之后就是进入设置向导界面了，后面的操作就不细说。</p>
+<p>最后，来一张 macOS catalina 截图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/IMG_3658.png"></p>
+<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><h4 id="Hackintool-和-OCC"><a href="#Hackintool-和-OCC" class="headerlink" title="Hackintool 和 OCC"></a>Hackintool 和 OCC</h4><p>下载 Hackintool 和 OpenCore Configuration 软件</p>
+<h4 id="挂载-EFI"><a href="#挂载-EFI" class="headerlink" title="挂载 EFI"></a>挂载 EFI</h4><p>安装完成之后，macOS 安装盘中还需要将 U 盘中 OC 分区的 EFI 复制到安装盘 EFI 分区中。先挂载安装盘 EFI，再将 U 盘 OC EFI 替换过去。</p>
+<p>打开 OCC 软件，选择<code>工具</code>菜单项，点击<code>挂载 EFI</code>，选择 macOS 安装盘的 EFI 分区挂载:<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224137.jpg"><br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224424.jpg"></p>
+<p>也可以使用命令行挂载 EFI 分区：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 列出所有磁盘分区</span></span><br><span class="line">diskutil list</span><br><span class="line"><span class="comment"># 注意将 disk1s1 换成对应的 EFI 分区, 挂载需要 sudo 权限</span></span><br><span class="line">sudo diskutil mount disk1s1</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="休眠"><a href="#休眠" class="headerlink" title="休眠"></a>休眠</h4><p>在 Hackintool 电源项里点击刷新按钮左侧图标，将红色的项修改，之后变成绿色即可。休眠我这里是休眠即醒，貌似要设置 CFG 这些东西，嫌太复杂就直接设置桌面屏幕保护程序，开启后再进入系统需要解锁，感觉和休眠功能差不多。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224024.jpg"></p>
+<h4 id="亮度调节"><a href="#亮度调节" class="headerlink" title="亮度调节"></a>亮度调节</h4><p>系统偏好设置里的默认亮度调节快捷键是 F14、F15，但我最多只有 F11、F12 是亮度调节，在系统设置快捷键里重新映射为 F11、F12 即可，亮度调节正常。<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225539.jpg"></p>
+<h4 id="三码"><a href="#三码" class="headerlink" title="三码"></a>三码</h4><p><code>iMessages</code> 和 <code>FaceTime</code> 需要三码才能登录。</p>
+<p>打开 OCC 软件，选择<code>工具</code>菜单项，点击<code>挂载 EFI</code>，选择 macOS 安装盘的 EFI 分区挂载，进入 EFI/OC 目录下，右键 config.plist 选择使用 OCC 打开：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224521.jpg"></p>
+<p>进入 OCC 选择机型平台设置，切换到 DataHub-Generic-PlatformNVRAM， 查询序列号有效性右侧下拉框选择机型，最好是选择 CPU 型号接近的机型。此时 SSN、SUUID 码已经生成好，点击 ROM 项右侧<code>来自系统</code>，从 <code>Hack</code> 切换到 <code>Mac</code>，点击生成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-224749.jpg"></p>
+<p>最好在 OCC 菜单栏上选择 <code>文件</code>-&gt; <code>保持</code>，重启系统，三码生成就完成啦，可以在 Hackintool 系统菜单项中查看三码。对 Config.plist 修改之后要保存文件，建议对 EFI 分区进行备份。</p>
+<h4 id="黑苹果开启原生HiDPI"><a href="#黑苹果开启原生HiDPI" class="headerlink" title="黑苹果开启原生HiDPI"></a>黑苹果开启原生HiDPI</h4><p>一条命令可开启接近原生的 HIDPI 设置，脚本的 Github 项目地址: GitHub - xzhih/one-key-hidpi: Enable macOS HiDPI。</p>
+<p>终端下执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bash</span><br><span class="line">sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;xzhih&#x2F;one-key-hidpi&#x2F;master&#x2F;hidpi.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>如果访问Github出现网络超时的情况，可以使用下面国内的脚本命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Bash</span><br><span class="line">sh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;html.sqlsec.com&#x2F;hidpi.sh)&quot;</span><br></pre></td></tr></table></figure>
+<p>开启后重启生效！</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225812.jpg"></p>
+<h4 id="无线"><a href="#无线" class="headerlink" title="无线"></a>无线</h4><p>下载对应系统版本的 <code>AirportItlwm.kext</code> ：</p>
+<p>Supported Intel WI-FI Cards By itlwm:</p>
+<ul>
+<li>3xxx: 3160, 3165, 3168</li>
+<li>7xxx: 7260, 7265</li>
+<li>9xxx：9260,9461, 9462, 9560</li>
+<li>22000：ax200</li>
+</ul>
+<p>Supported Devices List<br>AirportItlwm.kext download from <a target="_blank" rel="noopener" href="https://github.com/1hbb/OpenIntelWireless-Factory/releases">https://github.com/1hbb/OpenIntelWireless-Factory/releases</a>, support OS:</p>
+<ul>
+<li>AirportItlwm-BigSur</li>
+<li>AirportItlwm-Catalina</li>
+<li>AirportItlwm-HighSierra</li>
+<li>AirportItlwm-Mojave</li>
+</ul>
+<p>替换掉 <code>EFI/OC/Kexts</code> 中的 <code>AirportItlwm.kext</code>：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225336.jpg"></p>
+<p>重启电脑，即可看到 wifi 功能已可以使用，接力功能可使用；隔空投送和随航等其它功能无法使用；实际测试下来网速和在 Windows 下的速度基本一致。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/2020-12-06.5.57.56.png"></p>
+<p>如果想要体验隔空投送和随航等功能，那么你可能需要更换博通网卡，但是已经被无良商家炒到两三百的价格…</p>
+<h4 id="雷电3补丁"><a href="#雷电3补丁" class="headerlink" title="雷电3补丁"></a>雷电3补丁</h4><p>我的电脑是旧款 G7，将下载好的雷电3补丁目录打开，复制 <code>SSDT-THUNDERBOLT.aml</code> 到 <code>EFI/OC/ACPI</code> 目录下， 复制 <code>IOElectrify.kext</code> 到 <code>EFI/OC/Kexts</code> 目录下，用 OCC 打开 config.plist 文件，将复制好的 <code>SSDT-THUNDERBOLT.aml</code> 拖动到 <code>ACPI设置</code> 添加项中并启用；将复制好的 <code>IOElectrify.kext</code> 拖动到 <code>Kernel-内核</code> 设置添加项中并启用。重启电脑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225020.jpg"><br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225155.jpg"><br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225934.jpg"></p>
+<p>经测试，雷电3接口外接 Type-C 扩展坞可以连接 USB LAN 千兆以太网、USB-C PD 快充、HDMI 连接显示器正常输出视频、USB3.0 正常；支持设备热插拔。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201208-225850.jpg"></p>
+<p>可以看到 wi-fi 功能已开启，并且雷电3外接 Type-C 扩展坞可以连接 USB LAN 千兆以太网，USB LAN 的网速测试和在机器自带 RJ45 网络速度基本一致。</p>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>休眠功能可能无法使用</li>
+<li>自带 HDMI 接口不能输出视频至外接显示器</li>
+<li>Intel 网卡驱动下的 2.4G WiFi 若有蓝牙设备(小米小爱音箱)连接，会严重干扰网速</li>
+<li>Intel WiFi 隔空投送和随航等功能无效(需更换博通网卡)</li>
+<li>关机不断电(具体原因还在找，可能是刷了内核补丁引起的)</li>
+</ul>
+<p>关于 1080P 下的 HiDPI ，如果设置成 1920*1080 分辨率，字体和应用就会有点小和糊，启用更低分辨率的 HiDPI 之后，字体和应用 UI 变得硕大但是比较清晰，截图的分辨率会扩大一倍非常清晰。所以，我一般是 1920*1080 这样能看到的东西更多，截图可以调低分辨率这样出来的图分辨率扩大一倍非常清晰。</p>
+<p>从最近这些天的体验来说，macOS 已经能够胜任很多日常任务了，无论是浏览网页、看视频还是开发编程体验都比 Windows 要来得更好，且从未有过系统崩溃。如果你能忽略屏幕质量和黑苹果不完美下的各种小问题，且能有足够的时间去折腾，那么黑苹果体验可能会比 Windows 好很多。想要完美体验 macOS 还是得上 MacBook 和 4K 屏，更多关于 HiDPI 的内容请查看：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20684620">有关 retina 和 HiDPI 那点事</a>。</p>
+<h3 id="OTA-Big-Sur"><a href="#OTA-Big-Sur" class="headerlink" title="OTA Big Sur"></a>OTA Big Sur</h3><p>最近试了下从 Catalina 10.15.7 OTA 在线系统更新升级到 Big Sur 11.0.1，用移动固态硬盘和时间机器软件备份了一下 Catalina 系统，方便出问题回滚。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/IMG_3736.JPG"></p>
+<p>第一次下载完系统升级安装包之后安装时提示软件包缺失损坏，重启再下载就可以直接更新到 Big Sur。使用下来，基本没有任何问题，安装的软件也没有兼容性问题；Safari 14 终于可以加载 webp 格式的图片了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/IMG_3738.JPG"></p>
+<p>换成圆角矩形应用图标风格后：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/jietu2020-12-14.5.57.26.png"></p>
+<h3 id="macOS-软件"><a href="#macOS-软件" class="headerlink" title="macOS 软件"></a>macOS 软件</h3><p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/2020-12-05.8.09.56.png"></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.macwk.com/">https://www.macwk.com</a></li>
+<li><a target="_blank" rel="noopener" href="https://lemon.qq.com/lab/">https://lemon.qq.com/lab/</a></li>
+</ul>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9AfyueVyOX_SVHEUwihoaA">黑果小兵 - Big Sur 安装教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/flyfeng2002/FYQ-Hackintosh">Dell G7 7588 OC EFI</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/1hbb/OpenIntelWireless-Factory">OpenIntelWireless-Factory</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20684620">有关 retina 和 HiDPI 那点事</a></li>
+</ul>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/dell-hackintosh/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/dell-hackintosh/";
+            const title         = "「Hackintosh 尝鲜」";
+            const excerpt       = `话说，最近苹果推出了基于 M1 芯片的 MacBook Air 和 MacBook Pro，以及新的 macOS Big Sur。本文将写写戴尔 G7 如何黑苹果尝鲜 Big Sur Catalina，如果您是忠实的 Windows 粉和 Linux 粉，在看的过程中感觉到任何不适的话，可以随时右上角关闭网页。至于各操作系统之间的圣战，我们就安安静静地吃瓜就好了。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/%E9%BB%91%E8%8B%B9%E6%9E%9C/" rel="tag">黑苹果</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-12-14</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 记一次手术" href="/an-operation/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 使用 Github Actions 部署 HEXO 博客" href="/hexo-deploy-github-actions/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'dell-hackintosh/',
+                url: 'https://chee5e.space/dell-hackintosh/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%AE%89%E8%A3%85%E7%9B%98"><span class="toc-number">1.1.</span> <span class="toc-text">准备安装盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87-U-%E7%9B%98%E5%AE%89%E8%A3%85%E9%95%9C%E5%83%8F"><span class="toc-number">1.2.</span> <span class="toc-text">准备 U 盘安装镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E6%9C%BA%E5%99%A8%E6%9C%BA%E5%9E%8B-EFI"><span class="toc-number">1.3.</span> <span class="toc-text">准备机器机型 EFI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BIOS%E8%AE%BE%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">BIOS设置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85-macOS"><span class="toc-number">2.</span> <span class="toc-text">安装 macOS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%82%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">杂项</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Hackintool-%E5%92%8C-OCC"><span class="toc-number">3.1.</span> <span class="toc-text">Hackintool 和 OCC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD-EFI"><span class="toc-number">3.2.</span> <span class="toc-text">挂载 EFI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%91%E7%9C%A0"><span class="toc-number">3.3.</span> <span class="toc-text">休眠</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82"><span class="toc-number">3.4.</span> <span class="toc-text">亮度调节</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A0%81"><span class="toc-number">3.5.</span> <span class="toc-text">三码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%BB%91%E8%8B%B9%E6%9E%9C%E5%BC%80%E5%90%AF%E5%8E%9F%E7%94%9FHiDPI"><span class="toc-number">3.6.</span> <span class="toc-text">黑苹果开启原生HiDPI</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%BA%BF"><span class="toc-number">3.7.</span> <span class="toc-text">无线</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9B%B7%E7%94%B53%E8%A1%A5%E4%B8%81"><span class="toc-number">3.8.</span> <span class="toc-text">雷电3补丁</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-number">4.</span> <span class="toc-text">问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#OTA-Big-Sur"><span class="toc-number">5.</span> <span class="toc-text">OTA Big Sur</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS-%E8%BD%AF%E4%BB%B6"><span class="toc-number">6.</span> <span class="toc-text">macOS 软件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">7.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a> <a href="/tags/%E4%B8%80%E8%A8%80/" style="font-size: 0.6em;">一言</a> <a href="/tags/%E4%B8%A4%E5%91%A8%E5%B9%B4/" style="font-size: 0.6em;">两周年</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/hexo-deploy-github-actions/"><i class="fa  fa-book"></i> 使用 Github Actions 部署 HEXO 博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/dell-hackintosh/"><i class="fa  fa-book"></i> Hackintosh 尝鲜</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

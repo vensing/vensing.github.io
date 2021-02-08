@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>搭建一个自己的 Gitlab CI Runner | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="CI, docker" />
+  
+  <meta name="description" content="说起来博客使用 Travis CI 自动持续部署也一年多了，唯一的感受就是 CI 实在太方便了。正好最近工作的项目仓库都转到公司内部的 Gitlab ， 于是就想着能不能利用 CI 跑一些测试。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="搭建一个自己的 Gitlab CI Runner">
+<meta property="og:url" content="https://chee5e.space/gitlab-runner-in-docker/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="说起来博客使用 Travis CI 自动持续部署也一年多了，唯一的感受就是 CI 实在太方便了。正好最近工作的项目仓库都转到公司内部的 Gitlab ， 于是就想着能不能利用 CI 跑一些测试。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2020-07-04T11:53:00.000Z">
+<meta property="article:modified_time" content="2020-12-05T12:07:15.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="CI">
+<meta property="article:tag" content="docker">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">搭建一个自己的 Gitlab CI Runner</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-07-04
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~13.25K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1607170035000"></time>前 (2020-12-05)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitlab-CI-CD-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Gitlab CI&#x2F;CD 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GitLab-CI-CD-%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">GitLab CI&#x2F;CD 整体流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gitlab-ci-yml-%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">.gitlab-ci.yml 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitLab-Runner"><span class="toc-number">1.3.</span> <span class="toc-text">GitLab Runner</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8E%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84-Gitlab-CI-Runner"><span class="toc-number">2.</span> <span class="toc-text">🎯最简单的 Gitlab CI Runner</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Gitlab-Runner"><span class="toc-number">2.1.</span> <span class="toc-text">Install Gitlab Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Register-Runner"><span class="toc-number">2.2.</span> <span class="toc-text">Register Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Start-the-Runner"><span class="toc-number">2.3.</span> <span class="toc-text">Start the Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Config-gitlab-ci-yml"><span class="toc-number">2.4.</span> <span class="toc-text">Config gitlab-ci.yml</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%80Runner-%E6%8B%89%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89-Docker-%E9%95%9C%E5%83%8F"><span class="toc-number">3.</span> <span class="toc-text">🚀Runner 拉取自定义 Docker 镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker-%E5%AE%89%E8%A3%85-Runner"><span class="toc-number">3.1.</span> <span class="toc-text">Docker 安装 Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker-%E6%B3%A8%E5%86%8C-Runner"><span class="toc-number">3.2.</span> <span class="toc-text">Docker 注册 Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-Ubuntu-%E9%95%9C%E5%83%8F"><span class="toc-number">3.3.</span> <span class="toc-text">自定义 Ubuntu 镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gitlab-ci-yml-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">gitlab-ci.yml 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Girlab-Runner-%E6%8B%89%E5%8F%96%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F"><span class="toc-number">3.5.</span> <span class="toc-text">Girlab Runner 拉取本地镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>说起来博客使用 Travis CI 自动持续部署也一年多了，唯一的感受就是 CI 实在太方便了。正好最近工作的项目仓库都转到公司内部的 Gitlab ， 于是就想着能不能利用 CI 跑一些测试。</p>
+<a id="more"></a>
+
+<h3 id="Gitlab-CI-CD-简介"><a href="#Gitlab-CI-CD-简介" class="headerlink" title="Gitlab CI/CD 简介"></a>Gitlab CI/CD 简介</h3><p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/cicd_pipeline_infograph.png" alt="Gitlab CI/CD"></p>
+<p>如上图所示，当我们提交代码到 GitLab 仓库后，满足指定条件后就会触发 Pipeline 进行自动化构建、测试、发布等。</p>
+<p>Pipeline 可以包含一个或多个 Jobs 任务，一个 Job 里面可以包含多个流程，如下载依赖、运行测试、编译、部署。Pipeline 什么时候触发，分为几个流程，每个流程做什么，是在项目的 .gitlab-ci.yml 文件中定义。</p>
+<h4 id="GitLab-CI-CD-整体流程"><a href="#GitLab-CI-CD-整体流程" class="headerlink" title="GitLab CI/CD 整体流程"></a>GitLab CI/CD 整体流程</h4><p>GitLab CI/CD 的 Pipeline 具体流程和操作在 .gitlab-ci.yml 文件中申明，触发 pipeline 后，由 GitLab Runner 根据 .gitlab-ci.yml 文件运行，运行结束后将返回至 GitLab 系统。</p>
+<h4 id="gitlab-ci-yml-文件"><a href="#gitlab-ci-yml-文件" class="headerlink" title=".gitlab-ci.yml 文件"></a>.gitlab-ci.yml 文件</h4><p>.gitlab-ci.yml 文件是一个申明式配置文件，放在项目的根目录下，用 stages 定义 GitLab CI/CD 流程有哪些阶段，每个阶段分别干什么。如果有更复杂的逻辑，还可以编写脚本文件，并在 .gitlab-ci.yml 文件执行它。</p>
+<h4 id="GitLab-Runner"><a href="#GitLab-Runner" class="headerlink" title="GitLab Runner"></a>GitLab Runner</h4><p>GitLab Runner 是 CI 的执行环境，负责执行 gitlab-ci.yml 文件，并将结果返回给 GitLab 系统。Runner 具体可以有多种形式，windows、linux、docker 或 shell等等，在注册 Runner 时需要选定一个具体的   Executor。</p>
+<h3 id="🎯最简单的-Gitlab-CI-Runner"><a href="#🎯最简单的-Gitlab-CI-Runner" class="headerlink" title="🎯最简单的 Gitlab CI Runner"></a>🎯最简单的 Gitlab CI Runner</h3><p>经过几天的摸鱼，已经大概摸清了 Gitlab CI Runner 的用法，期间也遇到了很多的坑，所以这篇文章就用来记录踩的坑吧。</p>
+<p>由于公司内部的 Gitlab 没有提供公有的 Runner，所以想要把 CI 用起来还得自己动手。于是乎，我就去了解了下如何搭建自己的 Specific Runners 。这里在 gitlab.com 新建一个最简单的项目，只有一个 test.py 打印输出 hello world 的项目。</p>
+<p>定位到 Gitlab 项目的 Settings =&gt; CI/CD =&gt; Runners 下，可以看到配置特定的 Runner, 总结下大致有这么几步：</p>
+<ul>
+<li>Install Gitlab Runner</li>
+<li>Register Runner </li>
+<li>Config gitlab-ci.yml</li>
+<li>Start the Runner</li>
+</ul>
+<h4 id="Install-Gitlab-Runner"><a href="#Install-Gitlab-Runner" class="headerlink" title="Install Gitlab Runner"></a>Install Gitlab Runner</h4><p>首先，需要安装 Gitlab Runner，可以选择的平台也有很多：Windows、Linux、macOS、Docker 等等；看了下 Windows 下的安装步骤，我果断选择了 WSL 安装。 WSL 我安装的子系统是 Ubuntu 18.04 LTS，下载 gitlib-runner_amd64.deb 安装包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> For example, <span class="keyword">for</span> Debian or Ubuntu:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_&lt;arch&gt;.deb</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> For example, <span class="keyword">for</span> CentOS or Red Hat Enterprise Linux:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ curl -LJO https://gitlab-runner-downloads.s3.amazonaws.com/latest/rpm/gitlab-runner_&lt;arch&gt;.rpm</span></span><br></pre></td></tr></table></figure>
+
+<p>下载好之后即可执行安装命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> For example, <span class="keyword">for</span> Debian or Ubuntu:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ dpkg -i gitlab-runner_&lt;arch&gt;.deb</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> For example, <span class="keyword">for</span> CentOS or Red Hat Enterprise Linux:</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ rpm -i gitlab-runner_&lt;arch&gt;.rpm</span></span><br></pre></td></tr></table></figure>
+
+<p>See Install GitLab Runner manually on GNU/Linux: <a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-manually.html">https://docs.gitlab.com/runner/install/linux-manually.html</a></p>
+<p>你也可以添加 Gitlab 官方仓库源，再通过包管理来安装：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> For Debian/Ubuntu/Mint</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | sudo bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> For RHEL/CentOS/Fedora</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.rpm.sh | sudo bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> For Debian/Ubuntu/Mint</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ sudo apt-get install gitlab-runner</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> For RHEL/CentOS/Fedora</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ sudo yum install gitlab-runner</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>See Install GitLab Runner using the official GitLab repositories: <a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-repository.html">https://docs.gitlab.com/runner/install/linux-repository.html</a></p>
+<h4 id="Register-Runner"><a href="#Register-Runner" class="headerlink" title="Register Runner"></a>Register Runner</h4><p>安装好 Gitlab Runner 之后我们就可以注册 Runner 绑定到我们的仓库，到 Gitlab 项目的 Settings =&gt; CI/CD =&gt; Runners，展开可以看到下图所示的内容：</p>
+<ol>
+<li>Install GitLab Runner</li>
+<li>Specify the following URL during the Runner setup: <a target="_blank" rel="noopener" href="https://gitlab.com/">https://gitlab.com/</a> </li>
+<li>Use the following registration token during setup: xxxxxx_KVcfgoXH2hAc </li>
+<li>Start the Runner!</li>
+</ol>
+<p>其中，第二三步的 URL 和 token，是在执行 Runner 注册命令中会用到的。执行如下注册命令：</p>
+<div class="xControl">
+    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>Linux注册Runner命令</span></div>
+    <div class="xContent"><div class="inner">
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 执行注册命令</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ sudo gitlab-runner register</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入上图第二步的 URL </span></span><br><span class="line">Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )</span><br><span class="line">https://gitlab.com</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入上图第三步的 Token</span></span><br><span class="line">Please enter the gitlab-ci token for this runner</span><br><span class="line">xxxxxx_KVcfgoXH2hAc </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 runner 描述</span></span><br><span class="line">Please enter the gitlab-ci description for this runner</span><br><span class="line">gitlab runner for ci </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 tag 标签名称</span></span><br><span class="line">Please enter the gitlab-ci tags for this runner (comma separated):</span><br><span class="line">ci</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择一个执行器，这里我们选择 docker</span></span><br><span class="line">Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:</span><br><span class="line">docker</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitlib-ci.yml 中未指定 images 时，采用的默认镜像</span></span><br><span class="line">Please enter the Docker image (eg. ruby:2.6):</span><br><span class="line">python:alpine</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+    </div></div>
+    </div>
+
+<p>相信上面的这些都难不倒你，关于 WSL 上的 Docker ，这里我们需要着重提一下。你只需要下载好 Docker Desktop 并安装好，安装好之后我们进入 settings 设置界面，进入到 General =&gt; Use the WSL2 based engine 开启；然后进入到 Resources =&gt; WSL INTEGRATION ，允许 Docker 访问 WSL2 ，并启用安装的发行版。也就是说，我们不用在 WSL 上再安装 Docker 了，只需要安装 Windows Docker 桌面版程序并让其在后台运行着即可。值得注意的是，如果你退出了 Docker 桌面版，WSL2 里也访问不到 Docker 服务了。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/PByJ72iWXeqnvIx.png" alt="use_the_wsl2_based_engine.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/FvIZhOPlXTLoQRu.png" alt="use_resources_wsl_integration.png"></p>
+<p>See Docker Desktop WSL 2 backend: <a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/wsl/">https://docs.docker.com/docker-for-windows/wsl/</a></p>
+<p>上面的 python:alpine 镜像是安装 Docker 后就默认存在的镜像，实际上 Gitlab Runner 默认是去拉 Docker Hub 的镜像创建容器来运行任务的，如何拉取本地自定义镜像运行任务在后面我们会提到，这里我们需要做的是把镜像名书写正确。</p>
+<p>注册好了 Runner 之后，我们刷新 Settings 下的 CI/CD 页面，展开 Runners，可以看到我们的 Runner 注册成功了，并且 runner 描述 和 tag 标签也显示出来了：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/T9mOKzlVeBLDIkS.png" alt="Runner 注册成功"></p>
+<p>你可以用 <code>gitlab-runner verify</code> 命令测试注册的 Gitlab-runner 和 gitlab 仓库是否能连通，出现图片上的小绿点就说明连通了。</p>
+<h4 id="Start-the-Runner"><a href="#Start-the-Runner" class="headerlink" title="Start the Runner"></a>Start the Runner</h4><p>⚠ 注册完之后，记得运行 Gitlab-runner ，如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。</p>
+<p><strong>注意：</strong>运行注册的 gitlab-runner 后，默认情况下不会运行没有 tag 的 job，也就是没有标记 tag 的代码提交，此时触发 Pipline， CI 会一直处于 Pending 状态，则需要去 Runners 编辑页面将「Run untagged jobs」选项勾选。</p>
+<h4 id="Config-gitlab-ci-yml"><a href="#Config-gitlab-ci-yml" class="headerlink" title="Config gitlab-ci.yml"></a>Config gitlab-ci.yml</h4><p>接下来，我们用 Gitlab 的 WEB-IDE 给项目增加一个 gitlab-ci.yml 配置文件，它是 gitlab 项目用来和 Runner 交互的一个配置文件，我们添加如下内容：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="attr">image:</span> <span class="string">python:alpine</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">test</span></span><br><span class="line"></span><br><span class="line"><span class="attr">test:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">python</span> <span class="string">test.py</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>在 WEB-IED 页面提交更改，这个时候就会自动触发 CI Pipelines， 并执行相应的 Job，Gitlab Runner 监听到之后就会使用 Docker executor，并拉取指定的镜像 (gitlab-ci.yml 中未配置 images时，会拉取注册Runner 时输入的默认镜像) ，接着从 Gitlab 拉取项目的仓库源码代码检出 master 分支，执行 gitlab-ci.yml 中的 “step_script” 作业脚本。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/dNkmlphFgMREiew.png" alt="CI 执行日志信息"></p>
+<h3 id="🚀Runner-拉取自定义-Docker-镜像"><a href="#🚀Runner-拉取自定义-Docker-镜像" class="headerlink" title="🚀Runner 拉取自定义 Docker 镜像"></a>🚀Runner 拉取自定义 Docker 镜像</h3><p>上面的例子过于简单了些，接下来我们来新建一个更复杂的 python opencv 项目，并且在 Docker 里安装 Gitlab Runner，Gitlab Runner 使用 Docker executor 拉取我们自定义的包含 python 运行环境和 opencv 库 的 Ubuntu 自制镜像。</p>
+<p><a target="_blank" rel="noopener" href="https://gitlab.com/vensing/TestCI">python opencv 项目</a>的结构如下图所示：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/U6SZRnAQhiFHj2e.png" alt="python opencv 项目结构"></p>
+<h4 id="Docker-安装-Runner"><a href="#Docker-安装-Runner" class="headerlink" title="Docker 安装 Runner"></a>Docker 安装 Runner</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker run -d --name gitlab-runner --restart always \</span></span><br><span class="line">  -v /srv/gitlab-runner/config:/etc/gitlab-runner \</span><br><span class="line">  -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">  gitlab/gitlab-runner:latest</span><br></pre></td></tr></table></figure>
+<h4 id="Docker-注册-Runner"><a href="#Docker-注册-Runner" class="headerlink" title="Docker 注册 Runner"></a>Docker 注册 Runner</h4><div class="xControl">
+    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>Docker注册Runner命令</span></div>
+    <div class="xContent"><div class="inner">
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 URL </span></span><br><span class="line">Please enter the gitlab-ci coordinator URL (e.g. https://gitlab.com )</span><br><span class="line">https://gitlab.com</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 python opencv 项目的 Token</span></span><br><span class="line">Please enter the gitlab-ci token for this runner</span><br><span class="line">xxxxxx_yyyyyyyyyyy </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 runner 描述</span></span><br><span class="line">Please enter the gitlab-ci description for this runner</span><br><span class="line">gitlab runner for ci </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 输入 tag 标签名称</span></span><br><span class="line">Please enter the gitlab-ci tags for this runner (comma separated):</span><br><span class="line">ci</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 选择一个执行器，这里我们选择 docker</span></span><br><span class="line">Please enter the executor: ssh, docker+machine, docker-ssh+machine, kubernetes, docker, parallels, virtualbox, docker-ssh, shell:</span><br><span class="line">docker</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> gitlib-ci.yml 中未指定 images 时，采用的默认镜像</span></span><br><span class="line">Please enter the Docker image (eg. ruby:2.6):</span><br><span class="line">ubuntu-opencv:latest</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+    </div></div>
+    </div>
+
+<h4 id="自定义-Ubuntu-镜像"><a href="#自定义-Ubuntu-镜像" class="headerlink" title="自定义 Ubuntu 镜像"></a>自定义 Ubuntu 镜像</h4><p>从 Docker Hub 拉取 Ubuntu 镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 搜寻镜像</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker search ubuntu</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 拉取镜像</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker pull ubuntu</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看镜像</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker images</span></span><br><span class="line"></span><br><span class="line">REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">ubuntu-opencv                 latest              aba324b29fe7        3 hours ago         677MB</span><br><span class="line">gitlab/gitlab-runner          latest              54ba330cd824        3 days ago          373MB</span><br><span class="line">gitlab/gitlab-runner-helper   x86_64-6214287e     3fbba80323bd        4 days ago          57.2MB</span><br><span class="line">&lt;none&gt;                        &lt;none&gt;              bfb66eee5b87        4 days ago          89.5MB</span><br><span class="line">&lt;none&gt;                        &lt;none&gt;              3cb247d9cae4        4 days ago          108MB</span><br><span class="line">node                          12-alpine           06a4a7b5263d        2 weeks ago         89.3MB</span><br><span class="line">ubuntu                        latest              74435f89ab78        2 weeks ago         73.9MB</span><br><span class="line">python                        alpine              8ecf5a48c789        4 weeks ago         78.9MB</span><br><span class="line">alpine                        latest              a24bb4013296        5 weeks ago         5.57MB</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>拉取的 ubuntu 是最新的版本，大概 73M ，接着我们使用这个镜像来运行一个容器：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用最新版本的 ubuntu 镜像运行容器</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 并进入交互式终端，这里加了 -d 后台运行，不会进入终端</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> --name 指定容器名称</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker run -itd --name ubuntu_v1 ubuntu:latest /bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看正在运行的容器</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker ps </span></span><br><span class="line">CONTAINER ID        IMAGE                  COMMAND               CREATED             STATUS                    PORTS               NAMES</span><br><span class="line">c3715c64c0f3        ubuntu-opencv          &quot;bin/bash&quot;            3 hours ago         Exited (0) 3 hours ago                        ubuntu_v1</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 指定容器名称 ubuntu_v1 进入后台运行中的容器，-i: 交互式操作。-t: 终端。</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 未指定容器名称请使用 CONTAINER ID，如 ubuntu_v1 是 c3715c64c0f3 </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker <span class="built_in">exec</span> -it ubuntu_v1 /bin/bash</span></span><br><span class="line">root@c3715c64c0f3:/# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>由于拉取的 ubuntu 镜像都是最简单的 BASE 镜像，空空如也 73M ，连 vim 都没有我可去你他么的吧，更别提自带些什么环境了。所以，我们需要先安装下 vim (没有 vim 怎么配置源…)，再去配置下 ubuntu 的源为国内的源，最后安装 python 和 python opencv 库。</p>
+<div class="xControl">
+    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>容器环境安装</span></div>
+    <div class="xContent"><div class="inner">
+        <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装 vim </span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install -y vim</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看容器的 linux 版本</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 正确的姿势：</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ cat /etc/issue</span></span><br><span class="line">Ubuntu 20.04 LTS</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 错误的姿势(这样查到的是宿主机的系统，在我这是 WSL2的 linux 版本):</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ cat /proc/version  </span></span><br><span class="line">uname -a </span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置 ubuntu 源为清华源</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ mv /etc/apt/sources.list /etc/apt/sources.list.bak</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置清华源 see: https://mirrors.tuna.tsinghua.edu.cn/<span class="built_in">help</span>/ubuntu/</span></span><br><span class="line">vim /etc/apt/sources.list</span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get update</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装 python3</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install -y python3</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装 pip3</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install python3-pip</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 配置 pip3 源 see: https://mirrors.tuna.tsinghua.edu.cn/<span class="built_in">help</span>/pypi/</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ pip3 config <span class="built_in">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 安装 opencv 依赖</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ pip3 install wheel</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ pip3 install opencv-contrib-python</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解决 opencv import cv2 ImportError: libgthread-2.0.so.0: cannot open shared object file: No such file or directory</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install -y libglib2.0-0</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解决 ImportError: libSM.so.6: cannot open shared object file: No such file or directory</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install -y libsm6 libxext6</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 解决 ImportError: libXrender.so.1: cannot open shared object file: No such file or directory</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ apt-get install -y libxrender-dev</span></span><br><span class="line"></span><br></pre></td></tr></table></figure> 
+    </div></div>
+    </div>
+
+<p>配置完这些东西你肯定想骂人了，但还是请忍住，要骂看完了文章再骂吧。</p>
+<p>最后我们新建一个 test.py 测试下 opencv 安装情况：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python3</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line">print(cv2.__version__)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/iIXRz3bEymlOMD7.png" alt="ubuntu_v1_opencv.png"></p>
+<p>耐心点安装完这些，一个包含 python 运行环境和 opencv 库 的 Ubuntu 容器环境就完成了。接着我们需要停掉容器，导出容器为 ubuntu_v1.tar 文件，再导入 ubuntu_v1.tar 文件为镜像：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker stop ubuntu_v1</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker <span class="built_in">export</span> ubuntu_v1 &gt; ubuntu_v1.tar</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker import ubuntu_v1.tar ubuntu-opencv</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker images</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>最后，我们可以看到 ubuntu-opencv 的镜像了(未指定版本会默认设置为 latest)，这里因为需要测试容器中 opencv 环境是否安装成功，所以干脆把这个测试容器的快照文件中导入为镜像了，这样就能保证不会出现问题。自制镜像推荐使用 Dockerfile 来制作。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/naipXYe9lE2TWt7.png" alt="ubuntu-opencv 镜像"></p>
+<h4 id="gitlab-ci-yml-配置"><a href="#gitlab-ci-yml-配置" class="headerlink" title="gitlab-ci.yml 配置"></a>gitlab-ci.yml 配置</h4><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定为注册 Runner 时设置的默认镜像，即自定义的 opencv 环境镜像</span></span><br><span class="line"><span class="attr">image:</span> <span class="string">ubuntu-opencv:latest</span></span><br><span class="line"></span><br><span class="line"><span class="attr">stages:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="string">test</span></span><br><span class="line"></span><br><span class="line"><span class="attr">test:</span></span><br><span class="line">  <span class="attr">stage:</span> <span class="string">test</span></span><br><span class="line">  <span class="attr">script:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">python3</span> <span class="string">src/py/test.py</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">python3</span> <span class="string">src/py/cv.py</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="Girlab-Runner-拉取本地镜像"><a href="#Girlab-Runner-拉取本地镜像" class="headerlink" title="Girlab Runner 拉取本地镜像"></a>Girlab Runner 拉取本地镜像</h4><p>如果这个时候，我们去跑 CI，会出现如下错误：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/UykKjPw5MON68B3.png" alt="Job 错误"></p>
+<div class="alert alert-danger">ERROR: Job failed: Error response from daemon: pull access denied for ubuntu-ci, repository does not exist or may require 'docker login' (docker.go:119:0s)</div>
+
+<p>这是因为我们在 Docker 里的 gitlab-runner 未运行，项目会默认去找 Gitlab.com 提供的 Shared Runners，默认会去拉取公网上的镜像，公网上没有我们自制的这个 ubuntu-opencv 镜像就出错了。所以这里我们还是把 Gitlab.com 提供的 Shared Runners 禁用 (要想测试自己指定的 Runner 关掉 Shared Runners 吧)；禁用之后，如果我们的 gitlab-runner 未在运行，则 CI 会一直处于 pending 的状态。</p>
+<p>所以我们需要在 Docker 里运行我们的 gitlab-runner 容器，由于 gitlab-runenr 默认去拉取公网上的镜像，所以还需要配置下 gitlab-runner 的配置文件，Docker 安装的 gitlab-runner 配置文件在 /srv/gitlab-runner/config/config.toml。设置 pull_policy 指定 Runner 拉取镜像的策略，有三种选项：</p>
+<div class="panel panel-info">
+    <div class="panel-title">pull_policy策略</div>
+    <div class="panel-body">
+        <ul>
+<li>pull_policy = “never”</li>
+<li>pull_policy = “if-not-present”</li>
+<li>pull_policy = “always”</li>
+</ul>
+
+    </div>
+    </div>
+
+<p>never 策略完全禁用镜像拉取。如果您将 Runner 的 pull_policy 参数设置为 never，那么用户将只能使用 Runner 所在的 Docker 主机上提取过的本地镜像。当使用 if-not-present 拉取策略时，Runner 将首先检查映像是否在本地存在。如果是，则使用图像的本地版本。否则，Runner 将尝试拉取镜像。always 是默认拉取策略 (未设置 pull_policy 执行默认拉取策略)，将确保始终拉取镜像。当使用 always 时，即使本地副本可用，Runner 也会尝试提取镜像。如果你希望拉取镜像时可以使用缓存就用 always 吧，它的拉取速度很快，因为所有的镜像层都被缓存了。</p>
+<p>See Using the if-not-present pull policy: <a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/executors/docker.html#using-the-if-not-present-pull-policy">https://docs.gitlab.com/runner/executors/docker.html#using-the-if-not-present-pull-policy</a></p>
+<figure class="highlight toml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">concurrent</span> = <span class="number">1</span>    </span><br><span class="line"><span class="attr">check_interval</span> = <span class="number">0</span></span><br><span class="line"></span><br><span class="line"><span class="section">[session_server]</span></span><br><span class="line">  <span class="attr">session_timeout</span> = <span class="number">1800</span></span><br><span class="line"></span><br><span class="line"><span class="section">[[runners]]</span></span><br><span class="line">  <span class="attr">name</span> = <span class="string">&quot;gitlab runner for ci&quot;</span></span><br><span class="line">  <span class="attr">url</span> = <span class="string">&quot;https://gitlab.com/&quot;</span></span><br><span class="line">  <span class="attr">token</span> = <span class="string">&quot;xxxxxxxxxxxxxxxx&quot;</span></span><br><span class="line">  <span class="attr">executor</span> = <span class="string">&quot;docker&quot;</span></span><br><span class="line">  <span class="section">[runners.custom_build_dir]</span></span><br><span class="line">  <span class="section">[runners.cache]</span></span><br><span class="line">    <span class="section">[runners.cache.s3]</span></span><br><span class="line">    <span class="section">[runners.cache.gcs]</span></span><br><span class="line">  <span class="section">[runners.docker]</span></span><br><span class="line">    <span class="attr">tls_verify</span> = <span class="literal">false</span></span><br><span class="line">    <span class="attr">image</span> = <span class="string">&quot;ubuntu-opencv:latest&quot;</span></span><br><span class="line">    <span class="attr">privileged</span> = <span class="literal">false</span></span><br><span class="line">    <span class="attr">disable_entrypoint_overwrite</span> = <span class="literal">false</span></span><br><span class="line">    <span class="attr">oom_kill_disable</span> = <span class="literal">false</span></span><br><span class="line">    <span class="attr">disable_cache</span> = <span class="literal">false</span></span><br><span class="line">    <span class="attr">volumes</span> = [<span class="string">&quot;/cache&quot;</span>]</span><br><span class="line">    <span class="attr">shm_size</span> = <span class="number">0</span></span><br><span class="line">    <span class="attr">pull_policy</span> = <span class="string">&quot;never&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果我们对 config.toml 这个配置文件做了修改，则需要重启 Docker 中的 gitlab-runner 来应用修改。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> ~ $ docker restart gitlab-runner</span></span><br></pre></td></tr></table></figure>
+
+<p>做完了这些并确保 Docker 中的 gitlab-runner 容器在运行，提交下代码或者手动去触发 Piplines，就可以执行 CI，拉取我们在 Docker 中自制的 python 和 opencv 环境的镜像运行 gitlab-ci.yml 中的脚本任务了。</p>
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>最后请享受成功的乐趣吧，看下成功的 CI 任务图：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Ar5aydRb2Zl1kNC.png" alt="CI 任务图"></p>
+<p>注册完 Gitlab-runner 之后，记得运行 Gitlab-runner 。如果你未禁用 gitlab.com 提供的 Shared Runners ，且未运行注册的 gitlab-runner，则会跑 gitlab.com 提供的 Shared Runners；如果禁用了 Shared Runners，且未运行注册的 gitlab-runner ，CI 会一直处于 Pending 状态。如果需要拉取本地自定义镜像，则还需要配置 config.toml 文件中的 <code>pull_policy</code> 规则。</p>
+<p><strong>注意：</strong> Gitlab Runner 默认有效期是 90 天；保证你注册 Runner 的机器的 IP 为一个静态 IP，否则 IP 变了触发 Pipeline 后就找不到 Runner 了。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-manually.html">Install GitLab Runner manually on GNU/Linux</a> </li>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/linux-repository.html">Install GitLab Runner using the official GitLab repositories</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.docker.com/docker-for-windows/wsl/">Docker Desktop WSL 2 backend</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/install/docker.html#option-1-use-local-system-volume-mounts-to-start-the-runner-container">local system volume mounts to start the Runner container</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/register/index.html#docker">To register a Runner using a Docker containe</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.gitlab.com/runner/executors/docker.html#using-the-if-not-present-pull-policy">Using the if-not-present pull policy</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/69513606">花椒前端基于 GitLab CI/CD 的自动化构建、发布实践</a></li>
+<li>项目地址：<ul>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/vensing/TestPyCI">https://gitlab.com/vensing/TestPyCI</a></li>
+<li><a target="_blank" rel="noopener" href="https://gitlab.com/vensing/TestCI">https://gitlab.com/vensing/TestCI</a> </li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/gitlab-runner-in-docker/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/gitlab-runner-in-docker/";
+            const title         = "「搭建一个自己的 Gitlab CI Runner」";
+            const excerpt       = `说起来博客使用 Travis CI 自动持续部署也一年多了，唯一的感受就是 CI 实在太方便了。正好最近工作的项目仓库都转到公司内部的 Gitlab ， 于是就想着能不能利用 CI 跑一些测试。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/CI/" rel="tag">CI</a>, <a class="tag-none-link" href="/tags/docker/" rel="tag">docker</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-12-05</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 网络抓包那些事" href="/network-bag-snatching/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 刺猬的优雅" href="/the-hedgehog/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'gitlab-runner-in-docker/',
+                url: 'https://chee5e.space/gitlab-runner-in-docker/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Gitlab-CI-CD-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.</span> <span class="toc-text">Gitlab CI&#x2F;CD 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GitLab-CI-CD-%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="toc-number">1.1.</span> <span class="toc-text">GitLab CI&#x2F;CD 整体流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gitlab-ci-yml-%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">.gitlab-ci.yml 文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitLab-Runner"><span class="toc-number">1.3.</span> <span class="toc-text">GitLab Runner</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%8E%AF%E6%9C%80%E7%AE%80%E5%8D%95%E7%9A%84-Gitlab-CI-Runner"><span class="toc-number">2.</span> <span class="toc-text">🎯最简单的 Gitlab CI Runner</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Install-Gitlab-Runner"><span class="toc-number">2.1.</span> <span class="toc-text">Install Gitlab Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Register-Runner"><span class="toc-number">2.2.</span> <span class="toc-text">Register Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Start-the-Runner"><span class="toc-number">2.3.</span> <span class="toc-text">Start the Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Config-gitlab-ci-yml"><span class="toc-number">2.4.</span> <span class="toc-text">Config gitlab-ci.yml</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9A%80Runner-%E6%8B%89%E5%8F%96%E8%87%AA%E5%AE%9A%E4%B9%89-Docker-%E9%95%9C%E5%83%8F"><span class="toc-number">3.</span> <span class="toc-text">🚀Runner 拉取自定义 Docker 镜像</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker-%E5%AE%89%E8%A3%85-Runner"><span class="toc-number">3.1.</span> <span class="toc-text">Docker 安装 Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Docker-%E6%B3%A8%E5%86%8C-Runner"><span class="toc-number">3.2.</span> <span class="toc-text">Docker 注册 Runner</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89-Ubuntu-%E9%95%9C%E5%83%8F"><span class="toc-number">3.3.</span> <span class="toc-text">自定义 Ubuntu 镜像</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#gitlab-ci-yml-%E9%85%8D%E7%BD%AE"><span class="toc-number">3.4.</span> <span class="toc-text">gitlab-ci.yml 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Girlab-Runner-%E6%8B%89%E5%8F%96%E6%9C%AC%E5%9C%B0%E9%95%9C%E5%83%8F"><span class="toc-number">3.5.</span> <span class="toc-text">Girlab Runner 拉取本地镜像</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-number">4.</span> <span class="toc-text">最后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">5.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a> <a href="/tags/%E4%B8%80%E8%A8%80/" style="font-size: 0.6em;">一言</a> <a href="/tags/%E4%B8%A4%E5%91%A8%E5%B9%B4/" style="font-size: 0.6em;">两周年</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/hexo-deploy-github-actions/"><i class="fa  fa-book"></i> 使用 Github Actions 部署 HEXO 博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/dell-hackintosh/"><i class="fa  fa-book"></i> Hackintosh 尝鲜</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

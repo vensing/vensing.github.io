@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>使用 Github Actions 部署 HEXO 博客 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="CI" />
+  
+  <meta name="description" content="促成我从 Travis CI 换成 Github Action 的原因找到了：Travis CI 任务排队足足快半小时才启动虚机跑任务。我想慢的原因大概是我没花钱白嫖了这么久😅">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Github Actions 部署 HEXO 博客">
+<meta property="og:url" content="https://chee5e.space/hexo-deploy-github-actions/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="促成我从 Travis CI 换成 Github Action 的原因找到了：Travis CI 任务排队足足快半小时才启动虚机跑任务。我想慢的原因大概是我没花钱白嫖了这么久😅">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2020-12-09T02:05:30.000Z">
+<meta property="article:modified_time" content="2020-12-09T06:33:40.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="CI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">使用 Github Actions 部署 HEXO 博客</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-12-09
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~8.35K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1607495620000"></time>前 (2020-12-09)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5"><span class="toc-number">2.</span> <span class="toc-text">生成部署密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5"><span class="toc-number">3.</span> <span class="toc-text">配置部署密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5"><span class="toc-number">3.1.</span> <span class="toc-text">配置公钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A7%81%E9%92%A5"><span class="toc-number">3.2.</span> <span class="toc-text">配置私钥</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Actions"><span class="toc-number">4.</span> <span class="toc-text">Github Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99-deploy-yml"><span class="toc-number">4.1.</span> <span class="toc-text">编写 deploy.yml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.2.</span> <span class="toc-text">设置触发条件和环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%89%A7%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.3.</span> <span class="toc-text">指定任务及执行步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8D%B3%E9%83%A8%E7%BD%B2%E5%88%B0-Github-Pages"><span class="toc-number">4.4.</span> <span class="toc-text">配置环境即部署到 Github Pages</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Actions-%E9%83%A8%E7%BD%B2-hexo-%E5%88%B0-VPS"><span class="toc-number">5.</span> <span class="toc-text">Github Actions 部署 hexo 到 VPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>促成我从 Travis CI 换成 Github Action 的原因找到了：Travis CI 任务排队足足快半小时才启动虚机跑任务。我想慢的原因大概是我没花钱白嫖了这么久😅</p>
+<a id="more"></a>
+
+<p>所以这篇文章主要来讲一下如何使用 Github Actions 部署 HEXO 博客，好吧虽然是被别人写烂了的文章，但自己上手操作起来还是有些收获的。但凡有想法的事情，以最快的速度行动起来总是没错的，状态也可能是最好的。</p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>为了和触发 Travis CI 任务的 <code>source</code> 分支独立区分开，我创建了一个新的 <code>source-action</code> 分支用来触发 Github Actions 的工作流。目标是将 hexo 博客源码 push 到 Github 仓库的 <code>source-action</code> 分支后触发 Github Actions 的工作流，启动 OS 实例执行任务，安装 node 环境构建 hexo 网页，然后推送到仓库的 <code>master</code> 分支作为博客备份，同时再推送一份到 VPS 上部署。其实这和 Travis CI 的流程也是一样的，只是涉及到 SSH key、环境变量、配置文件的修改。</p>
+<h3 id="生成部署密钥"><a href="#生成部署密钥" class="headerlink" title="生成部署密钥"></a>生成部署密钥</h3><p>我们需要在指定的目录下生成 ssh key, 打开终端，进入 blog-action-sshkey 目录，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -f github-deploy-key</span><br></pre></td></tr></table></figure>
+
+<p>然后一路按几次回车就完成生成工作了，最后在目录下会生成 <code>github-deploy-key</code> 私钥 和 <code>github-deploy-key.pub</code> 公钥两个文件。</p>
+<h3 id="配置部署密钥"><a href="#配置部署密钥" class="headerlink" title="配置部署密钥"></a>配置部署密钥</h3><h4 id="配置公钥"><a href="#配置公钥" class="headerlink" title="配置公钥"></a>配置公钥</h4><p>复制 github-deploy-key.pub 文件里的内容，在博客仓库 <code>Settings</code> -&gt; <code>Deploy keys</code> -&gt; <code>Add deploy key</code> 页面上添加 SSH 公钥：</p>
+<ul>
+<li>Title 填写 HEXO_DEPLOY_PUB。</li>
+<li>Key 填写 github-deploy-key.pub 文件内容。</li>
+<li>勾选 Allow write access 选项。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201209-105708.jpg" alt="填写部署公钥"></p>
+<h4 id="配置私钥"><a href="#配置私钥" class="headerlink" title="配置私钥"></a>配置私钥</h4><p>复制 github-deploy-key 文件里的内容，在博客仓库 <code>Settings</code> -&gt; <code>Secrets</code> -&gt; <code>Add a new secret</code> 页面上添加 SSH 私钥：</p>
+<ul>
+<li>Name 填写 HEXO_DEPLOY_PRI。</li>
+<li>Value 填写 github-deploy-key 文件内容。</li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201209-105110.jpg" alt="填写部署私钥"></p>
+<h3 id="Github-Actions"><a href="#Github-Actions" class="headerlink" title="Github Actions"></a>Github Actions</h3><p>拉取远程的 <code>source-action</code> 分支并检出到本地，在 blog 仓库根目录下创建 <code>.github/workflows/deploy.yml</code> 文件，最后的目录结构应该是这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">blog (repository)</span><br><span class="line">└── .github</span><br><span class="line">    └── workflows</span><br><span class="line">        └── deploy.yml</span><br></pre></td></tr></table></figure>
+
+<h4 id="编写-deploy-yml"><a href="#编写-deploy-yml" class="headerlink" title="编写 deploy.yml"></a>编写 deploy.yml</h4><p>又到了编写配置文件的环节了，嘛反正 CI 最后落地下来都是在配置文件的各个步骤中，也有使用界面的 CI 服务，比如 Buddy CI 但是我并没有用过。</p>
+<div class="xControl">
+    <div class="xHeading"><div class="xIcon"><i class="fa fa-plus"></i></div><span>点击查看完整deploy.yml</span></div>
+    <div class="xContent"><div class="inner">
+        <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">source-action</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">vensing</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">vensing@foxmail.com</span></span><br><span class="line">  <span class="attr">THEME_REPO:</span> <span class="string">vensing/Kratos-Rebirth</span></span><br><span class="line">  <span class="attr">THEME_BRANCH:</span> <span class="string">hexo5-custom</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">vensing/vensing.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">master</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">14.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">theme</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.THEME_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.THEME_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">themes/Kratos-Rebirth</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">        <span class="attr">env:</span></span><br><span class="line">          <span class="attr">HEXO_DEPLOY_PRI:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">sudo</span> <span class="string">timedatectl</span> <span class="string">set-timezone</span> <span class="string">&quot;Asia/Shanghai&quot;</span></span><br><span class="line">          <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">          <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_PRI&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">          <span class="string">ssh-keyscan</span> <span class="string">vensing.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">          <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br><span class="line">          <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SSH</span> <span class="string">VPS</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">webfactory/ssh-agent@v0.4.1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">ssh-private-key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line">      </span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">VPS</span></span><br><span class="line">        <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">          <span class="string">rsync</span> <span class="string">-av</span> <span class="string">--delete</span> <span class="string">public/</span> <span class="string">root@vensing.com:/hexo</span></span><br></pre></td></tr></table></figure> 
+    </div></div>
+    </div>
+
+<p>以下是对配置文件中的各个部分做简单解释：</p>
+<h4 id="设置触发条件和环境变量"><a href="#设置触发条件和环境变量" class="headerlink" title="设置触发条件和环境变量"></a>设置触发条件和环境变量</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">CI</span></span><br><span class="line"></span><br><span class="line"><span class="attr">on:</span></span><br><span class="line">  <span class="attr">push:</span></span><br><span class="line">    <span class="attr">branches:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">source-action</span></span><br><span class="line"></span><br><span class="line"><span class="attr">env:</span></span><br><span class="line">  <span class="attr">GIT_USER:</span> <span class="string">vensing</span></span><br><span class="line">  <span class="attr">GIT_EMAIL:</span> <span class="string">vensing@foxmail.com</span></span><br><span class="line">  <span class="attr">THEME_REPO:</span> <span class="string">vensing/Kratos-Rebirth</span></span><br><span class="line">  <span class="attr">THEME_BRANCH:</span> <span class="string">hexo5-custom</span></span><br><span class="line">  <span class="attr">DEPLOY_REPO:</span> <span class="string">vensing/vensing.github.io</span></span><br><span class="line">  <span class="attr">DEPLOY_BRANCH:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>name</code> 是当前 Action 的名字，最后你可以在仓库的 <code>Actions</code> 菜单项中看到它。</li>
+<li><code>on</code> 是此 Action 触发条件，当满足条件时会触发此任务，上面的 <code>on.push.branches.source-action</code> 是指当 <code>source-action</code> 分支收到 push 后会触发 Action 执行任务。</li>
+<li><code>env</code> 为环境变量对象<ul>
+<li>env.GIT_USER 为 Hexo 编译后使用此 git 用户部署到仓库</li>
+<li>env.GIT_EMAIL 为 Hexo 编译后使用此 git 邮箱部署到仓库</li>
+<li>env.THEME_REPO 为 Hexo 所使用的主题的仓库，这里为 vensing/Kratos-Rebirth</li>
+<li>env.THEME_BRANCH 为 Hexo 所使用的主题仓库的版本，可以是：branch、tag 或者 SHA</li>
+<li>env.DEPLOY_REPO 为 Hexo 编译后要部署的仓库，例如：vensing/vensing.github.io</li>
+<li>env.DEPLOY_BRANCH 为 Hexo 编译后要部署到的分支，例如：master</li>
+</ul>
+</li>
+</ul>
+<h4 id="指定任务及执行步骤"><a href="#指定任务及执行步骤" class="headerlink" title="指定任务及执行步骤"></a>指定任务及执行步骤</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">jobs:</span></span><br><span class="line">  <span class="attr">build:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">Build</span> <span class="string">on</span> <span class="string">node</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span> <span class="string">and</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.os</span> <span class="string">&#125;&#125;</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">strategy:</span></span><br><span class="line">      <span class="attr">matrix:</span></span><br><span class="line">        <span class="attr">os:</span> [<span class="string">ubuntu-latest</span>]</span><br><span class="line">        <span class="attr">node_version:</span> [<span class="number">14.</span><span class="string">x</span>]</span><br><span class="line"></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">theme</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.THEME_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.THEME_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">themes/Kratos-Rebirth</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span> <span class="string">deploy</span> <span class="string">repo</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">repository:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_REPO</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">ref:</span> <span class="string">$&#123;&#123;</span> <span class="string">env.DEPLOY_BRANCH</span> <span class="string">&#125;&#125;</span></span><br><span class="line">          <span class="attr">path:</span> <span class="string">.deploy_git</span></span><br><span class="line"></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Use</span> <span class="string">Node.js</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br><span class="line">        <span class="attr">uses:</span> <span class="string">actions/setup-node@v1</span></span><br><span class="line">        <span class="attr">with:</span></span><br><span class="line">          <span class="attr">node-version:</span> <span class="string">$&#123;&#123;</span> <span class="string">matrix.node_version</span> <span class="string">&#125;&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>jobs 为此 Action 下的任务列表<ul>
+<li>jobs.{job}.name 任务名称</li>
+<li>jobs.{job}.runs-on 任务所需容器，可选值：ubuntu-latest、windows-latest、macos-latest。</li>
+<li>jobs.{job}.strategy 策略下可以写 array 格式，此 job 会遍历此数组执行。</li>
+<li>jobs.{job}.steps 一个步骤数组，可以把所要干的事分步骤放到这里。<ul>
+<li>jobs.{job}.steps.$.name 步骤名，编译时会会以 LOG 形式输出。</li>
+<li>jobs.{job}.steps.$.uses 所要调用的 Action，可以到 <a target="_blank" rel="noopener" href="https://github.com/actions">https://github.com/actions</a> 查看更多。</li>
+<li>jobs.{job}.steps.$.with 一个对象，调用 Action 传的参数，具体可以查看所使用 Action 的说明。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>在上面配置文件中的代码段，指定了 Action 依赖的 OS 实例为 ubuntu-latest，以及 node 运行环境版本为 14.x，任务 steps 中引用了一个 版本为 v2 的 Action <code>checkout</code> ，<code>actions/checkout@v2</code> 的作用是 Checkout 一个 git 仓库到当前 ubuntu 容器。</p>
+<ul>
+<li><p><code>Checkout theme repo</code> step 中从环境变量中拿出 $ 指定本站使用的博客仓库名及分支 <strong>hexo5-custom</strong>，检出到 <strong>themes/Kratos-Rebirth</strong> 目录下。</p>
+</li>
+<li><p><code>Checkout deploy repo</code> step 中从环境变量中拿出 $ 指定部署备份的博客仓库，及要部署备份生成的静态网页的分支 <strong>master</strong>，检出到 <strong>.deploy_git</strong> 目录下。</p>
+</li>
+<li><p><code>Use Node.js</code> step 中使用了 <code>actions/setup-node@v1</code> action 指定了 node 的版本。</p>
+</li>
+</ul>
+<h4 id="配置环境即部署到-Github-Pages"><a href="#配置环境即部署到-Github-Pages" class="headerlink" title="配置环境即部署到 Github Pages"></a>配置环境即部署到 Github Pages</h4><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Configuration</span> <span class="string">environment</span></span><br><span class="line">  <span class="attr">env:</span></span><br><span class="line">    <span class="attr">HEXO_DEPLOY_PRI:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">sudo</span> <span class="string">timedatectl</span> <span class="string">set-timezone</span> <span class="string">&quot;Asia/Shanghai&quot;</span></span><br><span class="line">    <span class="string">mkdir</span> <span class="string">-p</span> <span class="string">~/.ssh/</span></span><br><span class="line">    <span class="string">echo</span> <span class="string">&quot;$HEXO_DEPLOY_PRI&quot;</span> <span class="string">&gt;</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">    <span class="string">chmod</span> <span class="number">600</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line">    <span class="string">ssh-keyscan</span> <span class="string">github.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">    <span class="string">ssh-keyscan</span> <span class="string">vensing.com</span> <span class="string">&gt;&gt;</span> <span class="string">~/.ssh/known_hosts</span></span><br><span class="line">    <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.name</span> <span class="string">$GIT_USER</span></span><br><span class="line">    <span class="string">git</span> <span class="string">config</span> <span class="string">--global</span> <span class="string">user.email</span> <span class="string">$GIT_EMAIL</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Install</span> <span class="string">dependencies</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">install</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br></pre></td></tr></table></figure>
+
+<p>检出主题分支和 Github Pages 部署分支之后，接着配置执行环境：</p>
+<ul>
+<li>设置容器的时区；</li>
+<li>将在 <code>Settings -&gt; Secrets</code> 中的 SSH 私钥写入到 ~/.ssh/id_rsa 文件中；</li>
+<li>设置 id_rsa 的文件权限及 know_hosts、git 全局用户信息</li>
+</ul>
+<p>接着执行 npm install 安装依赖和 npm run deploy 部署到 Github Pages 进行备份。<code>run: |</code> 可分行连续执行多条命令，需要注意的是使用 hexo 的 deploy 命令需要我们安装 <code>hexo-deployer-git</code> 依赖，所以需要先在本地安装下依赖写入 package.json 中。</p>
+<h3 id="Github-Actions-部署-hexo-到-VPS"><a href="#Github-Actions-部署-hexo-到-VPS" class="headerlink" title="Github Actions 部署 hexo 到 VPS"></a>Github Actions 部署 hexo 到 VPS</h3><p>在使用 Travis CI 时，如果想要把 Hexo 部署到 VPS 服务器上，需要做的东西就比较多了。先是得对私钥进行加密处理(Windows 下会出现问题，*nix 才正常)，为此我们得在 *nix 环境下安装 ruby、travis ci 等等一系列的东西，然后还得把加密后的私钥上传到仓库，接着写解密脚本最后才能放入容器的 .ssh/id_rsa 文件中。总之一大堆套餐下来，很麻烦，而 Github 直接可以设置私钥至 <code>Secrets</code> 中且无需将加密后的私钥放到仓库里，最后直接可以在容易中拿到。更加简单和安全，大概？</p>
+<p>要将构建好的静态网页推送到 VPS，需要将 SSH 公钥复制到 VPS 的 ~/.ssh/authorized_keys 文件中，如果有多个 SSH 公钥，换行后追加即可。</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">hexo</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">run</span> <span class="string">deploy</span></span><br><span class="line">    <span class="string">npm</span> <span class="string">run</span> <span class="string">build</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">SSH</span> <span class="string">VPS</span></span><br><span class="line">  <span class="attr">uses:</span> <span class="string">webfactory/ssh-agent@v0.4.1</span></span><br><span class="line">  <span class="attr">with:</span></span><br><span class="line">    <span class="attr">ssh-private-key:</span> <span class="string">$&#123;&#123;</span> <span class="string">secrets.HEXO_DEPLOY_PRI</span> <span class="string">&#125;&#125;</span></span><br><span class="line"></span><br><span class="line"><span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Deploy</span> <span class="string">VPS</span></span><br><span class="line">  <span class="attr">run:</span> <span class="string">|</span></span><br><span class="line">    <span class="string">rsync</span> <span class="string">-av</span> <span class="string">--delete</span> <span class="string">public/</span> <span class="string">root@vensing.com:/hexo</span></span><br></pre></td></tr></table></figure>
+
+<p>在 Action 中要想部署到 VPS 上，需要安装一个第三方的 action: <code>webfactory/ssh-agent@v0.4.1</code>，在执行完 <code>npm run build</code>（hexo clean &amp;&amp; hexo g）之后会在 public 目录下生成构建好的静态网页，以便后面推送到 VPS。这里不用 .deploy_git 目录是因为，这是一个 Git 仓库，里面有 .git 目录，时间一久文件会变得很多，况且构建的静态网页目录根本不需要这些文件。</p>
+<p><code>SSH VPS step</code> 中我们从环境变量中拿到 SSH 私钥，并将其指定为 ssh-private-key 的值，最后使用 rsync 命令推送到 VPS 即可。</p>
+<p>最后来看一眼，Githun Actions 执行的效果图：<br><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/Jietu20201209-105948.jpg" alt="Githun Actions"></p>
+<p>切换到 Github Actions 后，体验很好，速度很快，繁忙的时候也只花两分钟排队。</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://sanonz.github.io/2020/deploy-a-hexo-blog-from-github-actions/">利用 Github Actions 自动部署 Hexo 博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://yestyle.medium.com/%E5%88%A9%E7%94%A8-github-actions-%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2-hugo-%E5%8D%9A%E5%AE%A2%E5%88%B0%E8%87%AA%E5%BB%BA-vps-fa3ed89c8573">利用 GitHub Actions 自动部署 Hugo 博客到自建 VPS</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/actions">Github Actions</a></li>
+</ul>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/hexo-deploy-github-actions/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/hexo-deploy-github-actions/";
+            const title         = "「使用 Github Actions 部署 HEXO 博客」";
+            const excerpt       = `促成我从 Travis CI 换成 Github Action 的原因找到了：Travis CI 任务排队足足快半小时才启动虚机跑任务。我想慢的原因大概是我没花钱白嫖了这么久😅`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/CI/" rel="tag">CI</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-12-09</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" Hackintosh 尝鲜" href="/dell-hackintosh/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" 安達としまむら" href="/adachi-and-shimamura/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'hexo-deploy-github-actions/',
+                url: 'https://chee5e.space/hexo-deploy-github-actions/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">前期准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5"><span class="toc-number">2.</span> <span class="toc-text">生成部署密钥</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E9%83%A8%E7%BD%B2%E5%AF%86%E9%92%A5"><span class="toc-number">3.</span> <span class="toc-text">配置部署密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%85%AC%E9%92%A5"><span class="toc-number">3.1.</span> <span class="toc-text">配置公钥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%A7%81%E9%92%A5"><span class="toc-number">3.2.</span> <span class="toc-text">配置私钥</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Actions"><span class="toc-number">4.</span> <span class="toc-text">Github Actions</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BC%96%E5%86%99-deploy-yml"><span class="toc-number">4.1.</span> <span class="toc-text">编写 deploy.yml</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E8%A7%A6%E5%8F%91%E6%9D%A1%E4%BB%B6%E5%92%8C%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F"><span class="toc-number">4.2.</span> <span class="toc-text">设置触发条件和环境变量</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%87%E5%AE%9A%E4%BB%BB%E5%8A%A1%E5%8F%8A%E6%89%A7%E8%A1%8C%E6%AD%A5%E9%AA%A4"><span class="toc-number">4.3.</span> <span class="toc-text">指定任务及执行步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83%E5%8D%B3%E9%83%A8%E7%BD%B2%E5%88%B0-Github-Pages"><span class="toc-number">4.4.</span> <span class="toc-text">配置环境即部署到 Github Pages</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Github-Actions-%E9%83%A8%E7%BD%B2-hexo-%E5%88%B0-VPS"><span class="toc-number">5.</span> <span class="toc-text">Github Actions 部署 hexo 到 VPS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-number">6.</span> <span class="toc-text">References</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a> <a href="/tags/%E4%B8%80%E8%A8%80/" style="font-size: 0.6em;">一言</a> <a href="/tags/%E4%B8%A4%E5%91%A8%E5%B9%B4/" style="font-size: 0.6em;">两周年</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/hexo-deploy-github-actions/"><i class="fa  fa-book"></i> 使用 Github Actions 部署 HEXO 博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/dell-hackintosh/"><i class="fa  fa-book"></i> Hackintosh 尝鲜</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>

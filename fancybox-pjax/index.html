@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>pjax下如何使用fancybox预览图片 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="fancybox, pjax" />
+  
+  <meta name="description" content="在 pjax 下使用 fancybox.js 插件预览图片。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pjax下如何使用fancybox预览图片">
+<meta property="og:url" content="https://chee5e.space/fancybox-pjax/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="在 pjax 下使用 fancybox.js 插件预览图片。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2020-04-19T08:31:00.000Z">
+<meta property="article:modified_time" content="2020-12-05T12:07:15.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="fancybox">
+<meta property="article:tag" content="pjax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">pjax下如何使用fancybox预览图片</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2020-04-19
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~3.84K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1607170035000"></time>前 (2020-12-05)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pjax"><span class="toc-number">1.</span> <span class="toc-text">pjax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fancybox"><span class="toc-number">2.</span> <span class="toc-text">fancybox</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5-css-%E5%92%8C-js"><span class="toc-number">2.1.</span> <span class="toc-text">引入 css 和 js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C-fancybox"><span class="toc-number">2.2.</span> <span class="toc-text">注册 fancybox</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">开始食用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pjax-%E8%BF%87%E6%BB%A4-fancybox-%E8%AF%B7%E6%B1%82"><span class="toc-number">3.</span> <span class="toc-text">pjax 过滤 fancybox 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD"><span class="toc-number">5.</span> <span class="toc-text">后续</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>在 pjax 下使用 fancybox.js 插件预览图片。</p>
+<a id="more"></a> 
+
+
+<h3 id="pjax"><a href="#pjax" class="headerlink" title="pjax"></a>pjax</h3><p>熟悉单页应用的朋友都知道，在点击一个链接的时候，是不会做页面跳转的，而是仅仅做页面刷新不会造成整个页面闪一下的感觉。局部刷新的体验肯定是比页面跳转好得多的，pjax 就是为此而出现的。H5 pushState 和 replaceState API 的出现让 url 可以摆脱丑陋的hash  # 号做页面刷新，结合 popstate 事件监听浏览器的前进后退，更改内容和页面 title 。</p>
+<p>pushState 的功能主要是修改 url 地址却不会跳转页面，该 url 也会存放到浏览器的历史记录中去。 replaceState 和 pushState 的功能类似，但是它不会将 url 放到浏览器历史记录中。popState 监听浏览器的前进后退，且能获取设置的 state。</p>
+<p>Kratos-Rebirth 主题采用了pjax 技术做页面刷新而无需页面跳转，它的原理主要如下：</p>
+<ol>
+<li>当用户点击 a 标签的时拦截超链接；</li>
+<li>拦截后做两步操作，使用 ajax 获取 html 页面代码和做 pushState 操作。</li>
+</ol>
+<p>这样就能做到页面刷新而不会闪一下地跳转页面 (ajax 是好文明)。当然这种方式不是最好的，更好的方案是观察者模式，在 state 改变时触发而不是点击 a 标签的超链接时触发，但 hexo 的倾向就是简单化，所以观察者模式的 pjax 就砍掉吧。</p>
+<p>Kratos-Rebirth 主题 pjax 的具体 实现：<a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth/blob/master/source/js/pjax.js">https://github.com/Candinya/Kratos-Rebirth/blob/master/source/js/pjax.js</a></p>
+<h3 id="fancybox"><a href="#fancybox" class="headerlink" title="fancybox"></a>fancybox</h3><p><a target="_blank" rel="noopener" href="https://github.com/fancyapps/fancybox">fancybox</a> 是一个图片预览插件，能以模态框弹窗的形式更好更方便的缩放查看图片。在给 Kratos-Rebirth 主题加入 fancybox 图片预览插件时，我是按照 landscape 主题的 fancybox 插件来实现。</p>
+<h4 id="引入-css-和-js"><a href="#引入-css-和-js" class="headerlink" title="引入 css 和 js"></a>引入 css 和 js</h4><p>在head.ejs 里引入  jsDelivr 的 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">jquery.fancybox.min.css</a> 及在 foote.ejs  里引入  jsDelivr 的 <a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js">jquery.fancybox.min.js</a> (版本需和 landscape 使用的 3.5.7 一致)。</p>
+<h4 id="注册-fancybox"><a href="#注册-fancybox" class="headerlink" title="注册 fancybox"></a>注册 fancybox</h4><p>在主题目录下新建一个scripts文件夹(如果没有)，然后把 <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo-theme-landscape/blob/master/scripts/fancybox.js">fancybox.js</a> 拷贝一份到这个目录下。</p>
+<p>最后在页面就绪加载函数里加入初始化代码：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fancyboxInit = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;.kratos-hentry&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">        $(<span class="built_in">this</span>).find(<span class="string">&#x27;img&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="keyword">if</span> ($(<span class="built_in">this</span>).parent().hasClass(<span class="string">&#x27;fancybox&#x27;</span>) || $(<span class="built_in">this</span>).parent().is(<span class="string">&#x27;a&#x27;</span>)) <span class="keyword">return</span>;</span><br><span class="line">          <span class="keyword">var</span> alt = <span class="built_in">this</span>.alt;</span><br><span class="line">          <span class="keyword">if</span> (alt) $(<span class="built_in">this</span>).after(<span class="string">&#x27;&lt;span class=&quot;caption&quot;&gt;&#x27;</span> + alt + <span class="string">&#x27;&lt;/span&gt;&#x27;</span>);</span><br><span class="line">          $(<span class="built_in">this</span>).wrap(<span class="string">&#x27;&lt;a rel=&quot;gallery&quot; href=&quot;&#x27;</span> + <span class="built_in">this</span>.src + <span class="string">&#x27;&quot; data-fancybox=\&quot;gallery\&quot; data-caption=&quot;&#x27;</span> + alt + <span class="string">&#x27;&quot;&gt;&lt;/a&gt;&#x27;</span>)</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        $(<span class="built_in">this</span>).find(<span class="string">&#x27;.fancybox&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          $(<span class="built_in">this</span>).attr(<span class="string">&#x27;rel&#x27;</span>, <span class="string">&#x27;article&#x27;</span> + i);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> ($.fancybox)&#123;</span><br><span class="line">        $(<span class="string">&#x27;.fancybox&#x27;</span>).fancybox();</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注：上述的 <code>.kratos-hentry</code> 选择器是 hexo 文章部分 article 标签上的 class 样式名，请务必对应起来。</p>
+<h4 id="开始食用"><a href="#开始食用" class="headerlink" title="开始食用"></a>开始食用</h4><p>到这应该就差不多能食用 fancybox 预览图片了，好耶。如果你这么想，就大错特错了我的朋友。当你正准备打开浏览器页面测试下 fancybox 图片时，你不知道摆在你前面的是一个大坑。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/umqwPHbjrU1Qysv.jpg" alt="咋回事？"></p>
+<p>嗯？咋没有模态框弹出来？咋跳到图片原始链接的页面了？你是否有很多问号？？？控制台说 pjax 不能解析 PNG，然后下面是一堆乱码 (其实就是图片)。你可能会想 fancybox 服务没用，关 pjax 毛事，但确实是 pjax 的锅。</p>
+<h3 id="pjax-过滤-fancybox-请求"><a href="#pjax-过滤-fancybox-请求" class="headerlink" title="pjax 过滤 fancybox 请求"></a>pjax 过滤 fancybox 请求</h3><p>看看上面的代码，fancybox 给文章 DOM 节点下的  img  包裹上了一层 a 标签，然后当你点击它时 pjax 就起作用了。既然出了 bug 那就硬着头皮修呗，那 pjax 拦截时，判断下 url 是图片的后缀是不是有效呢？理论上是可以的，但这样你得去判断图片类型这未免有点复杂，我只是想用个插件啊。更好的方式是，过滤 fancybox 包裹在 img 上的 a 标签，那就给 a 标签加个 rel 属性过滤。最后的代码是这样的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&quot;click&quot;</span>, <span class="string">&#x27;a[target!=_blank][rel!=gallery]&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//var fancybox = $(this).data(&#x27;fancybox&#x27;);</span></span><br><span class="line">    <span class="comment">//if(fancybox &amp;&amp; fancybox === &#x27;gallery&#x27;) return false;</span></span><br><span class="line">    <span class="keyword">var</span> req_url = $(<span class="built_in">this</span>).attr(<span class="string">&quot;href&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (req_url === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (req_url.indexOf( <span class="string">&quot;javascript:&quot;</span>) !== <span class="number">-1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> ajax(req_url, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>其实，也可以用 $(this).data(‘fancybox’) 获取 fancybox 给 img 包裹的 a 标签的 data-fancybox 属性值，然后判断等于gallery 的话就跳出回调函数返回 false 。但很明显，过滤器的方法更优雅一些。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>fancybox 会对 markdown 文件里的  ![](imgurl) 做超链接包裹，&lt;img&gt;  也同意会被处理。但是，如果你用 js 编程的方式添加图片的话，fancybox 是不会对图片做处理的即不会被超链接包裹。</p>
+<p>Kratos-Rebirth 采用 jsDelivr CDN 引入各种 css、js 依赖，在选择 npm 源时，直接搜 fancybox 最新版本在 3.0.1；然后就打算用 github 的源，这里记录下如何用 jsDelivr 链接到 GitHub 的源：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://cdn.jsdelivr.net/gh/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D@%E5%8F%91%E5%B8%83%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7/%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</a></li>
+</ul>
+<p>最后发现，npm 源下搜 fancyapps 关键词才能找到最新版，有点搞 (雾 。你可以去<a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth/pull/5">https://github.com/Candinya/Kratos-Rebirth/pull/5</a> 查看我提交的 fancybox 插件 PullRequest。</p>
+<h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>因为 fancybox 默认是采用 hash 模式，即在 url 后边加 # 号弹窗预览图片；这会导致该 url 被添加到地址栏及浏览器历史记录中去，当 popstate 事件监听时会出现图片弹窗在其他页面的错误以及重复的历史记录。因此，在<a target="_blank" rel="noopener" href="https://github.com/Candinya/Kratos-Rebirth/commit/ddf0417d418674e69c069528cccd0d1aceca66f0">Kratos-Rebirth#commit-ddf0417</a> 我们禁止了hash模式 <code>$.fancybox.defaults.hash = false;</code>，fancybox 给图片包裹的 a 链接不再出现在地址栏和浏览器历史记录中，fancybox 应该是使用了 replaceState 方法实现这一特性。至此 fancybox 弹窗预览图片的功能已基本完善。</p>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/fancybox-pjax/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/fancybox-pjax/";
+            const title         = "「pjax下如何使用fancybox预览图片」";
+            const excerpt       = `在 pjax 下使用 fancybox.js 插件预览图片。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/fancybox/" rel="tag">fancybox</a>, <a class="tag-none-link" href="/tags/pjax/" rel="tag">pjax</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2020-12-05</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 你从未见过的全新版本" href="/kratos/">&lt; 上一篇</a>
+                </div>
+                
+                
+                <div class="nav-next clearfix">
+                    <a title=" hexo在Node.js v14.0下构建空html的问题" href="/a-bug-in-nodejs-v14/">下一篇 &gt;</a>
+                </div>
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'fancybox-pjax/',
+                url: 'https://chee5e.space/fancybox-pjax/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#pjax"><span class="toc-number">1.</span> <span class="toc-text">pjax</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#fancybox"><span class="toc-number">2.</span> <span class="toc-text">fancybox</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%95%E5%85%A5-css-%E5%92%8C-js"><span class="toc-number">2.1.</span> <span class="toc-text">引入 css 和 js</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%86%8C-fancybox"><span class="toc-number">2.2.</span> <span class="toc-text">注册 fancybox</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E5%A7%8B%E9%A3%9F%E7%94%A8"><span class="toc-number">2.3.</span> <span class="toc-text">开始食用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#pjax-%E8%BF%87%E6%BB%A4-fancybox-%E8%AF%B7%E6%B1%82"><span class="toc-number">3.</span> <span class="toc-text">pjax 过滤 fancybox 请求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8E%E7%BB%AD"><span class="toc-number">5.</span> <span class="toc-text">后续</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">1</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a> <a href="/tags/%E4%B8%80%E8%A8%80/" style="font-size: 0.6em;">一言</a> <a href="/tags/%E4%B8%A4%E5%91%A8%E5%B9%B4/" style="font-size: 0.6em;">两周年</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/hexo-deploy-github-actions/"><i class="fa  fa-book"></i> 使用 Github Actions 部署 HEXO 博客</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/dell-hackintosh/"><i class="fa  fa-book"></i> Hackintosh 尝鲜</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>
