@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://chee5e.space/"/>
-  <updated>2021-01-23T07:55:01.000Z</updated>
+  <updated>2021-03-07T15:11:55.000Z</updated>
   <id>https://chee5e.space/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>近期的一些想法</title>
+    <link href="https://chee5e.space/recent-insights/"/>
+    <id>https://chee5e.space/recent-insights/</id>
+    <published>2021-03-07T14:59:44.000Z</published>
+    <updated>2021-03-07T15:11:55.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>本篇主要用来记录下最近的一些摘录、内心感受与想法，如果你不同意，那么以你为准。</p><a id="more"></a><blockquote><p>我喜欢我的懦弱，痛苦和难堪也喜欢。喜欢夏天的光照，风的气息，蝉的鸣叫，喜欢这些，喜欢得不得了。还有和你喝的啤酒，我说不清啊。</p></blockquote><hr><blockquote><p>心态和心理承受能力都急剧下滑，然后伴随而来的就是焦虑了。我自省和好好调整学东西。</p></blockquote><hr><blockquote><p>重要的事情必须要未雨绸缪、做好足够的积累与准备；运气这种概率事件是非常少的，不要抱有任何侥幸心理，要对事情本身有敬畏之心。<br>不要觉得自己很差劲，每个人在挣扎、努力、付出过后都会有收获；如果没有的话，最好认真审视一下自己的所作所为。没有目标和没有时间观念都会让人得过且过的过日子。</p></blockquote><hr><blockquote><p>心酸、有点生气、又很无可奈何，年龄越大代沟越宽；<br>去做一些填补空虚的事情来告诉自己还有可以信仰的事物并从中得到慰藉，比如阅读、写随笔、追番；<br>偶尔无所事事、打游戏、刷视频也很重要，毕竟太过于认真的生活是很沉重的一件事情。</p></blockquote><hr><blockquote><p>我最近最开心的一件事大概是：某天晚上和亲戚一起从下午开始打麻将，然后晚上吃家庭火锅，吃完再接着打麻将。我大概是没有输钱也没有赢钱，唯一一个输了一千多的人可能比较难过些，但也是照样快乐的。<br>我其实特羡慕他们的生活，小地方的小人物生活，我大概能够理解那些没事打打麻将的老人了。</p></blockquote><hr><blockquote><p>我过年之前在家待了一两个月，也基本不出门，在家就玩电脑也不说话，安静的可怕都不知道怎么过来的。过完年之后，见到了许久不见的亲戚朋友，感觉聊聊各自的生活也挺开心的。重要的是我对一些事情改变了自己的看法与偏见，很多事情还是得设身处地的去亲身体会才知道原来是这样。我还是不想一个人。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;本篇主要用来记录下最近的一些摘录、内心感受与想法，如果你不同意，那么以你为准。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="碎碎念" scheme="https://chee5e.space/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/"/>
+    
+    
+      <category term="随笔" scheme="https://chee5e.space/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>Switch 海外购日志</title>
@@ -471,31 +494,6 @@
       <category term="hexo" scheme="https://chee5e.space/tags/hexo/"/>
     
       <category term="nodejs" scheme="https://chee5e.space/tags/nodejs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>pjax下如何使用fancybox预览图片</title>
-    <link href="https://chee5e.space/fancybox-pjax/"/>
-    <id>https://chee5e.space/fancybox-pjax/</id>
-    <published>2020-04-19T08:31:00.000Z</published>
-    <updated>2020-12-05T12:07:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>在 pjax 下使用 fancybox.js 插件预览图片。</p><a id="more"></a> <h3 id="pjax"><a href="#pjax" class="headerlink" title="pjax"></a>pjax</h3><p>熟悉单页应用的朋友都知道，在点击一个链接的时候，是不会做页面跳转的，而是仅仅做页面刷新不会造成整个页面闪一下的感觉。局部刷新的体验肯定是比页面跳转好得多的，pjax 就是为此而出现的。H5 pushState 和 replaceState API 的出现让 url 可以摆脱丑陋的hash  # 号做页面刷新，结合 popstate 事件监听浏览器的前进后退，更改内容和页面 title 。</p><p>pushState 的功能主要是修改 url 地址却不会跳转页面，该 url 也会存放到浏览器的历史记录中去。 replaceState 和 pushState 的功能类似，但是它不会将 url 放到浏览器历史记录中。popState 监听浏览器的前进后退，且能获取设置的 state。</p><p>Kratos-Rebirth 主题采用了pjax 技术做页面刷新而无需页面跳转，它的原理主要如下：</p><ol><li>当用户点击 a 标签的时拦截超链接；</li><li>拦截后做两步操作，使用 ajax 获取 html 页面代码和做 pushState 操作。</li></ol><p>这样就能做到页面刷新而不会闪一下地跳转页面 (ajax 是好文明)。当然这种方式不是最好的，更好的方案是观察者模式，在 state 改变时触发而不是点击 a 标签的超链接时触发，但 hexo 的倾向就是简单化，所以观察者模式的 pjax 就砍掉吧。</p><p>Kratos-Rebirth 主题 pjax 的具体 实现：<a href="https://github.com/Candinya/Kratos-Rebirth/blob/master/source/js/pjax.js">https://github.com/Candinya/Kratos-Rebirth/blob/master/source/js/pjax.js</a></p><h3 id="fancybox"><a href="#fancybox" class="headerlink" title="fancybox"></a>fancybox</h3><p><a href="https://github.com/fancyapps/fancybox">fancybox</a> 是一个图片预览插件，能以模态框弹窗的形式更好更方便的缩放查看图片。在给 Kratos-Rebirth 主题加入 fancybox 图片预览插件时，我是按照 landscape 主题的 fancybox 插件来实现。</p><h4 id="引入-css-和-js"><a href="#引入-css-和-js" class="headerlink" title="引入 css 和 js"></a>引入 css 和 js</h4><p>在head.ejs 里引入  jsDelivr 的 <a href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">jquery.fancybox.min.css</a> 及在 foote.ejs  里引入  jsDelivr 的 <a href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js">jquery.fancybox.min.js</a> (版本需和 landscape 使用的 3.5.7 一致)。</p><h4 id="注册-fancybox"><a href="#注册-fancybox" class="headerlink" title="注册 fancybox"></a>注册 fancybox</h4><p>在主题目录下新建一个scripts文件夹(如果没有)，然后把 <a href="https://github.com/hexojs/hexo-theme-landscape/blob/master/scripts/fancybox.js">fancybox.js</a> 拷贝一份到这个目录下。</p><p>最后在页面就绪加载函数里加入初始化代码：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fancyboxInit = <span class="function">()=&gt;</span>&#123;</span><br><span class="line">    $(<span class="string">&#x27;.kratos-hentry&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">        $(<span class="built_in">this</span>).find(<span class="string">&#x27;img&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          <span class="keyword">if</span> ($(<span class="built_in">this</span>).parent().hasClass(<span class="string">&#x27;fancybox&#x27;</span>) || $(<span class="built_in">this</span>).parent().is(<span class="string">&#x27;a&#x27;</span>)) <span class="keyword">return</span>;</span><br><span class="line">          <span class="keyword">var</span> alt = <span class="built_in">this</span>.alt;</span><br><span class="line">          <span class="keyword">if</span> (alt) $(<span class="built_in">this</span>).after(<span class="string">&#x27;&lt;span class=&quot;caption&quot;&gt;&#x27;</span> + alt + <span class="string">&#x27;&lt;/span&gt;&#x27;</span>);</span><br><span class="line">          $(<span class="built_in">this</span>).wrap(<span class="string">&#x27;&lt;a rel=&quot;gallery&quot; href=&quot;&#x27;</span> + <span class="built_in">this</span>.src + <span class="string">&#x27;&quot; data-fancybox=\&quot;gallery\&quot; data-caption=&quot;&#x27;</span> + alt + <span class="string">&#x27;&quot;&gt;&lt;/a&gt;&#x27;</span>)</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">        $(<span class="built_in">this</span>).find(<span class="string">&#x27;.fancybox&#x27;</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">          $(<span class="built_in">this</span>).attr(<span class="string">&#x27;rel&#x27;</span>, <span class="string">&#x27;article&#x27;</span> + i);</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">if</span> ($.fancybox)&#123;</span><br><span class="line">        $(<span class="string">&#x27;.fancybox&#x27;</span>).fancybox();</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>注：上述的 <code>.kratos-hentry</code> 选择器是 hexo 文章部分 article 标签上的 class 样式名，请务必对应起来。</p><h4 id="开始食用"><a href="#开始食用" class="headerlink" title="开始食用"></a>开始食用</h4><p>到这应该就差不多能食用 fancybox 预览图片了，好耶。如果你这么想，就大错特错了我的朋友。当你正准备打开浏览器页面测试下 fancybox 图片时，你不知道摆在你前面的是一个大坑。</p><p><img src="https://cdn.jsdelivr.net/gh/vensing/static@master/image/umqwPHbjrU1Qysv.jpg" alt="咋回事？"></p><p>嗯？咋没有模态框弹出来？咋跳到图片原始链接的页面了？你是否有很多问号？？？控制台说 pjax 不能解析 PNG，然后下面是一堆乱码 (其实就是图片)。你可能会想 fancybox 服务没用，关 pjax 毛事，但确实是 pjax 的锅。</p><h3 id="pjax-过滤-fancybox-请求"><a href="#pjax-过滤-fancybox-请求" class="headerlink" title="pjax 过滤 fancybox 请求"></a>pjax 过滤 fancybox 请求</h3><p>看看上面的代码，fancybox 给文章 DOM 节点下的  img  包裹上了一层 a 标签，然后当你点击它时 pjax 就起作用了。既然出了 bug 那就硬着头皮修呗，那 pjax 拦截时，判断下 url 是图片的后缀是不是有效呢？理论上是可以的，但这样你得去判断图片类型这未免有点复杂，我只是想用个插件啊。更好的方式是，过滤 fancybox 包裹在 img 上的 a 标签，那就给 a 标签加个 rel 属性过滤。最后的代码是这样的：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">document</span>).on(<span class="string">&quot;click&quot;</span>, <span class="string">&#x27;a[target!=_blank][rel!=gallery]&#x27;</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">//var fancybox = $(this).data(&#x27;fancybox&#x27;);</span></span><br><span class="line">    <span class="comment">//if(fancybox &amp;&amp; fancybox === &#x27;gallery&#x27;) return false;</span></span><br><span class="line">    <span class="keyword">var</span> req_url = $(<span class="built_in">this</span>).attr(<span class="string">&quot;href&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (req_url === <span class="literal">undefined</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span> (req_url.indexOf( <span class="string">&quot;javascript:&quot;</span>) !== <span class="number">-1</span>) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">else</span> ajax(req_url, <span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>其实，也可以用 $(this).data(‘fancybox’) 获取 fancybox 给 img 包裹的 a 标签的 data-fancybox 属性值，然后判断等于gallery 的话就跳出回调函数返回 false 。但很明显，过滤器的方法更优雅一些。</p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>fancybox 会对 markdown 文件里的  ![](imgurl) 做超链接包裹，&lt;img&gt;  也同意会被处理。但是，如果你用 js 编程的方式添加图片的话，fancybox 是不会对图片做处理的即不会被超链接包裹。</p><p>Kratos-Rebirth 采用 jsDelivr CDN 引入各种 css、js 依赖，在选择 npm 源时，直接搜 fancybox 最新版本在 3.0.1；然后就打算用 github 的源，这里记录下如何用 jsDelivr 链接到 GitHub 的源：</p><ul><li><a href="https://cdn.jsdelivr.net/gh/%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D/%E4%BD%A0%E7%9A%84%E4%BB%93%E5%BA%93%E5%90%8D@%E5%8F%91%E5%B8%83%E7%9A%84%E7%89%88%E6%9C%AC%E5%8F%B7/%E6%96%87%E4%BB%B6%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/你的用户名/你的仓库名@发布的版本号/文件路径</a></li></ul><p>最后发现，npm 源下搜 fancyapps 关键词才能找到最新版，有点搞 (雾 。你可以去<a href="https://github.com/Candinya/Kratos-Rebirth/pull/5">https://github.com/Candinya/Kratos-Rebirth/pull/5</a> 查看我提交的 fancybox 插件 PullRequest。</p><h3 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h3><p>因为 fancybox 默认是采用 hash 模式，即在 url 后边加 # 号弹窗预览图片；这会导致该 url 被添加到地址栏及浏览器历史记录中去，当 popstate 事件监听时会出现图片弹窗在其他页面的错误以及重复的历史记录。因此，在<a href="https://github.com/Candinya/Kratos-Rebirth/commit/ddf0417d418674e69c069528cccd0d1aceca66f0">Kratos-Rebirth#commit-ddf0417</a> 我们禁止了hash模式 <code>$.fancybox.defaults.hash = false;</code>，fancybox 给图片包裹的 a 链接不再出现在地址栏和浏览器历史记录中，fancybox 应该是使用了 replaceState 方法实现这一特性。至此 fancybox 弹窗预览图片的功能已基本完善。</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;在 pjax 下使用 fancybox.js 插件预览图片。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="博客开发" scheme="https://chee5e.space/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="fancybox" scheme="https://chee5e.space/tags/fancybox/"/>
-    
-      <category term="pjax" scheme="https://chee5e.space/tags/pjax/"/>
     
   </entry>
   
