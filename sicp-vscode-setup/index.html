@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>VS Code 搭建 SICP 环境 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="racket, sicp" />
+  
+  <meta name="description" content="其实这次算是乱点技能树了，不过看了 SICP (计算机程序的构造和解释) 的序言部分以及 Why I Still ‘Lisp’ (and You Should Too)，又让我觉得这样一本经典之作是值得花些时间去深入了解的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS Code 搭建 SICP 环境">
+<meta property="og:url" content="https://chee5e.space/sicp-vscode-setup/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="其实这次算是乱点技能树了，不过看了 SICP (计算机程序的构造和解释) 的序言部分以及 Why I Still ‘Lisp’ (and You Should Too)，又让我觉得这样一本经典之作是值得花些时间去深入了解的。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/sicp.jpeg">
+<meta property="article:published_time" content="2021-03-14T02:13:37.000Z">
+<meta property="article:modified_time" content="2021-03-25T04:37:53.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="sicp">
+<meta property="article:tag" content="racket">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/sicp.jpeg">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">VS Code 搭建 SICP 环境</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2021-03-14
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~5.21K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1616647073000"></time>前 (2021-03-25)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%B9%B1%E7%82%B9%E6%8A%80%E8%83%BD%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">为什么不能乱点技能树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SICP-%E5%BA%8F%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">SICP 序言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-%E6%90%AD%E5%BB%BA-SICP-%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">VS Code 搭建 SICP 环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Magic-Racket-%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">Magic Racket 扩展插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#racket-langserver"><span class="toc-number">3.2.</span> <span class="toc-text">racket-langserver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sicp-%E7%8E%AF%E5%A2%83"><span class="toc-number">3.3.</span> <span class="toc-text">sicp 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">加载模块文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>其实这次算是乱点技能树了，不过看了 SICP (计算机程序的构造和解释) 的序言部分以及 <a target="_blank" rel="noopener" href="https://betterprogramming.pub/why-i-still-lisp-and-you-should-too-18a2ae36bd8">Why I Still ‘Lisp’ (and You Should Too)</a>，又让我觉得这样一本经典之作是值得花些时间去深入了解的。</p>
+<a id="more"></a>
+
+<p>在正式进入「VS Code 搭建 SICP 环境」主题前，按照惯例我们先来看点别的东西，干巴巴的单刀直入太过于枯燥和无聊了。</p>
+<h3 id="为什么不能乱点技能树"><a href="#为什么不能乱点技能树" class="headerlink" title="为什么不能乱点技能树"></a>为什么不能乱点技能树</h3><p>最早了解到「函数式编程」大概是大二、大三那会，因为 <code>google-hosts</code> 项目关注了项目作者的知乎账号，然后就看到了他回答的一个问题：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37009570/answer/70300644">为什么不能乱点技能树？</a></p>
+<blockquote>
+<p>当你学会 oop 后突然觉得是不是掌握更多 paradigm 能帮助你学得更好，于是你开始学习 fp,你开始学习 ocaml haskell scheme 并比较各自优劣，而且每天还要花大量时间来和 oop 教徒争论fp 和 oop 哪个好。不知过了多久，你终于明白了很多东西如 lambda func, higher order func, lazy evaluation, closure的学习不应该局限于一门语言，你暗自窃喜自己发现了可称之为思想的东西，同时你能风轻云淡的用寥寥几行代码实现 currying, monad, 闲时还可以写点博文“对王垠40行CPS变换的改进”，你可能被人认为是大神并接受膜拜，但是内心里你很清楚自己不过是入门，因为你不懂数学，你越来越觉得这种充满数学 Ph.D 气息的范式没有数学基础很难了然细节，于是你试着学习 lambda calculus, type theory，category therory，abstract algebra 学到这里你突然哭了:”我这一辈子到底做了什么，没有女朋友，没有房没有车，还得整天和年轻人待在一起讨论 ‘lisp s-expression 真的优于数学形式的符号吗‘ 等这样看起来就很操蛋的问题” 当你意识到这点并想起你的初衷不过是想更深入明白 oop 的时候你的大学高中同学都在响应国家政策准备生二胎了这就是乱点 skill tree 的后果，所以心不要太大，样样懂不见得好，尤其是仅仅是“懂”，要学会适可而止（虽然道理人人都能说，但能做的少之又少，就比如我也做不到，这也算年轻的表现吧）<br>作者：kelthuzadx，链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/37009570/answer/70300644">https://www.zhihu.com/question/37009570/answer/70300644</a></p>
+</blockquote>
+<p>看完就觉得很真实，学到这里你突然哭了：“我这一辈子到底做了什么，没有女朋友，没有房没有车，还得整天和年轻人待在一起讨论 ‘lisp s-expression 真的优于数学形式的符号吗‘ 等这样看起来就很操蛋的问题”。嗯，作者那时候还在念高中，就已经对现实了解的如此透彻。</p>
+<hr>
+<h3 id="SICP-序言"><a href="#SICP-序言" class="headerlink" title="SICP 序言"></a>SICP 序言</h3><p>后面的话，就从各种各样的站点上提到了 SICP 这本书有多么多么经典和神圣：可能是最好的计算机科学的入门书，而且它的确把讲授编程作为理解计算机科学的一种方法。但它具有挑战性，会让许多通过其它方式可能成功的人望而却步。</p>
+<p>关于 SICP 不做过多解释，也没有全面了解完，想看的人自然会去看，不想看的人也不会硬着头皮去看，不知道的人那就希望你能早点了解到。为什么我会想水这么一篇文章呢，很大一部分原因是受 SICP 里面的序言影响，然后也顺便记录下自己的开始，虽然搁置了特别久了。</p>
+<blockquote>
+<p>带着崇敬和赞美，将本书献给活在计算机里的神灵。<br>“我认为，在计箅机科学中保持计算中的趣味性是特别重要的事情。这一学科在起步时饱含着趣味性。当然，那些付钱的客户们时常觉得受了骗。一段时间之后，我们开始严肃地看待他们的抱怨。我们开始感觉到，自己真的像是要负起成功地、无差错地、完美地使用这些机器的责任。我不认为我们可以做到这些。我认为我们的责任是去拓展这一领域，将其发展到新的方向，并在自己的家里保持趣味性。我希望计算机科学的领域绝不要丧失其趣味意识。最重要的是，我希望我们不要变成传道士，不要认为你是兜售圣经的人，世界上这种人已经太多了。你所知道的有关计算的东西，其他人也都能学到。绝不要认为似乎成功计算的钥匙就掌握在你的手里。你所掌握的，也是我认为并希望的，也就是智慧：那种看到这-机器比你第一次站在它面前时能做得更多的能力，这样你才能将它向前推进。<br>AlanJ. Perlls ( 1922年4月1日- 1990年1月7日 ）</p>
+</blockquote>
+<p>「带着崇敬和赞美，将本书献给活在计算机里的神灵」一开始就是严肃的话，对计算机保有敬畏之心，太多书本都是一上来就对背景或者其他类似的大张旗鼓地吹嘘。如果你看的书，一开始是一个故事性质的或者是阐述现实事情的，那么大概率这会是一本好书。在这一方面，O’Reilly 出版的书籍就做的很好，动物书封面及其书籍内容广受好评。</p>
+<p>「你所知道的有关计算的东西，其他人也都能学到。绝不要认为似乎成功计算的钥匙就掌握在你的手里」编程并不是垄断性质的，恰恰相反它是开放和包容性的，开源社区就是很好的佐证。任何人都能阅读各种源代码，或者是通过其他东西学到更多的编程知识。</p>
+<div class="alert alert-info">当然学习 SICP 不是为了炫技，而是为了掌握到更多的有关程序设计的方法思想和构建优雅的复杂程序。</div>
+
+<h3 id="VS-Code-搭建-SICP-环境"><a href="#VS-Code-搭建-SICP-环境" class="headerlink" title="VS Code 搭建 SICP 环境"></a>VS Code 搭建 SICP 环境</h3><p>SICP 中选用的是 Lisp 中的 Scheme 方言，由于 <code>MIT Scheme</code> 这个开发环境实属古老，所以在参考了众多他人的方案之后，选择使用 Racket 作为 SICP 开发环境。当然如果你还是想体验 <code>MIT Scheme</code> 来学习的话，可以参考 <a target="_blank" rel="noopener" href="https://www.math.pku.edu.cn/teachers/qiuzy/progtech/scheme/mit_scheme.htm">裴宗燕老师的 MIT Scheme 的基本使用</a>。</p>
+<blockquote>
+<p>Racket 是一门受 Scheme 影响发展出来的通用、多范型，属于Lisp家族的函数式程序设计语言，它的设计目之一是为了提供一种用于创造设计与实现其它编程语言的平台，Racket被用于脚本程序设计、通用程序设计、计算机科学教育和学术研究等不同领域。</p>
+</blockquote>
+<p>Racket 对 Scheme 有着很好的支持，且更新非常频繁，有提供 SICP 的支持，所以选择使用 Racket 作为 SICP 开发环境。首先当然是下载 Racket 语言软件包，<a target="_blank" rel="noopener" href="https://download.racket-lang.org/">https://download.racket-lang.org/</a> 提供了 macOS、Windows、Unix、Linux 下的安装包；下载操作系统对应的软件包安装即可，安装完成后还会提供一个 DrRacket 编辑器。</p>
+<p>使用 VS Code 作为编辑器需要安装一些依赖:</p>
+<ul>
+<li>Magic Racket VS Code 插件扩展</li>
+<li>racket-langserver Racket 依赖包</li>
+<li>sicp 依赖包</li>
+</ul>
+<h4 id="Magic-Racket-扩展插件"><a href="#Magic-Racket-扩展插件" class="headerlink" title="Magic Racket 扩展插件"></a><a target="_blank" rel="noopener" href="https://github.com/Eugleo/magic-racket">Magic Racket 扩展插件</a></h4><blockquote>
+<p>This extension adds support for Racket to VS Code. With the newly added support for language server protocol, we’re proud to say that Magic Racket is the best Racket extension for VS Code.</p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://github.com/Eugleo/magic-racket">Magic Racket</a> 扩展插件通过新增加的语言服务器协议提供了 VS Code 下对 Racket 语言的支持。在此之前我们需要将 Racket 添加到系统环境变量中，由于我用的 macOS zsh bash，所以在用户目录下的 .zshrc 里添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意空格处理</span></span><br><span class="line"><span class="built_in">export</span> RACKET=<span class="string">&quot;/Applications/Racket v7.9&quot;</span></span><br><span class="line"><span class="built_in">export</span> RACKET=/Applications/Racket\ v7.9</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$RACKET</span>/bin:<span class="variable">$PATH</span></span><br></pre></td></tr></table></figure>
+<p>如果环境变量路径中带有空格的需要用双引号包裹起来或者用反斜杠转义下空格，Windows 下添加环境变量路径不再赘述。最后执行如下命令查看是否配置成功：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line">racket -V</span><br><span class="line">Welcome to Racket v7.9 [bc].</span><br><span class="line"></span><br><span class="line"><span class="comment"># racket 包管理器</span></span><br><span class="line">raco <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
+
+<p>在 VS Code 扩展商店中安装 <code>Magic Racket</code>，点击该插件的齿轮⚙图标进入扩展设置，Racket Path 直接填 racket 即可。更多的插件用法请查看 Github 代码库。</p>
+<p><img src="https://raw.githubusercontent.com/vensing/static/master/image/magic_racket.png"></p>
+<h4 id="racket-langserver"><a href="#racket-langserver" class="headerlink" title="racket-langserver"></a><a target="_blank" rel="noopener" href="https://github.com/jeapostrophe/racket-langserver">racket-langserver</a></h4><blockquote>
+<p>racket-langserver is a Language Server Protocol implementation for Racket. This project seeks to use DrRacket’s public APIs to provide functionality that mimics DrRacket’s code tools as closely as possible.</p>
+</blockquote>
+<p>使用 raco 安装 racket-langserver 依赖包：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装</span></span><br><span class="line">raco pkg install racket-langserver</span><br><span class="line"><span class="comment"># 更新</span></span><br><span class="line">raco pkg update racket-langserver</span><br></pre></td></tr></table></figure>
+
+<p>如果完全不想使用 lang-server，你也不必这样做，只要在扩展插件配置文件中设置 “magic-racket.lsp.enabled”: false即可。但要注意，如果你这样做，你将无法获得 “智能 “功能，如自动完成、格式化等。</p>
+<p>当然你也可以去 DrRacket 编辑器中的 Package Manager 中的 Do What I Mean 输入包名、文件、目录、URL、GitHub 链接来安装包依赖。</p>
+<h4 id="sicp-环境"><a href="#sicp-环境" class="headerlink" title="sicp 环境"></a>sicp 环境</h4><p>Use DrRacket to install the sicp package like this:</p>
+<blockquote>
+<ol>
+<li>Open the Package Manager: in DrRacket choose the menu “File” then choose “Package Manager…” <ol start="2">
+<li>In the tab “Do What I Mean” find the text field and enter: sicp</li>
+<li>Finally click the “Install” button</li>
+<li>Test it. Make sure DrRacket has “Determine language from source” in the bottom left corner. Write the following program and click run:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(inc 42)</span><br><span class="line">The expected output is 43.</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<p>Racket 本身提供了很好地对 SICP 支持，具体安装详情：<a target="_blank" rel="noopener" href="https://docs.racket-lang.org/sicp-manual/Installation.html">https://docs.racket-lang.org/sicp-manual/Installation.html</a> ；同样地，我们也可以使用命令行方式来安装 sicp 依赖包<code>raco pkg install sicp</code>。</p>
+<h4 id="加载模块文件"><a href="#加载模块文件" class="headerlink" title="加载模块文件"></a>加载模块文件</h4><p>很多情况下，我们需要将代码抽象提取成模块文件，这个时候就需要对模块进行导入导出了，这里简单说一下 sicp 如何导包：</p>
+<p>lib.rkt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#lang racket</span><br><span class="line">(define (sq x) (* x x))</span><br><span class="line">(define (cube x) (* x x x))</span><br><span class="line">(provide (all-defined-out))</span><br></pre></td></tr></table></figure>
+
+<p>test.rkt</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(#%require &quot;lib.rkt&quot;)</span><br><span class="line">(sq 5)</span><br></pre></td></tr></table></figure>
+
+<p>可以参考下面的两个网址：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/4809433/including-an-external-file-in-racket">Including an external file in racket</a></li>
+<li><a target="_blank" rel="noopener" href="https://louischristopher.me/setting-up-drracket-for-sicp">Setting up DrRacket for SICP</a></li>
+</ul>
+<p>配置好这些之后，就可以在 VS Code 中愉快的练习 sicp 了，需要注意的是文件的扩展名需要写成 .rkt 哦，这样点击执行按钮的时候才能正常跑起来。</p>
+<p>希望这篇文章能够对你有所帮助与收获，本文主观色彩比较浓、以初学者角度描述，有建议也欢迎提出噢。</p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/34313034">学习SICP（《计算机程序的构造和解释》）的一些准备工作</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37056659">DrRacket 的安装与 SICP 的配置</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.math.pku.edu.cn/teachers/qiuzy/progtech/">程序设计技术和方法</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.math.pku.edu.cn/teachers/qiuzy/progtech/scheme/mit_scheme.htm">MIT Scheme 的基本使用</a></li>
+<li><a target="_blank" rel="noopener" href="https://deathking.github.io/yast-cn/">Scheme入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://tyrchen.github.io/racket-book/index.html">Racket语言入门</a></li>
+<li><a target="_blank" rel="noopener" href="https://sicp.readthedocs.io/en/latest/index.html">SICP 解题集</a></li>
+<li><a target="_blank" rel="noopener" href="https://betterprogramming.pub/why-i-still-lisp-and-you-should-too-18a2ae36bd8">Why I Still ‘Lisp’ (and You Should Too)</a></li>
+</ul>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/sicp-vscode-setup/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/sicp-vscode-setup/";
+            const title         = "「VS Code 搭建 SICP 环境」";
+            const excerpt       = `其实这次算是乱点技能树了，不过看了 SICP (计算机程序的构造和解释) 的序言部分以及 Why I Still ‘Lisp’ (and You Should Too)，又让我觉得这样一本经典之作是值得花些时间去深入了解的。`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/racket/" rel="tag">racket</a>, <a class="tag-none-link" href="/tags/sicp/" rel="tag">sicp</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-03-25</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" 近期的一些想法" href="/recent-insights/">&lt; 上一篇</a>
+                </div>
+                
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'sicp-vscode-setup/',
+                url: 'https://chee5e.space/sicp-vscode-setup/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E4%B9%B1%E7%82%B9%E6%8A%80%E8%83%BD%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">为什么不能乱点技能树</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SICP-%E5%BA%8F%E8%A8%80"><span class="toc-number">2.</span> <span class="toc-text">SICP 序言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VS-Code-%E6%90%AD%E5%BB%BA-SICP-%E7%8E%AF%E5%A2%83"><span class="toc-number">3.</span> <span class="toc-text">VS Code 搭建 SICP 环境</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Magic-Racket-%E6%89%A9%E5%B1%95%E6%8F%92%E4%BB%B6"><span class="toc-number">3.1.</span> <span class="toc-text">Magic Racket 扩展插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#racket-langserver"><span class="toc-number">3.2.</span> <span class="toc-text">racket-langserver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#sicp-%E7%8E%AF%E5%A2%83"><span class="toc-number">3.3.</span> <span class="toc-text">sicp 环境</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9D%97%E6%96%87%E4%BB%B6"><span class="toc-number">3.4.</span> <span class="toc-text">加载模块文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/racket/" style="font-size: 0.6em;">racket</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a> <a href="/tags/sicp/" style="font-size: 0.6em;">sicp</a> <a href="/tags/switch/" style="font-size: 0.6em;">switch</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/sicp-vscode-setup/"><i class="fa  fa-book"></i> VS Code 搭建 SICP 环境</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/recent-insights/"><i class="fa  fa-book"></i> 近期的一些想法</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/adachi-and-shimamura/"><i class="fa  fa-book"></i> 安達としまむら</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>
