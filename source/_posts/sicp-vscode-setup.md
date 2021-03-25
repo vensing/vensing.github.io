@@ -91,7 +91,7 @@ raco help
 在 VS Code 扩展商店中安装 `Magic Racket`，点击该插件的齿轮⚙图标进入扩展设置，Racket Path 直接填 racket 即可。更多的插件用法请查看 Github 代码库。
 
 
-![](https://raw.githubusercontent.com/vensing/static/master/image/magic_racket.png)
+![](https://chee5e.space/static/image/magic_racket.png)
 
 #### [racket-langserver](https://github.com/jeapostrophe/racket-langserver)
 
@@ -114,15 +114,16 @@ raco pkg update racket-langserver
 
 Use DrRacket to install the sicp package like this:
 
-> 1. Open the Package Manager: in DrRacket choose the menu "File" then choose "Package Manager..." 
+  1. Open the Package Manager: in DrRacket choose the menu "File" then choose "Package Manager..." 
   2. In the tab "Do What I Mean" find the text field and enter: sicp
   3. Finally click the "Install" button
   4. Test it. Make sure DrRacket has "Determine language from source" in the bottom left corner. Write the following program and click run:
-  ```
-  #lang sicp
-  (inc 42)
-  The expected output is 43.
-  ```
+
+```
+#lang sicp
+(inc 42)
+The expected output is 43.
+```
 
 Racket 本身提供了很好地对 SICP 支持，具体安装详情：https://docs.racket-lang.org/sicp-manual/Installation.html ；同样地，我们也可以使用命令行方式来安装 sicp 依赖包`raco pkg install sicp`。
 
