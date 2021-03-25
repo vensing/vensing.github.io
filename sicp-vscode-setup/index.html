@@ -24,7 +24,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://chee5e.space/images/sicp.jpeg">
 <meta property="article:published_time" content="2021-03-14T02:13:37.000Z">
-<meta property="article:modified_time" content="2021-03-25T04:37:53.000Z">
+<meta property="article:modified_time" content="2021-03-25T05:14:35.000Z">
 <meta property="article:author" content="Cheese">
 <meta property="article:tag" content="sicp">
 <meta property="article:tag" content="racket">
@@ -157,7 +157,7 @@
             </header>
             <div class="kratos-post-content">
                 <div id="expire-alert" class="alert alert-warning hidden" role="alert">
-                    本文最后修订于 <time datetime="1616647073000"></time>前 (2021-03-25)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                    本文最后修订于 <time datetime="1616649275000"></time>前 (2021-03-25)，其中的信息可能已经有所发展或者不再适用于现阶段。
                 </div>
                 
                     <div class="kratos-post-inner-toc">
@@ -204,7 +204,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> .zshrc</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line">racket -V</span><br><span class="line">Welcome to Racket v7.9 [bc].</span><br><span class="line"></span><br><span class="line"><span class="comment"># racket 包管理器</span></span><br><span class="line">raco <span class="built_in">help</span></span><br></pre></td></tr></table></figure>
 
 <p>在 VS Code 扩展商店中安装 <code>Magic Racket</code>，点击该插件的齿轮⚙图标进入扩展设置，Racket Path 直接填 racket 即可。更多的插件用法请查看 Github 代码库。</p>
-<p><img src="https://raw.githubusercontent.com/vensing/static/master/image/magic_racket.png"></p>
+<p><img src="https://chee5e.space/static/image/magic_racket.png"></p>
 <h4 id="racket-langserver"><a href="#racket-langserver" class="headerlink" title="racket-langserver"></a><a target="_blank" rel="noopener" href="https://github.com/jeapostrophe/racket-langserver">racket-langserver</a></h4><blockquote>
 <p>racket-langserver is a Language Server Protocol implementation for Racket. This project seeks to use DrRacket’s public APIs to provide functionality that mimics DrRacket’s code tools as closely as possible.</p>
 </blockquote>
@@ -214,17 +214,14 @@
 <p>如果完全不想使用 lang-server，你也不必这样做，只要在扩展插件配置文件中设置 “magic-racket.lsp.enabled”: false即可。但要注意，如果你这样做，你将无法获得 “智能 “功能，如自动完成、格式化等。</p>
 <p>当然你也可以去 DrRacket 编辑器中的 Package Manager 中的 Do What I Mean 输入包名、文件、目录、URL、GitHub 链接来安装包依赖。</p>
 <h4 id="sicp-环境"><a href="#sicp-环境" class="headerlink" title="sicp 环境"></a>sicp 环境</h4><p>Use DrRacket to install the sicp package like this:</p>
-<blockquote>
 <ol>
-<li>Open the Package Manager: in DrRacket choose the menu “File” then choose “Package Manager…” <ol start="2">
+<li>Open the Package Manager: in DrRacket choose the menu “File” then choose “Package Manager…” </li>
 <li>In the tab “Do What I Mean” find the text field and enter: sicp</li>
 <li>Finally click the “Install” button</li>
-<li>Test it. Make sure DrRacket has “Determine language from source” in the bottom left corner. Write the following program and click run:<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(inc 42)</span><br><span class="line">The expected output is 43.</span><br></pre></td></tr></table></figure>
-</li>
+<li>Test it. Make sure DrRacket has “Determine language from source” in the bottom left corner. Write the following program and click run:</li>
 </ol>
-</li>
-</ol>
-</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#lang sicp</span><br><span class="line">(inc 42)</span><br><span class="line">The expected output is 43.</span><br></pre></td></tr></table></figure>
+
 <p>Racket 本身提供了很好地对 SICP 支持，具体安装详情：<a target="_blank" rel="noopener" href="https://docs.racket-lang.org/sicp-manual/Installation.html">https://docs.racket-lang.org/sicp-manual/Installation.html</a> ；同样地，我们也可以使用命令行方式来安装 sicp 依赖包<code>raco pkg install sicp</code>。</p>
 <h4 id="加载模块文件"><a href="#加载模块文件" class="headerlink" title="加载模块文件"></a>加载模块文件</h4><p>很多情况下，我们需要将代码抽象提取成模块文件，这个时候就需要对模块进行导入导出了，这里简单说一下 sicp 如何导包：</p>
 <p>lib.rkt</p>
