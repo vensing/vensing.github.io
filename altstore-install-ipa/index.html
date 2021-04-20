@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+  <!-- 元数据 -->
+  <meta charset="utf-8">
+  <link rel="icon" href="/images/favicon.ico">
+  <title>使用 altstore 安装 ipa 应用 | 芝士部落格</title>
+  <meta name="author" content="Cheese" />
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="robots" content="index,follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="format-detection" content="telphone=no, email=no" />
+  
+    <meta name="keywords" content="altstore, ipa" />
+  
+  <meta name="description" content="由于 iOS 的封闭性，导致 iOS 应用一般情况下只能通过 App Store 进行安装，或者是带有描述文件的签名安装。当在安装一些开源的 iOS 应用时由于没有签名并且发布的 ipa 安装包难以使用手机进行安装 (摊手┓( ´∀&#96; )┏)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 altstore 安装 ipa 应用">
+<meta property="og:url" content="https://chee5e.space/altstore-install-ipa/index.html">
+<meta property="og:site_name" content="芝士部落格">
+<meta property="og:description" content="由于 iOS 的封闭性，导致 iOS 应用一般情况下只能通过 App Store 进行安装，或者是带有描述文件的签名安装。当在安装一些开源的 iOS 应用时由于没有签名并且发布的 ipa 安装包难以使用手机进行安装 (摊手┓( ´∀&#96; )┏)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chee5e.space/images/favicon.ico">
+<meta property="article:published_time" content="2021-04-20T06:14:29.000Z">
+<meta property="article:modified_time" content="2021-04-20T15:06:23.000Z">
+<meta property="article:author" content="Cheese">
+<meta property="article:tag" content="altstore">
+<meta property="article:tag" content="ipa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chee5e.space/images/favicon.ico">
+<meta name="twitter:site" content="@youmuhoshi">
+  <link rel="alternate" href="atom.xml" type="application/atom+xml">
+  <!-- 站点验证相关 -->
+  
+    
+    
+    
+  
+  <!-- 样式表文件 -->
+  <link rel="stylesheet" id="kratos-css" href="/css/kratosr.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" id="highlight-css" href="/css/highlight.min.css" type="text/css" media="all">
+  
+  
+  <link rel="stylesheet" id="fontawe-css" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" type="text/css" media="all">
+  <link rel="stylesheet" id="nprogress-css" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" type="text/css" media="all">
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/disqusjs@1.2.6/dist/disqusjs.css">
+  
+  
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css">
+  
+  
+    <link rel="stylesheet" id="darkmode-css" href="/css/kr-dark.min.css" type="text/css" media="all">
+  
+  <!-- 不得不预先加载的一些JS文件 -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/qrcode_js@1.0.0/qrcode.min.js"></script>
+  
+<meta name="generator" content="Hexo 5.1.1"></head>
+
+
+    <body class="custom-background">
+        <div id="kratos-wrapper">
+    <div id="kratos-page">
+        <div id="kratos-header">
+            <div class="nav-toggle"><a class="kratos-nav-toggle js-kratos-nav-toggle"><i></i></a></div>
+            <header id="kratos-header-section">
+                <div class="container">
+                    <div class="nav-header">
+                        <div class="color-logo"><a href="/">芝士部落格</a></div>
+                        <nav id="kratos-menu-wrap">
+                            <ul id="kratos-primary-menu" class="sf-menu">
+                                
+                                    
+                                        <li><a href="/"><i class="fa fa-home"></i>首页</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/archives/"><i class="fa fa-archive"></i>档案馆</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/friends/"><i class="fa fa-mars-double"></i>朋友们</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/about/"><i class="fa fa-rocket"></i>关于我</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/one/"><i class="fa fa-podcast"></i>ONE 图文</a></li>
+                                    
+                                
+                                    
+                                        <li><a href="/movie/"><i class="fa fa-film"></i>电影日历</a></li>
+                                    
+                                
+                                    
+                                        <li>
+                                            <a><i class="fa fa-flask"></i>实验室</a>
+                                            <ul class="sub-menu">
+                                                
+                                                    
+                                                
+                                            </ul>
+                                        </li>
+                                    
+                                
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <div class="kratos-start kratos-hero-2">
+            <!-- <div class="kratos-overlay"></div> -->
+            <div class="kratos-cover kratos-cover-2 text-center">
+                <div class="desc desc2 animate-box">
+                    <a href="/">
+                        <h2>芝士部落格</h2> <br />
+                        <span>有思想，也有忧伤和理想，芝士就是力量</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div id="kratos-blog-post">
+            <div class="container">
+                <div class="row">
+                    
+        <div id="main">
+            <section class="col-md-8">
+    <article>
+        <div class="kratos-hentry kratos-post-inner clearfix">
+            <header class="kratos-entry-header">
+                <h1 class="kratos-entry-title text-center">使用 altstore 安装 ipa 应用</h1>
+                
+                <div class="kratos-post-meta text-center">
+                    <span>
+                        <i class="fa fa-calendar"></i> 2021-04-20
+                        <i class="fa fa-folder"></i> 分类 <a class="label-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a>
+                        <i class="fa fa-user"></i> 作者 Cheese
+                        <i class="fa fa-edit"></i> 
+                        
+                        
+                            ~2.13K
+                        
+                        字
+                        
+                    </span>
+                </div>
+            </header>
+            <div class="kratos-post-content">
+                <div id="expire-alert" class="alert alert-warning hidden" role="alert">
+                    本文最后修订于 <time datetime="1618931183000"></time>前 (2021-04-20)，其中的信息可能已经有所发展或者不再适用于现阶段。
+                </div>
+                
+                    <div class="kratos-post-inner-toc">
+                        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS-%E5%AE%89%E8%A3%85-AltStore"><span class="toc-number">1.</span> <span class="toc-text">macOS 安装 AltStore</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E9%82%AE%E4%BB%B6%E6%8F%92%E4%BB%B6%EF%BC%9F-%E4%BB%85%E9%99%90-Mac"><span class="toc-number">1.1.</span> <span class="toc-text">如何安装邮件插件？(仅限 Mac)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85-ipa-%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">本地安装 ipa 应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#REF"><span class="toc-number">4.</span> <span class="toc-text">REF</span></a></li></ol>
+                    </div>
+                
+                <!-- <hr /> -->
+                <p>由于 iOS 的封闭性，导致 iOS 应用一般情况下只能通过 App Store 进行安装，或者是带有描述文件的签名安装。当在安装一些开源的 iOS 应用时由于没有签名并且发布的 ipa 安装包难以使用手机进行安装 (摊手┓( ´∀` )┏)</p>
+<a id="more"></a>
+
+<p>当然，还是有办法让 iOS 设备本地安装 ipa 并且进行签名的，就是有点麻烦，本文就是特地来简单记录下这件麻烦事的。说是麻烦事，其实也就是几个点击的事情，背后复杂的签名和验证、安装过程 AltStore 和 AltServer 都帮我们搞定了。</p>
+<h3 id="macOS-安装-AltStore"><a href="#macOS-安装-AltStore" class="headerlink" title="macOS 安装 AltStore"></a>macOS 安装 AltStore</h3><p>首先需要下载 AltServer，并且安装到 macOS 上，官网也有提供 Windows Beta 版本，但很遗憾任务栏里的 AltServer 图标实在是卡的怀疑人生所以还是等正式版发布再说吧。</p>
+<blockquote>
+<ol>
+<li>下载适用于 Mac 的 AltServer。</li>
+<li>将“ AltServer.app”复制到您的“应用程序”文件夹中。</li>
+<li>启动 AltServer（它将在菜单栏中显示为图标）。</li>
+<li>将您的 iPhone 连接到计算机，并确保它已解锁。</li>
+<li>将您的 iPhone 与计算机信任（如果需要）。</li>
+<li>（仅 Mojave ）打开 iTunes 并为手机启用 iTunes Wi-Fi 同步。</li>
+<li>（仅限 Catalina ）打开 Finder 并为手机启用“在 WiFi 上显示此 iPhone”。</li>
+<li>单击 Mac 菜单栏中的 AltServer 图标，单击“安装 AltStore ”，然后选择您的手机。</li>
+<li>输入您的 Apple ID 电子邮件和密码（注意：电子邮件地址和密码均区分大小写）。</li>
+<li>（仅第一次）AltServer 将要求您安装邮件插件。请按照说明继续操作（或参阅下面的更多详细说明）。</li>
+<li>等待几秒钟，然后 AltStore 将安装到您的手机中。</li>
+</ol>
+</blockquote>
+<p>上述安装步骤是从官网 FAQ 里翻译过来的，其中需要特别注意的是第 10 步，安装邮件插件并启用该插件。</p>
+<h4 id="如何安装邮件插件？-仅限-Mac"><a href="#如何安装邮件插件？-仅限-Mac" class="headerlink" title="如何安装邮件插件？(仅限 Mac)"></a>如何安装邮件插件？(仅限 Mac)</h4><blockquote>
+<ol>
+<li>从 AltServer 菜单中单击“安装邮件插件”。</li>
+<li>输入密码以授予 AltServer 安装插件的权限。</li>
+<li>打开邮件（如果已在运行，请先退出邮件）。</li>
+<li>打开邮件 &gt; 首选项。</li>
+<li>点击“管理插件…”</li>
+<li>启用“ AltPlugin.mailbundle”</li>
+<li>单击“应用并重新启动邮件”以完成安装。</li>
+</ol>
+</blockquote>
+<h3 id="本地安装-ipa-应用"><a href="#本地安装-ipa-应用" class="headerlink" title="本地安装 ipa 应用"></a>本地安装 ipa 应用</h3><p>AltStore 在手机上安装完成后，在设置 &gt; 通用 &gt; 描述文件中信任 AppleID 邮箱名的描述文件，然后打开该应用，在 “我的应用” 标签中，点击左上角的 “+” 按钮，然后选择您要侧载的 .ipa 文件。需要注意的是让手机网络和 Mac 的无线网络处于同一局域网络中，以便 iOS 设备发现 Mac 并且与之进行必要的通讯。</p>
+<p>也就是说在安装或刷新应用程序时，AltServer 必须与 AltStore 处于同一 WiFi 网络上运行，注意咯，这里 Mac 连接有线网络但无线网络不是和 AltStore 处于同一网络也不行哦。如果 AltServe 有线网络使用 USB 线缆连接手机的话，有线网络也是可以的就不用管无线网络了。通过将手机插入计算机，始终可以在不使用 WiFi 的情况下安装和刷新应用。但是，这意味着 AltStore 法在后台通过 WiFi 为您刷新应用程序。</p>
+<div class="alert alert-danger">另外请在 macOS 上打开邮件应用！！！</div>
+
+
+<p>Apple允许具有 Apple ID 的任何人将自己构建的应用程序安装到设备上进行测试。 AltStore 使用您的 Apple ID 代表您与 Apple 的服务器进行通信，并执行必要的步骤来准备用于在您的设备上安装应用程序的帐户。</p>
+<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><p><strong>我是否需要担心“吊销”？</strong></p>
+<p>理论上应从 Xcode 安装应用程序，AltStore 使用针对 Mac 配套应用程序模拟该过程。AltStore 使用了 Apple 提供给开发人员的功能来在真实设备上测试其应用程序，而不是使用 Apple 可以轻松打击的企业证书。该工具从根本上欺骗了设备，使其认为自己正在安装自己制作的应用程序。</p>
+<p>其他替代应用商店使用“企业证书”来允许人们安装应用。但是，Apple 明确禁止这样做，导致他们积极关闭或“撤消”了其他应用商店使用的这些企业证书。这会导致应用程序每隔一段时间停止打开一次，直到获得新的企业证书为止。由于 AltStore 不使用企业证书，因此不必担心 Apple 会通过撤销单个证书来关闭 AltStore（因为从技术上来说，每个人现在都有自己的签名证书）。</p>
+<p><strong>为什么说我的应用程序将在7天后过期？</strong></p>
+<p>不幸的是，使用非开发人员 Apple ID 安装的应用程序（换句话说，与每年 99 美元的 Apple 开发人员帐户无关的 Apple ID）仅有效 7 天，此后它们将不再打开。为了弥补这一点，AltStore 会定期尝试在后台刷新您的应用程序，并且您始终可以从 AltStore中手动刷新您的应用程序，AltStore 在后台通过WiFi为您刷新应用程序。</p>
+<h3 id="REF"><a href="#REF" class="headerlink" title="REF"></a>REF</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://altstore.io/faq/">AltStore FAQ</a></li>
+</ul>
+
+            </div>
+            
+                <div class="kratos-copyright text-center clearfix">
+                    <h5>本作品采用 <a rel="license nofollow" target="_blank" href="http://creativecommons.org/licenses/by-sa/4.0/">知识共享署名-相同方式共享 4.0 国际许可协议</a> 进行许可</h5>
+                </div>
+            
+            <footer class="kratos-entry-footer clearfix">
+                
+                    <div class="post-like-donate text-center clearfix" id="post-like-donate">
+                    
+                    
+                        <a class="share" href="javascript:;"><i class="fa fa-share-alt"></i> 分享</a>
+                        <div class="share-wrap" style="display: none;">
+    <div class="share-group">
+        <a href="javascript:;" class="share-plain qq" onclick="share('qq');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-qq"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain qzone" onclick="share('qzone');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-star"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weixin pop style-plain" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weixin"></i>
+            </div>
+            <div class="share-int">
+                <div class="qrcode" id="wechat-qr"></div>
+                <p>打开微信“扫一扫”，打开网页后点击屏幕右上角分享按钮</p>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain weibo" onclick="share('weibo');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-weibo"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain facebook style-plain" onclick="share('facebook');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-facebook"></i>
+            </div>
+        </a>
+        <a href="javascript:;" class="share-plain twitter style-plain" onclick="share('twitter');" rel="nofollow">
+            <div class="icon-wrap">
+                <i class="fa fa-twitter"></i>
+            </div>
+        </a>
+    </div>
+    <script type="text/javascript">
+        $(()=>{
+            new QRCode("wechat-qr", {
+                text: "https://chee5e.space/altstore-install-ipa/",
+                width: 150,
+                height: 150,
+                correctLevel : QRCode.CorrectLevel.H
+            });
+        });
+        function share(dest) {
+            const qqBase        = "https://connect.qq.com/widget/shareqq/index.html?";
+            const weiboBase     = "https://service.weibo.com/share/share.php?";
+            const qzoneBase     = "https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?";
+            const facebookBase  = "https://www.facebook.com/sharer/sharer.php?";
+            const twitterBase   = "https://twitter.com/intent/tweet?";
+            const hostUrl       = "https://chee5e.space/altstore-install-ipa/";
+            const title         = "「使用 altstore 安装 ipa 应用」";
+            const excerpt       = `由于 iOS 的封闭性，导致 iOS 应用一般情况下只能通过 App Store 进行安装，或者是带有描述文件的签名安装。当在安装一些开源的 iOS 应用时由于没有签名并且发布的 ipa 安装包难以使用手机进行安装 (摊手┓( ´∀` )┏)`;
+            let _URL;
+            switch (dest) {
+                case "qq"       : _URL = qqBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";     break;
+                case "weibo"    : _URL = weiboBase+"url="+hostUrl+"&title="+title+excerpt;                                 break;
+                case "qzone"    : _URL = qzoneBase+"url="+hostUrl+"&title="+title+"&desc=&summary="+excerpt+"&site=cxpy";  break;
+                case "facebook" : _URL = facebookBase+"u="+hostUrl;                                                        break;
+                case "twitter"  : _URL = twitterBase+"text="+title+excerpt+"&url="+hostUrl;                                break;
+            }
+            window.open(_URL);
+        };
+    </script>
+</div>
+                    
+                    </div>
+                
+                <div class="footer-tag clearfix">
+                    <div class="pull-left">
+                    <i class="fa fa-tags"></i>
+                        <a class="tag-none-link" href="/tags/altstore/" rel="tag">altstore</a>, <a class="tag-none-link" href="/tags/ipa/" rel="tag">ipa</a>
+                    </div>
+                    <div class="pull-date">
+                    <span>最后编辑：2021-04-20</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        
+            <nav class="navigation post-navigation clearfix" role="navigation">
+                
+                <div class="nav-previous clearfix">
+                    <a title=" VS Code 搭建 SICP 环境" href="/sicp-vscode-setup/">&lt; 上一篇</a>
+                </div>
+                
+                
+            </nav>
+        
+        
+            <div id="disqus_thread" class="post-comments lazy-load"></div>
+<script>
+    var load_comm = () => {
+        const init = () => {
+            window.DISQUS = null;
+            new DisqusJS({
+                shortname: 'vensing-com',
+                siteName: 'vensing',
+                identifier: 'altstore-install-ipa/',
+                url: 'https://chee5e.space/altstore-install-ipa/',
+                api: 'https://disqusjs-api.vensing.workers.dev/api/',
+                apikey: 'bOXtpQHaIHfxsR4VGqOUNxojF6FGpwKEst7Cj3Pxo5IEAKrriBmIoxp3eegUxSqp',
+                admin: 'Cheese',
+                adminLabel: '芝士'
+            });
+        }
+        if (typeof DisqusJS == 'undefined') {
+            const src = 'https://cdn.jsdelivr.net/npm/disqusjs@1.3.0/dist/disqus.js';
+            $.getScript(src, init);
+        } else {
+            init();
+        }
+    };
+</script>
+<noscript>Please enable JavaScript to view the <a target="_blank" rel="noopener" href="https://github.com/SukkaW/DisqusJS">comments powered by DisqusJS.</a></noscript>
+        
+    </article>
+</section>
+        </div>
+                
+            <section id="kratos-widget-area" class="col-md-4 hidden-xs hidden-sm">
+                
+                    <aside id="krw-about" class="widget widget-kratos-about clearfix">
+    
+    <div class="photo-background"></div>
+    <div class="photo-wrapper clearfix">
+        <div class="photo-wrapper-tip text-center">
+            <img class="about-photo" src="/images/avatar.jpg" />
+        </div>
+    </div>
+    <div class="textwidget">
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#macOS-%E5%AE%89%E8%A3%85-AltStore"><span class="toc-number">1.</span> <span class="toc-text">macOS 安装 AltStore</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%AE%89%E8%A3%85%E9%82%AE%E4%BB%B6%E6%8F%92%E4%BB%B6%EF%BC%9F-%E4%BB%85%E9%99%90-Mac"><span class="toc-number">1.1.</span> <span class="toc-text">如何安装邮件插件？(仅限 Mac)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E5%AE%89%E8%A3%85-ipa-%E5%BA%94%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">本地安装 ipa 应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#FAQ"><span class="toc-number">3.</span> <span class="toc-text">FAQ</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#REF"><span class="toc-number">4.</span> <span class="toc-text">REF</span></a></li></ol>
+        
+    </div>
+</aside>
+                
+                    <!-- Moved to about.ejs -->
+                
+                    
+  <aside id="krw-categories" class="widget widget-categories clearfix">
+    <h4 class="widget-title"><i class="fa fa-folder"></i>分类目录</h4>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E4%B8%87%E5%8F%B6%E9%9B%86/">万叶集</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8A%A8%E6%BC%AB%E8%BF%B7/">动漫迷</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E5%BC%80%E5%8F%91/">博客开发</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%8D%9A%E5%AE%A2%E8%AE%B0%E5%BD%95/">博客记录</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B9%B4%E7%BB%88%E6%80%BB%E7%BB%93/">年终总结</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8F%BD%E4%BB%B6%E6%97%A5%E5%BF%97/">揽件日志</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%88%B1%E9%9F%B3%E4%B9%90/">爱音乐</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%9E%8E%E6%8A%98%E8%85%BE/">瞎折腾</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%A2%8E%E7%A2%8E%E5%BF%B5/">碎碎念</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B%E6%9C%AD%E8%AE%B0/">编程札记</a><span class="category-list-count">2</span></li></ul>
+  </aside>
+
+
+                
+                    
+  <aside id="krw-tags" class="widget widget-kratos-tags clearfix">
+    <h4 class="widget-title"><i class="fa fa-tags"></i>标签聚合</h4>
+      <div class="tag-clouds">
+        <a href="/tags/2/" style="font-size: 0.6em;">2</a> <a href="/tags/2020/" style="font-size: 0.6em;">2020</a> <a href="/tags/CI/" style="font-size: 0.8em;">CI</a> <a href="/tags/Kratos/" style="font-size: 0.6em;">Kratos</a> <a href="/tags/Travis-CI/" style="font-size: 0.8em;">Travis CI</a> <a href="/tags/Vue/" style="font-size: 0.6em;">Vue</a> <a href="/tags/WSL/" style="font-size: 0.6em;">WSL</a> <a href="/tags/Win10/" style="font-size: 0.6em;">Win10</a> <a href="/tags/altstore/" style="font-size: 0.6em;">altstore</a> <a href="/tags/docker/" style="font-size: 0.6em;">docker</a> <a href="/tags/fancybox/" style="font-size: 0.6em;">fancybox</a> <a href="/tags/gzip/" style="font-size: 0.6em;">gzip</a> <a href="/tags/hexo/" style="font-size: 0.6em;">hexo</a> <a href="/tags/ipa/" style="font-size: 0.6em;">ipa</a> <a href="/tags/nodejs/" style="font-size: 0.6em;">nodejs</a> <a href="/tags/pjax/" style="font-size: 0.6em;">pjax</a> <a href="/tags/racket/" style="font-size: 0.6em;">racket</a> <a href="/tags/saint-seiya/" style="font-size: 0.6em;">saint seiya</a>
+      </div>
+  </aside>
+
+                
+                    
+  <aside id="krw-posts" class="widget widget-kratos-poststab">
+  <h4 class="widget-title"><i class="fa fa-file"></i>最新文章</h4>
+  <div class="tab-content">
+      <ul class="list-group">
+        
+        
+          
+          
+            <a class="list-group-item" href="/altstore-install-ipa/"><i class="fa  fa-book"></i> 使用 altstore 安装 ipa 应用</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/sicp-vscode-setup/"><i class="fa  fa-book"></i> VS Code 搭建 SICP 环境</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/recent-insights/"><i class="fa  fa-book"></i> 近期的一些想法</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/switch-pickup-log/"><i class="fa  fa-book"></i> Switch 海外购日志</a>
+            
+          
+        
+          
+          
+            <a class="list-group-item" href="/my-little-fish-wake-up/"><i class="fa  fa-book"></i> 我的小鱼你醒了</a>
+            
+          
+        
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+          
+            
+      </ul>
+  </div>
+  </aside>
+
+                
+            </section>
+        
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="kr-tool text-center">
+            <div class="tool">
+                
+                    <div class="box search-box">
+                        <a href="/search/">
+                            <span class="fa fa-search"></span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="box theme-box" id="darkmode-switch">
+                        <span class="fa fa-adjust"></span>
+                    </div>
+                
+                
+            </div>
+            <div class="box gotop-box">
+                <span class="fa fa-chevron-up"></span>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-md-offset-3 footer-list text-center">
+                    <ul class="kratos-social-icons">
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://t.me/chee5e"><i class="fa fa-telegram"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="https://twitter.com/youmuhoshi"><i class="fa fa-twitter"></i></a></li>
+                        
+                        
+                        
+                        <li><a target="_blank" rel="nofollow" href="https://github.com/vensing"><i class="fa fa-github"></i></a></li>
+                        <li><a target="_blank" rel="nofollow" href="/atom.xml"><i class="fa fa-rss"></i></a></li>
+                    </ul>
+                    <ul class="kratos-copyright">
+                        <div>
+                            <li>&copy; 2021 Cheese 版权所有.</li>
+                            <li>本站已运行<span id="span_dt">Loading...</span></li>
+                        </div>
+                        <div>
+                            <li>Theme <a href="https://github.com/Candinya/Kratos-Rebirth" target="_blank">Kratos:Rebirth</a></li>
+                            <li>Made with&nbsp;<i class="fa fa-heart throb" style="color:#d43f57"></i>&nbsp;by <a href="https://candinya.com" target="_blank" rel="nofollow">Candinya</a>.</li>
+                        </div>
+                        <div>
+                            <li>Powered by <a href="https://hexo.io" target="_blank" rel="nofollow">Hexo</a></li>
+                            <li>Hosted on <a href="https://github.io" target="_blank">Github Pages</a></li>
+                        </div>
+                        <div>
+                            
+                            
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+</div>
+</div>
+
+        <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.4/dist/js/bootstrap.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.js"></script>
+<script>const notMobile = (!(navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i)));</script>
+
+<script async src="/js/candy.min.js"></script>
+
+
+    <script defer src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js"></script>
+<script defer src="/js/kratosr.min.js"></script>
+<script defer src="/js/pjax.min.js"></script>
+
+
+    <script defer src="/js/kr-dark.min.js"></script>
+
+
+    </body>
+</html>
