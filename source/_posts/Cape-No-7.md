@@ -4,7 +4,9 @@ comments: true
 toc: true
 date: 2021-05-21 13:28:23
 categories:
+  - 光影记录
 tags:
+  - 海角七号
 ---
 
 
