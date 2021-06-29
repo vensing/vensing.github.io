@@ -52,7 +52,7 @@ var myFriends = [
     ["https://cwksc.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cwksc.jpg", "@CWKSC", "大佬，主要是写技术文章的，有时候是日常，吐槽"],
     ["https://mgear-blogs.obs-website.cn-east-3.myhuaweicloud.com/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/lionad.gif", "@lionad", "前端工程师|午夜吉他魔|兴趣泛滥的游戏玩家"],
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/chanshiyu.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"],
-    ["https://yked.gitee.io", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/yked.jpeg", "@聆听·彼岸", "彼岸少年"],
+    ["https://ltba.github.io", "https://cdn.jsdelivr.net/gh/ltba/ltba.github.io/img/fa/main.jpg", "@聆听·彼岸", "彼岸少年"],
     ["http://www.kawashiros.club", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kawashiros.jpg", "@非科学のカッパ", "Coffee-Code Transformer"],
     ["https://ryan4yin.space", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kirito-c.jpeg", "@於清樂的碎碎念", "忽而盛夏"],
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
