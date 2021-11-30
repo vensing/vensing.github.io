@@ -59,7 +59,9 @@ var myFriends = [
     ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"],
     ["https://lovemen.cc/", "https://sdn.geekzu.org/avatar/e8fd1786a945ff18d8cf08da42eb38da?s=400", "@橘子柚", "只是一只橘子而已"],
     ["https://lind0.space/", "https://chee5e.space/static/avatar/lind0.jpeg", "@lind0", "La pequeña casa de Lind"],
-    ["https://huanz.top", "https://huanz.top/images/logo.webp", "@Huanzの小窝", "那是一小块凝固的时间，时间上有美丽的条纹，摸起来像浅海的泥一样柔软"]
+    ["https://huanz.top", "https://huanz.top/images/logo.webp", "@Huanzの小窝", "那是一小块凝固的时间，时间上有美丽的条纹，摸起来像浅海的泥一样柔软"],
+    ["https://natsume-neko.github.io/", "https://natsume-neko.github.io/images/IMG_0711.JPG", "@Natsumeのblog", "这里仅有忧伤"],
+    ["https://kidoki.xyz/", "https://kidoki.xyz/images/avatar.jpg", "明镜公园", "一名普通的烟囱清洁工"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
