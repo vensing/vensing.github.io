@@ -48,7 +48,7 @@ var myFriends = [
     ["https://type.zhoublog.xyz/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhou.gif", "@_Zhou_", "一名来普普通通的学生(其实是大佬哒)"],
     ["https://skyblond.info/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/skyblond.png", "@天空Blond", "推油，精神神楽坂 ← 不是，绝对不是"],
     ["https://raptazure.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/raptazure.jpg", "@Raptazure", "推油，心随自然"],
-    ["https://nek0ri.de/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/nekori.png", "@猫梨の部屋", "我们能做得更好"],
+    ["https://blog.nekori.org", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/nekori.png", "@猫梨の部屋", "我们能做得更好"],
     ["https://cwksc.github.io/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cwksc.jpg", "@CWKSC", "大佬，主要是写技术文章的，有时候是日常，吐槽"],
     ["https://mgear-blogs.obs-website.cn-east-3.myhuaweicloud.com/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/lionad.gif", "@lionad", "前端工程师|午夜吉他魔|兴趣泛滥的游戏玩家"],
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/chanshiyu.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"],
@@ -58,7 +58,7 @@ var myFriends = [
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
     ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"],
     ["https://lovemen.cc/", "https://sdn.geekzu.org/avatar/e8fd1786a945ff18d8cf08da42eb38da?s=400", "@橘子柚", "只是一只橘子而已"],
-    ["https://lind0.space/", "https://chee5e.space/static/avatar/lind0.jpeg", "@lind0", "La pequeña casa de Lind"],
+    ["https://blog.lind0.space/", "https://chee5e.space/static/avatar/lind0.jpeg", "@lind0", "La pequeña casa de Lind"],
     ["https://huanz.top", "https://huanz.top/images/logo.webp", "@Huanzの小窝", "那是一小块凝固的时间，时间上有美丽的条纹，摸起来像浅海的泥一样柔软"],
     ["https://natsume-neko.github.io/", "https://natsume-neko.github.io/images/IMG_0711.JPG", "@Natsumeのblog", "这里仅有忧伤"],
     ["https://kidoki.xyz/", "https://kidoki.xyz/images/avatar.jpg", "明镜公园", "一名普通的烟囱清洁工"]
