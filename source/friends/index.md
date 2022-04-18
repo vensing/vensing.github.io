@@ -53,7 +53,7 @@ var myFriends = [
     ["https://mgear-blogs.obs-website.cn-east-3.myhuaweicloud.com/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/lionad.gif", "@lionad", "前端工程师|午夜吉他魔|兴趣泛滥的游戏玩家"],
     ["https://chanshiyu.com", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/chanshiyu.jpg", "@蝉时雨", "蝉鸣如雨，花宵道中"],
     ["https://ltba.github.io", "https://cdn.jsdelivr.net/gh/ltba/ltba.github.io/img/fa/main.jpg", "@聆听·彼岸", "彼岸少年"],
-    ["http://www.kawashiros.club", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kawashiros.jpg", "@非科学のカッパ", "Coffee-Code Transformer"],
+    ["https://bkryofu.xyz/", "http://bkryofu.xyz/resources/avatar.webp", "@非科学の河童", "Some born Roman, some born for Roman."],
     ["https://ryan4yin.space", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/kirito-c.jpeg", "@於清樂的碎碎念", "忽而盛夏"],
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
     ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"],
