@@ -11,7 +11,7 @@ toc: false
 
 {% alertbox danger "
 
-本站已更换域名为 https://chee5e.space
+本站已更换域名为 https://blog.youmuwhisper.space
 
 " %}
 
@@ -35,7 +35,7 @@ toc: false
 {% collapse 点击查看 %}
 
 - 2018.09.08 - 某个不知名的小站建立了。终于想起了要建立一个博客这件事？所以我之前都在干吗去了？当然是摸鱼和划水去了。
-- 2018.09.08 - 我的第一篇文章是 [Hello World](https://chee5e.space/hello-world/)。从此进入了独立博客的世界，然而好像没找到小伙伴啊。
+- 2018.09.08 - 我的第一篇文章是 [Hello World](https://blog.youmuwhisper.space/hello-world/)。从此进入了独立博客的世界，然而好像没找到小伙伴啊。
 - 2018.09.17 - 换上了一个橙色的名叫 [Snippet主题](https://github.com/shenliyang/hexo-theme-snippet) ，加入了评论服务(好吧，其实没人找到我根本没有评论)。既然是某个不知名的小站当然得搭配一个不知名的域名啊，于是就有了 ~~[vensing.site](https://vensing.site)~~ 这个`.site`的域名了，已于2019-03-04不适用。
 - 2018.10.21 - 有了博客当然得有个萌萌的看板娘啦，刚好那段时间在补番[樱花庄的宠物女孩](https://www.bilibili.com/bangumi/media/md687/?from=search&seid=5864954923037171538)，刚好又看到了真白看板娘就给加上了。爱真白真是太好了。
 - 2019.01.25 - 给博客加上了 Travis CI 自动部署服务，写好文章 push 到 Github 之后就不用管了。而且不用管运行环境，这样换了电脑 clone 一下博客源码就行了。真的是适合我这种懒人。
@@ -52,7 +52,7 @@ toc: false
 - 2020.06.27 - 同步 [Kratos-Rebirth](https://github.com/Candinya/Kratos-Rebirth) 主题，开启浅色和暗黑模式。
 - 2020.12.05 - 使用 jsDelivr CDN 加载 GitHub 图床仓库的图片，替换不可用的 SM.MS 图床服务。 
 - 2020.12.07 - 使用 Github Actions 替换 Travis CI 构建博客，Travis CI 任务队列排队时间过长。
-- 2020.12.12 - 使用 [chee5e.space](https://chee5e.space) 做为新的域名，.com 域名将于明年 2 月底到期，阿里云相关服务将注销，转用 dynadot 。
+- 2020.12.12 - 使用 [blog.youmuwhisper.space](https://blog.youmuwhisper.space) 做为新的域名，.com 域名将于明年 2 月底到期，阿里云相关服务将注销，转用 dynadot 。
 
 {% endcollapse %}
 

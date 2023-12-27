@@ -58,7 +58,7 @@ var myFriends = [
     ["https://zhi-tu.now.sh/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/zhitu.JPG", "@知荼","冥然兀坐，万籁有声"],
     ["https://blog.cworld.top/", "https://cdn.jsdelivr.net/gh/vensing/static@latest/avatar/cworld.png", "@Cworld", "求知若愚，虚怀若谷"],
     ["https://lovemen.cc/", "https://sdn.geekzu.org/avatar/e8fd1786a945ff18d8cf08da42eb38da?s=400", "@橘子柚", "只是一只橘子而已"],
-    ["https://blog.lind0.space/", "https://chee5e.space/static/avatar/lind0.jpeg", "@lind0", "La pequeña casa de Lind"],
+    ["https://blog.lind0.space/", "https://blog.youmuwhisper.space/static/avatar/lind0.jpeg", "@lind0", "La pequeña casa de Lind"],
     ["https://huanz.top", "https://huanz.top/images/logo.webp", "@Huanzの小窝", "那是一小块凝固的时间，时间上有美丽的条纹，摸起来像浅海的泥一样柔软"],
     ["https://natsume-neko.github.io/", "https://natsume-neko.github.io/images/IMG_0711.JPG", "@Natsumeのblog", "这里仅有忧伤"],
     ["https://kidoki.xyz/", "https://kidoki.xyz/images/avatar.jpg", "@明镜公园", "一名普通的烟囱清洁工"],
@@ -97,8 +97,8 @@ while (myFriends.length > 0) {
 通过以下格式给我留言或者给我发邮件即可：
 
 - [站点名称]：芝士部落格
-- [个人形象]：https://chee5e.space/images/avatar.jpg
-- [站点地址]：https://chee5e.space
+- [个人形象]：https://blog.youmuwhisper.space/images/avatar.jpg
+- [站点地址]：https://blog.youmuwhisper.space
 - [站点描述]：有思想，也有忧伤和理想
 
 发邮件添加友链：

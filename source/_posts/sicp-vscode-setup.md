@@ -91,7 +91,7 @@ raco help
 在 VS Code 扩展商店中安装 `Magic Racket`，点击该插件的齿轮⚙图标进入扩展设置，Racket Path 直接填 racket 即可。更多的插件用法请查看 Github 代码库。
 
 
-![](https://chee5e.space/static/image/magic_racket.png)
+![](https://blog.youmuwhisper.space/static/image/magic_racket.png)
 
 #### [racket-langserver](https://github.com/jeapostrophe/racket-langserver)
 

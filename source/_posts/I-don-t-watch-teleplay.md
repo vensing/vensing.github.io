@@ -16,4 +16,4 @@ tags:
 >一是，剧情并不真实且不接地气，看港剧和日剧，都会经常看到去各种小餐馆、小店铺吃饭，然后再来点日常问候或者拌嘴嘴碎。
 二是，太过于体面和精致了，我反而喜欢看人失败的样子。最近很多剧都是在聚焦人失意的时候，也许这才是生活的常态，以及大多数人的真实写照。
 
-![](https://chee5e.space/static/image/jsnswmfbjd138.jpeg)
+![](https://blog.youmuwhisper.space/static/image/jsnswmfbjd138.jpeg)
