@@ -62,7 +62,8 @@ var myFriends = [
     ["https://huanz.top", "https://huanz.top/images/logo.webp", "@Huanzの小窝", "那是一小块凝固的时间，时间上有美丽的条纹，摸起来像浅海的泥一样柔软"],
     ["https://natsume-neko.github.io/", "https://natsume-neko.github.io/images/IMG_0711.JPG", "@Natsumeのblog", "这里仅有忧伤"],
     ["https://kidoki.xyz/", "https://kidoki.xyz/images/avatar.jpg", "@明镜公园", "一名普通的烟囱清洁工"],
-    ["https://nazuki.moe/", "https://gravatar.loli.net/avatar/508a84746a9db7634765f4edd5d88080?s=512", "@奈月亭", "「ありがとう、おやすみ」"]
+    ["https://nazuki.moe/", "https://gravatar.loli.net/avatar/508a84746a9db7634765f4edd5d88080?s=512", "@奈月亭", "「ありがとう、おやすみ」"],
+    ["https://www.yunyitang.me/", "YUNYI BLOG", "@YUNYI", "得闲饮茶~~~"]
 ];
 
 // 以下为核心功能内容，修改前请确保理解您的行为内容与可能造成的结果
