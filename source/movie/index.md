@@ -11,7 +11,7 @@ comments: false
 ;(function(){
 
   $('.kratos-post-content > h2').next().remove();
-  var url = 'https://today-douban.vensing.workers.dev/api/v2/calendar/today';
+  var url = 'https://worker-db-api.youmuwhisper.space/api/v2/calendar/today';
   var now = new Date();
   var year = now.getFullYear();
   var month = now.getMonth() + 1;

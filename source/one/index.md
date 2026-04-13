@@ -11,7 +11,7 @@ comments: false
 ; (function () {
   $('.kratos-post-content > h2').next().remove();
   $.ajax({
-    url: 'https://green-cloud-7dfe.vensing.workers.dev/',
+    url: 'https://worker-one-api.youmuwhisper.space/',
     type: 'get',
     dataType: "json"
   })
