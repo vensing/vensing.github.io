@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://blog.youmuwhisper.space/movie/index.html</loc>
+    
+    <lastmod>2026-04-13T03:24:31.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://blog.youmuwhisper.space/friends/index.html</loc>
     
     <lastmod>2024-03-17T09:34:20.000Z</lastmod>
@@ -220,13 +227,6 @@
   
   <url>
     <loc>https://blog.youmuwhisper.space/Travis-CI/</loc>
-    
-    <lastmod>2020-12-05T12:07:15.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://blog.youmuwhisper.space/movie/index.html</loc>
     
     <lastmod>2020-12-05T12:07:15.000Z</lastmod>
     
